@@ -1,0 +1,314 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Berkshire Swash';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Berkshire Swash'), local('BerkshireSwash-Regular'), url(https://fonts.gstatic.com/s/berkshireswash/v4/4RZJjVRPjYnC2939hKCAimFprui36xQdb4y7MggwzrY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Berkshire Swash';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Berkshire Swash'), local('BerkshireSwash-Regular'), url(https://fonts.gstatic.com/s/berkshireswash/v4/4RZJjVRPjYnC2939hKCAiiJH4brlqpr7zMNWu0xQjN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+
+body{
+padding:0px;
+margin:0px;
+}
+
+.error{
+	transition:border-color 0.5s ease;
+	border:2px solid red;
+}
+
+/*Header*/
+.header{
+
+}
+
+.header .hamburger{
+margin-top:10px;
+}
+
+.header h1{
+	margin:0px 0px;
+	padding:20px;
+	font-family:'Berkshire Swash';
+	color:#fff;
+	background:#444;
+	text-align:center;
+}
+
+.header a, .list a{
+    background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%);
+    padding: 3px;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 0px 5px;
+    border: 1px solid #AB9D9D;
+    color: #000;
+	text-decoration:none;
+}
+
+.header .javacriptWarning{
+	text-align:center;
+	font-weight:bold;
+}
+
+.header .menuBar{
+text-align:center;
+padding:10px 5px;
+}
+
+.header .menuBar .inlineBlock{
+display:inline-block;
+}
+
+.dialog.help{
+max-width:360px;
+}
+
+
+.listGroupContainer{
+padding: 5px;
+}
+
+.list{
+border:1px solid #c0c0c0;
+display:inline-block;
+margin:5px;
+vertical-align:top;
+background:#fff;
+min-width:275px;
+min-height: 200px;
+transition:background-color 0.5s ease;
+animation-duration:0.5s;
+/*box-shadow:2px 2px 11px rgba(0,0,0,0.25);*/
+}
+
+.list a{
+	text-decoration:none;
+	padding: 0px 2px;
+	margin: 0px 2px;
+}
+
+.list .handle{
+	cursor:move;
+	min-height:21px;
+}
+
+.list .handle .deleteListButton{
+	float:right;
+}
+
+.list .content{
+padding:5px;
+display: inline-block;
+}
+
+.list ol{
+	min-height:40px;
+	margin-bottom:0px;
+	padding-left:30px;
+}
+
+.listGroup li span{
+	display:block;
+	cursor:pointer;
+	font-size:14pt;
+}
+
+.listGroup li span:hover{
+	background:#eee;
+
+}
+
+.noteDeleteButton, .deleteEditButton{
+text-align:center;
+min-width:9px;
+}
+
+.objectGroup li .object{
+	display:block;
+	cursor:pointer;
+}
+
+.objectGroup li .object span{
+	display:inline-block;
+	font-size:14pt;
+}
+
+.objectGroup li .object:hover{
+	background:#eee;
+
+}
+
+/*.listGroup .addNameButton{
+background:linear-gradient(to bottom, #cdeb8e 0%,#a5c956 100%);
+}*/
+
+.objectGroup .buttons{
+text-align:center;
+}
+
+.objectGroup .buttons{
+margin-top:4px;
+}
+
+.objectGroup .buttons .addObjectButton{
+background:linear-gradient(to bottom, #cdeb8e 0%,#a5c956 100%);
+}
+
+.objectGroup .message{
+text-align:center;
+}
+
+.objectGroup .objectForm{
+text-align:right;
+display:inline-block;
+}
+
+.objectForm textarea{
+vertical-align:top;
+width:167px;
+}
+
+.objectGroup .colorBlock{
+	width:15px;
+	height:15px;
+	border:1px solid #c0c0c0;
+}
+
+.noteInput{
+vertical-align:top;
+}
+
+.noteEdit{
+vertical-align:top;
+}
+
+.editControls{
+	display:inline-block;
+}
+
+.rollContainer {
+	display:inline-block;
+	padding:5px;
+	border:1px solid #c0c0c0;
+	min-width:266px;
+	margin:5px;
+	height:189px;
+	min-height: 189px;
+	background:#fff;
+	/*box-shadow:2px 2px 11px rgba(0,0,0,0.3);*/
+    resize: both;
+    overflow: auto;
+}
+
+.rollContainer .handle{
+	cursor:move;
+}
+
+.rollContainer .title {
+	transition:color 0.5s ease;
+}
+
+.rollContainer table{
+    border-spacing: 0;
+    border-collapse: collapse;
+	width:100%;
+}
+
+.rollContainer table tr:hover{
+	background:#eeeeee;
+}
+
+.rollContainer table th{
+	text-align: left;
+	padding:3px 6px;
+}
+
+.rollContainer table td{
+border-right:1px solid #c0c0c0;
+padding:0px 6px;
+vertical-align:top;
+}
+
+.rollContainer table td:last-child{
+border-right:none;
+}
+
+
+.addInput{
+margin-bottom:10px;
+}
+
+.addInput input, .editInput input{
+width:130px;
+}
+
+.addInput .buttons{
+margin-top:4px;
+text-align:center;
+}
+
+.addInput .buttons a{
+padding:4px;
+color:#fff;
+background: linear-gradient(to bottom,  #00b7ea 0%,#009ec3 100%);
+background: linear-gradient(to bottom,  #258dc8 0%,#258dc8 100%);
+}
+
+.addInputButton:hover{
+text-decoration:underline;
+}
+
+.editInput{
+}
+
+/*Highlight Animation*/
+@keyframes highlight {
+  from, 50%, to {
+    background-color:#fff;
+  }
+
+  25% {
+    background-color:#00B7EA;
+  }
+}
+
+.highlight {
+	animation-duration:0.5s;
+  -webkit-animation-name: highlight;
+  animation-name: highlight;
+}
+
+@media screen and (max-width:425px){
+	.listGroupContainer{
+		padding:0px;
+	} 
+	.rollContainer, .list{
+		margin:0px;
+		display:block;
+	}
+}
+
+
+@media print {
+	.header, .listForm, .list .handle .deleteListButton{
+		display:none;
+	}
+
+	.list ol{
+		margin-top:0px;
+	}
+
+	.rollContainer, .rollContainer table{
+		width:100%;
+	}
+}

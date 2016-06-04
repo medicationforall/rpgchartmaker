@@ -1,0 +1,39 @@
+/*Hamburger Link*/
+a.hamburger{
+float:right;
+margin-right:10px;
+}
+
+
+/*Hamburger Menu*/
+
+/* menuOpen is a class applied by the jquery script*/
+body.menuOpen .hamburger.menu{
+display:block;
+}
+
+.hamburger.menu{
+width:150px;
+float:right;
+padding-top:20px;
+padding-left:10px;
+background:#5151A0;
+display:none;
+color:#fff;
+}
+
+.hamburger.menu a{
+color:#fff;
+display:block;
+margin-bottom:8px;
+font-family:arial;
+text-decoration:none;
+}
+
+.hamburger.menu a:hover{
+text-decoration:underline;
+}
+
+.hamburger.menu h3{
+margin:5px 0px;
+}
