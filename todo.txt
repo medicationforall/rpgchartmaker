@@ -1,8 +1,16 @@
-
 todo:
-edit input should have class on inputs so you don't have to use hokey find string
+edit input should have class on inputs so you don't have to use hokey find string.
+re-ordering object form inputs should update children.
 
-re-ordering form should update children
+parse dN dice notation where N is a number.
+parse *N notation to represent multiple entries in the list. - (Requested by andrewkoldwell, and OrkishBlade)
+comment code.
+split rollcontainer into it's own template and javascript object.
+
+
+*Requested*
+A nested tables feature (Request by OrkishBlade)
+The ability to import plain text numbered lists and/or Excel formatted lists. (Request by OrkishBlade)
 
 
 

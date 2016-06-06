@@ -39,7 +39,7 @@ $(document).ready(function(){
 	});
 
 	//help click
-	$('.hamburger.menu .helpButton').click(function(event){
+	$('.helpButton').click(function(event){
 		event.preventDefault();
 		console.log('clicked About');
 

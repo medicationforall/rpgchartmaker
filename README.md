@@ -16,7 +16,7 @@ There is no database.
 
 
 ## Libraries
-This Application uses [jQuery](https://jquery.com/), [jQuery-ui](http://jqueryui.com/), [FileSaver.js](https://github.com/eligrey/FileSaver.js/), and [Animate.css](https://daneden.github.io/animate.css/) all of which are being called via cdn. 
+This Application uses [jQuery](https://jquery.com/), [jQuery-ui](http://jqueryui.com/), [jQuery UI Touch Punch](http://touchpunch.furf.com/), [FileSaver.js](https://github.com/eligrey/FileSaver.js/), and [Animate.css](https://daneden.github.io/animate.css/) all of which are being called via cdn. 
 If you want run this application offline you'll need to locally reference those libraries.
 
 ##License
