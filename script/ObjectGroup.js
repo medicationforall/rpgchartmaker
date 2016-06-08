@@ -16,6 +16,14 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * An oject list where each node was created via a user defined template form.
+ * The template form allows adding, removing, editing, and re-ordering of form inputs.
+ * The List supports adding, and re-ordering of list entries.
+ * @todo add support for editing and removing list entries.
+ * @todo This class should inherit off of ListGroup.
+ * @see html/objectGroup.html 
+ */
 function ObjectGroup(){
 
 //data
@@ -28,7 +36,8 @@ this._constructor = function(){
 
 
 /**
- *
+ *Get the html template and store it in a static template variable.
+ *@private
  */
 this._resolveTemplate=function(){
 	if(ObjectGroup.template){
@@ -44,7 +53,8 @@ this._resolveTemplate=function(){
 
 
 /**
- *
+ * Sets up the html node, click handlers, sort handlers, and other controls.
+ * @private
  */
 this._setup=function(template){
 	this._createNode(template);
@@ -62,7 +72,8 @@ this._setup=function(template){
 
 
 /**
- *
+ * Inserts the template into the page.
+ * @private
  */
 this._createNode=function(template){
 	this.node = $(template.trim()).appendTo('.listGroupContainer');
@@ -72,15 +83,18 @@ this._createNode=function(template){
 
 
 /**
- *
+ * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
+ * @private
  */
 this._setupSortable=function(){
 	this.node.find('ol').sortable({connectWith: ".list ol"});
 	this.node.find('.objectForm').sortable();
 }
 
+
 /**
- *
+ * Sets the color of the list header drag handle based on the text input on the List Name input.
+ * @private
  */
 this._setupHandleColor=function(){
 	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
@@ -95,12 +109,13 @@ this._setupHandleColor=function(){
 		
 		//console.log(color);
 		node.find('.handle').css('background-color',color)		
-	},null,this.hashCode,this.intToRGB,this.node));
+	},null,this._hashCode,this._intToRGB,this.node));
 }
 
 
 /**
- *
+ * Creates ad input click handler, for adding input to the template form.
+ * @private
  */
 this._setupAddInput=function(){
 	this.node.find('.addInputButton').click($.proxy(function(event){
@@ -118,7 +133,7 @@ this._setupAddInput=function(){
 		}
 
 		//all is fine add the new input
-		this.addInput(label,type);
+		this._addInput(label,type);
 
 		//clear the input
 		labelInput.val('').focus();
@@ -131,7 +146,6 @@ this._setupAddInput=function(){
 	//clear the red border on input
 	this.node.find('input[name="addInputLabel"]').on('input',function(){
 		$(this).removeClass('error');
-		//$(this).css('border','');
 	});
 
 
@@ -145,8 +159,10 @@ this._setupAddInput=function(){
 	},this));
 }
 
+
 /**
- *
+ * Creates the edit controls for modifying existing form inputs in the template form.
+ * @private
  */
 this._setupEditInput=function(){
 
@@ -236,7 +252,9 @@ this._setupEditInput=function(){
 }
 
 /**
- *
+ * Sets the click hanlder for clicking on the alphabetize button. 
+ * Also defines what the sort logic is.
+ * @private
  */
 this._setupAlphabetize=function(){
 	this.node.find('.alphabetizeButton').click($.proxy(function(event){
@@ -266,7 +284,8 @@ this._setupAlphabetize=function(){
 
 
 /**
- * 
+ * Create the click handler and adding list entries derived from the object template form.
+ * @private
  */
 this._setupAddEntry=function(){
 	//add entry click
@@ -280,7 +299,7 @@ this._setupAddEntry=function(){
 		//check to see if the form has children
 		if(form.children().length>0){
 			//console.log('form has children');
-			this.addEntry(form);
+			this._addEntry(form);
 		}else{
 			//console.log('form does not have children');
 			message.text('No Inputs in object form.');
@@ -291,9 +310,12 @@ this._setupAddEntry=function(){
 
 
 /**
- *
+ * Adds an input to the object template form.
+ * @param label {string}
+ * @param type {string} valid types are text, number, checkbox, color, datetime-local, and textarea
+ * @private
  */
-this.addInput=function(label,type){
+this._addInput=function(label,type){
 	var form = this.node.find('.objectForm');
 	var template='<div class="objectInput" data-label="'+label+'" data-type="'+type+'">';
 	template+='<span class="label">'+label+'</span> ';
@@ -301,7 +323,7 @@ this.addInput=function(label,type){
 	if(type==='text' || type==='number' || type==='checkbox' || type==='color'){
 		template+='<input type="'+type+'" />';
 	}else if(type === "datetime-local"){
-		template+='<input type="'+type+'" value="'+this.getNow()+'" />';
+		template+='<input type="'+type+'" value="'+this._getNow()+'" />';
 	}else if(type==='textarea'){
 		template+='<textarea></textarea>';
 	}
@@ -311,7 +333,11 @@ this.addInput=function(label,type){
 	form.append(template);
 }
 
-this.getNow = function () {
+/**
+ * @return The current system time for the user in a a format appropriate for a datetime input. 
+ * @private
+ */
+this._getNow = function () {
 	var now = new Date($.now());
 	var year;
 	var month
@@ -330,13 +356,15 @@ this.getNow = function () {
 
 	formattedDateTime = year + '-' + month + '-' + date + 'T' + hours + ':' + minutes + ':' + seconds;
 
-return formattedDateTime;
+	return formattedDateTime;
 }
 
 /**
- *
+ * Adds an object entry to the list based on the input fromt he passed in form object.
+ * @param form jquery objectForm node
+ * @private
  */
-this.addEntry=function(form){
+this._addEntry=function(form){
 	console.log('add entry method');
 	//build data object
 	var data ={};
@@ -365,7 +393,7 @@ this.addEntry=function(form){
 			value = input.val();
 	
 			//clear the input
-			input.val(this.getNow());
+			input.val(this._getNow());
 
 		}else if(type === "checkbox"){
 			input = $(item).find('input');
@@ -408,9 +436,12 @@ this.addEntry=function(form){
 }
 
 /**
- *
+ * Adds a list entry to the list based on the order and data objects passed to this method.
+ * @param order {JSON Array} The order in which the data object should be called
+ * @param data {JSON Object} The raw data of the entry
+ * @private 
  */
-this.addJSONEntry=function(order,data){
+this._addJSONEntry=function(order,data){
 	//console.log('addJSONEntry',order,data);
 
 	var counter =0;
@@ -446,14 +477,16 @@ this.addJSONEntry=function(order,data){
 
 
 /**
- *
+ * @return jquery node of this ojects template.
  */
 this.getNode=function(){
 	return this.node;
 }
 
+
 /**
- *
+ * Load the name, the object template form, and ol list with data.
+ * @param list {JSON Object}  
  */
 this.fillOutList=function(list){
 
@@ -463,13 +496,13 @@ this.fillOutList=function(list){
 	//fill out order
 	if(list.order && list.order.length>0){
 		for(var i=0;i<list.order.length;i++){
-			this.addInput(list.order[i].label,list.order[i].type);
+			this._addInput(list.order[i].label,list.order[i].type);
 		}
 
 		//fill out list
 		if(list.list && list.list.length>0){
 			for(var j=0,entry;entry=list.list[j];j++){
-				this.addJSONEntry(list.order,entry);
+				this._addJSONEntry(list.order,entry);
 			}
 		}		
 	}
@@ -477,9 +510,11 @@ this.fillOutList=function(list){
 
 
 /**
- *
+ * Converts a string to an integer.
+ * @param str {string}
+ * @return {int}
  */
-this.hashCode=function(str) { // java String#hashCode
+this._hashCode=function(str) { // java String#hashCode
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
        hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -489,9 +524,11 @@ this.hashCode=function(str) { // java String#hashCode
 
 
 /**
- *
+ * Converts an integer to a hex code.
+ * @param i {int}
+ * @return {hex}
  */
-this.intToRGB=function(i){
+this._intToRGB=function(i){
     var c = (i & 0x00FFFFFF)
         .toString(16)
         .toUpperCase();

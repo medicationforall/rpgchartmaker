@@ -16,6 +16,11 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Simple list with controls for CRUD operations Create, Read, Update, and Delete.
+ * @see html/listGroup.html
+ * @todo Move click handlers specific to listGroup from chartPage into this object. 
+ */
 function ListGroup(animate){
 
 //data
@@ -32,7 +37,8 @@ this._constructor = function(){
 }
 
 /**
- *
+ * Get the html template and store it in a static template variable.
+ * @private
  */
 this._resolveTemplate=function(){
 	if(ListGroup.template){
@@ -49,7 +55,8 @@ this._resolveTemplate=function(){
 
 
 /**
- *
+ * Sets up the html node, click handlers, sort handlers, and other controls.
+ * @private
  */
 this._setup=function(template){
 	this._createNode(template);
@@ -60,8 +67,11 @@ this._setup=function(template){
 	$(this).trigger('loaded');
 }
 
+
 /**
- *
+ * Inserts the template into the page.
+ * If animate is true applies an animation effect.
+ * @private
  */
 this._createNode=function(template){
 	this.node = $(template.trim()).appendTo('.listGroupContainer');
@@ -72,14 +82,18 @@ this._createNode=function(template){
 
 
 /**
- *
+ * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
+ * @private
  */
 this._setupSortable=function(){
 	this.node.find('ol').sortable({connectWith: ".list ol"});
 }
 
+
 /**
- *
+ * Sets the click hanlder for clicking on the alphabetize button. 
+ * Also defines what the sort logic is.
+ *@private
  */
 this._setupAlphabetize=function(){
 	this.node.find('.alphabetizeButton').click($.proxy(function(event){
@@ -99,7 +113,6 @@ this._setupAlphabetize=function(){
 			if(aText < bText){
 				return -1;
 			}
-
 			return 0;
 		});
 
@@ -109,11 +122,10 @@ this._setupAlphabetize=function(){
 
 
 /**
- *
+ * Sets the color of the list header drag handle based on the text input on the List Name input.
+ * @private
  */
 this._setupHandleColor=function(){
-
-
 	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
 		//console.log('input kicked off',$(this).val());
 		var color = '';
@@ -126,12 +138,12 @@ this._setupHandleColor=function(){
 		
 		//console.log(color);
 		node.find('.handle').css('background-color',color)		
-	},null,this.hashCode,this.intToRGB,this.node));
+	},null,this._hashCode,this._intToRGB,this.node));
 }
 
 
 /**
- *
+ * @return jquery node of this ojects template.
  */
 this.getNode=function(){
 	return this.node;
@@ -139,7 +151,8 @@ this.getNode=function(){
 
 
 /**
- *
+ * Load list name, and ol list with data.
+ * @param list {JSON}  
  */
 this.fillOutList=function(list){
 
@@ -154,9 +167,11 @@ this.fillOutList=function(list){
 
 
 /**
- *
+ * Converts a string to an integer.
+ * @param str {string}
+ * @return {int}
  */
-this.hashCode=function(str) { // java String#hashCode
+this._hashCode=function(str) { // java String#hashCode
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
        hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -166,15 +181,18 @@ this.hashCode=function(str) { // java String#hashCode
 
 
 /**
- *
+ * Converts an integer to a hex code.
+ * @param i {int}
+ * @return {hex}
  */
-this.intToRGB=function(i){
+this._intToRGB=function(i){
     var c = (i & 0x00FFFFFF)
         .toString(16)
         .toUpperCase();
 
     return "000000".substring(0, 6 - c.length) + c;
 }
+
 
 //main
 	this._constructor();
