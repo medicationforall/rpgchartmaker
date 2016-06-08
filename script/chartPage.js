@@ -86,12 +86,12 @@ $(document).ready(function(){
 	};
 
 	var loadData=function(data){
-		console.log('load data');
+		//console.log('load data');
 
 		$('input[name=listName]').val(data.name).trigger('input');
 				
 		for(var i=0,list;list=data.lists[i];i++){
-			console.log('moving over list',i,list);
+			//console.log('moving over list',i,list);
 
 			var listGroup;
 					
@@ -104,9 +104,15 @@ $(document).ready(function(){
 				listGroup = new ListGroup();
 			}
 
-			$(listGroup).on('loaded',function(list){
-				this.fillOutList(list);
-			}.bind(listGroup,list));
+
+			if(listGroup.node){
+				listGroup.fillOutList(list);
+			}else{
+				$(listGroup).on('loaded',function(list){
+					console.log('filling out list on load');
+					this.fillOutList(list);
+				}.bind(listGroup,list));
+			}
 		}
 	}; 
 
@@ -338,7 +344,7 @@ $(document).ready(function(){
 	$('.loadTemplateButton').click(function(event){
 		event.preventDefault();
 		var file = $(this).data('file');
-		console.log('loadTemplateButton',file);	
+		//console.log('loadTemplateButton',file);	
 
 		//clear lists check
 		clearLists();

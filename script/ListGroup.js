@@ -35,27 +35,39 @@ this._constructor = function(){
  *
  */
 this._resolveTemplate=function(){
-	$.get('html/listGroup.html',$.proxy(function(data){
-		this.node = $(data.trim()).appendTo('.listGroupContainer');
+	if(ListGroup.template){
+		this._setup(ListGroup.template);
 
-		if(this.animate===true){
-			this.node.animateCss('zoomInLeft');
-		}
+	}else{
+		$.get('html/listGroup.html',$.proxy(function(data){			
+			ListGroup.template=data;
+			this._setup(ListGroup.template);
+		},this));
+	}
 
-		this._setup();
-	},this));
 }
 
 
 /**
  *
  */
-this._setup=function(){
+this._setup=function(template){
+	this._createNode(template);
 	this._setupSortable();
 	this._setupAlphabetize();
 	this._setupHandleColor();
 
 	$(this).trigger('loaded');
+}
+
+/**
+ *
+ */
+this._createNode=function(template){
+	this.node = $(template.trim()).appendTo('.listGroupContainer');
+	if(this.animate===true){
+		this.node.animateCss('zoomInLeft');
+	}
 }
 
 

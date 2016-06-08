@@ -31,18 +31,23 @@ this._constructor = function(){
  *
  */
 this._resolveTemplate=function(){
-	$.get('html/objectGroup.html',$.proxy(function(data){
-		this.node = $(data.trim()).appendTo('.listGroupContainer');
-		this.node.animateCss('zoomInLeft');
-		this._setup();
-	},this));
+	if(ObjectGroup.template){
+		this._setup(ObjectGroup.template);
+
+	}else{
+		$.get('html/objectGroup.html',$.proxy(function(data){
+			ObjectGroup.template=data;
+			this._setup(ObjectGroup.template);
+		},this));
+	}
 }
 
 
 /**
  *
  */
-this._setup=function(){
+this._setup=function(template){
+	this._createNode(template);
 	this._setupSortable();
 	this._setupHandleColor();
 	this._setupAddInput();
@@ -50,7 +55,19 @@ this._setup=function(){
 	this._setupAlphabetize();
 	this._setupEditInput();
 
+
+	console.log('trigger loaded for object group');
 	$(this).trigger('loaded');
+}
+
+
+/**
+ *
+ */
+this._createNode=function(template){
+	this.node = $(template.trim()).appendTo('.listGroupContainer');
+	this.node.animateCss('zoomInLeft');
+
 }
 
 
@@ -394,7 +411,7 @@ this.addEntry=function(form){
  *
  */
 this.addJSONEntry=function(order,data){
-	console.log('addJSONEntry',order,data);
+	//console.log('addJSONEntry',order,data);
 
 	var counter =0;
 	var template = '<li><div class="object">';
