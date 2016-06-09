@@ -159,6 +159,11 @@ this.fillOutList=function(list){
 	//fill out name
 	this.node.find('input[name=listGroupName]').val(list.name).trigger('input');
 
+	//fill out roll
+	if(list.roll!==undefined){
+		this.node.find('input[name="roll"]').prop('checked', list.roll);
+	}
+
 	//fill out List		
 	for(var j=0,item;item=list.list[j];j++){
 		this.node.find('ol').append('<li><span class="nameText">'+item+'</span></li>')

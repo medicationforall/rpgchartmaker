@@ -493,6 +493,11 @@ this.fillOutList=function(list){
 	//fill out name
 	this.node.find('input[name=listGroupName]').val(list.name).trigger('input');
 
+	//fill out roll
+	if(list.roll!==undefined){
+		this.node.find('input[name="roll"]').prop('checked', list.roll);
+	}
+
 	//fill out order
 	if(list.order && list.order.length>0){
 		for(var i=0;i<list.order.length;i++){

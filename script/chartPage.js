@@ -37,7 +37,14 @@ $(document).ready(function(){
 		
 		$('.listGroupContainer .list').each(function(index, item){
 			var obj = {};
+
+			//get list name
 			obj.name= $(item).find('input[name=listGroupName]').val();
+
+			//get get roll checkbox
+			obj.roll= $(item).find('input[name="roll"]').prop('checked');
+
+			//initialize list entries
 			obj.list=[];
 
 			if($(item).hasClass('listGroup')){
@@ -88,6 +95,7 @@ $(document).ready(function(){
 	var loadData=function(data){
 		//console.log('load data');
 
+		//set chart name
 		$('input[name=listName]').val(data.name).trigger('input');
 				
 		for(var i=0,list;list=data.lists[i];i++){
@@ -105,6 +113,8 @@ $(document).ready(function(){
 			}
 
 
+			//thi can still cause a race condition if the template isn't loaded. 
+			//As is typically the case for object group.
 			if(listGroup.node){
 				listGroup.fillOutList(list);
 			}else{
@@ -315,7 +325,7 @@ $(document).ready(function(){
 			var list =$('.list').each(function(index, item){
 				
 				//make sure it's not skipped
-				if($(item).find('input[name="rollSkip"]')[0].checked){
+				if($(item).find('input[name="roll"]').prop('checked')){
 					arr = $(item).find('ol li').map(function(i, el) {
 						return $(el).html();
 					}).get();
