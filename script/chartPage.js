@@ -82,6 +82,7 @@ $(document).ready(function(){
 			
 		return data;
 	};
+
 	
 	var saveAsFile=function(t,f,m) {
 		try {
@@ -91,6 +92,7 @@ $(document).ready(function(){
 			window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
 		}
 	};
+
 
 	var loadData=function(data){
 		//console.log('load data');
@@ -126,11 +128,50 @@ $(document).ready(function(){
 		}
 	}; 
 
+
 	var clearLists=function(){
 		if($('.hamburger input[name="clearList"]')[0].checked){
 			$('.list').remove();
 		}
-	}
+	};
+
+	//d40444 Demonkin d5 d6+1 d6/2 d4*10 d6-1
+	//should have 6 matches d40444, d5, d6+1, d6/2, d4*10, and d6-1
+	var findDice=function(text){
+		var re = /\bd(\d+)([*+-/%]?)(\d+)?\b/gi;
+
+		text = text.replace(re,function(match,number, operation, number2){
+			//console.log(match,number,operation,number2,arguments);
+
+			var n = parseInt(number);
+			var roll = Math.floor(Math.random() * n);
+			//normalize roll so that it's not 0 index
+			roll++;
+
+			//modify roll
+			if(operation && number2 && operation !==''){
+				//console.log('hit modify roll');
+				var n2 = parseInt(number2);
+
+				if(operation=='+'){
+					roll = roll+n2;
+				}else if(operation=='-'){
+					roll = roll-n2;
+				}else if(operation=='/'){
+					roll = roll/n2;		
+				}else if(operation=='*'){
+					roll = roll*n2;
+				}else if(operation=='%'){
+					roll = roll%n2;
+				}
+			}
+
+			
+			return roll;
+		});
+
+		return text;
+	};
 
 /*MAIN*/
 	$('.javacriptWarning').remove();
@@ -334,6 +375,8 @@ $(document).ready(function(){
 				
 					var roll = Math.floor(Math.random() * arr.length);
 					var value = arr[roll];
+					//lookup for dice
+					value = findDice(value);
 					$(item).find('ol li:nth-child('+(roll+1)+')').animateCss('highlight');
 				
 					$('.rollContainer table tbody tr:last-child').append('<td data-roll="'+roll+'">'+value+'</td>');
