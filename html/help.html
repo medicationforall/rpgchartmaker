@@ -1,8 +1,21 @@
 <div class="dialog help" data-type="help">
 	<div class="handle"><b>Help</b><a href="" class="closeButton">X</a></div>
-		<div>
+		<div class="content">
+
 			<ul>
-				<b>List</b>
+				<b>Dialogs General</b>
+				<li>Drag a dialog by its handle to move it around the page.</li>
+				<li>Resize a dialog by dragging the symbol in the lower right corner.</li>
+			</ul>
+
+			<ul>
+				<b>Lists General</b>
+				<li>Re-order lists on the page by dragging their handle.</li>
+				<li>The checkbox next to the List Name determines if the list is counted when the roll button is clicked.</li>
+			</ul>
+
+			<ul>
+				<b>List Control</b>
 				<li>"Add List" creates a basic list.</li>
 				<li>Pressing the enter key on the List Entry label adds it to the list.</li>
 				<li>Click on a list item to edit it.</li>
@@ -12,7 +25,7 @@
 			</ul>
 
 			<ul>
-				<b>Object List</b>
+				<b>Object List Control</b>
 				<li>"Add object List" creates a complicated list.</li>
 				<li>Before you can add list items you have to make form inputs.</li>
 				<li>Enter key press on Label will add it to the form.</li>
@@ -24,14 +37,34 @@
 			<ul>
 				<b>Dice Notation</b>
 				<li>
-					dN - The letter (d) and any integer will result in a random number being placed in the result between 1 and number specified.<br />
+					dN - The letter (d) and any integer. Will result in a random number being placed in the result between 1 and N.<br />
 					Examples: d6, d10, d20, d100
 				</li>
 				<li>
 					dN+N - The letter (d), an integer, an operation (+-/*), and another integer. Will results in a random number rolled with the range and modify the result by the operation.<br />
-					Examples: d6+1, d10-2, d20/3, d100*4
+					Examples: d6+1, d10-2, d20/3, d100*4<br />
+					Results in: 7, 4, 5, 208
 				</li>
 			</ul>
+
+			<ul>
+				<b>List Notation</b>
+				<li>
+					[foo] - Left square ([) bracket, List Name*, right square bracket (]). Will cause a roll on the reference list and place it into the result.<br /> Note* the list name being referenced has to match exactly.<br />
+					Examples: [Region], [Type], [First Name]<br />
+					Results in : Dragon Coast, Ork, Bob
+				</li>
+				<li>[List Example](N,[N...]) - Right parentheses, an integer N, a comma, another integer N, left parentheses. Will cause a roll on the reference list, but only take into account the index numbers you specified. You can supply any number of N as long as they are comma delineated.<br />
+				Examples: [Region](1,3),  [Type](1,5,8,2)
+				</li>
+			</ul>
+
+			<ul>
+				<b>Roll Table</b>
+				<li>Re-order Roll Table on the page by dragging its handle.</li>
+				<li>Resize a Roll Table by dragging the symbol in the lower right corner.</li>
+			</ul>
+
 		</div>
 </div>
 

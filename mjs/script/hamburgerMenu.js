@@ -21,7 +21,7 @@ $(document).ready(function(){
 	//menu click
 	$('.header .hamburger').click(function(event){
 		event.preventDefault();
-		console.log('clicked hamburger');
+		//console.log('clicked hamburger');
 
 		if($('body').hasClass('menuOpen')){
 			$('body').removeClass('menuOpen');
