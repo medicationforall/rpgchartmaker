@@ -29,28 +29,11 @@ this.animate=true;
 
 //constructor
 this._constructor = function(){
-	this._resolveTemplate();
+	this._resolveTemplate(ListGroup,'listGroup');
 
 	if(animate!==undefined){
 		this.animate=animate;
 	}
-}
-
-/**
- * Get the html template and store it in a static template variable.
- * @private
- */
-this._resolveTemplate=function(){
-	if(ListGroup.template){
-		this._setup(ListGroup.template);
-
-	}else{
-		$.get('html/listGroup.html',$.proxy(function(data){			
-			ListGroup.template=data;
-			this._setup(ListGroup.template);
-		},this));
-	}
-
 }
 
 
@@ -61,24 +44,14 @@ this._resolveTemplate=function(){
 this._setup=function(template){
 	this._createNode(template);
 	this._setupSortable();
+	this._setupAddButton();
+	this._setupEdit();
 	this._setupAlphabetize();
 	this._setupHandleColor();
 
 	$(this).trigger('loaded');
 }
 
-
-/**
- * Inserts the template into the page.
- * If animate is true applies an animation effect.
- * @private
- */
-this._createNode=function(template){
-	this.node = $(template.trim()).appendTo('.listGroupContainer');
-	if(this.animate===true){
-		this.node.animateCss('zoomInLeft');
-	}
-}
 
 
 /**
@@ -87,6 +60,91 @@ this._createNode=function(template){
  */
 this._setupSortable=function(){
 	this.node.find('ol').sortable({connectWith: ".list ol"});
+}
+
+
+/**
+ *
+ */
+this._setupAddButton=function(){
+	//add name button click functionality
+	this.node.on('click','.addNameButton',$.proxy(function(event){
+		event.preventDefault();
+		var nameInput = this.node.find('.nameInput');
+		
+		if(nameInput.val()!==''){
+		this.node.find('ol').append('<li><span class="nameText">'+nameInput.val().trim()+'</span></li>');
+				
+		//reset note input
+		nameInput.val('');
+		nameInput.focus();
+		}
+	},this));
+
+	//name input enter key press
+	this.node.on('keypress','.nameInput',$.proxy(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13') {
+			//console.log('pressed enter');
+			this.node.find('.addNameButton').trigger('click');  
+		}
+	},this));
+}
+
+
+/**
+ *
+ */
+this._setupEdit=function(){
+	
+	//note edit functionality
+	this.node.on('click','.nameText',function(event){
+		var template = '<div class="inlineEdit">'+
+		'<input class="noteEdit" type="text" value="'+$(this).text()+'" />'+
+		'<div class="editControls">'+
+		'<a href="" class="noteEditButton" title="Apply">+</a>'+
+		'<a href="" class="noteDeleteButton" title="Delete">-</a>'+
+		'</div>'+
+		'</div>';
+		
+		//alert('clicked on nameText'+$(this).text());
+		$(this).css('display','none');
+		$(this).after(template);
+	});
+
+	//note apply click
+	this.node.on('click','.noteEditButton',function(event){
+		event.preventDefault();
+		//alert('clicked note edit button');
+
+		var inlineEdit = $(this).closest('.inlineEdit');
+		var nameText = $(inlineEdit).prev('.nameText');
+		var noteEdit = inlineEdit.find('.noteEdit');
+
+		nameText.text(noteEdit.val()).css('display','block');
+		inlineEdit.remove();		
+	});
+
+	//name input enter key press
+	this.node.on('keypress','.noteEdit',function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13') {
+			console.log('pressed enter');
+			$(this).closest('.inlineEdit').find('.noteEditButton').trigger('click');   
+		}
+	});
+
+	//note delete click
+	this.node.on('click','.noteDeleteButton',function(event){
+		event.preventDefault();
+		console.log('clicked note delete button');
+		
+		var inlineEdit = $(this).closest('.inlineEdit');
+		var nameText = $(inlineEdit).prev('.nameText');
+		
+		inlineEdit.remove();
+		nameText.closest('li').remove();
+	});
 }
 
 
@@ -122,27 +180,6 @@ this._setupAlphabetize=function(){
 
 
 /**
- * Sets the color of the list header drag handle based on the text input on the List Name input.
- * @private
- */
-this._setupHandleColor=function(){
-	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
-		//console.log('input kicked off',$(this).val());
-		var color = '';
-		
-		if($(this).val()!==''){
-			var hash = hashCode($(this).val());
-			color = '#'+intToRGB(hash);
-			//console.log('hash',hash,(hash,hash+'').length);
-		}
-		
-		//console.log(color);
-		node.find('.handle').css('background-color',color)		
-	},null,this._hashCode,this._intToRGB,this.node));
-}
-
-
-/**
  * @return jquery node of this ojects template.
  */
 this.getNode=function(){
@@ -170,36 +207,14 @@ this.fillOutList=function(list){
 	}
 }
 
-
-/**
- * Converts a string to an integer.
- * @param str {string}
- * @return {int}
- */
-this._hashCode=function(str) { // java String#hashCode
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-       hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
-} 
-
-
-/**
- * Converts an integer to a hex code.
- * @param i {int}
- * @return {hex}
- */
-this._intToRGB=function(i){
-    var c = (i & 0x00FFFFFF)
-        .toString(16)
-        .toUpperCase();
-
-    return "000000".substring(0, 6 - c.length) + c;
-}
-
-
 //main
 	this._constructor();
 
 }
+
+var inheritsFrom = function (child, parent) {
+   	child.prototype = Object.create(parent.prototype);
+};
+
+//setup inheritance from Base
+inheritsFrom(ListGroup, Base);

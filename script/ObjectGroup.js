@@ -24,30 +24,18 @@
  * @todo This class should inherit off of ListGroup.
  * @see html/objectGroup.html 
  */
-function ObjectGroup(){
+function ObjectGroup(animate){
 
 //data
 this.node;
+this.animate=true;
 
 //constructor
 this._constructor = function(){
-	this._resolveTemplate();
-}
+	this._resolveTemplate(ObjectGroup,'objectGroup');
 
-
-/**
- *Get the html template and store it in a static template variable.
- *@private
- */
-this._resolveTemplate=function(){
-	if(ObjectGroup.template){
-		this._setup(ObjectGroup.template);
-
-	}else{
-		$.get('html/objectGroup.html',$.proxy(function(data){
-			ObjectGroup.template=data;
-			this._setup(ObjectGroup.template);
-		},this));
+	if(animate!==undefined){
+		this.animate=animate;
 	}
 }
 
@@ -72,17 +60,6 @@ this._setup=function(template){
 
 
 /**
- * Inserts the template into the page.
- * @private
- */
-this._createNode=function(template){
-	this.node = $(template.trim()).appendTo('.listGroupContainer');
-	this.node.animateCss('zoomInLeft');
-
-}
-
-
-/**
  * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
  * @private
  */
@@ -90,28 +67,6 @@ this._setupSortable=function(){
 	this.node.find('ol').sortable({connectWith: ".list ol"});
 	this.node.find('.objectForm').sortable();
 }
-
-
-/**
- * Sets the color of the list header drag handle based on the text input on the List Name input.
- * @private
- */
-this._setupHandleColor=function(){
-	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
-		//console.log('input kicked off',$(this).val());
-		var color = '';
-		
-		if($(this).val()!==''){
-			var hash = hashCode($(this).val());
-			color = '#'+intToRGB(hash);
-			//console.log('hash',hash,(hash,hash+'').length);
-		}
-		
-		//console.log(color);
-		node.find('.handle').css('background-color',color)		
-	},null,this._hashCode,this._intToRGB,this.node));
-}
-
 
 /**
  * Creates ad input click handler, for adding input to the template form.
@@ -513,35 +468,15 @@ this.fillOutList=function(list){
 	}
 }
 
-
-/**
- * Converts a string to an integer.
- * @param str {string}
- * @return {int}
- */
-this._hashCode=function(str) { // java String#hashCode
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-       hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return hash;
-} 
-
-
-/**
- * Converts an integer to a hex code.
- * @param i {int}
- * @return {hex}
- */
-this._intToRGB=function(i){
-    var c = (i & 0x00FFFFFF)
-        .toString(16)
-        .toUpperCase();
-
-    return "000000".substring(0, 6 - c.length) + c;
-}
-
 //main
 	this._constructor();
 
 }
+
+var inheritsFrom = function (child, parent) {
+   	child.prototype = Object.create(parent.prototype);
+};
+
+//setup inheritance from Base
+inheritsFrom(ObjectGroup, Base);
+
