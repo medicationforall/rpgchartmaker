@@ -16,6 +16,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * @see index.html
+ */
 function MainMenu(){
 //data
 this.node;

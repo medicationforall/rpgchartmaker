@@ -18,8 +18,8 @@
 
 /**
  * Simple list with controls for CRUD operations Create, Read, Update, and Delete.
- * @see html/listGroup.html
- * @todo Move click handlers specific to listGroup from chartPage into this object. 
+ * @see Base.js
+ * @see html/listGroup.html 
  */
 function ListGroup(animate){
 

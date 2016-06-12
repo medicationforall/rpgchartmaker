@@ -21,7 +21,7 @@
  * The template form allows adding, removing, editing, and re-ordering of form inputs.
  * The List supports adding, and re-ordering of list entries.
  * @todo add support for editing and removing list entries.
- * @todo This class should inherit off of ListGroup.
+ * @see Base.js
  * @see html/objectGroup.html 
  */
 function ObjectGroup(animate){
@@ -67,6 +67,7 @@ this._setupSortable=function(){
 	this.node.find('ol').sortable({connectWith: ".list ol"});
 	this.node.find('.objectForm').sortable();
 }
+
 
 /**
  * Creates ad input click handler, for adding input to the template form.
