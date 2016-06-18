@@ -25,10 +25,12 @@ function Base(){
  */
 Base.prototype._resolveTemplate=function(classObject,name){
 	if(classObject.template){
+		//console.log('template exists');
 		this._setup(classObject.template);
 
 	}else{
-		$.get('html/'+name+'.html',$.proxy(function(data){			
+		//console.log('template does not exist');
+		return $.get('html/'+name+'.html',$.proxy(function(data){			
 			classObject.template=data;
 
 			if(this._setup){
@@ -45,6 +47,7 @@ Base.prototype._resolveTemplate=function(classObject,name){
  * @private
  */
 Base.prototype._createNode=function(template){
+	//console.log('calling create node from Base');
 	this.node = $(template.trim()).appendTo('.listGroupContainer');
 	if(this.animate===true){
 		this.node.animateCss('zoomInLeft');

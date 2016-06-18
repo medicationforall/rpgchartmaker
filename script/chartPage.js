@@ -188,16 +188,19 @@ $(document).ready(function(){
 
 
 	//main
-
-	//Initialize mainMenu
-	var mainMenu = new MainMenu();
-	
 	//Initialize the Roll Container
 	var rollContainer = new RollContainer(false);
+	$(rollContainer).on('loaded',function(event){
+		//resolve the two templates for lists
+		$.when(ListGroup.prototype.__proto__._resolveTemplate(ListGroup,'listGroup'),ObjectGroup.prototype.__proto__._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
+			//console.log('loaded templates');
+			//initialize list group
+			if(window.location.hash == ''){
+				var listGroup = new ListGroup(false);
+			}
 
-	//initialize list group
-	var listGroup = new ListGroup(false);
-
-	//iniatialize template for objectGroup
-	ObjectGroup.prototype.__proto__._resolveTemplate(ObjectGroup,'objectGroup');
+			//Initialize mainMenu
+			var mainMenu = new MainMenu();
+		});
+	});
 });

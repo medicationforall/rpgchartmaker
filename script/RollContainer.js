@@ -30,15 +30,17 @@ this.animate=true;
 
 //constructor
 this._constructor = function(){
-	this._resolveTemplate(ListGroup,'rollContainer');
-
+	//console.log('create roll container');
 	if(animate!==undefined){
 		this.animate=animate;
 	}
 
-	this._setup=function(template){
-		this._createNode(template);
-	}
+	this._resolveTemplate(RollContainer,'rollContainer');
+}
+
+this._setup=function(template){
+	this._createNode(template);
+	$(this).trigger('loaded');
 }
 
 

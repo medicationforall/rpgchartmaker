@@ -1,6 +1,5 @@
 # rpgchartmaker
 
-Created By James Adams 
 You can see a working version of the app at [http://rpg.medicationforall.com/rpgchartmaker/](http://rpg.medicationforall.com/rpgchartmaker/)
 
 This is an application for rapidly creating Charts for Role Playing Games. 
@@ -11,8 +10,10 @@ For all practical purposes it is a means for modeling basic string arrays and ob
 An http web server of some sort. I use Apache, but IIS would work just fine. 
 It should be relatively trivial to get this working with node or python as well.
 
-There is no server side language being used.
-There is no database.
+Optional: I wrote a servlet to enable storing and sharing charts from the server. 
+The servlet is written in PHP and currently uses MYSQL for the database.
+
+Modify config.json to change the share settings for the client.
 
 
 ## Libraries

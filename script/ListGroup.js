@@ -29,11 +29,14 @@ this.animate=true;
 
 //constructor
 this._constructor = function(){
-	this._resolveTemplate(ListGroup,'listGroup');
-
+	//console.log('create list group');
 	if(animate!==undefined){
 		this.animate=animate;
 	}
+
+	this._resolveTemplate(ListGroup,'listGroup');
+
+
 }
 
 
@@ -49,6 +52,7 @@ this._setup=function(template){
 	this._setupAlphabetize();
 	this._setupHandleColor();
 
+	//console.log('trigger loaded for list group');
 	$(this).trigger('loaded');
 }
 
@@ -198,6 +202,12 @@ this.fillOutList=function(list){
 
 	//fill out roll
 	if(list.roll!==undefined){
+		if(list.roll=='true'){
+			list.roll = true;
+		}else if(list.roll=='false'){
+			list.roll=false;
+		}
+
 		this.node.find('input[name="roll"]').prop('checked', list.roll);
 	}
 

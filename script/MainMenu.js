@@ -37,6 +37,15 @@ this._setup=function(){
 	this._setupImport();
 	this._setupLoadTemplate();
 	this._setupDeleteAllLists();
+
+	$.getJSON('config.json',$.proxy(function(data){
+		if(data.enableShare){
+			this.node.find('.shareButton').css('display','inline-block');
+			this.servlet=data.servlet;
+			this._setupShare();
+			this._setupRetrieve();
+		}
+	},this));
 }
 
 
@@ -76,7 +85,7 @@ this._setupExport=function(){
 
 		if(listNameInput.val()!==''){
 			data = this.gatherData();
-			console.log('clicked export',data);
+			//console.log('clicked export',data);
 			this.saveAsFile(JSON.stringify(data),listNameInput.val()+'.json',"text/plain;charset=utf-8");
 		} else{
 			listNameInput.addClass('error');
@@ -152,6 +161,60 @@ this._setupDeleteAllLists=function(){
 /**
  *
  */
+this._setupShare=function(){
+	this.node.find('.shareButton').click($.proxy(function(event){
+		event.preventDefault();
+
+		//verify that chart name isn't empty
+
+		var listNameInput =this.node.find('input[name=listName]'); 
+
+		if(listNameInput.val()!==''){
+			data ={};
+			data.chart = this.gatherData();
+			data.requestType='store';
+			//console.log('clicked share button',data);
+
+			$.ajax(this.servlet,{'data':data, dataType:'json', method:'POST'}).done(function(data){
+				//console.log('called to chartStore',data);
+				if(data.success){
+					window.location.hash = data.id;
+				}
+			}).fail(function(msg){
+				//console.log('failed call to chartStore',msg.responseText)
+			});
+		}else{
+			listNameInput.addClass('error');
+		}
+
+ 
+	},this));
+}
+
+/**
+ *
+ */
+this._setupRetrieve=function(){
+	var hash = window.location.hash;
+
+	if(hash!=''){
+		var data={requestType:"retrieve",id:hash.substring(1)};
+
+		$.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
+			//console.log('called to chartStore',response);
+			if(response.success){
+				this.loadData(response.data,false);
+			}
+		},this)).fail(function(msg){
+			//console.log('failed call to chartStore',msg.responseText)
+		});
+	}
+}
+
+
+/**
+ *
+ */
 this.gatherData=function(){
 	var data = {};
 	data.name=this.node.find('input[name=listName]').val();
@@ -178,7 +241,7 @@ this.gatherData=function(){
 				obj.list.push($(item).text());
 			});
 		}else if($(item).hasClass('objectGroup')){
-			console.log('found object group to export');
+			//console.log('found object group to export');
 
 			//fill out type
 			obj.type='ObjectGroup';
@@ -222,12 +285,12 @@ this.saveAsFile=function(t,f,m) {
 /**
  *
  */
-this.loadData=function(data){
+this.loadData=function(data,animate){
 	//console.log('load data');
 
 	//set chart name
 	this.node.find('input[name=listName]').val(data.name).trigger('input');
-				
+		
 	//go through each list in the data object
 	for(var i=0,list;list=data.lists[i];i++){
 		//console.log('moving over list',i,list);
@@ -236,12 +299,12 @@ this.loadData=function(data){
 		var listGroup;
 					
 		if(list && list.type == 'ListGroup'){
-			listGroup = new ListGroup();
+			listGroup = new ListGroup(animate);
 		}else if(list && list.type == 'ObjectGroup'){
-			listGroup = new ObjectGroup();
+			listGroup = new ObjectGroup(animate);
 		}else if(list){
 			//for older lists import
-			listGroup = new ListGroup();
+			listGroup = new ListGroup(animate);
 		}
 
 		if(listGroup.node){
@@ -256,6 +319,7 @@ this.loadData=function(data){
 }
 
 this.clearLists=function(){
+	console.log('clear lists');
 	if($('.hamburger input[name="clearList"]')[0].checked){
 		$('.list').remove();
 	}

@@ -301,6 +301,10 @@ text-decoration:underline;
 .editInput{
 }
 
+.header a.shareButton{
+display:none;
+}
+
 /*Highlight Animation*/
 @keyframes highlight {
   from, 50%, to {
