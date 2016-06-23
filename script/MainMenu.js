@@ -179,6 +179,8 @@ this._setupShare=function(){
 				//console.log('called to chartStore',data);
 				if(data.success){
 					window.location.hash = data.id;
+
+					//shareDialog = new ShareDialog(data.id);
 				}
 			}).fail(function(msg){
 				//console.log('failed call to chartStore',msg.responseText)

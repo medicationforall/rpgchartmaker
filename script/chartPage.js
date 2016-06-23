@@ -138,6 +138,8 @@ $(document).ready(function(){
 	//chart name on input clear error status
 	$('input[name=listName]').on('input',function(){
 		$(this).removeClass('error');
+
+		$(document).prop('title', $(this).val()+' - RPG Chart Maker');
 	});
 
 	
