@@ -1,0 +1,46 @@
+/*Header*/
+.header{
+
+}
+
+.header .hamburger{
+margin-top:10px;
+}
+
+.header h1{
+	margin:0px 0px;
+	padding:20px;
+	font-family:'Berkshire Swash';
+	color:#fff;
+	background:#444;
+	text-align:center;
+}
+
+.header a, .list a{
+    background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%);
+    padding: 3px;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 0px 5px;
+    border: 1px solid #AB9D9D;
+    color: #000;
+	text-decoration:none;
+}
+
+.header .javacriptWarning{
+	text-align:center;
+	font-weight:bold;
+}
+
+.header .menuBar{
+text-align:center;
+padding:10px 5px;
+}
+
+.header .menuBar .inlineBlock{
+display:inline-block;
+}
+
+.header a.shareButton{
+display:none;
+}

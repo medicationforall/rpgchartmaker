@@ -1,0 +1,46 @@
+.rollContainer {
+	display:inline-block;
+	padding:5px;
+	border:1px solid #c0c0c0;
+	min-width:266px;
+	margin:5px;
+	height:189px;
+	min-height: 189px;
+	background:#fff;
+	/*box-shadow:2px 2px 11px rgba(0,0,0,0.3);*/
+    resize: both;
+    overflow: auto;
+}
+
+.rollContainer .handle{
+	cursor:move;
+}
+
+.rollContainer .title {
+	transition:color 0.5s ease;
+}
+
+.rollContainer table{
+    border-spacing: 0;
+    border-collapse: collapse;
+	width:100%;
+}
+
+.rollContainer table tr:hover{
+	background:#eeeeee;
+}
+
+.rollContainer table th{
+	text-align: left;
+	padding:3px 6px;
+}
+
+.rollContainer table td{
+border-right:1px solid #c0c0c0;
+padding:0px 6px;
+vertical-align:top;
+}
+
+.rollContainer table td:last-child{
+border-right:none;
+}

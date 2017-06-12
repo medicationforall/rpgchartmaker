@@ -1,0 +1,13 @@
+.listGroup li span{
+	display:block;
+	cursor:pointer;
+	font-size:14pt;
+}
+
+.listGroup li span:hover{
+	background:#eee;
+}
+
+/*.listGroup .addNameButton{
+background:linear-gradient(to bottom, #cdeb8e 0%,#a5c956 100%);
+}*/

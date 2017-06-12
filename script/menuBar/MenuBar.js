@@ -1,6 +1,8 @@
 function MenuBar(){
 
-  //chart name on input clear error status
+  /**
+   * chart name on input clear error status
+   */
   $('input[name=listName]').on('input',function(){
     $(this).removeClass('error');
 
@@ -8,7 +10,9 @@ function MenuBar(){
   });
 
 
-  //roll button click
+  /**
+   * roll button click
+   */
   $('.rollButton').click($.proxy(function(event){
     event.preventDefault();
 
@@ -47,7 +51,9 @@ function MenuBar(){
   },this));
 
 
-
+  /**
+   *
+   */
   this.getRollValue=function(index, item){
     rollValue = this.rollList(item);
 
@@ -55,5 +61,5 @@ function MenuBar(){
       $('.rollContainer table tbody tr:last-child').append('<td>'+rollValue+'</td>');
     }
   };
-  
+
 }

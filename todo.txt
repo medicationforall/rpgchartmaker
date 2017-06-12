@@ -1,3 +1,10 @@
+
+
+*2.0*
+Cleanup deferred calls
+
+
+*Old*
 parse dN dice notation where N is a number. - done
 comment code.
 
@@ -13,6 +20,3 @@ split rollcontainer into it's own template and javascript object.
 *Requested*
 A nested tables feature (Request by OrkishBlade)
 The ability to import plain text numbered lists and/or Excel formatted lists. (Request by OrkishBlade)
-
-
-

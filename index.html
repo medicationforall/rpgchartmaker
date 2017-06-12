@@ -2,98 +2,100 @@
 
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="keywords" content="rpg chart maker, rpg chart, name generator, rpg roll table, chart maker, rpg, rpg dynamic chart, roll table"/>
+	<meta name="description" content="Create charts and Roll Tables for your favorite RPG's!"/>
+	<meta name="author" content="James M. Adams"/>
+	<meta charset="utf-8"/>
 
-<meta name="Author" content="James M Adams"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>RPG Chart Maker</title>
 
-<meta name="keywords" content="rpg chart maker, rpg chart, name generator, rpg roll table, chart maker, rpg, rpg dynamic chart, roll table"/>
-<meta name="description" content="Create charts and Roll Tables for your favorite RPG's!"/>
-<meta name="author" content="James M. Adams"/>
-<meta charset="utf-8"/>
+	<link href="//cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css" type="text/css" rel="stylesheet">
+	<!--<link href="css/animate.css" type="text/css" rel="stylesheet">-->
 
-<title>RPG Chart Maker</title>
+	<link href="script/mjs/css/hamburgerMenu.css" type="text/css" rel="stylesheet">
+	<link href="script/mjs/css/dialog.css" type="text/css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/header.css" type="text/css" rel="stylesheet">
+	<link href="css/dialog.css" type="text/css" rel="stylesheet">
+	<link href="css/list.css" type="text/css" rel="stylesheet">
+	<link href="css/listGroup.css" type="text/css" rel="stylesheet">
+	<link href="css/rollContainer.css" type="text/css" rel="stylesheet">
+	<link href="css/objectGroup.css" type="text/css" rel="stylesheet">
 
-<link href="//cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css" type="text/css" rel="stylesheet">
-<!--<link href="css/animate.css" type="text/css" rel="stylesheet">-->
 
-<link href="script/mjs/css/hamburgerMenu.css" type="text/css" rel="stylesheet">
-<link href="script/mjs/css/dialog.css" type="text/css" rel="stylesheet">
-<link href="css/style.css" type="text/css" rel="stylesheet">
-
-<!--<script src="script/lib/jquery-1.11.2.min.js"></script>
-<script src="script/lib/jquery-ui.min.js"></script>
-<script src="script/lib/jquery.ui.touch-punch.min.js"></script>
-<script src="script/lib/FileSaver.min.js"></script>-->
-<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
-<script src="script/MainMenu.js"></script>
-<script src="script/Base.js"></script>
-<script src="script/RollContainer.js"></script>
-<script src="script/ListGroup.js"></script>
-<script src="script/ObjectGroup.js"></script>
-<script src="script/mjs/script/InfoDialog.js"></script>
-<script src="script/mjs/script/hamburgerMenu.js"></script>
-<script src="script/Util.js"></script>
-<script src="script/component/ListGroupContainer.js"></script>
-<script src="script/component/MenuBar.js"></script>
-<script src="script/main.js"></script>
+	<!--<script src="script/lib/jquery-1.11.2.min.js"></script>
+	<script src="script/lib/jquery-ui.min.js"></script>
+	<script src="script/lib/jquery.ui.touch-punch.min.js"></script>
+	<script src="script/lib/FileSaver.min.js"></script>-->
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+	<script src="script/menuBar/MainMenu.js"></script>
+	<script src="script/group/trait/Base.js"></script>
+	<script src="script/group/RollContainer.js"></script>
+	<script src="script/group/ListGroup.js"></script>
+	<script src="script/group/ObjectGroup.js"></script>
+	<script src="script/mjs/script/InfoDialog.js"></script>
+	<script src="script/mjs/script/hamburgerMenu.js"></script>
+	<script src="script/Util.js"></script>
+	<script src="script/component/ListGroupContainer.js"></script>
+	<script src="script/menuBar/MenuBar.js"></script>
+	<script src="script/main.js"></script>
 </head>
 
 <body>
-
-<!-- Menu -->
-<div class="hamburger menu">
-	<a href="http://medicationforall.com">Medication For All</a>
-	<a href="https://github.com/medicationforall/rpgchartmaker">Github</a>
-	<hr />
-	<h3>Options</h3>
-	<span>Load Clears Lists</span> <input type="checkbox" name="clearList" checked />
-	<a href="" class="deleteAllButton">Delete All Lists</a>
-	<hr />
-	<h3>Templates</h3>
-	<a href="" class="loadTemplateButton" data-file="Human.json">Names Chart</a>
-	<a href="" class="loadTemplateButton" data-file="Weapons and Armor.json">Items Chart</a>
-	<a href="" class="loadTemplateButton" data-file="Bar Patrons.json">Bar Patrons Chart</a>
-	<hr />
-
-	<a href="" class="aboutButton">About</a>
-	<a href="" class="changesButton">Changes</a>
-</div>
-
-<!-- Header -->
-<div class="header">
-	<a href="" class="hamburger" title="Menu Options">Menu</a>
-	<h1>RPG Chart Maker</h1>
-
-	<div class="menuBar">
-		<div class="javacriptWarning">To use this page javascript will have to be enabled.</div>
-
-		<div class="inlineBlock">
-		<input type="text" name="listName" placeholder="Chart Name" />
-		<a href="" class="exportButton" title="Save as json">Save</a>
-		</div>
-
-		<div class="inlineBlock">
-		<div class="inlineBlock">Load - <input type="file" class="importFile" title="Load JSON" accept=".json"></div>
-		</div>
-
-		<div class="inlineBlock">
-		<a href="" class="addListGroupButton">Add List</a>
-		<a href="" class="addObjectGroupButton">Add Object List</a>
-		<div class="inlineBlock">
-		<a href="" class="rollButton">Roll!</a><input name="rollCount" type="number" value="1" min="1" max="999999" />
-		</div>
-		</div>
-		<a href="" class="helpButton">Help</a>
-		<a href="" class="shareButton" title="Create url link to this chart">Share</a>
+	<!-- Menu -->
+	<div class="hamburger menu">
+		<a href="http://medicationforall.com">Medication For All</a>
+		<a href="https://github.com/medicationforall/rpgchartmaker">Github</a>
+		<hr />
+		<h3>Options</h3>
+		<span>Load Clears Lists</span> <input type="checkbox" name="clearList" checked />
+		<a href="" class="deleteAllButton">Delete All Lists</a>
+		<hr />
+		<h3>Templates</h3>
+		<a href="" class="loadTemplateButton" data-file="Human.json">Names Chart</a>
+		<a href="" class="loadTemplateButton" data-file="Weapons and Armor.json">Items Chart</a>
+		<a href="" class="loadTemplateButton" data-file="Bar Patrons.json">Bar Patrons Chart</a>
+		<hr />
+		<a href="" class="aboutButton">About</a>
+		<a href="" class="changesButton">Changes</a>
 	</div>
-</div>
 
-<!-- Page Content -->
-<div class="page">
-	<div class="listGroupContainer"></div>
-</div>
+	<!-- Header -->
+	<div class="header">
+		<a href="" class="hamburger" title="Menu Options">Menu</a>
+		<h1>RPG Chart Maker</h1>
+
+		<div class="menuBar">
+			<div class="javacriptWarning">To use this page javascript will have to be enabled.</div>
+
+			<div class="inlineBlock">
+			<input type="text" name="listName" placeholder="Chart Name" />
+			<a href="" class="exportButton" title="Save as json">Save</a>
+			</div>
+
+			<div class="inlineBlock">
+			<div class="inlineBlock">Load - <input type="file" class="importFile" title="Load JSON" accept=".json"></div>
+			</div>
+
+			<div class="inlineBlock">
+			<a href="" class="addListGroupButton">Add List</a>
+			<a href="" class="addObjectGroupButton">Add Object List</a>
+			<div class="inlineBlock">
+			<a href="" class="rollButton">Roll!</a><input name="rollCount" type="number" value="1" min="1" max="999999" />
+			</div>
+			</div>
+			<a href="" class="helpButton">Help</a>
+			<a href="" class="shareButton" title="Create url link to this chart">Share</a>
+		</div>
+	</div>
+
+	<!-- Page Content -->
+	<div class="page">
+		<div class="listGroupContainer"></div>
+	</div>
 </body>
 </html>

@@ -4,7 +4,9 @@ function ListGroupContainer(){
 	$('.listGroupContainer .list').find('ol').sortable({connectWith: ".list ol"});
 
 
-	//delete list group click
+  /**
+   * delete list group click
+   */
 	$('.listGroupContainer').on('click','.deleteListButton',function(event){
 		event.preventDefault();
 		$(this).closest('.list').remove();
