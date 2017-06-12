@@ -22,21 +22,24 @@
 
 function template(){
 
-//constructor
-this._constructor = function(){
+	/**
+	 * constructor
+	 */
+	this._constructor = function(){
+		this._setupGenerate();
+	};
 
-	this._setupGenerate();
-}
+	/**
+	 *
+	 */
+	this._setupGenerate=function(){
+		//generate click
+		$('.generateButton').click(function(event){
+			event.preventDefault();
+		});
+	};
 
-this._setupGenerate=function(){
-	//generate click
-	$('.generateButton').click(function(event){
-		event.preventDefault();
-		console.log('Clicked generate');
-	});
-}
 
-//main
+	//main
 	this._constructor();
-
 }

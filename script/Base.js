@@ -25,12 +25,9 @@ function Base(){
  */
 Base.prototype._resolveTemplate=function(classObject,name){
 	if(classObject.template){
-		//console.log('template exists');
 		this._setup(classObject.template);
-
 	}else{
-		//console.log('template does not exist');
-		return $.get('html/'+name+'.html',$.proxy(function(data){			
+		return $.get('html/'+name+'.html',$.proxy(function(data){
 			classObject.template=data;
 
 			if(this._setup){
@@ -38,7 +35,7 @@ Base.prototype._resolveTemplate=function(classObject,name){
 			}
 		},this));
 	}
-}
+};
 
 
 /**
@@ -47,13 +44,11 @@ Base.prototype._resolveTemplate=function(classObject,name){
  * @private
  */
 Base.prototype._createNode=function(template){
-	//console.log('calling create node from Base');
 	this.node = $(template.trim()).appendTo('.listGroupContainer');
 	if(this.animate===true){
 		this.node.animateCss('zoomInLeft');
 	}
-}
-
+};
 
 
 /**
@@ -62,19 +57,15 @@ Base.prototype._createNode=function(template){
  */
 Base.prototype._setupHandleColor=function(){
 	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
-		//console.log('input kicked off',$(this).val());
 		var color = '';
-		
+
 		if($(this).val()!==''){
 			var hash = hashCode($(this).val());
 			color = '#'+intToRGB(hash);
-			//console.log('hash',hash,(hash,hash+'').length);
 		}
-		
-		//console.log(color);
-		node.find('.handle').css('background-color',color)		
+		node.find('.handle').css('background-color',color)
 	},null,this._hashCode,this._intToRGB,this.node));
-}
+};
 
 
 /**
@@ -88,7 +79,7 @@ Base.prototype._hashCode=function(str) { // java String#hashCode
 	hash = str.charCodeAt(i) + ((hash << 5) - hash);
 	}
 	return hash;
-} 
+};
 
 
 /**
@@ -99,6 +90,4 @@ Base.prototype._hashCode=function(str) { // java String#hashCode
 Base.prototype._intToRGB=function(i){
 	var c = (i & 0x00FFFFFF).toString(16).toUpperCase();
 	return "000000".substring(0, 6 - c.length) + c;
-}
-
-
+};

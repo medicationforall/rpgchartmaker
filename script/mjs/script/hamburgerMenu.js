@@ -21,8 +21,6 @@ $(document).ready(function(){
 	//menu click
 	$('.header .hamburger').click(function(event){
 		event.preventDefault();
-		//console.log('clicked hamburger');
-
 		if($('body').hasClass('menuOpen')){
 			$('body').removeClass('menuOpen');
 		}else{
@@ -33,24 +31,18 @@ $(document).ready(function(){
 	//about click
 	$('.hamburger.menu .aboutButton').click(function(event){
 		event.preventDefault();
-		console.log('clicked About');
-
 		var aboutDialog = new InfoDialog('about');
 	});
 
 	//help click
 	$('.helpButton').click(function(event){
 		event.preventDefault();
-		console.log('clicked About');
-
 		var helpDialog = new InfoDialog('help');
 	});
 
 	//change list click
 	$('.hamburger.menu .changesButton').click(function(event){
 		event.preventDefault();
-		console.log('clicked Changes');
-
 		var changeDialog = new InfoDialog('changes');
 	});
 

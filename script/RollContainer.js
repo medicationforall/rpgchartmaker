@@ -17,36 +17,38 @@
  */
 
 /**
- * @see Base.js 
- * @see html/rollContainer.html 
+ * @see Base.js
+ * @see html/rollContainer.html
  */
 function RollContainer(animate){
 
-//data
-this.node;
-this.animate=true;
+	//data
+	this.node = undefined;
+	this.animate=true;
+
+	/**
+	 * constructor
+	 */
+	this._constructor = function(){
+		if(animate!==undefined){
+			this.animate=animate;
+		}
+
+		this._resolveTemplate(RollContainer,'rollContainer');
+	};
 
 
-
-//constructor
-this._constructor = function(){
-	//console.log('create roll container');
-	if(animate!==undefined){
-		this.animate=animate;
-	}
-
-	this._resolveTemplate(RollContainer,'rollContainer');
-}
-
-this._setup=function(template){
-	this._createNode(template);
-	$(this).trigger('loaded');
-}
+	/**
+	 *
+	 */
+	this._setup=function(template){
+		this._createNode(template);
+		$(this).trigger('loaded');
+	};
 
 
-//main
+  //main
 	this._constructor();
-
 }
 
 var inheritsFrom = function (child, parent) {

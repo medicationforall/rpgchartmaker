@@ -34,8 +34,6 @@ $(document).ready(function(){
 		var re = /\bd(\d+)([*+-/%]?)(\d+)?\b/gi;
 
 		text = text.replace(re,function(match,number, operation, number2){
-			//console.log(match,number,operation,number2,arguments);
-
 			var n = parseInt(number);
 			var roll = Math.floor(Math.random() * n);
 			//normalize roll so that it's not 0 index
@@ -43,7 +41,6 @@ $(document).ready(function(){
 
 			//modify roll
 			if(operation && number2 && operation !==''){
-				//console.log('hit modify roll');
 				var n2 = parseInt(number2);
 
 				if(operation=='+'){
@@ -51,7 +48,7 @@ $(document).ready(function(){
 				}else if(operation=='-'){
 					roll = roll-n2;
 				}else if(operation=='/'){
-					roll = roll/n2;		
+					roll = roll/n2;
 				}else if(operation=='*'){
 					roll = roll*n2;
 				}else if(operation=='%'){
@@ -71,12 +68,11 @@ $(document).ready(function(){
 
 		text = text.replace(re,function(match,listName,qualifier){
 			var returner = match;
-			//console.log('hit list find',match,listName,qualifier)
 			if(listName && listName!==''){
-				var list = $('.list input[name="listGroupName"]').filter(function(){return this.value==listName}).closest('.list');
+				var list = $('.list input[name="listGroupName"]').filter(function(){return this.value==listName;}).closest('.list');
 				return rollList(list,true,qualifier);
 			}
-			
+
 			return returner;
 		});
 		return text;
@@ -97,7 +93,6 @@ $(document).ready(function(){
 
 				for(var i=0;i<sub.length;i++){
 					var node = $(list).find('ol li:nth-child('+sub[i].trim()+')');
-					//console.log('process sub array',sub[i],node.html());
 					arr.push(node.html());
 				}
 			}else{
@@ -122,18 +117,18 @@ $(document).ready(function(){
 
 /*MAIN*/
 	$('.javacriptWarning').remove();
-	
+
 	//sortable for lists in groupcontainer
 	$('.listGroupContainer').sortable({tolerance: "pointer",handle: ".handle"});
 	$('.listGroupContainer .list').find('ol').sortable({connectWith: ".list ol"});
-	
+
 
 	//delete list group click
 	$('.listGroupContainer').on('click','.deleteListButton',function(event){
 		event.preventDefault();
 		$(this).closest('.list').remove();
 	});
-	
+
 
 	//chart name on input clear error status
 	$('input[name=listName]').on('input',function(){
@@ -142,42 +137,42 @@ $(document).ready(function(){
 		$(document).prop('title', $(this).val()+' - RPG Chart Maker');
 	});
 
-	
+
 	//roll button click
 	$('.rollButton').click(function(event){
 		event.preventDefault();
 
 		//change the rollContainers titles color
 		$('.rollContainer .title').css('color','#fff');
-		
+
 		//reset state
 		var rollTable = $('.rollContainer table');
 		$(rollTable).find('th').remove();
 		$(rollTable).find('tbody tr').remove();
 
-		
+
 		//fill out headers
 		$(rollTable).find('thead').append('<th>'+'No.'+'</th>');
-		
+
 		$('.list').each(function(index,item){
 			var input = $(item).find('input[name="listGroupName"]');
-			var label = input.val();			
+			var label = input.val();
 
 			//make sure it's not skipped
 			if(input.next()[0].checked){
 				$(rollTable).find('thead').append('<th>'+label+'</th>');
 			}
 		});
-		
+
 		//fill out rows
 		var count = $('input[name="rollCount"]').val();
-		
+
 		for(var i=0;i<count;i++){
 			$(rollTable).find('tbody').append('<tr data-rollSet="'+i+'"></tr>');
 
 			//add roll Index
 			$('.rollContainer table tbody tr:last-child').append('<td>'+(i+1)+'.'+'</td>');
-			
+
 			var list =$('.list').each(function(index, item){
 				rollValue = rollList(item);
 
@@ -195,7 +190,6 @@ $(document).ready(function(){
 	$(rollContainer).on('loaded',function(event){
 		//resolve the two templates for lists
 		$.when(ListGroup.prototype.__proto__._resolveTemplate(ListGroup,'listGroup'),ObjectGroup.prototype.__proto__._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
-			//console.log('loaded templates');
 			//initialize list group
 			if(window.location.hash == ''){
 				var listGroup = new ListGroup(false);

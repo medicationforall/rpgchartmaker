@@ -8,6 +8,7 @@
 
 <meta name="keywords" content="rpg chart maker, rpg chart, name generator, rpg roll table, chart maker, rpg, rpg dynamic chart, roll table"/>
 <meta name="description" content="Create charts and Roll Tables for your favorite RPG's!"/>
+<meta name="author" content="James M. Adams"/>
 <meta charset="utf-8"/>
 
 <title>RPG Chart Maker</title>
@@ -15,8 +16,8 @@
 <link href="//cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css" type="text/css" rel="stylesheet">
 <!--<link href="css/animate.css" type="text/css" rel="stylesheet">-->
 
-<link href="mjs/css/hamburgerMenu.css" type="text/css" rel="stylesheet">
-<link href="mjs/css/dialog.css" type="text/css" rel="stylesheet">
+<link href="script/mjs/css/hamburgerMenu.css" type="text/css" rel="stylesheet">
+<link href="script/mjs/css/dialog.css" type="text/css" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet">
 
 <!--<script src="script/lib/jquery-1.11.2.min.js"></script>
@@ -32,31 +33,33 @@
 <script src="script/RollContainer.js"></script>
 <script src="script/ListGroup.js"></script>
 <script src="script/ObjectGroup.js"></script>
-<script src="mjs/script/InfoDialog.js"></script>
-<script src="mjs/script/hamburgerMenu.js"></script>
+<script src="script/mjs/script/InfoDialog.js"></script>
+<script src="script/mjs/script/hamburgerMenu.js"></script>
 <script src="script/chartPage.js"></script>
 </head>
 
 <body>
 
-<div class="hamburger menu"> 
-<a href="http://medicationforall.com">Medication For All</a>
-<a href="https://github.com/medicationforall/rpgchartmaker">Github</a>
-<hr />
-<h3>Options</h3>
-<span>Load Clears Lists</span> <input type="checkbox" name="clearList" checked />
-<a href="" class="deleteAllButton">Delete All Lists</a>
-<hr />
-<h3>Templates</h3>
-<a href="" class="loadTemplateButton" data-file="Human.json">Names Chart</a>
-<a href="" class="loadTemplateButton" data-file="Weapons and Armor.json">Items Chart</a>
-<a href="" class="loadTemplateButton" data-file="Bar Patrons.json">Bar Patrons Chart</a>
-<hr />
+<!-- Menu -->
+<div class="hamburger menu">
+	<a href="http://medicationforall.com">Medication For All</a>
+	<a href="https://github.com/medicationforall/rpgchartmaker">Github</a>
+	<hr />
+	<h3>Options</h3>
+	<span>Load Clears Lists</span> <input type="checkbox" name="clearList" checked />
+	<a href="" class="deleteAllButton">Delete All Lists</a>
+	<hr />
+	<h3>Templates</h3>
+	<a href="" class="loadTemplateButton" data-file="Human.json">Names Chart</a>
+	<a href="" class="loadTemplateButton" data-file="Weapons and Armor.json">Items Chart</a>
+	<a href="" class="loadTemplateButton" data-file="Bar Patrons.json">Bar Patrons Chart</a>
+	<hr />
 
-<a href="" class="aboutButton">About</a>
-<a href="" class="changesButton">Changes</a>
+	<a href="" class="aboutButton">About</a>
+	<a href="" class="changesButton">Changes</a>
 </div>
 
+<!-- Header -->
 <div class="header">
 	<a href="" class="hamburger" title="Menu Options">Menu</a>
 	<h1>RPG Chart Maker</h1>
@@ -65,10 +68,10 @@
 		<div class="javacriptWarning">To use this page javascript will have to be enabled.</div>
 
 		<div class="inlineBlock">
-		<input type="text" name="listName" placeholder="Chart Name" /> 
+		<input type="text" name="listName" placeholder="Chart Name" />
 		<a href="" class="exportButton" title="Save as json">Save</a>
 		</div>
- 
+
 		<div class="inlineBlock">
 		<div class="inlineBlock">Load - <input type="file" class="importFile" title="Load JSON" accept=".json"></div>
 		</div>
@@ -85,9 +88,9 @@
 	</div>
 </div>
 
+<!-- Page Content -->
 <div class="page">
-
-<div class="listGroupContainer">		
+	<div class="listGroupContainer"></div>
 </div>
 </body>
 </html>
