@@ -21,10 +21,7 @@
  * @see html/rollContainer.html
  */
 function RollContainer(animate){
-
-	//data
-	this.node = undefined;
-	this.animate=true;
+	Base.call(this, animate);
 
 	/**
 	 * constructor
@@ -51,9 +48,4 @@ function RollContainer(animate){
 	this._constructor();
 }
 
-var inheritsFrom = function (child, parent) {
-   	child.prototype = Object.create(parent.prototype);
-};
-
-//setup inheritance from Base
-inheritsFrom(RollContainer, Base);
+Object.setPrototypeOf(RollContainer.prototype, Base.prototype);

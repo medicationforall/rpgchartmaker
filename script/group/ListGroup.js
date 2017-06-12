@@ -22,10 +22,7 @@
  * @see html/listGroup.html
  */
 function ListGroup(animate){
-
-	//data
-	this.node=undefined;
-	this.animate=true;
+	Base.call(this, animate);
 
 	/**
 	 * constructor
@@ -214,9 +211,4 @@ function ListGroup(animate){
 	this._constructor();
 }
 
-var inheritsFrom = function (child, parent) {
-   	child.prototype = Object.create(parent.prototype);
-};
-
-//setup inheritance from Base
-inheritsFrom(ListGroup, Base);
+Object.setPrototypeOf(ListGroup.prototype, Base.prototype);

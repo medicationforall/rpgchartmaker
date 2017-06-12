@@ -25,28 +25,27 @@ $.fn.extend({
 });
 
 $(document).ready(function(){
+  $('.javacriptWarning').remove();
+
   Util.call(this);
-
-  /*MAIN*/
-	$('.javacriptWarning').remove();
-
   ListGroupContainer.call(this);
   MenuBar.call(this);
 
+  //resolve the templates
+  $.when(
+    RollContainer.prototype._resolveTemplate(RollContainer,'rollContainer'),
+    ListGroup.prototype._resolveTemplate(ListGroup,'listGroup'),
+    ObjectGroup.prototype._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
 
-	//main
-	//Initialize the Roll Container
-	var rollContainer = new RollContainer(false);
-	$(rollContainer).on('loaded',function(event){
-		//resolve the two templates for lists
-		$.when(ListGroup.prototype.__proto__._resolveTemplate(ListGroup,'listGroup'),ObjectGroup.prototype.__proto__._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
-			//initialize list group
-			if(window.location.hash == ''){
-				var listGroup = new ListGroup(false);
-			}
+    //Initialize the Roll Container
+    var rollContainer = new RollContainer(false);
 
-			//Initialize mainMenu
-			var mainMenu = new MainMenu();
-		});
-	});
+    //initialize list group
+    if(window.location.hash === ''){
+      var listGroup = new ListGroup(false);
+    }
+
+  	//Initialize mainMenu
+  	var mainMenu = new MainMenu();
+  });
 });

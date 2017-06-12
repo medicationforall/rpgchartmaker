@@ -25,10 +25,7 @@
  * @see html/objectGroup.html
  */
 function ObjectGroup(animate){
-
-	//data
-	this.node=undefined;
-	this.animate=true;
+	Base.call(this,animate);
 
 	/**
 	 * constructor
@@ -456,9 +453,4 @@ function ObjectGroup(animate){
 	this._constructor();
 }
 
-var inheritsFrom = function (child, parent) {
-   	child.prototype = Object.create(parent.prototype);
-};
-
-//setup inheritance from Base
-inheritsFrom(ObjectGroup, Base);
+Object.setPrototypeOf(ObjectGroup.prototype, Base.prototype);

@@ -16,7 +16,10 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function Base(){
+function Base(animate){
+	//data
+	this.node = undefined;
+	this.animate=true;
 }
 
 /**
