@@ -30,7 +30,6 @@ function RollContainer(animate){
 		if(animate!==undefined){
 			this.animate=animate;
 		}
-
 		this._resolveTemplate(RollContainer,'rollContainer');
 	};
 

@@ -37,6 +37,9 @@ $(document).ready(function(){
     ListGroup.prototype._resolveTemplate(ListGroup,'listGroup'),
     ObjectGroup.prototype._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
 
+    //Initialize mainMenu
+    var mainMenu = new MainMenu();
+
     //Initialize the Roll Container
     var rollContainer = new RollContainer(false);
 
@@ -44,8 +47,5 @@ $(document).ready(function(){
     if(window.location.hash === ''){
       var listGroup = new ListGroup(false);
     }
-
-  	//Initialize mainMenu
-  	var mainMenu = new MainMenu();
   });
 });

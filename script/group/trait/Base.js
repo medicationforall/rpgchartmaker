@@ -22,6 +22,23 @@ function Base(animate){
 	this.animate=true;
 }
 
+
+/**
+ *
+ */
+Base.prototype.setupBase=function(template){
+	this._createNode(template);
+	this.setupSortable();
+	this._setupHandleColor();
+	this._setupAlphabetize();
+};
+
+
+/**
+ *
+ */
+Base.prototype.setupSortable=function(){};
+
 /**
  * Get the html template and store it in a static template variable.
  * @private

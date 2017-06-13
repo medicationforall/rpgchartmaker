@@ -27,6 +27,9 @@
 function ObjectGroup(animate){
 	Base.call(this,animate);
 
+	this.orderList=undefined;
+	this.form=undefined;
+
 	/**
 	 * constructor
 	 */
@@ -34,7 +37,6 @@ function ObjectGroup(animate){
 		if(animate!==undefined){
 			this.animate=animate;
 		}
-
 		this._resolveTemplate(ObjectGroup,'objectGroup');
 	};
 
@@ -44,14 +46,12 @@ function ObjectGroup(animate){
 	 * @private
 	 */
 	this._setup=function(template){
-		this._createNode(template);
-		this._setupSortable();
-		this._setupHandleColor();
-		this._setupAddInput();
-		this._setupAddEntry();
-		this._setupAlphabetize();
-		this._setupEditInput();
+		this.setupBase(template);
 
+		HasObjectGroupAddInput.call(this);
+		HasObjectGroupAddEntry.call(this);
+
+		this._setupEditInput();
 		$(this).trigger('loaded');
 	};
 
@@ -60,52 +60,12 @@ function ObjectGroup(animate){
 	 * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
 	 * @private
 	 */
-	this._setupSortable=function(){
-		this.node.find('ol').sortable({connectWith: ".list ol"});
-		this.node.find('.objectForm').sortable();
-	};
+	this.setupSortable=function(){
+		this.orderList = this.node.find('ol');
+		this.form = this.node.find('.objectForm');
 
-
-	/**
-	 * Creates ad input click handler, for adding input to the template form.
-	 * @private
-	 */
-	this._setupAddInput=function(){
-		this.node.find('.addInputButton').click($.proxy(function(event){
-			event.preventDefault();
-
-			var labelInput=this.node.find('input[name="addInputLabel"]')
-			var label = labelInput.val();
-			var type = this.node.find('select[name="addInputType"]').val();
-
-			//check for empty label
-			if(label===''){
-				labelInput.addClass('error');
-				return;
-			}
-
-			//all is fine add the new input
-			this._addInput(label,type);
-
-			//clear the input
-			labelInput.val('').focus();
-
-			//clear error message if any
-			this.node.find('.errorMessage').text('');
-		},this));
-
-		//clear the red border on input
-		this.node.find('input[name="addInputLabel"]').on('input',function(){
-			$(this).removeClass('error');
-		});
-
-		//label input enter key press - triggers add input button
-		this.node.on('keypress','input[name="addInputLabel"]',$.proxy(function(event){
-			var keycode = (event.keyCode ? event.keyCode : event.which);
-			if(keycode == '13') {
-				this.node.find('.addInputButton').trigger('click');
-			}
-		},this));
+		this.orderList.sortable({connectWith: ".list ol"});
+		this.form.sortable();
 	};
 
 
@@ -225,53 +185,6 @@ function ObjectGroup(animate){
 
 
 	/**
-	 * Create the click handler and adding list entries derived from the object template form.
-	 * @private
-	 */
-	this._setupAddEntry=function(){
-		//add entry click
-		this.node.find('.addObjectButton').click($.proxy(function(event){
-			event.preventDefault();
-
-			var form = this.node.find('.objectForm');
-			var message = this.node.find('.errorMessage').text('');
-
-			//check to see if the form has children
-			if(form.children().length>0){
-				this._addEntry(form);
-			}else{
-				message.text('No Inputs in object form.');
-			}
-
-		},this));
-	};
-
-
-	/**
-	 * Adds an input to the object template form.
-	 * @param label {string}
-	 * @param type {string} valid types are text, number, checkbox, color, datetime-local, and textarea
-	 * @private
-	 */
-	this._addInput=function(label,type){
-		var form = this.node.find('.objectForm');
-		var template='<div class="objectInput" data-label="'+label+'" data-type="'+type+'">';
-		template+='<span class="label">'+label+'</span> ';
-
-		if(type==='text' || type==='number' || type==='checkbox' || type==='color'){
-			template+='<input type="'+type+'" />';
-		}else if(type === "datetime-local"){
-			template+='<input type="'+type+'" value="'+this._getNow()+'" />';
-		}else if(type==='textarea'){
-			template+='<textarea></textarea>';
-		}
-
-		template+='</div>';
-
-		form.append(template);
-	};
-
-	/**
 	 * @return The current system time for the user in a a format appropriate for a datetime input.
 	 * @private
 	 */
@@ -295,78 +208,6 @@ function ObjectGroup(animate){
 		formattedDateTime = year + '-' + month + '-' + date + 'T' + hours + ':' + minutes + ':' + seconds;
 
 		return formattedDateTime;
-	};
-
-
-	/**
-	 * Adds an object entry to the list based on the input fromt he passed in form object.
-	 * @param form jquery objectForm node
-	 * @private
-	 */
-	this._addEntry=function(form){
-		//build data object
-		var data ={};
-		var counter =0;
-
-		var template = '<li><div class="object">';
-
-		form.find('.objectInput').each($.proxy(function(index,item){
-			var label = $(item).attr('data-label');
-			var type =  $(item).attr('data-type');
-			var value;
-			var input;
-			var colorBlock='';
-
-			if(type === "text" || type === "number" || type === "color"){
-				input = $(item).find('input');
-				value = input.val();
-
-				//clear the input
-				input.val('');
-
-			}else if(type === "datetime-local"){
-				input = $(item).find('input');
-				value = input.val();
-
-				//clear the input
-				input.val(this._getNow());
-
-			}else if(type === "checkbox"){
-				input = $(item).find('input');
-				value = input[0].checked;
-
-				//clear the input
-				input.val('');
-
-			}else if(type === "textarea"){
-				input = $(item).find('textarea')
-				value = input.val();
-
-				//clear the input
-				input.val('');
-			}
-
-			//set custom style
-			if(type === "color"){
-				colorBlock='<span class="colorBlock" style="background:'+value+'"></span>';
-			}
-
-			//make sure the value is not empty
-			if(value!==''){
-				data[label]=value;
-				counter++;
-				template+='<div><span class="title">'+label+':</span> <span class="value">'+value+'</span> '+colorBlock+' ';
-				template+='</div>';
-			}
-		},this));
-
-		template+='</div></li>';
-
-		//if entries are present then add the form data to the list.
-		if(counter>0){
-			var node =  $(template).appendTo(this.node.find('ol'));
-			node.find('.object').data('json',data);
-		}
 	};
 
 
@@ -405,14 +246,6 @@ function ObjectGroup(animate){
 			var node =  $(template).appendTo(this.node.find('ol'));
 			node.find('.object').data('json',data);
 		}
-	};
-
-
-	/**
-	 * @return jquery node of this ojects template.
-	 */
-	this.getNode=function(){
-		return this.node;
 	};
 
 
