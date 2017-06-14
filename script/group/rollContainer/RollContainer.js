@@ -22,6 +22,7 @@
  */
 function RollContainer(animate){
 	Base.call(this, animate);
+	HasRoll.call(this);
 
 	/**
 	 * constructor
@@ -30,7 +31,7 @@ function RollContainer(animate){
 		if(animate!==undefined){
 			this.animate=animate;
 		}
-		this._resolveTemplate(RollContainer,'rollContainer');
+		this._resolveTemplate(RollContainer,'RollContainer');
 	};
 
 
@@ -41,7 +42,6 @@ function RollContainer(animate){
 		this._createNode(template);
 		$(this).trigger('loaded');
 	};
-
 
   //main
 	this._constructor();

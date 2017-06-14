@@ -26,16 +26,15 @@ $.fn.extend({
 
 $(document).ready(function(){
   $('.javacriptWarning').remove();
-
-  Util.call(this);
   ListGroupContainer.call(this);
   MenuBar.call(this);
 
   //resolve the templates
   $.when(
-    RollContainer.prototype._resolveTemplate(RollContainer,'rollContainer'),
-    ListGroup.prototype._resolveTemplate(ListGroup,'listGroup'),
-    ObjectGroup.prototype._resolveTemplate(ObjectGroup,'objectGroup')).done(function(){
+    SeedRollContainer.prototype._resolveTemplate(SeedRollContainer,'SeedRollContainer'),
+    RollContainer.prototype._resolveTemplate(RollContainer,'RollContainer'),
+    ListGroup.prototype._resolveTemplate(ListGroup,'ListGroup'),
+    ObjectGroup.prototype._resolveTemplate(ObjectGroup,'ObjectGroup')).done(function(){
 
     //Initialize mainMenu
     var mainMenu = new MainMenu();

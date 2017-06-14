@@ -65,6 +65,8 @@ Base.prototype._resolveTemplate=function(classObject,name){
  */
 Base.prototype._createNode=function(template){
 	this.node = $(template.trim()).appendTo('.listGroupContainer');
+	$.data(this.node[0],'coreNode',this);
+
 	if(this.animate===true){
 		this.node.animateCss('zoomInLeft');
 	}

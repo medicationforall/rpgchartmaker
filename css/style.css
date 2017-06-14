@@ -29,6 +29,10 @@ margin:0px;
 padding: 5px;
 }
 
+.handle .deleteListButton{
+	float:right;
+}
+
 .noteDeleteButton, .deleteEditButton{
 text-align:center;
 min-width:9px;

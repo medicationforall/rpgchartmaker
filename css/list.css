@@ -11,7 +11,7 @@ animation-duration:0.5s;
 /*box-shadow:2px 2px 11px rgba(0,0,0,0.25);*/
 }
 
-.list a{
+.list a, .rollContainer a{
 	text-decoration:none;
 	padding: 0px 2px;
 	margin: 0px 2px;
@@ -20,10 +20,6 @@ animation-duration:0.5s;
 .list .handle{
 	cursor:move;
 	min-height:21px;
-}
-
-.list .handle .deleteListButton{
-	float:right;
 }
 
 .list .content{

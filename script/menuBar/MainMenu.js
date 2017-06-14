@@ -37,6 +37,8 @@ function MainMenu(){
 	 */
 	this._setup=function(){
 		this.node = $('.menuBar');
+		this._setupAddRollContainer();
+		this._setupAddSeedRollContainer();
 		this._setupAddListGroup();
 		this._setupAddObjectGoup();
 		this._setupExport();
@@ -52,6 +54,30 @@ function MainMenu(){
 				this._setupRetrieve();
 			}
 		},this));
+	};
+
+
+	/**
+	 *
+	 */
+	this._setupAddRollContainer=function(){
+		//add list group click
+		this.node.find('.addRollContainerButton').click(function(event){
+			event.preventDefault();
+			var rollContainer = new RollContainer();
+		});
+	};
+
+
+	/**
+	 *
+	 */
+	this._setupAddSeedRollContainer=function(){
+		//add list group click
+		this.node.find('.addSeedRollContainerButton').click(function(event){
+			event.preventDefault();
+			var rollContainer = new SeedRollContainer();
+		});
 	};
 
 

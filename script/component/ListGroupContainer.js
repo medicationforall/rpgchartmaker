@@ -9,6 +9,6 @@ function ListGroupContainer(){
    */
 	$('.listGroupContainer').on('click','.deleteListButton',function(event){
 		event.preventDefault();
-		$(this).closest('.list').remove();
+		$(this).closest('.list,.rollContainer').remove();
 	});
 }

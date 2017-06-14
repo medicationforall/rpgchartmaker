@@ -1,19 +1,19 @@
 .rollContainer {
 	display:inline-block;
-	padding:5px;
+	vertical-align: top;
 	border:1px solid #c0c0c0;
 	min-width:266px;
 	margin:5px;
 	height:189px;
 	min-height: 189px;
 	background:#fff;
-	/*box-shadow:2px 2px 11px rgba(0,0,0,0.3);*/
-    resize: both;
-    overflow: auto;
+  resize: both;
+  overflow: auto;
 }
 
 .rollContainer .handle{
 	cursor:move;
+	min-height: 21px;
 }
 
 .rollContainer .title {

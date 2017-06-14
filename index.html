@@ -32,6 +32,7 @@
 	<script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script>
 	<script src="script/menuBar/MainMenu.js"></script>
 	<script src="script/group/trait/Base.js"></script>
 
@@ -40,14 +41,24 @@
 	<script src="script/group/listGroup/trait/HasListGroupLoad.js"></script>
 	<script src="script/group/listGroup/ListGroup.js"></script>
 
+	<script src="script/group/objectGroup/trait/HasNow.js"></script>
 	<script src="script/group/objectGroup/trait/HasObjectGroupAddInput.js"></script>
 	<script src="script/group/objectGroup/trait/HasObjectGroupAddEntry.js"></script>
+	<script src="script/group/objectGroup/trait/HasObjectGroupEditInput.js"></script>
+	<script src="script/group/objectGroup/trait/HasObjectGroupEditEntry.js"></script>
+	<script src="script/group/objectGroup/trait/HasObjectGroupLoad.js"></script>
 	<script src="script/group/objectGroup/ObjectGroup.js"></script>
 
-	<script src="script/group/RollContainer.js"></script>
+	<script src="script/group/rollContainer/trait/HasRoll.js"></script>
+	<script src="script/group/rollContainer/trait/HasRollSeed.js"></script>
+	<script src="script/group/rollContainer/trait/HasSeed.js"></script>
+	<script src="script/group/rollContainer/RollContainer.js"></script>
+	<script src="script/group/rollContainer/SeedRollContainer.js"></script>
+
+	<script src="script/mjs/script/Core.js"></script>
 	<script src="script/mjs/script/InfoDialog.js"></script>
 	<script src="script/mjs/script/hamburgerMenu.js"></script>
-	<script src="script/Util.js"></script>
+	<script src="script/mjs/script/Rng.js"></script>
 	<script src="script/component/ListGroupContainer.js"></script>
 	<script src="script/menuBar/MenuBar.js"></script>
 	<script src="script/main.js"></script>
@@ -90,8 +101,10 @@
 			</div>
 
 			<div class="inlineBlock">
-			<a href="" class="addListGroupButton">Add List</a>
-			<a href="" class="addObjectGroupButton">Add Object List</a>
+			<a href="" class="addRollContainerButton" title="Add Roll Container">Add Roll</a>
+			<a href="" class="addSeedRollContainerButton" title="Add Seed Roll Container">Add Seed Roll</a>
+			<a href="" class="addListGroupButton" title="Add List Group">Add List</a>
+			<a href="" class="addObjectGroupButton" title="Add Object List Group">Add Object List</a>
 			<div class="inlineBlock">
 			<a href="" class="rollButton">Roll!</a><input name="rollCount" type="number" value="1" min="1" max="999999" />
 			</div>

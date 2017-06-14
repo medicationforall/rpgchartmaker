@@ -41,7 +41,7 @@ function HasObjectGroupAddInput(){
     if(type==='text' || type==='number' || type==='checkbox' || type==='color'){
       template+='<input type="'+type+'" />';
     }else if(type === "datetime-local"){
-      template+='<input type="'+type+'" value="'+this._getNow()+'" />';
+      template+='<input type="'+type+'" value="'+this.getNow()+'" />';
     }else if(type==='textarea'){
       template+='<textarea></textarea>';
     }

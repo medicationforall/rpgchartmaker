@@ -34,7 +34,7 @@ function ListGroup(animate){
 		if(animate!==undefined){
 			this.animate=animate;
 		}
-		this._resolveTemplate(ListGroup,'listGroup');
+		this._resolveTemplate(ListGroup,'ListGroup');
 	};
 
 

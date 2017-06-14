@@ -49,7 +49,7 @@ function HasObjectGroupAddEntry(){
 				value = input.val();
 
 				//clear the input
-				input.val(this._getNow());
+				input.val(this.getNow());
 
 			}else if(type === "checkbox"){
 				input = $(item).find('input');
