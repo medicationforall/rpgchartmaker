@@ -1,4 +1,30 @@
 
+* File
+  * Save
+  * Load *file*
+  * Share
+* Add
+  * Roll
+  * Seed roll
+  * List
+  * Object List
+* Roll
+  * Roll *Number*
+* Menu
+  * Links
+    * medicationforall
+    * github    
+  * Options
+    * Load Clears Lists
+    * Delete All Lists
+  * Templates
+    * Names Chart
+    * Items Chart
+    * Bar Patrons Chart
+* Help
+  * Help
+  * About
+  * changes
 
 *2.0*
 Cleanup deferred calls

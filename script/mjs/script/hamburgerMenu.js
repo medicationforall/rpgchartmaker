@@ -21,11 +21,18 @@ $(document).ready(function(){
 	//menu click
 	$('.header .hamburger').click(function(event){
 		event.preventDefault();
-		if($('body').hasClass('menuOpen')){
+
+		//toggle menu display
+		if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.general').hasClass('focus')){
 			$('body').removeClass('menuOpen');
 		}else{
 			$('body').addClass('menuOpen');
 		}
+
+		//set menu focus
+		$('.hamburger.menu .subMenu').removeClass('focus');
+		$('.hamburger.menu .subMenu.general').addClass('focus');
+
 	});
 
 	//about click

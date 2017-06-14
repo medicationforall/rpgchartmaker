@@ -37,6 +37,8 @@ function MainMenu(){
 	 */
 	this._setup=function(){
 		this.node = $('.menuBar');
+		this._setupOpenFileMenuButton();
+		this._setupOpenAddMenuButton();
 		this._setupAddRollContainer();
 		this._setupAddSeedRollContainer();
 		this._setupAddListGroup();
@@ -56,13 +58,55 @@ function MainMenu(){
 		},this));
 	};
 
+	/**
+	 *
+	 */
+	this._setupOpenFileMenuButton=function(){
+			$('.openFileMenuButton').click(function(event){
+				event.preventDefault();
+				//console.log('openAddMenuButton');
+
+				//toggle menu display
+				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.file').hasClass('focus')){
+					$('body').removeClass('menuOpen');
+				}else{
+					$('body').addClass('menuOpen');
+				}
+
+				//set menu focus
+				$('.hamburger.menu .subMenu').removeClass('focus');
+				$('.hamburger.menu .subMenu.file').addClass('focus');
+			});
+	}
+
+	/**
+	 *
+	 */
+	this._setupOpenAddMenuButton=function(){
+			$('.openAddMenuButton').click(function(event){
+				event.preventDefault();
+				console.log('openAddMenuButton');
+
+				//toggle menu display
+				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.add').hasClass('focus')){
+					$('body').removeClass('menuOpen');
+				}else{
+					$('body').addClass('menuOpen');
+				}
+
+				//set menu focus
+				$('.hamburger.menu .subMenu').removeClass('focus');
+				$('.hamburger.menu .subMenu.add').addClass('focus');
+			});
+	}
+
 
 	/**
 	 *
 	 */
 	this._setupAddRollContainer=function(){
 		//add list group click
-		this.node.find('.addRollContainerButton').click(function(event){
+		$('.addRollContainerButton').click(function(event){
 			event.preventDefault();
 			var rollContainer = new RollContainer();
 		});
@@ -74,7 +118,7 @@ function MainMenu(){
 	 */
 	this._setupAddSeedRollContainer=function(){
 		//add list group click
-		this.node.find('.addSeedRollContainerButton').click(function(event){
+		$('.addSeedRollContainerButton').click(function(event){
 			event.preventDefault();
 			var rollContainer = new SeedRollContainer();
 		});
@@ -86,7 +130,7 @@ function MainMenu(){
 	 */
 	this._setupAddListGroup=function(){
 		//add list group click
-		this.node.find('.addListGroupButton').click(function(event){
+		$('.addListGroupButton').click(function(event){
 			event.preventDefault();
 			var listGroup = new ListGroup();
 		});
@@ -98,7 +142,7 @@ function MainMenu(){
 	 */
 	this._setupAddObjectGoup=function(){
 		//add object group click
-		this.node.find('.addObjectGroupButton').click(function(event){
+		$('.addObjectGroupButton').click(function(event){
 			event.preventDefault();
 			var objectGroup = new ObjectGroup();
 		});
@@ -110,7 +154,7 @@ function MainMenu(){
 	 */
 	this._setupExport=function(){
 		//export button click
-		this.node.find('.exportButton').click($.proxy(function(event){
+		$('.exportButton').click($.proxy(function(event){
 			event.preventDefault();
 
 			var listNameInput =this.node.find('input[name=listName]');
@@ -130,7 +174,7 @@ function MainMenu(){
 	 */
 	this._setupImport=function(){
 		//import file selector change
-		this.node.find('.importFile').change($.proxy(function(event){
+		$('.importFile').change($.proxy(function(event){
 			event.preventDefault();
 
 			if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -139,7 +183,7 @@ function MainMenu(){
 				//clear existing lists check
 				this.clearLists();
 
-				var file = this.node.find('.importFile')[0].files[0];
+				var file = $('.importFile')[0].files[0];
 				var reader = new FileReader();
 
 				reader.onload = $.proxy(function(e) {
