@@ -19,6 +19,7 @@
 function Base(animate){
 	//data
 	this.node = undefined;
+	this.handleKeyName='listGroupName';
 	this.animate=true;
 }
 
@@ -78,7 +79,7 @@ Base.prototype._createNode=function(template){
  * @private
  */
 Base.prototype._setupHandleColor=function(){
-	this.node.find('input[name="listGroupName"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
+	this.node.find('input[name="'+this.handleKeyName+'"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
 		var color = '';
 
 		if($(this).val()!==''){

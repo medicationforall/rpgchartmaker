@@ -4,6 +4,8 @@ function SeedRollContainer(animate){
   HasRollSeed.call(this);
 
   this.seed='';
+  this.handleKeyName='seed';
+
 
   /**
    * constructor
@@ -15,17 +17,21 @@ function SeedRollContainer(animate){
     this._resolveTemplate(SeedRollContainer,'SeedRollContainer');
   };
 
+
   /**
    *
    */
   this._setup=function(template){
     this._createNode(template);
     this._createRng();
+    this._setupHandleColor();
 
     HasSeed.call(this);
+    HasCSVSave.call(this);
 
     $(this).trigger('loaded');
   };
+
 
   /**
    *

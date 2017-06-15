@@ -48,6 +48,7 @@ body.menuOpen .hamburger.menu {
 
 .menu .subMenu{
   display:none;
+  padding:5px;
 }
 
 .menu .subMenu.focus{
