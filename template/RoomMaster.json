@@ -1,0 +1,90 @@
+{
+	"name" : "procRoom",
+	"lists" : [{
+			"name" : "width",
+			"roll" : true,
+			"list" : ["400", "600", "900", "900", "1200", "1500", "1800", "2100", "2400", "3600"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "height",
+			"roll" : true,
+			"list" : ["324", "450", "525", "525", "675", "675", "825", "1000", "1350", "2700"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "feature",
+			"roll" : true,
+			"list" : ["d6 [storage]", "[loot]", "none", "[puzzle]", "[item]", "d6 branchDoor"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "obstacle",
+			"roll" : true,
+			"list" : ["spikes", "spikesLedge", "crusher", "platform", "ledges", "door", "ladder"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "decoration",
+			"roll" : true,
+			"list" : ["Chain", "Grate", "Spout", "Torch", "none"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "monster",
+			"roll" : true,
+			"list" : ["d6 [commonM]", "d5 [commonM]", "d4 [commonM]", "d3 [uncommonM]", "d2 [uncommonM]", "none", "none", "none",  "[rareM]"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "commonM",
+			"roll" : false,
+			"list" : ["Piggy", "EyeBeast", "Goblin", "Skeleton", "Imp", "Flame"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "uncommonM",
+			"roll" : false,
+			"list" : ["PumpkinWizard", "Ork", "Ghoul", "Gargoyle", "FireMage", "Shadow", "Knight", "Wolf"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "rareM",
+			"roll" : false,
+			"list" : ["Demon", "Troll"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "storage",
+			"roll" : false,
+			"list" : ["Crate", "Barrel", "Stump"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "loot",
+			"roll" : false,
+			"list" : ["AlchemyTable","Bookcase","Chest", "Coffin", "IronMaiden", "LockedChest"],
+			"type" : "ListGroup"
+		}, {
+			"name" : "puzzle",
+			"roll" : false,
+			"list" : ["Lever", "Pad"],
+			"type" : "ListGroup"
+		},{
+    	"name" : "item",
+			"roll" : false,
+			"list" : ["[commonI]", "[commonI]", "[commonI]", "[uncommonI]", "[uncommonI]", "[rareI]"],
+			"type" : "ListGroup"
+    },{
+			"name" : "commonI",
+			"roll" : false,
+			"list" : ["Coin"],
+			"type" : "ListGroup"
+		},{
+			"name" : "uncommonI",
+			"roll" : false,
+			"list" : ["Bell", "Key"],
+			"type" : "ListGroup"
+		},{
+			"name" : "rareI",
+			"roll" : false,
+			"list" : ["Book", "Potion"],
+			"type" : "ListGroup"
+		}, {
+      "name" : "paths",
+			"roll" : true,
+			"list" : ["1", "1", "1", "2", "3"],
+			"type" : "ListGroup"
+    }
+	]
+}

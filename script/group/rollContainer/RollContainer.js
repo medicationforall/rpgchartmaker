@@ -42,6 +42,13 @@ function RollContainer(animate){
 		this._createNode(template);
 		$(this).trigger('loaded');
 	};
+	
+
+	/**
+	 *
+	 */
+	this.fillOut=function(data){};
+
 
   //main
 	this._constructor();

@@ -93,26 +93,60 @@
 			<a href="" class="addObjectGroupButton" title="Add Object List Group">Object List</a>
 			<a href="" class="addRollContainerButton" title="Add Roll Container">Roll</a>
 			<a href="" class="addSeedRollContainerButton" title="Add Seed Roll Container">Seed Roll</a>
-			<hr>
-			<h3>Delete</h3>
-			<a href="" class="deleteAllButton">All Lists</a>
 		</div>
 
-		<!-- File Menu -->
-		<div class="file subMenu">
+		<!-- Delete Menu -->
+		<div class="delete subMenu">
+			<h3>Delete</h3>
+			<a href="" class="deleteAllButton" title="Delete All">All</a>
+			<a href="" class="deleteListsButton" title="Delete Lists">Lists</a>
+			<a href="" class="deleteRollsButton" title="Delete Rolls">Rolls</a>
+		</div>
+
+		<!-- Save Menu -->
+		<div class="save subMenu">
 			<h3>Save</h3>
 			<a href="" class="exportButton" title="Save as json">Save File</a>
 			<hr />
+			<h3>Save Options</h3>
+			<span>Save:</span>
+			<select name="saveList">
+				<option value="all">All</option>
+				<option value="lists">Lists</option>
+				<option value="rolls">Rolls</option>
+			</select>
+		</div>
+
+		<!-- Load Menu -->
+		<div class="load subMenu">
 			<h3>Load</h3>
 			<input type="file" class="importFile" title="Load JSON" accept=".json" />
 			<hr />
-			<h3>Options</h3>
-			<span>Load Clears Lists</span> <input type="checkbox" name="clearList" checked />
+			<h3>Load Options</h3>
+			<span>Load Deletes:</span>
+			<select name="clearList">
+				<option value="all">All</option>
+				<option value="none">None</option>
+				<option value="lists">Lists</option>
+				<option value="rolls">Rolls</option>
+			</select><br />
+			<span>Load:</span>
+			<select name="loadList">
+				<option value="all">All</option>
+				<option value="lists">Lists</option>
+				<option value="rolls">Rolls</option>
+			</select>
 			<hr />
 			<h3>Templates</h3>
 			<a href="" class="loadTemplateButton" data-file="Human.json">Names Chart</a>
 			<a href="" class="loadTemplateButton" data-file="Weapons and Armor.json">Items Chart</a>
 			<a href="" class="loadTemplateButton" data-file="Bar Patrons.json">Bar Patrons Chart</a>
+			<a href="" class="loadTemplateButton" data-file="RoomMaster.json">Rogue Room Generator</a>
+			<a href="" class="loadTemplateButton" data-file="combined.json">Combined</a>
+		</div>
+
+		<!-- File Menu -->
+		<div class="file subMenu">
 		</div>
 	</div>
 
@@ -127,10 +161,13 @@
 
 			<div class="inlineBlock">
 			<a href="" class="rollButton">Roll!</a><input name="rollCount" type="number" value="1" min="1" max="999999" />
-			<a href="" class="openAddMenuButton">Add</a>
+			<a href="" class="openAddMenuButton" title="Add Menu">Add</a>
+			<a href="" class="openDeleteMenuButton" title="Delete Menu">Delete</a>
 			</div>
 
-			<a href="" class="openFileMenuButton">File</a>
+			<a href="" class="openSaveMenuButton" title="Save Menu">Save</a>
+			<a href="" class="openLoadMenuButton" title="Load Menu">Load</a>
+			<!--<a href="" class="openFileMenuButton" title="File Menu">File</a>-->
 			<a href="" class="shareButton" title="Create url link to this chart">Share</a>
 			<a href="" class="hamburger" title="Help Options">Help</a>
 		</div>

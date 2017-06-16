@@ -39,6 +39,7 @@ function MainMenu(){
 		this.node = $('.menuBar');
 		this._setupOpenFileMenuButton();
 		this._setupOpenAddMenuButton();
+		this._setupOpenDeleteMenuButton();
 		this._setupAddRollContainer();
 		this._setupAddSeedRollContainer();
 		this._setupAddListGroup();
@@ -46,7 +47,7 @@ function MainMenu(){
 		this._setupExport();
 		this._setupImport();
 		this._setupLoadTemplate();
-		this._setupDeleteAllLists();
+		this._setupDeleteButtons();
 
 		$.getJSON('config.json',$.proxy(function(data){
 			if(data.enableShare){
@@ -62,21 +63,52 @@ function MainMenu(){
 	 *
 	 */
 	this._setupOpenFileMenuButton=function(){
-			$('.openFileMenuButton').click(function(event){
-				event.preventDefault();
-				//console.log('openAddMenuButton');
+		$('.openSaveMenuButton').click(function(event){
+			event.preventDefault();
 
-				//toggle menu display
-				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.file').hasClass('focus')){
-					$('body').removeClass('menuOpen');
-				}else{
-					$('body').addClass('menuOpen');
-				}
+			//toggle menu display
+			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.save').hasClass('focus')){
+				$('body').removeClass('menuOpen');
+			}else{
+				$('body').addClass('menuOpen');
+			}
 
-				//set menu focus
-				$('.hamburger.menu .subMenu').removeClass('focus');
-				$('.hamburger.menu .subMenu.file').addClass('focus');
-			});
+			//set menu focus
+			$('.hamburger.menu .subMenu').removeClass('focus');
+			$('.hamburger.menu .subMenu.save').addClass('focus');
+		});
+
+		$('.openLoadMenuButton').click(function(event){
+			event.preventDefault();
+			//console.log('openAddMenuButton');
+
+			//toggle menu display
+			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.load').hasClass('focus')){
+				$('body').removeClass('menuOpen');
+			}else{
+				$('body').addClass('menuOpen');
+			}
+
+			//set menu focus
+			$('.hamburger.menu .subMenu').removeClass('focus');
+			$('.hamburger.menu .subMenu.load').addClass('focus');
+		});
+
+		$('.openFileMenuButton').click(function(event){
+			event.preventDefault();
+			//console.log('openAddMenuButton');
+
+			//toggle menu display
+			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.file').hasClass('focus')){
+				$('body').removeClass('menuOpen');
+			}else{
+				$('body').addClass('menuOpen');
+			}
+
+			//set menu focus
+			$('.hamburger.menu .subMenu').removeClass('focus');
+			$('.hamburger.menu .subMenu.file').addClass('focus');
+		});
 	}
 
 	/**
@@ -97,6 +129,26 @@ function MainMenu(){
 				//set menu focus
 				$('.hamburger.menu .subMenu').removeClass('focus');
 				$('.hamburger.menu .subMenu.add').addClass('focus');
+			});
+	}
+
+
+	/**
+	 *
+	 */
+	this._setupOpenDeleteMenuButton=function(){
+			$('.openDeleteMenuButton').click(function(event){
+				event.preventDefault();
+				//toggle menu display
+				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.delete').hasClass('focus')){
+					$('body').removeClass('menuOpen');
+				}else{
+					$('body').addClass('menuOpen');
+				}
+
+				//set menu focus
+				$('.hamburger.menu .subMenu').removeClass('focus');
+				$('.hamburger.menu .subMenu.delete').addClass('focus');
 			});
 	}
 
@@ -180,8 +232,8 @@ function MainMenu(){
 			if (window.File && window.FileReader && window.FileList && window.Blob) {
 				//do your stuff!
 
-				//clear existing lists check
-				this.clearLists();
+				//clear existing lists and rollContainers check
+				this.clearAll();
 
 				var file = $('.importFile')[0].files[0];
 				var reader = new FileReader();
@@ -210,7 +262,7 @@ function MainMenu(){
 			var file = $(this).data('file');
 
 			//clear lists check
-			menu.clearLists();
+			menu.clearAll();
 
 			$.getJSON('template/'+file,$.proxy(function(data){
 				this.loadData(data);
@@ -222,11 +274,23 @@ function MainMenu(){
 	/**
 	 *
 	 */
-	this._setupDeleteAllLists=function(){
-		//Delete All Lists Button
+	this._setupDeleteButtons=function(){
+		//Delete All Button
 		$('.deleteAllButton').click(function(event){
 			event.preventDefault();
+			$('.list, .rollContainer').remove();
+		});
+
+		//Delete All Button
+		$('.deleteListsButton').click(function(event){
+			event.preventDefault();
 			$('.list').remove();
+		});
+
+		//Delete All Button
+		$('.deleteRollsButton').click(function(event){
+			event.preventDefault();
+			$('.rollContainer').remove();
 		});
 	};
 
@@ -287,8 +351,50 @@ function MainMenu(){
 	this.gatherData=function(){
 		var data = {};
 		data.name=this.node.find('input[name=listName]').val();
-		data.lists=[];
 
+		var saveType = $('.hamburger select[name="saveList"]').val();
+
+		if(saveType==='all'){
+			this.gatherRolls(data);
+			this.gatherLists(data);
+		}else if(saveType==='lists'){
+			this.gatherLists(data);
+		} else if(saveType==='rolls'){
+			this.gatherRolls(data);
+		}
+
+		return data;
+	};
+
+
+	/**
+	 *
+	 */
+	this.gatherRolls=function(data){
+		//gather rolls
+		data.rolls=[];
+		$('.listGroupContainer .rollContainer').each(function(index, item){
+			var obj = {};
+			var coreNode = $(item).data("coreNode");
+
+			//resolve type
+			if(coreNode instanceof RollContainer){
+				obj.type = "RollContainer";
+			}else if(coreNode instanceof SeedRollContainer){
+				obj.seed = coreNode.seed;
+				obj.type = "SeedRollContainer";
+			}
+			data.rolls.push(obj);
+		});
+	}
+
+
+	/**
+	 *
+	 */
+	this.gatherLists=function(data){
+		//gather lists
+		data.lists=[];
 		$('.listGroupContainer .list').each(function(index, item){
 			var obj = {};
 
@@ -331,9 +437,9 @@ function MainMenu(){
 
 			data.lists.push(obj);
 		});
+	}
 
-		return data;
-	};
+
 
 
 	/**
@@ -353,9 +459,61 @@ function MainMenu(){
 	 *
 	 */
 	this.loadData=function(data,animate){
+		this.loadChartName(data);
+
+		var loadType = $('.hamburger select[name="loadList"]').val();
+
+		if(loadType==='all'){
+			this.loadRolls(data,animate);
+			this.loadLists(data,animate);
+		} else if(loadType==='lists'){
+			this.loadLists(data,animate);
+		} else if(loadType==="rolls"){
+			this.loadRolls(data,animate);
+		}
+	};
+
+
+	/**
+	 *
+	 */
+	this.loadChartName=function(data){
 		//set chart name
 		this.node.find('input[name=listName]').val(data.name).trigger('input');
+	};
 
+	/**
+	 *
+	 */
+	this.loadRolls=function(data,animate){
+		if(data.rolls){
+			for(var i=0, roll;(roll=data.rolls[i]);i++){
+				var rContainer;
+				if(roll.type==="RollContainer"){
+					rContainer = new RollContainer(animate);
+				}else if(roll.type==="SeedRollContainer"){
+					rContainer = new SeedRollContainer(animate);
+				}
+
+				if(rContainer.node){
+					rContainer.fillOut(roll);
+				}else{
+					$(rContainer).on('loaded',function(roll){
+						this.fillOut(roll);
+					}.bind(rContainer,roll));
+				}
+			}
+		}else{
+			var rollContainer = new RollContainer(animate);
+		}
+
+	};
+
+
+	/**
+	 *
+	 */
+	this.loadLists=function(data,animate){
 		//go through each list in the data object
 		for(var i=0,list;(list=data.lists[i]);i++){
 			//placeholder
@@ -378,16 +536,23 @@ function MainMenu(){
 				}.bind(listGroup,list));
 			}
 		}
-	};
+	}
 
 
 	/**
 	 *
 	 */
-	this.clearLists=function(){
-		if($('.hamburger input[name="clearList"]')[0].checked){
+	this.clearAll=function(){
+		if($('.hamburger select[name="clearList"]').val()==="all"){
+			$('.list, .rollContainer').remove();
+		} else if($('.hamburger select[name="clearList"]').val()==="lists"){
 			$('.list').remove();
+		} else if($('.hamburger select[name="clearList"]').val()==="rolls"){
+			$('.rollContainer').remove();
 		}
+		//if($('.hamburger input[name="clearList"]')[0].checked){
+		//	$('.list, .rollContainer').remove();
+		//}
 	};
 
 	//main

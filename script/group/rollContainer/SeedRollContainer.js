@@ -41,6 +41,17 @@ function SeedRollContainer(animate){
   };
 
 
+  /**
+   *
+   */
+  this.fillOut=function(data){
+    if(data.seed){
+      this.seed = data.seed;
+      this.node.find('input[name="seed"]').val(this.seed).trigger('input');
+    }
+  };
+
+
   //main
   this._constructor();
 }
