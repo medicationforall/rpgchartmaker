@@ -1,0 +1,15 @@
+﻿{
+	"name": "CharacterEscape",
+	"rolls": [{
+			"seed": "colors",
+			"type": "SeedRollContainer"
+		}
+	],
+	"lists": [{
+			"name": ",list\"",
+			"roll": true,
+			"list": ["blue", "green", "purple", ",test\""],
+			"type": "ListGroup"
+		}
+	]
+}
