@@ -1,1 +1,55 @@
-{"name":"Weapons and Armor","lists":[{"name":"Level","roll":true,"list":["+1","+1","+1","+1","+2","+3","+4","-","-","-"],"type":"ListGroup"},{"name":"Type","roll":true,"list":["Ordinary","Ordinary","Ordinary","Magic","Ancient","Decayed"],"type":"ListGroup"},{"name":"Weapon","roll":true,"list":[{"Name":"Sword","Damage":"10"},{"Name":"Dagger","Damage":"5"}],"type":"ObjectGroup","order":[{"label":"Name","type":"text"},{"label":"Damage","type":"number"}]},{"name":"Armor","roll":false,"list":[{"Name":"Iron","AC":"10"},{"Name":"Leather","AC":"6"}],"type":"ObjectGroup","order":[{"label":"Name","type":"text"},{"label":"AC","type":"number"}]}]}
+{
+	"name": "Weapons and Armor",
+	"lists": [{
+			"name": "Level",
+			"roll": true,
+			"list": ["+1", "+1", "+1", "+1", "+2", "+3", "+4", "-", "-", "-"],
+			"type": "ListGroup"
+		}, {
+			"name": "Type",
+			"roll": true,
+			"list": ["Ordinary", "Ordinary", "Ordinary", "Magic", "Ancient", "Decayed"],
+			"type": "ListGroup"
+		}, {
+			"name": "Weapon",
+			"roll": true,
+			"list": [{
+					"Name": "Sword",
+					"Damage": "10"
+				}, {
+					"Name": "Dagger",
+					"Damage": "5"
+				}
+			],
+			"type": "ObjectGroup",
+			"order": [{
+					"label": "Name",
+					"type": "text"
+				}, {
+					"label": "Damage",
+					"type": "number"
+				}
+			]
+		}, {
+			"name": "Armor",
+			"roll": false,
+			"list": [{
+					"Name": "Iron",
+					"AC": "10"
+				}, {
+					"Name": "Leather",
+					"AC": "6"
+				}
+			],
+			"type": "ObjectGroup",
+			"order": [{
+					"label": "Name",
+					"type": "text"
+				}, {
+					"label": "AC",
+					"type": "number"
+				}
+			]
+		}
+	]
+}

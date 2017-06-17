@@ -1,1 +1,57 @@
-{"name":"Bar Patrons","lists":[{"name":"Bar Patrons","roll":true,"list":["Figure Dressed in black sitting in the back corner","Ogre - [Type]","Troll - [Type]","d2 Nether Elves","d4 Celestial","d4 Demonkin","d4 Dwarves","d4 Elves","d4 Rocktop","d6+1 Kobolds","d6 [Region](1,5) Orks - [Type]","d6 [Region] Humans - [Type] ","d6 Gnomes - [Type]"],"type":"ListGroup"},{"name":"Type","roll":false,"list":["Blue collar workers","Just traveling through","Looking for a fight","Merchants","Miners","Natives","Rowdy","Soldiers","Warriors","Wealthy","Well to do"],"type":"ListGroup"},{"name":"Region","roll":false,"list":["Arcadian Dunes","Crystalia Castle","Emerald Valley","Fae Wood","Frostbyte Peaks","Glaeuerdoom Moor","Wandering Monk Mountains"],"type":"ListGroup"}]}
+{
+  "name": "Bar Patrons",
+  "lists": [
+    {
+      "name": "Bar Patrons",
+      "roll": true,
+      "list": [
+        "Figure Dressed in black sitting in the back corner",
+        "Ogre - [Type]",
+        "Troll - [Type]",
+        "d2 Nether Elves",
+        "d4 Celestial",
+        "d4 Demonkin",
+        "d4 Dwarves",
+        "d4 Elves",
+        "d4 Rocktop",
+        "d6+1 Kobolds",
+        "d6 [Region](1,5) Orks - [Type]",
+        "d6 [Region] Humans - [Type] ",
+        "d6 Gnomes - [Type]"
+      ],
+      "type": "ListGroup"
+    },
+    {
+      "name": "Type",
+      "roll": false,
+      "list": [
+        "Blue collar workers",
+        "Just traveling through",
+        "Looking for a fight",
+        "Merchants",
+        "Miners",
+        "Natives",
+        "Rowdy",
+        "Soldiers",
+        "Warriors",
+        "Wealthy",
+        "Well to do"
+      ],
+      "type": "ListGroup"
+    },
+    {
+      "name": "Region",
+      "roll": false,
+      "list": [
+        "Arcadian Dunes",
+        "Crystalia Castle",
+        "Emerald Valley",
+        "Fae Wood",
+        "Frostbyte Peaks",
+        "Glaeuerdoom Moor",
+        "Wandering Monk Mountains"
+      ],
+      "type": "ListGroup"
+    }
+  ]
+}
