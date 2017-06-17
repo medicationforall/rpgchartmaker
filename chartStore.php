@@ -34,7 +34,10 @@ function getMysqli() {
 	return $mysqli;
 }
 
-//Place the json data into the database.
+
+/**
+ * Place the json data into the database.
+ */
 function store(){
 	$success = 'true';
 	$exists = false;
@@ -65,7 +68,6 @@ function store(){
 			$status='spam';
 		}
 
-
 		//insert the json and hash
 		if($exists == false){
 		$query = 'INSERT INTO chart (hash,data,status,ip) VALUE(?,?,?,?)';
@@ -80,7 +82,10 @@ function store(){
 	}
 }
 
-//Basic spam protection.
+
+/**
+ * Basic spam protection.
+ */
 function isSpam($json){
 	if(strpos($json,'http')!=false){
 		return true;
@@ -97,11 +102,12 @@ function isSpam($json){
 	}
 
 	return false;
-
-	
 }
 
-//Retrieve json data from the database.
+
+/**
+ * Retrieve json data from the database.
+ */
 function retrieve(){
 	$success = 'true';
 	$id= '';

@@ -40,6 +40,8 @@ function RollContainer(animate){
 	 */
 	this._setup=function(template){
 		this._createNode(template);
+    this.rollTable = this.node.find('table');
+    $(this.rollTable).tablesorter();
 		$(this).trigger('loaded');
 	};
 	

@@ -1,0 +1,28 @@
+﻿{
+	"name": "Colors-All",
+	"rolls": [{
+			"seed": "seed",
+			"type": "SeedRollContainer",
+			"columns": {
+				"Colors": {
+					"alias": "Primary Colors"
+				},
+				"Hue": {
+					"exclude": true
+				}
+			}
+		}
+	],
+	"lists": [{
+			"name": "Colors",
+			"roll": true,
+			"list": ["Violet", "Indigo", "Blue", "Green", "Yellow", "Orange", "Red", "Pink", "Purple"],
+			"type": "ListGroup"
+		}, {
+			"name": "Hue",
+			"roll": true,
+			"list": ["White", "Grey", "Black"],
+			"type": "ListGroup"
+		}
+	]
+}

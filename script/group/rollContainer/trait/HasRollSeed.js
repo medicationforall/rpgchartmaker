@@ -11,6 +11,8 @@ function HasRollSeed(){
     this.resetState();
     this.createTableHeader();
     this.createTableRows();
+    
+    $(this.rollTable).trigger("updateAll");
   };
 
 

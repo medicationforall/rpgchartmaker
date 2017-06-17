@@ -8,6 +8,8 @@ function HasRoll(){
     this.resetState();
     this.createTableHeader();
     this.createTableRows();
+    
+    $(this.rollTable).trigger("updateAll");
   };
 
 
@@ -35,7 +37,7 @@ function HasRoll(){
    */
   this.createTableHeader=function(){
     //fill out headers
-    this.rollTable.find('thead').append('<th>'+'No.'+'</th>');
+    this.rollTable.find('thead tr').append('<th>'+'No.'+'</th>');
 
     $('.list').each($.proxy(function(index,item){
       var input = $(item).find('input[name="listGroupName"]');
@@ -43,7 +45,7 @@ function HasRoll(){
 
       //make sure it's not skipped
       if(input.next()[0].checked){
-        this.rollTable.find('thead').append('<th>'+label+'</th>');
+        this.rollTable.find('thead tr').append('<th>'+label+'</th>');
       }
     },this));
   };
