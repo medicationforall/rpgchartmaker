@@ -2,14 +2,7 @@
 	"name": "Colors-All",
 	"rolls": [{
 			"seed": "seed",
-			"type": "SeedRollContainer",
-			"columns": {
-				"Colors": {
-					"alias": "Primary Colors"
-				},
-				"Hue": {
-					"exclude": true
-				}
+			"type": "SeedRollContainer"
 			}
 		}
 	],

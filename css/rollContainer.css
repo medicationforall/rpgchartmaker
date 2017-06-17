@@ -44,3 +44,18 @@ vertical-align:top;
 .rollContainer table td:last-child{
 border-right:none;
 }
+
+.rollContainer .menu{
+	background: #5151A0;
+	padding:5px;
+	color:white;
+	display:none;
+}
+
+.rollContainer .menu .menuContent{
+	padding:5px;
+}
+
+.rollContainer .menu.focus{
+	display:block;
+}

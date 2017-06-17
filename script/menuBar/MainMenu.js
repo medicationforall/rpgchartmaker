@@ -185,6 +185,9 @@ function MainMenu(){
 		$('.addListGroupButton').click(function(event){
 			event.preventDefault();
 			var listGroup = new ListGroup();
+
+			//close the open rollcontainer menus
+			$('.rollContainer .menu').removeClass('focus');
 		});
 	};
 
@@ -197,6 +200,9 @@ function MainMenu(){
 		$('.addObjectGroupButton').click(function(event){
 			event.preventDefault();
 			var objectGroup = new ObjectGroup();
+
+			//close the open rollcontainer menus
+			$('.rollContainer .menu').removeClass('focus');
 		});
 	};
 
@@ -377,11 +383,24 @@ function MainMenu(){
 			var obj = {};
 			var coreNode = $(item).data("coreNode");
 
+			//resolve alias
+			if($.isEmptyObject(coreNode.alias)===false){
+				obj.alias = coreNode.alias;
+			}
+
+			//resolve display
+			if($.isEmptyObject(coreNode.display)===false){
+				obj.display = coreNode.display;
+			}
+
+			//resolve display
+
 			//resolve type
 			if(coreNode instanceof RollContainer){
 				obj.type = "RollContainer";
 			}else if(coreNode instanceof SeedRollContainer){
 				obj.seed = coreNode.seed;
+				//alias is not empt
 				obj.type = "SeedRollContainer";
 			}
 			data.rolls.push(obj);

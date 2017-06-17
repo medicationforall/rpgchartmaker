@@ -8,7 +8,7 @@ function HasRoll(){
     this.resetState();
     this.createTableHeader();
     this.createTableRows();
-    
+
     $(this.rollTable).trigger("updateAll");
   };
 
@@ -37,17 +37,45 @@ function HasRoll(){
    */
   this.createTableHeader=function(){
     //fill out headers
-    this.rollTable.find('thead tr').append('<th>'+'No.'+'</th>');
+    if(this.resolveDisplay('No.')){
+      this.rollTable.find('thead tr').append('<th data-name="'+'No.'+'">'+this.resolveAlias('No.')+'</th>');
+    }
 
     $('.list').each($.proxy(function(index,item){
       var input = $(item).find('input[name="listGroupName"]');
       var label = input.val();
 
       //make sure it's not skipped
-      if(input.next()[0].checked){
-        this.rollTable.find('thead tr').append('<th>'+label+'</th>');
+      if(this.resolveDisplay(label)){
+        if(input.next()[0].checked){
+          this.rollTable.find('thead tr').append('<th data-name="'+label+'">'+this.resolveAlias(label)+'</th>');
+        }
       }
     },this));
+  };
+
+
+  /**
+   *
+   */
+  this.resolveAlias=function(column){
+      if(this.alias && this.alias[column]){
+        return this.alias[column];
+      }
+
+      return column;
+  };
+
+
+  /**
+   *
+   */
+  this.resolveDisplay=function(column){
+      if(this.display && this.display[column]===false){
+        return false;
+      }
+
+      return true;
   };
 
 
@@ -61,8 +89,10 @@ function HasRoll(){
     for(var i=0;i<count;i++){
       this.rollTable.find('tbody').append('<tr data-rollSet="'+i+'"></tr>');
 
-      //add roll Index
-      this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'.'+'</td>');
+      if(this.resolveDisplay('No.')){
+        //add roll Index
+        this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'.'+'</td>');
+      }
 
       var list =$('.list').each($.proxy(this.getRollValue,this));
     }
@@ -73,10 +103,15 @@ function HasRoll(){
    *
    */
   this.getRollValue=function(index, item){
-    rollValue = this.rollList(item);
+    //resolve list name
+    var input = $(item).find('input[name="listGroupName"]');
 
-    if(rollValue!==undefined){
-      this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
+    if(this.resolveDisplay(input.val())){
+      rollValue = this.rollList(item);
+
+      if(rollValue!==undefined){
+        this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
+      }
     }
   };
 

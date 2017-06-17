@@ -30,6 +30,7 @@ function SeedRollContainer(animate){
 
     HasSeed.call(this);
     HasCSVSave.call(this);
+    HasRollMenu.call(this);
 
     $(this).trigger('loaded');
   };
@@ -51,6 +52,9 @@ function SeedRollContainer(animate){
       this.seed = data.seed;
       this.node.find('input[name="seed"]').val(this.seed).trigger('input');
     }
+
+    this.alias = data.alias;
+    this.display = data.display;
   };
 
 

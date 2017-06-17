@@ -42,14 +42,20 @@ function RollContainer(animate){
 		this._createNode(template);
     this.rollTable = this.node.find('table');
     $(this.rollTable).tablesorter();
+
+		HasRollMenu.call(this);
+
 		$(this).trigger('loaded');
 	};
-	
+
 
 	/**
 	 *
 	 */
-	this.fillOut=function(data){};
+	this.fillOut=function(data){
+		this.alias = data.alias;
+		this.display = data.display;
+	};
 
 
   //main

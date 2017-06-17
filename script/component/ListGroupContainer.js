@@ -11,4 +11,19 @@ function ListGroupContainer(){
 		event.preventDefault();
 		$(this).closest('.list,.rollContainer').remove();
 	});
+
+
+	$('.listGroupContainer').on('click','.menuButton',function(event){
+		event.preventDefault();
+		var parent = $(this).closest('.list,.rollContainer');
+		var coreNode = $(parent).data('coreNode');
+		var menu = parent.find('.menu');
+
+		if(menu.hasClass('focus')){
+			menu.removeClass('focus');
+		}else{
+			menu.addClass('focus');
+			coreNode.openMenu();
+		}
+	});
 }
