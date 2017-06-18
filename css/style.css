@@ -45,6 +45,27 @@ body.menuOpen .hamburger.menu {
     right: 0;
 }
 
+body .processing{
+  position: fixed;
+  left: calc(50% - 100px);
+  top: calc(50% - 125px);
+  background: orange;
+  width: 200px;
+  height: 100px;
+  padding-top: 50px;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+  font-weight:bold;
+  font-size: 25px;
+  font-family: arial;
+  display:none;
+  z-index:2;
+}
+
+body.processing .processing{
+  display:block;
+}
+
 
 .menu .subMenu{
   display:none;

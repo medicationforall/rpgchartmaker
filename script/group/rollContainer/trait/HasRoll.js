@@ -1,4 +1,6 @@
 function HasRoll(){
+  this.rollArrayLookup={};
+
   /**
    *
    */
@@ -8,6 +10,7 @@ function HasRoll(){
     this.resetState();
     this.createTableHeader();
     this.createTableRows();
+    this.clearRollArrayLookup();
 
     $(this.rollTable).trigger("updateAll");
   };
@@ -42,12 +45,14 @@ function HasRoll(){
     }
 
     $('.list').each($.proxy(function(index,item){
-      var input = $(item).find('input[name="listGroupName"]');
-      var label = input.val();
+      //var input = $(item).find('input[name="listGroupName"]');
+      //var label = input.val();
+      var label = $(item).data('name');
+      var roll = $(item).data('roll');
 
       //make sure it's not skipped
       if(this.resolveDisplay(label)){
-        if(input.next()[0].checked){
+        if(roll){
           this.rollTable.find('thead tr').append('<th data-name="'+label+'">'+this.resolveAlias(label)+'</th>');
         }
       }
@@ -84,7 +89,9 @@ function HasRoll(){
    */
   this.createTableRows=function(){
     //fill out rows
+    console.log('createTableRows');
     var count = $('input[name="rollCount"]').val();
+    var lists =$('.list');
 
     for(var i=0;i<count;i++){
       this.rollTable.find('tbody').append('<tr data-rollSet="'+i+'"></tr>');
@@ -94,7 +101,7 @@ function HasRoll(){
         this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'.'+'</td>');
       }
 
-      var list =$('.list').each($.proxy(this.getRollValue,this));
+      lists.each($.proxy(this.getRollValue,this));
     }
   };
 
@@ -104,9 +111,10 @@ function HasRoll(){
    */
   this.getRollValue=function(index, item){
     //resolve list name
-    var input = $(item).find('input[name="listGroupName"]');
+    //var input = $(item).find('input[name="listGroupName"]');
+    var label = $(item).data('name');
 
-    if(this.resolveDisplay(input.val())){
+    if(this.resolveDisplay(label)){
       rollValue = this.rollList(item);
 
       if(rollValue!==undefined){
@@ -121,7 +129,27 @@ function HasRoll(){
    */
   this.rollList=function(list,forceRoll,qualifier){
     //make sure it's not skipped
-    if(forceRoll || $(list).find('input[name="roll"]').prop('checked')){
+    if(forceRoll || $(list).data('roll')){
+      //var input = $(list).find('input[name="listGroupName"]');
+      var label = $(list).data('name');
+      var arr = this.createRollArray(label,list,qualifier);
+      var roll = this.resolveRoll(arr, label);
+      var value = arr[roll];
+
+      //lookup for dice
+      value = this.findList(value);
+      value = this.findDice(value);
+
+      //animate the roll selection
+      $(list).find('ol li:nth-child('+(roll+1)+')').animateCss('highlight');
+
+      return value;
+    }
+  };
+
+  this.createRollArray=function(label,list,qualifier){
+    if(this.rollArrayLookup[label]===undefined){
+      console.log('create array for ',label);
       var arr = [];
 
       if(qualifier && qualifier!==''){
@@ -138,20 +166,14 @@ function HasRoll(){
         }).get();
       }
 
-      var input = $(list).find('input[name="listGroupName"]');
-      var label = input.val();
-      var roll = this.resolveRoll(arr, label);
-      var value = arr[roll];
-
-      //lookup for dice
-      value = this.findList(value);
-      value = this.findDice(value);
-
-      //animate the roll selection
-      $(list).find('ol li:nth-child('+(roll+1)+')').animateCss('highlight');
-
-      return value;
+      this.rollArrayLookup[label] = arr;
     }
+
+    return this.rollArrayLookup[label];
+  };
+
+  this.clearRollArrayLookup=function(){
+    this.rollArrayLookup={};
   };
 
 

@@ -15,8 +15,41 @@ function MenuBar(){
   $('.rollButton').click($.proxy(function(event){
     event.preventDefault();
 
+    //this.showProcessing();
+
+    this.rollAll();
+
+
+    //this.hideProcessing();
+
+  },this));
+
+  /**
+   *
+   */
+  this.rollAll=function(){
+
     $('.rollContainer').each(function(index,item){
       var coreNode = $.data(item,'coreNode').roll();
     });
-  },this));
+  };
+
+
+  /**
+   *
+   */
+  this.showProcessing=function(){
+    console.log('call show processing class');
+    $('body .processing').css('display','block');
+  };
+
+
+  /**
+   *
+   */
+  this.hideProcessing=function(){
+    console.log('call remove processing class');
+    $('body .processing').css('display','none');
+  };
+
 }

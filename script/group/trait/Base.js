@@ -32,6 +32,7 @@ Base.prototype.setupBase=function(template){
 	this.setupSortable();
 	this._setupHandleColor();
 	this._setupAlphabetize();
+	this._setupRollCheckBox();
 };
 
 
@@ -81,13 +82,25 @@ Base.prototype._createNode=function(template){
 Base.prototype._setupHandleColor=function(){
 	this.node.find('input[name="'+this.handleKeyName+'"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
 		var color = '';
+		var value = $(this).val();
+		$(node).data('name',value);
 
-		if($(this).val()!==''){
+		if(value!==''){
 			var hash = hashCode($(this).val());
 			color = '#'+intToRGB(hash);
 		}
 		node.find('.handle').css('background-color',color)
 	},null,this._hashCode,this._intToRGB,this.node));
+};
+
+
+/**
+ *
+ */
+Base.prototype._setupRollCheckBox=function(){
+	this.node.find('input[name="roll"]').on('change',$.proxy(function(node,event){
+	$(node).data('roll',this.checked);
+	},null,this.node));
 };
 
 

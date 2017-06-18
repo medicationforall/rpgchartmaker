@@ -16,7 +16,7 @@ function HasListGroupLoad(){
         list.roll=false;
       }
 
-      this.node.find('input[name="roll"]').prop('checked', list.roll);
+      this.node.find('input[name="roll"]').prop('checked', list.roll).trigger('change');
     }
 
     //fill out List

@@ -23,10 +23,10 @@ function HasRollMenu(){
 
       lists.each($.proxy(function(coreNode ,menu, index, item){
         console.log(arguments);
-        var input = $(item).find('input[name="listGroupName"]');
-        var name = input.val();
+        //var input = $(item).find('input[name="listGroupName"]');
+        var label = $(item).data('name');
 
-        coreNode.addMenuOption(name,menu);
+        coreNode.addMenuOption(label,menu);
       },null, this, menu));
     }
   };
