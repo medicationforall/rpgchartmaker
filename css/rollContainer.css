@@ -2,13 +2,16 @@
 	display:inline-block;
 	vertical-align: top;
 	border:1px solid #c0c0c0;
-	min-width:266px;
-	margin:5px;
-	height:189px;
-	min-height: 189px;
 	background:#fff;
-  resize: both;
-  overflow: auto;
+	margin: 5px;
+}
+
+.rollContainer .content{
+	min-width:266px;
+	height:213px;
+	min-height: 213px;
+	resize: both;
+	overflow: auto;
 }
 
 .rollContainer .handle{
@@ -18,6 +21,10 @@
 
 .rollContainer .title {
 	transition:color 0.5s ease;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 17px;
+	font-family: arial;
+	color:#fff;
 }
 
 .rollContainer table{

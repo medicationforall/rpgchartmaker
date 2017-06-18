@@ -6,41 +6,44 @@ function HasRollMenu(){
    *
    */
   this.openMenu=function(){
-    console.log('open menu');
+    //console.log('open menu');
 
     var lists = $('.listGroupContainer .list');
-    var menu = this.node.find('.menu');
+    var cMenu = this.node.find('.menu .columns');
 
     //clear the menu
-    menu.empty();
+    cMenu.empty();
 
     //add default no. column
-    this.addMenuOption('No.',menu);
+    this.addMenuOption('No.',cMenu);
 
     //if we have lists
     if(lists.length > 0){
-      console.log('display edit controls');
+      //console.log('display edit controls');
 
-      lists.each($.proxy(function(coreNode ,menu, index, item){
-        console.log(arguments);
-        //var input = $(item).find('input[name="listGroupName"]');
+      lists.each($.proxy(function(coreNode ,cMenu, index, item){
+        //console.log(arguments);
         var label = $(item).data('name');
 
-        coreNode.addMenuOption(label,menu);
-      },null, this, menu));
+        coreNode.addMenuOption(label,cMenu);
+      },null, this, cMenu));
     }
   };
 
-  this.addMenuOption=function(name,menu){
+
+  /**
+   *
+   */
+  this.addMenuOption=function(name,node){
     var checked='';
     if(this.resolveDisplay(name)===true){
       checked = 'checked';
     }
 
     var template = '<div><input class="alias" data-name="'+name+'" value="'+this.resolveAlias(name)+'" />'+
-    '<input class="display" data-name="'+name+'" type="checkbox" '+checked+' /></div>';
+    '<input class="display" data-name="'+name+'" type="checkbox" title="display" '+checked+' /></div>';
 
-    menu.append(template);
+    node.append(template);
   };
 
   /**
@@ -71,7 +74,7 @@ function HasRollMenu(){
    *
    */
   this.node.find('.menu').on('change','.display',$.proxy(function(coreNode,event){
-    console.log('alias change',this.checked);
+    //console.log('alias change',this.checked);
     var column = $(this).data('name');
     coreNode.setDisplay(column,this.checked);
   },null,this));

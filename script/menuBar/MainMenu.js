@@ -117,7 +117,7 @@ function MainMenu(){
 	this._setupOpenAddMenuButton=function(){
 			$('.openAddMenuButton').click(function(event){
 				event.preventDefault();
-				console.log('openAddMenuButton');
+				//console.log('openAddMenuButton');
 
 				//toggle menu display
 				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.add').hasClass('focus')){
@@ -523,7 +523,7 @@ function MainMenu(){
 				}
 			}
 		}else{
-			var rollContainer = new RollContainer(animate);
+			var rollContainer = new SeedRollContainer(animate);
 		}
 
 	};

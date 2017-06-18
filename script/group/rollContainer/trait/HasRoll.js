@@ -89,7 +89,7 @@ function HasRoll(){
    */
   this.createTableRows=function(){
     //fill out rows
-    console.log('createTableRows');
+    //console.log('createTableRows');
     var count = $('input[name="rollCount"]').val();
     var lists =$('.list');
 
@@ -130,10 +130,21 @@ function HasRoll(){
   this.rollList=function(list,forceRoll,qualifier){
     //make sure it's not skipped
     if(forceRoll || $(list).data('roll')){
-      //var input = $(list).find('input[name="listGroupName"]');
       var label = $(list).data('name');
-      var arr = this.createRollArray(label,list,qualifier);
+      var arr = this.createRollArray(label, list, qualifier);
       var roll = this.resolveRoll(arr, label);
+      var value = this.resolveRollValue(list, arr, roll);
+
+      return value;
+    }
+  };
+
+
+  /**
+   *
+   */
+  this.resolveRollValue=function(list, arr, roll){
+    if(arr.length>0){
       var value = arr[roll];
 
       //lookup for dice
@@ -144,12 +155,18 @@ function HasRoll(){
       $(list).find('ol li:nth-child('+(roll+1)+')').animateCss('highlight');
 
       return value;
+    } else {
+      return '';
     }
   };
 
+
+  /**
+   *
+   */
   this.createRollArray=function(label,list,qualifier){
     if(this.rollArrayLookup[label]===undefined){
-      console.log('create array for ',label);
+      //console.log('create array for ',label);
       var arr = [];
 
       if(qualifier && qualifier!==''){

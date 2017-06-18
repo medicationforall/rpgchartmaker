@@ -3,21 +3,6 @@ function HasCSVSave(){
   /**
    *
    */
-  this.checkSeed=function(){
-    var seed = this.node.find('input[name="seed"]');
-
-    if(seed.val()!== ''){
-      return true;
-    }else{
-      seed.addClass('error');
-      return false;
-    }
-  };
-
-
-  /**
-   *
-   */
   this.gatherCSVData=function(){
     var data ='';
     //gather header
@@ -104,13 +89,37 @@ function HasCSVSave(){
     event.preventDefault();
     console.log('clicked export CSV file');
 
-    //verify that seed is not empty
-    if(this.checkSeed()){
-      //get file name
-      var fileName = this.node.find('input[name="seed"]').val()+'.csv';
-      data = this.gatherCSVData();
-
-      this.saveAsFile(data,fileName,"text/plain;charset=utf-8");
-    }
+    var fileName = this.gatherCSVFileName();
+    var data = this.gatherCSVData();
+    this.saveAsFile(data,fileName,"text/plain;charset=utf-8");
   },this));
+
+
+  /**
+   * resolve file name
+   */
+  this.gatherCSVFileName=function(){
+    var fileName = 'roll';
+
+    //verify that seed is not empty
+    if(this.seed && this.seed !== ''){
+      fileName = this.seed;
+    }
+
+    return fileName+'.csv';
+  };
+
+  /**
+   *
+   */
+  /*this.checkSeed=function(){
+    var seed = this.node.find('input[name="seed"]');
+
+    if(seed.val()!== ''){
+      return true;
+    }else{
+      seed.addClass('error');
+      return false;
+    }
+  };*/
 }

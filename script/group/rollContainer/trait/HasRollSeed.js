@@ -29,7 +29,14 @@ function HasRollSeed(){
    *
    */
   this.resolveRoll=function(arr,name){
-    var roll = this.rng.getRandom(this.seed+"-"+name, 0, arr.length -1);
+    var roll;
+
+    if(this.seed && this.seed !== ''){
+      roll = this.rng.getRandom(this.seed+"-"+name, 0, arr.length -1);
+    } else{
+      roll = Math.floor(Math.random() * arr.length);
+    }
+    
     return roll;
   };
 }

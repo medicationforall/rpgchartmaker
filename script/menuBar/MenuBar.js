@@ -16,10 +16,7 @@ function MenuBar(){
     event.preventDefault();
 
     //this.showProcessing();
-
     this.rollAll();
-
-
     //this.hideProcessing();
 
   },this));
@@ -28,8 +25,11 @@ function MenuBar(){
    *
    */
   this.rollAll=function(){
-
     $('.rollContainer').each(function(index,item){
+      //hide open roll conainer menus
+      $(item).find('.menu').removeClass('focus');
+
+      //perform the roll
       var coreNode = $.data(item,'coreNode').roll();
     });
   };

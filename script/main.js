@@ -40,7 +40,7 @@ $(document).ready(function(){
     var mainMenu = new MainMenu();
 
     //Initialize the Roll Container
-    var rollContainer = new RollContainer(false);
+    var rollContainer = new SeedRollContainer(false);
 
     //initialize list group
     if(window.location.hash === ''){
