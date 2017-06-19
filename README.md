@@ -24,6 +24,7 @@ This Application uses:
 * [Animate.css](https://daneden.github.io/animate.css/)
 * [seedrandom.js](https://github.com/davidbau/seedrandom)
 * [tablesorter](https://github.com/Mottie/tablesorter)
+* [Game-icons.net](http://game-icons.net/)
 
 All of which are being called via cdn.<br />
 If you want run this application offline you'll need to locally reference those libraries.

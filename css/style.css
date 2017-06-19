@@ -24,6 +24,10 @@ padding:0px;
 margin:0px;
 }
 
+svg{
+  vertical-align: middle;
+}
+
 .hamburger.menu{
   padding:0;
   height:100%;

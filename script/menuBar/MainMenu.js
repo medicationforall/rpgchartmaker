@@ -39,15 +39,12 @@ function MainMenu(){
 		this.node = $('.menuBar');
 		this._setupOpenFileMenuButton();
 		this._setupOpenAddMenuButton();
-		this._setupOpenDeleteMenuButton();
-		this._setupAddRollContainer();
 		this._setupAddSeedRollContainer();
 		this._setupAddListGroup();
 		this._setupAddObjectGoup();
 		this._setupExport();
 		this._setupImport();
 		this._setupLoadTemplate();
-		this._setupDeleteButtons();
 
 		$.getJSON('config.json',$.proxy(function(data){
 			if(data.enableShare){
@@ -93,23 +90,8 @@ function MainMenu(){
 			$('.hamburger.menu .subMenu').removeClass('focus');
 			$('.hamburger.menu .subMenu.load').addClass('focus');
 		});
-
-		$('.openFileMenuButton').click(function(event){
-			event.preventDefault();
-			//console.log('openAddMenuButton');
-
-			//toggle menu display
-			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.file').hasClass('focus')){
-				$('body').removeClass('menuOpen');
-			}else{
-				$('body').addClass('menuOpen');
-			}
-
-			//set menu focus
-			$('.hamburger.menu .subMenu').removeClass('focus');
-			$('.hamburger.menu .subMenu.file').addClass('focus');
-		});
 	}
+
 
 	/**
 	 *
@@ -131,38 +113,6 @@ function MainMenu(){
 				$('.hamburger.menu .subMenu.add').addClass('focus');
 			});
 	}
-
-
-	/**
-	 *
-	 */
-	this._setupOpenDeleteMenuButton=function(){
-			$('.openDeleteMenuButton').click(function(event){
-				event.preventDefault();
-				//toggle menu display
-				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.delete').hasClass('focus')){
-					$('body').removeClass('menuOpen');
-				}else{
-					$('body').addClass('menuOpen');
-				}
-
-				//set menu focus
-				$('.hamburger.menu .subMenu').removeClass('focus');
-				$('.hamburger.menu .subMenu.delete').addClass('focus');
-			});
-	}
-
-
-	/**
-	 *
-	 */
-	this._setupAddRollContainer=function(){
-		//add list group click
-		$('.addRollContainerButton').click(function(event){
-			event.preventDefault();
-			var rollContainer = new RollContainer();
-		});
-	};
 
 
 	/**
@@ -274,30 +224,6 @@ function MainMenu(){
 				this.loadData(data);
 			},menu));
 		},null,this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupDeleteButtons=function(){
-		//Delete All Button
-		$('.deleteAllButton').click(function(event){
-			event.preventDefault();
-			$('.list, .rollContainer').remove();
-		});
-
-		//Delete All Button
-		$('.deleteListsButton').click(function(event){
-			event.preventDefault();
-			$('.list').remove();
-		});
-
-		//Delete All Button
-		$('.deleteRollsButton').click(function(event){
-			event.preventDefault();
-			$('.rollContainer').remove();
-		});
 	};
 
 
@@ -494,12 +420,12 @@ function MainMenu(){
 
 
 	/**
-	 *
+	 * set chart name
 	 */
 	this.loadChartName=function(data){
-		//set chart name
 		this.node.find('input[name=listName]').val(data.name).trigger('input');
 	};
+
 
 	/**
 	 *
@@ -509,7 +435,7 @@ function MainMenu(){
 			for(var i=0, roll;(roll=data.rolls[i]);i++){
 				var rContainer;
 				if(roll.type==="RollContainer"){
-					rContainer = new RollContainer(animate);
+					rContainer = new SeedRollContainer(animate);
 				}else if(roll.type==="SeedRollContainer"){
 					rContainer = new SeedRollContainer(animate);
 				}
@@ -569,9 +495,6 @@ function MainMenu(){
 		} else if($('.hamburger select[name="clearList"]').val()==="rolls"){
 			$('.rollContainer').remove();
 		}
-		//if($('.hamburger input[name="clearList"]')[0].checked){
-		//	$('.list, .rollContainer').remove();
-		//}
 	};
 
 	//main

@@ -32,7 +32,6 @@ $(document).ready(function(){
   //resolve the templates
   $.when(
     SeedRollContainer.prototype._resolveTemplate(SeedRollContainer,'SeedRollContainer'),
-    RollContainer.prototype._resolveTemplate(RollContainer,'RollContainer'),
     ListGroup.prototype._resolveTemplate(ListGroup,'ListGroup'),
     ObjectGroup.prototype._resolveTemplate(ObjectGroup,'ObjectGroup')).done(function(){
 

@@ -1,4 +1,9 @@
 
+clipboard
+http://jsfiddle.net/ARTsinn/Gfw3D/
+https://clipboardjs.com/
+
+
 * File
   * Save
   * Load *file*
