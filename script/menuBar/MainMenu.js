@@ -268,6 +268,7 @@ function MainMenu(){
 
 			$.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
 				if(response.success){
+					this.clearAll();
 					this.loadData(response.data,false);
 				}
 			},this)).fail(function(msg){
@@ -322,12 +323,13 @@ function MainMenu(){
 			//resolve display
 
 			//resolve type
-			if(coreNode instanceof RollContainer){
-				obj.type = "RollContainer";
-			}else if(coreNode instanceof SeedRollContainer){
+			//if(coreNode instanceof RollContainer){
+			//	obj.type = "RollContainer";
+			//}else
+			if(coreNode instanceof SeedRollContainer){
 				obj.seed = coreNode.seed;
 				//alias is not empt
-				obj.type = "SeedRollContainer";
+				obj.type = "RollContainer";
 			}
 			data.rolls.push(obj);
 		});
@@ -435,12 +437,13 @@ function MainMenu(){
 			for(var i=0, roll;(roll=data.rolls[i]);i++){
 				var rContainer;
 				if(roll.type==="RollContainer"){
+					//console.log('loadRolls instantiate SeedRollContainer');
 					rContainer = new SeedRollContainer(animate);
 				}else if(roll.type==="SeedRollContainer"){
 					rContainer = new SeedRollContainer(animate);
 				}
 
-				if(rContainer.node){
+				if(rContainer && rContainer.node){
 					rContainer.fillOut(roll);
 				}else{
 					$(rContainer).on('loaded',function(roll){
