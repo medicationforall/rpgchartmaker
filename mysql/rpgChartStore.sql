@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `rpgChartStore`
 --
-CREATE DATABASE IF NOT EXISTS `rpgChartStore` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `rpgChartStore` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `rpgChartStore`;
 
 -- --------------------------------------------------------
@@ -30,14 +30,14 @@ USE `rpgChartStore`;
 
 CREATE TABLE IF NOT EXISTS `chart` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `hash` varchar(256) NOT NULL,
+  `hash` varchar(40) NOT NULL,
   `data` text NOT NULL,
   `status` enum('enabled','delete','spam') NOT NULL DEFAULT 'enabled',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `hash` (`hash`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
