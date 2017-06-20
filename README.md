@@ -21,7 +21,7 @@ Requires python to be installed.
 3. Open a web browser and in the address bar go to **http://localhost:8000**
 
 
-## PHP Servlet
+### PHP Servlet
 **Optional**: I wrote a servlet to enable storing and sharing charts from a server.
 The servlet is written in PHP uses MYSQL for the database. By default the servlet is turned off. Perform the following to enable:
 
