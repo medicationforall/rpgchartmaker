@@ -44,6 +44,8 @@ function MainMenu(){
 		this._setupExport();
 		this._setupImport();
 		this._setupLoadTemplate();
+		this._setupRollButton();
+		this._setupListNameInput();
 
 		$.getJSON('config.json',$.proxy(function(data){
 			if(data.enableShare){
@@ -434,6 +436,42 @@ function MainMenu(){
 		} else if($('.hamburger select[name="clearList"]').val()==="rolls"){
 			$('.rollContainer').remove();
 		}
+	};
+
+	/**
+	 * chart name on input clear error status
+	 */
+	this._setupListNameInput=function(){
+		this.node.find('input[name=listName]').on('input',function(){
+			$(this).removeClass('error');
+			$(document).prop('title', $(this).val()+' - RPG Chart Maker');
+		});
+	}
+
+
+
+	/**
+	 * roll button click
+	 */
+	this._setupRollButton=function(){
+		this.node.find('.rollButton').click($.proxy(function(event){
+			event.preventDefault();
+			this.rollAll();
+		},this));
+	};
+
+
+	/**
+	 *
+	 */
+	this.rollAll=function(){
+		$('.rollContainer').each(function(index,item){
+			//hide open roll conainer menus
+			$(item).find('.menu').removeClass('focus');
+
+			//perform the roll
+			var coreNode = $.data(item,'coreNode').roll();
+		});
 	};
 
 	//main

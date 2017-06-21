@@ -27,7 +27,6 @@ $.fn.extend({
 $(document).ready(function(){
   $('.javacriptWarning').remove();
   ListGroupContainer.call(this);
-  MenuBar.call(this);
 
   //resolve the templates
   $.when(
