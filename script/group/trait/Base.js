@@ -41,6 +41,7 @@ Base.prototype.setupBase=function(template){
  */
 Base.prototype.setupSortable=function(){};
 
+
 /**
  * Get the html template and store it in a static template variable.
  * @private

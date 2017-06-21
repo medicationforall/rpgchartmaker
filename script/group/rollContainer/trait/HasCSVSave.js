@@ -1,3 +1,20 @@
+/**
+ *   RPG Chart Maker source file HasCSVSave,
+ *   Copyright (C) 2017  James M Adams
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU Lesser General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU Lesser General Public License for more details.
+ *
+ *   You should have received a copy of the GNU Lesser General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 function HasCSVSave(){
 
   /**
@@ -70,7 +87,7 @@ function HasCSVSave(){
 
 
   /**
-   * todo code duplication fix this.
+   * @todo code duplication fix this.
    */
   this.saveAsFile=function(t,f,m) {
     try {
@@ -108,18 +125,4 @@ function HasCSVSave(){
 
     return fileName+'.csv';
   };
-
-  /**
-   *
-   */
-  /*this.checkSeed=function(){
-    var seed = this.node.find('input[name="seed"]');
-
-    if(seed.val()!== ''){
-      return true;
-    }else{
-      seed.addClass('error');
-      return false;
-    }
-  };*/
 }
