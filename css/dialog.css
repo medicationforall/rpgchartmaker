@@ -31,3 +31,13 @@ background:#eee;
 padding:5px;
 font-size:13pt;
 }
+
+.dialog.about .content a{
+  border:none;
+  background:transparent;
+  text-decoration:none;
+}
+
+.dialog.about .content a:hover{
+  text-decoration:underline;
+}

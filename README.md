@@ -17,7 +17,9 @@ http web server. Apache, python, or IIS will work fine.
 Requires python to be installed.
 1. Open a command prompt in the directory where you have rpgchartmaker downloaded.
 2. In the command prompt type the following:
-        python -m http.server
+```
+python -m http.server
+```
 3. Open a web browser and in the address bar go to **http://localhost:8000**
 
 
@@ -27,7 +29,9 @@ The servlet is written in PHP uses MYSQL for the database. By default the servle
 
 1. Modify config.json to change the share settings for the client.
 2. In chartStore.php modify the database connection
-        $mysqli = new mysqli('localhost','[db username]','[db password]','rpgChartStore');
+```
+$mysqli = new mysqli('localhost','[db username]','[db password]','rpgChartStore');
+```
 
 3. Install the MYSQL database by running [mysql/rpgChartStore.sql](mysql/rpgChartStore.sql)
 
