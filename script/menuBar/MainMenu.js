@@ -37,8 +37,7 @@ function MainMenu(){
 	 */
 	this._setup=function(){
 		this.node = $('.menuBar');
-		this._setupOpenFileMenuButton();
-		this._setupOpenAddMenuButton();
+		HasOpenMenuButtons.call(this);
 		this._setupAddSeedRollContainer();
 		this._setupAddListGroup();
 		this._setupAddObjectGoup();
@@ -55,64 +54,6 @@ function MainMenu(){
 			}
 		},this));
 	};
-
-	/**
-	 *
-	 */
-	this._setupOpenFileMenuButton=function(){
-		$('.openSaveMenuButton').click(function(event){
-			event.preventDefault();
-
-			//toggle menu display
-			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.save').hasClass('focus')){
-				$('body').removeClass('menuOpen');
-			}else{
-				$('body').addClass('menuOpen');
-			}
-
-			//set menu focus
-			$('.hamburger.menu .subMenu').removeClass('focus');
-			$('.hamburger.menu .subMenu.save').addClass('focus');
-		});
-
-		$('.openLoadMenuButton').click(function(event){
-			event.preventDefault();
-			//console.log('openAddMenuButton');
-
-			//toggle menu display
-			if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.load').hasClass('focus')){
-				$('body').removeClass('menuOpen');
-			}else{
-				$('body').addClass('menuOpen');
-			}
-
-			//set menu focus
-			$('.hamburger.menu .subMenu').removeClass('focus');
-			$('.hamburger.menu .subMenu.load').addClass('focus');
-		});
-	}
-
-
-	/**
-	 *
-	 */
-	this._setupOpenAddMenuButton=function(){
-			$('.openAddMenuButton').click(function(event){
-				event.preventDefault();
-				//console.log('openAddMenuButton');
-
-				//toggle menu display
-				if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.add').hasClass('focus')){
-					$('body').removeClass('menuOpen');
-				}else{
-					$('body').addClass('menuOpen');
-				}
-
-				//set menu focus
-				$('.hamburger.menu .subMenu').removeClass('focus');
-				$('.hamburger.menu .subMenu.add').addClass('focus');
-			});
-	}
 
 
 	/**
@@ -320,12 +261,7 @@ function MainMenu(){
 				obj.display = coreNode.display;
 			}
 
-			//resolve display
-
 			//resolve type
-			//if(coreNode instanceof RollContainer){
-			//	obj.type = "RollContainer";
-			//}else
 			if(coreNode instanceof SeedRollContainer){
 				obj.seed = coreNode.seed;
 				//alias is not empt

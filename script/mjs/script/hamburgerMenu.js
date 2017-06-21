@@ -32,7 +32,6 @@ $(document).ready(function(){
 		//set menu focus
 		$('.hamburger.menu .subMenu').removeClass('focus');
 		$('.hamburger.menu .subMenu.general').addClass('focus');
-
 	});
 
 	//about click

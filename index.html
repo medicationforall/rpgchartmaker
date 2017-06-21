@@ -58,6 +58,7 @@
 	<!-- end cdn reference -->
 
 
+	<script src="script/menuBar/trait/HasOpenMenuButtons.js"></script>
 	<script src="script/menuBar/MainMenu.js"></script>
 	<script src="script/group/trait/Base.js"></script>
 
@@ -94,7 +95,7 @@
 	<!-- Menu -->
 	<div class="hamburger menu">
 		<!-- Help Menu -->
-		<div class="general subMenu">
+		<div class="help subMenu">
 			<h3>Links</h3>
 			<a href="http://medicationforall.com">Medication For All</a>
 			<a href="https://github.com/medicationforall/rpgchartmaker">Github</a>
@@ -125,12 +126,12 @@
 		</div>
 
 		<!-- Delete Menu -->
-		<!--<div class="delete subMenu">
+		<div class="delete subMenu">
 			<h3>Delete</h3>
 			<a href="" class="deleteAllButton" title="Delete All">All</a>
 			<a href="" class="deleteListsButton" title="Delete Lists">Lists</a>
 			<a href="" class="deleteRollsButton" title="Delete Rolls">Rolls</a>
-		</div>-->
+		</div>
 
 		<!-- Save Menu -->
 		<div class="save subMenu">
@@ -190,13 +191,13 @@
 
 			<div class="inlineBlock">
 			<a href="" class="rollButton">Roll!</a><input name="rollCount" type="number" value="10" min="1" max="999999" />
-			<a href="" class="openAddMenuButton" title="Add Menu">Add</a>
+			<a href="" class="openMenuButton" data-menu="add" title="Add Menu">Add</a>
 			</div>
 
-			<a href="" class="openSaveMenuButton" title="Save Menu">Save</a>
-			<a href="" class="openLoadMenuButton" title="Load Menu">Load</a>
+			<a href="" class="openMenuButton" data-menu="save" title="Save Menu">Save</a>
+			<a href="" class="openMenuButton" data-menu="load" title="Load Menu">Load</a>
 			<a href="" class="shareButton" title="Create url link to this chart">Share</a>
-			<a href="" class="hamburger" title="Help Options">Help</a>
+			<a href="" class="openMenuButton" data-menu="help" title="Help Options">Help</a>
 		</div>
 	</div>
 
