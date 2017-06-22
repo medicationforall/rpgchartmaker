@@ -67,11 +67,16 @@ function SeedRollContainer(animate){
   this.fillOut=function(data){
     if(data.seed){
       this.seed = data.seed;
-      this.node.find('input[name="seed"]').val(this.seed).trigger('input');
+      this.node.find('input[name="seed"]').val(this.seed).trigger('input',{"triggerRoll":false});
     }
 
-    this.alias = data.alias;
-    this.display = data.display;
+    if(data.alias){
+      this.alias = data.alias;
+    }
+
+    if(data.display){
+      this.display = data.display;
+    }
   };
 
 

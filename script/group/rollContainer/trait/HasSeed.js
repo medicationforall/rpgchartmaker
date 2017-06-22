@@ -21,7 +21,7 @@ function HasSeed(){
   /**
    *
    */
-  this.node.find('input[name="seed"]').on('input',$.proxy(function(coreNode,event){
+  this.node.find('input[name="seed"]').on('input',$.proxy(function(coreNode,event,params){
     //console.log($(this).val());
     //remove error state
     $(this).removeClass('error');
@@ -34,6 +34,8 @@ function HasSeed(){
     coreNode.node.find('.title').text(seed);
 
     //change the roll results
-    coreNode.roll();
+    if(params === undefined || params.triggerRoll !== false){
+      coreNode.roll();
+    }
   },null,this));
 }

@@ -48,61 +48,9 @@ function MainMenu(){
 			if(data.enableShare){
 				this.node.find('.shareButton').css('display','inline-block');
 				this.servlet=data.servlet;
-				this._setupShare();
-				this._setupRetrieve();
+				HasShare.call(this);
 			}
 		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupShare=function(){
-		this.node.find('.shareButton').click($.proxy(function(event){
-			event.preventDefault();
-
-			//verify that chart name isn't empty
-
-			var listNameInput =this.node.find('input[name=listName]');
-
-			if(listNameInput.val()!==''){
-				data ={};
-				data.chart = this.gatherData();
-				data.requestType='store';
-
-				$.ajax(this.servlet,{'data':data, dataType:'json', method:'POST'}).done(function(data){
-					if(data.success){
-						window.location.hash = data.id;
-					}
-				}).fail(function(msg){
-					console.warn('failed call to chartStore',msg.responseText)
-				});
-			}else{
-				listNameInput.addClass('error');
-			}
-		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupRetrieve=function(){
-		var hash = window.location.hash;
-
-		if(hash!==''){
-			var data={requestType:"retrieve",id:hash.substring(1)};
-
-			$.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
-				if(response.success){
-					this.clearAll();
-					this.loadData(response.data,false);
-				}
-			},this)).fail(function(msg){
-				console.warn('failed call to chartStore',msg.responseText)
-			});
-		}
 	};
 
 
