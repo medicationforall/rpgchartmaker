@@ -38,14 +38,11 @@ function MainMenu(){
 	this._setup=function(){
 		this.node = $('.menuBar');
 		HasOpenMenuButtons.call(this);
-		this._setupAddSeedRollContainer();
-		this._setupAddListGroup();
-		this._setupAddObjectGoup();
-		this._setupExport();
-		this._setupImport();
-		this._setupLoadTemplate();
-		this._setupRollButton();
-		this._setupListNameInput();
+		HasAddMenu.call(this);
+		HasSaveMenu.call(this);
+		HasLoadMenu.call(this);
+		HassRollButton.call(this);
+    HasListNameInput.call(this);
 
 		$.getJSON('config.json',$.proxy(function(data){
 			if(data.enableShare){
@@ -55,118 +52,6 @@ function MainMenu(){
 				this._setupRetrieve();
 			}
 		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupAddSeedRollContainer=function(){
-		//add list group click
-		$('.addSeedRollContainerButton').click(function(event){
-			event.preventDefault();
-			var rollContainer = new SeedRollContainer();
-		});
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupAddListGroup=function(){
-		//add list group click
-		$('.addListGroupButton').click(function(event){
-			event.preventDefault();
-			var listGroup = new ListGroup();
-
-			//close the open rollcontainer menus
-			$('.rollContainer .menu').removeClass('focus');
-		});
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupAddObjectGoup=function(){
-		//add object group click
-		$('.addObjectGroupButton').click(function(event){
-			event.preventDefault();
-			var objectGroup = new ObjectGroup();
-
-			//close the open rollcontainer menus
-			$('.rollContainer .menu').removeClass('focus');
-		});
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupExport=function(){
-		//export button click
-		$('.exportButton').click($.proxy(function(event){
-			event.preventDefault();
-
-			var listNameInput =this.node.find('input[name=listName]');
-
-			if(listNameInput.val()!==''){
-				data = this.gatherData();
-				this.saveAsFile(JSON.stringify(data),listNameInput.val()+'.json',"text/plain;charset=utf-8");
-			} else{
-				listNameInput.addClass('error');
-			}
-		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupImport=function(){
-		//import file selector change
-		$('.importFile').change($.proxy(function(event){
-			event.preventDefault();
-
-			if (window.File && window.FileReader && window.FileList && window.Blob) {
-				//do your stuff!
-
-				//clear existing lists and rollContainers check
-				this.clearAll();
-
-				var file = $('.importFile')[0].files[0];
-				var reader = new FileReader();
-
-				reader.onload = $.proxy(function(e) {
-					var text = reader.result;
-					var data = jQuery.parseJSON(text);
-
-					this.loadData(data);
-				},this);
-				reader.readAsText(file);
-			} else {
-				alert('The File APIs are not fully supported by your browser.');
-			}
-		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this._setupLoadTemplate=function(){
-		//load template button
-		$('.loadTemplateButton').click($.proxy(function(menu,event){
-			event.preventDefault();
-			var file = $(this).data('file');
-
-			//clear lists check
-			menu.clearAll();
-
-			$.getJSON('template/'+file,$.proxy(function(data){
-				this.loadData(data);
-			},menu));
-		},null,this));
 	};
 
 
@@ -325,8 +210,6 @@ function MainMenu(){
 	}
 
 
-
-
 	/**
 	 *
 	 */
@@ -392,7 +275,6 @@ function MainMenu(){
 		}else{
 			var rollContainer = new SeedRollContainer(animate);
 		}
-
 	};
 
 
@@ -438,41 +320,6 @@ function MainMenu(){
 		}
 	};
 
-	/**
-	 * chart name on input clear error status
-	 */
-	this._setupListNameInput=function(){
-		this.node.find('input[name=listName]').on('input',function(){
-			$(this).removeClass('error');
-			$(document).prop('title', $(this).val()+' - RPG Chart Maker');
-		});
-	}
-
-
-
-	/**
-	 * roll button click
-	 */
-	this._setupRollButton=function(){
-		this.node.find('.rollButton').click($.proxy(function(event){
-			event.preventDefault();
-			this.rollAll();
-		},this));
-	};
-
-
-	/**
-	 *
-	 */
-	this.rollAll=function(){
-		$('.rollContainer').each(function(index,item){
-			//hide open roll conainer menus
-			$(item).find('.menu').removeClass('focus');
-
-			//perform the roll
-			var coreNode = $.data(item,'coreNode').roll();
-		});
-	};
 
 	//main
 	this._constructor();

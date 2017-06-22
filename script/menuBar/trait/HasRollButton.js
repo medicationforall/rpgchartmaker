@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file HasOpenMenuButtons,
+ *   RPG Chart Maker source file HassRollButton,
  *   Copyright (C) 2017  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -15,29 +15,28 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-function HasOpenMenuButtons(){
-  this.node.on('click','.openMenuButton',$.proxy(function(coreNode,event){
-    event.preventDefault();
-
-    //menu to open
-    var menu = $(this).data('menu');
-    coreNode.openMenu(menu);
-  },null,this));
+function HassRollButton(){
 
 
   /**
    *
-   */
-  this.openMenu=function(name){
-    //toggle menu display
-    if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.'+name).hasClass('focus')){
-      $('body').removeClass('menuOpen');
-    }else{
-      $('body').addClass('menuOpen');
-    }
+   */ 
+  this.node.find('.rollButton').click($.proxy(function(event){
+    event.preventDefault();
+    this.rollAll();
+  },this));
+  
+  
+  /**
+	 *
+	 */
+	this.rollAll=function(){
+		$('.rollContainer').each(function(index,item){
+			//hide open roll conainer menus
+			$(item).find('.menu').removeClass('focus');
 
-    //set menu focus
-    $('.hamburger.menu .subMenu').removeClass('focus');
-    $('.hamburger.menu .subMenu.'+name).addClass('focus');
-  };
+			//perform the roll
+			var coreNode = $.data(item,'coreNode').roll();
+		});
+	};
 }

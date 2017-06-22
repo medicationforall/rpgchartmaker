@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file HasOpenMenuButtons,
+ *   RPG Chart Maker source file HasSaveMenu,
  *   Copyright (C) 2017  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -15,29 +15,22 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-function HasOpenMenuButtons(){
-  this.node.on('click','.openMenuButton',$.proxy(function(coreNode,event){
-    event.preventDefault();
-
-    //menu to open
-    var menu = $(this).data('menu');
-    coreNode.openMenu(menu);
-  },null,this));
+function HasSaveMenu(){
+  this.saveMenu = $('.save.subMenu');
 
 
   /**
-   *
+   * Export button click.
    */
-  this.openMenu=function(name){
-    //toggle menu display
-    if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.'+name).hasClass('focus')){
-      $('body').removeClass('menuOpen');
-    }else{
-      $('body').addClass('menuOpen');
-    }
+  this.saveMenu.find('.exportButton').click($.proxy(function(event){
+    event.preventDefault();
+    var listNameInput =this.node.find('input[name=listName]');
 
-    //set menu focus
-    $('.hamburger.menu .subMenu').removeClass('focus');
-    $('.hamburger.menu .subMenu.'+name).addClass('focus');
-  };
+    if(listNameInput.val()!==''){
+      data = this.gatherData();
+      this.saveAsFile(JSON.stringify(data),listNameInput.val()+'.json',"text/plain;charset=utf-8");
+    } else{
+      listNameInput.addClass('error');
+    }
+  },this));
 }
