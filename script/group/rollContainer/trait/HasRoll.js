@@ -116,7 +116,7 @@ function HasRoll(){
 
       if(this.resolveDisplay('No.')){
         //add roll Index
-        this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'.'+'</td>');
+        this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'</td>');
       }
 
       lists.each($.proxy(this.getRollValue,this));
@@ -129,7 +129,6 @@ function HasRoll(){
    */
   this.getRollValue=function(index, item){
     //resolve list name
-    //var input = $(item).find('input[name="listGroupName"]');
     var label = $(item).data('name');
 
     if(this.resolveDisplay(label)){
@@ -196,7 +195,7 @@ function HasRoll(){
         }
       }else{
         //place list item contents into an array
-        arr = $(list).find('ol li').map(function(i, el) {
+        arr = $(list).find('ol li').not('.edit').map(function(i, el) {
           return $(el).html();
         }).get();
       }
@@ -207,6 +206,10 @@ function HasRoll(){
     return this.rollArrayLookup[label];
   };
 
+
+  /**
+   *
+   */
   this.clearRollArrayLookup=function(){
     this.rollArrayLookup={};
   };

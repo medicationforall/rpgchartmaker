@@ -17,7 +17,7 @@
  */
 function HasObjectGroupAddEntry(){
 
-  
+
   /**
    * add entry click
    */

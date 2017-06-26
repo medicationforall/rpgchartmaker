@@ -1,5 +1,6 @@
 .objectGroup li .object{
-	display:block;
+	display:inline-block;
+	vertical-align:top;
 	cursor:pointer;
 }
 

@@ -1,7 +1,12 @@
 .listGroup li span{
-	display:block;
+	display:inline-block;
 	cursor:pointer;
 	font-size:14pt;
+}
+
+.listGroup li .inlineEdit{
+	display:inline-block;
+	vertical-align:top:
 }
 
 .listGroup li span:hover{

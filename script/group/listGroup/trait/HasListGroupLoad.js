@@ -17,7 +17,7 @@
  */
 function HasListGroupLoad(){
 
-  
+
   /**
    * Load list name, and ol list with data.
    * @param list {JSON}
@@ -40,7 +40,7 @@ function HasListGroupLoad(){
 
     //fill out List
     for(var j=0,item;(item=list.list[j]);j++){
-      this.node.find('ol').append('<li><span class="nameText">'+item+'</span></li>');
+      this.AddToList(item);
     }
   };
 }

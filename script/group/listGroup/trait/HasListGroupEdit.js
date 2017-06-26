@@ -30,6 +30,7 @@ function HasListGroupEdit(){
     '</div>'+
     '</div>';
     $(this).css('display','none');
+    $(this).parent().addClass('edit');
     $(this).after(template);
   });
 
@@ -43,7 +44,8 @@ function HasListGroupEdit(){
     var nameText = $(inlineEdit).prev('.nameText');
     var noteEdit = inlineEdit.find('.noteEdit');
 
-    nameText.text(noteEdit.val()).css('display','block');
+    nameText.text(noteEdit.val()).css('display','');
+    $(this).closest('li').removeClass('edit');
     inlineEdit.remove();
   });
 

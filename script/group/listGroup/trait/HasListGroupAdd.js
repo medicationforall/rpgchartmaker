@@ -26,13 +26,24 @@ function HasListGroupAdd(){
     var nameInput = this.node.find('.nameInput');
 
     if(nameInput.val()!==''){
-    this.node.find('ol').append('<li><span class="nameText">'+nameInput.val().trim()+'</span></li>');
+    this.AddToList(nameInput.val().trim());
 
     //reset note input
     nameInput.val('');
     nameInput.focus();
     }
   },this));
+
+
+/**
+ *
+ */
+  this.AddToList=function(value){
+    var template = '<li>'+
+    '<span class="nameText">'+value+'</span></li>';
+
+    this.node.find('ol').append(template);
+  };
 
 
   /**
