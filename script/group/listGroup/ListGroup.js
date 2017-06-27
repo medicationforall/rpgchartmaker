@@ -26,7 +26,7 @@ function ListGroup(animate){
 	HasListGroupLoad.call(this);
 
 	this.orderList=undefined;
-	
+
 
 	/**
 	 * constructor
@@ -48,6 +48,7 @@ function ListGroup(animate){
 
 		HasListGroupAdd.call(this);
 		HasListGroupEdit.call(this);
+		HasListMenu.call(this);
 
 		$(this).trigger('loaded');
 	};

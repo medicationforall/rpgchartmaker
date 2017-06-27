@@ -56,6 +56,8 @@ function ObjectGroup(animate){
 		HasObjectGroupEditInput.call(this);
 		HasObjectGroupEditEntry.call(this);
 
+		HasListMenu.call(this);
+
 		$(this).trigger('loaded');
 	};
 

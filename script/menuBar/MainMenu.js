@@ -114,45 +114,8 @@ function MainMenu(){
 		//gather lists
 		data.lists=[];
 		$('.listGroupContainer .list').each(function(index, item){
-			var obj = {};
-
-			//get list name
-			obj.name= $(item).find('input[name=listGroupName]').val();
-
-			//get get roll checkbox
-			obj.roll= $(item).find('input[name="roll"]').prop('checked');
-
-			//initialize list entries
-			obj.list=[];
-
-			if($(item).hasClass('listGroup')){
-				//fill out type
-				obj.type='ListGroup';
-
-				//fill out list
-				$(this).find('ol li span.nameText').each(function(index, item){
-					obj.list.push($(item).text());
-				});
-			}else if($(item).hasClass('objectGroup')){
-				//fill out type
-				obj.type='ObjectGroup';
-
-				//fill out order
-				obj.order=[];
-
-				$(this).find('.objectForm .objectInput').each(function(index, item){
-					var data ={};
-					data.label = $(item).data('label');
-					data.type = $(item).data('type');
-					obj.order.push(data);
-				});
-
-				//fill out list
-				$(this).find('ol li .object').each(function(index, item){
-					obj.list.push($(item).data('json'));
-				});
-			}
-
+			var coreNode = $(item).data('coreNode');
+			var obj = coreNode.gatherData();
 			data.lists.push(obj);
 		});
 	}
@@ -232,25 +195,33 @@ function MainMenu(){
 	this.loadLists=function(data,animate){
 		//go through each list in the data object
 		for(var i=0,list;(list=data.lists[i]);i++){
-			//placeholder
-			var listGroup;
+			this.loadList(list,animate);
+		}
+	}
 
-			if(list && list.type == 'ListGroup'){
-				listGroup = new ListGroup(animate);
-			}else if(list && list.type == 'ObjectGroup'){
-				listGroup = new ObjectGroup(animate);
-			}else if(list){
-				//for older lists import
-				listGroup = new ListGroup(animate);
-			}
 
-			if(listGroup.node){
-				listGroup.fillOutList(list);
-			}else{
-				$(listGroup).on('loaded',function(list){
-					this.fillOutList(list);
-				}.bind(listGroup,list));
-			}
+	/**
+	 *
+	 */
+	this.loadList=function(list,animate){
+		//placeholder
+		var listGroup;
+
+		if(list && list.type == 'ListGroup'){
+			listGroup = new ListGroup(animate);
+		}else if(list && list.type == 'ObjectGroup'){
+			listGroup = new ObjectGroup(animate);
+		}else if(list){
+			//for older lists import
+			listGroup = new ListGroup(animate);
+		}
+
+		if(listGroup.node){
+			listGroup.fillOutList(list);
+		}else{
+			$(listGroup).on('loaded',function(list){
+				this.fillOutList(list);
+			}.bind(listGroup,list));
 		}
 	}
 

@@ -52,18 +52,18 @@ vertical-align:top;
 border-right:none;
 }
 
-.rollContainer .menu{
+.rollContainer .menu, .list .menu{
 	background: #5151A0;
 	padding:5px;
 	color:white;
 	display:none;
 }
 
-.rollContainer .menu .menuContent{
+.rollContainer .menu .menuContent, .list .menu .menuContent{
 	padding:5px;
 }
 
-.rollContainer .menu.focus{
+.rollContainer .menu.focus, .list .menu.focus{
 	display:block;
 }
 

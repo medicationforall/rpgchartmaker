@@ -62,4 +62,17 @@ function HasLoadMenu(){
     },menu));
   },null,this));
 
+
+  /**
+   *
+   */
+  this.loadMenu.find('.loadRawButton').click($.proxy(function(event){
+      event.preventDefault();
+      var data = this.loadMenu.find('.loadRawTextArea').val();
+      data = JSON.parse(data);
+
+      if(data.type && (data.type == 'ListGroup' || data.type == 'ObjectGroup')){
+        this.loadList(data);
+      }
+  },this));
 }

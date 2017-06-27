@@ -128,3 +128,50 @@ Base.prototype._intToRGB=function(i){
 	var c = (i & 0x00FFFFFF).toString(16).toUpperCase();
 	return "000000".substring(0, 6 - c.length) + c;
 };
+
+
+/**
+ *
+ */
+Base.prototype.gatherData=function(){
+	var obj = {};
+
+	//get list name
+	obj.name= this.node.find('input[name=listGroupName]').val();
+
+	//get get roll checkbox
+	obj.roll= this.node.find('input[name="roll"]').prop('checked');
+
+	//initialize list entries
+	obj.list=[];
+
+	if(this.node.hasClass('listGroup')){
+		//fill out type
+		obj.type='ListGroup';
+
+		//fill out list
+		this.node.find('ol li span.nameText').each(function(index, item){
+			obj.list.push($(item).text());
+		});
+	}else if(this.node.hasClass('objectGroup')){
+		//fill out type
+		obj.type='ObjectGroup';
+
+		//fill out order
+		obj.order=[];
+
+		this.node.find('.objectForm .objectInput').each(function(index, item){
+			var data ={};
+			data.label = $(item).data('label');
+			data.type = $(item).data('type');
+			obj.order.push(data);
+		});
+
+		//fill out list
+		this.node.find('ol li .object').each(function(index, item){
+			obj.list.push($(item).data('json'));
+		});
+	}
+
+	return obj;
+};
