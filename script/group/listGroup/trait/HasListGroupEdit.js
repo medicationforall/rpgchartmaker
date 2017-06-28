@@ -23,10 +23,10 @@ function HasListGroupEdit(){
    */
   this.node.on('click','.nameText',function(event){
     var template = '<div class="inlineEdit">'+
-    '<input class="noteEdit" type="text" value="'+$(this).text()+'" />'+
+    '<input class="itemEdit" type="text" value="'+$(this).text()+'" />'+
     '<div class="editControls">'+
-    '<a href="" class="noteEditButton" title="Apply">+</a>'+
-    '<a href="" class="noteDeleteButton" title="Delete">-</a>'+
+    '<a href="" class="applyEditButton" title="Apply">+</a>'+
+    '<a href="" class="deleteEditButton" title="Delete">-</a>'+
     '</div>'+
     '</div>';
     $(this).css('display','none');
@@ -38,13 +38,13 @@ function HasListGroupEdit(){
   /**
    * note apply click
    */
-  this.node.on('click','.noteEditButton',function(event){
+  this.node.on('click','.applyEditButton',function(event){
     event.preventDefault();
     var inlineEdit = $(this).closest('.inlineEdit');
     var nameText = $(inlineEdit).prev('.nameText');
-    var noteEdit = inlineEdit.find('.noteEdit');
+    var itemEdit = inlineEdit.find('.itemEdit');
 
-    nameText.text(noteEdit.val()).css('display','');
+    nameText.text(itemEdit.val()).css('display','');
     $(this).closest('li').removeClass('edit');
     inlineEdit.remove();
   });
@@ -53,10 +53,10 @@ function HasListGroupEdit(){
   /**
    * name input enter key press
    */
-  this.node.on('keypress','.noteEdit',function(event){
+  this.node.on('keypress','.itemEdit',function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13') {
-      $(this).closest('.inlineEdit').find('.noteEditButton').trigger('click');
+      $(this).closest('.inlineEdit').find('.applyEditButton').trigger('click');
     }
   });
 
@@ -64,7 +64,7 @@ function HasListGroupEdit(){
   /**
    * note delete click
    */
-  this.node.on('click','.noteDeleteButton',function(event){
+  this.node.on('click','.deleteEditButton',function(event){
     event.preventDefault();
 
     var inlineEdit = $(this).closest('.inlineEdit');

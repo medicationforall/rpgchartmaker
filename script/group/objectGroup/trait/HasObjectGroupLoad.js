@@ -40,7 +40,8 @@ function HasObjectGroupLoad(){
 			//make sure the value is not empty
 			if(value !== undefined && value!==''){
 				counter++;
-				template+='<div><span class="title">'+label+':</span> <span class="value">'+value+'</span> '+colorBlock+' </div>';
+				template+='<div><span class="title" data-label="'+label+'">'+label+':</span>'+
+				' <span class="value" data-type="'+type+'">'+value+'</span> '+colorBlock+' </div>';
 			}
 		}
 
@@ -80,7 +81,7 @@ function HasObjectGroupLoad(){
 
 			//fill out list
 			if(list.list && list.list.length>0){
-				for(var j=0,entry;entry=list.list[j];j++){
+				for(var j=0,entry;(entry=list.list[j]);j++){
 					this._addJSONEntry(list.order,entry);
 				}
 			}

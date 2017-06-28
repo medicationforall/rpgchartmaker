@@ -1,6 +1,5 @@
 .objectGroup li .object{
-	display:inline-block;
-	vertical-align:top;
+	display:block;
 	cursor:pointer;
 }
 
@@ -11,8 +10,15 @@
 
 .objectGroup li .object:hover{
 	background:#eee;
-
 }
+
+
+.objectGroup li .objectEdit{
+	display:inline-block;
+	vertical-align:top;
+	text-align:right;
+}
+
 
 
 .objectGroup .buttons{

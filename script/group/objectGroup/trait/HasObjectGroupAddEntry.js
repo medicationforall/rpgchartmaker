@@ -78,7 +78,7 @@ function HasObjectGroupAddEntry(){
 				input.val('');
 
 			}else if(type === "textarea"){
-				input = $(item).find('textarea')
+				input = $(item).find('textarea');
 				value = input.val();
 
 				//clear the input
@@ -94,8 +94,9 @@ function HasObjectGroupAddEntry(){
 			if(value!==''){
 				data[label]=value;
 				counter++;
-				template+='<div><span class="title">'+label+':</span> <span class="value">'+value+'</span> '+colorBlock+' ';
-				template+='</div>';
+				template+='<div><span class="title" data-label="'+label+'">'+label+':</span>'+
+        ' <span class="value" data-type="'+type+'">'+value+'</span> '+colorBlock+' '+
+				'</div>';
 			}
 		},this));
 

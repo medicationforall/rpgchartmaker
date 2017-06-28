@@ -1,0 +1,39 @@
+﻿{
+	"name": "items",
+	"rolls": [{
+			"seed": "",
+			"type": "RollContainer"
+		}
+	],
+	"lists": [{
+			"name": "item",
+			"roll": true,
+			"list": [{
+					"name": "bell",
+					"type": "item",
+					"value": "10"
+				}, {
+					"name": "key",
+					"type": "item",
+					"value": "20"
+				}, {
+					"name": "dagger",
+					"type": "weapon",
+					"value": "15"
+				}
+			],
+			"type": "ObjectGroup",
+			"order": [{
+					"label": "name",
+					"type": "text"
+				}, {
+					"label": "type",
+					"type": "text"
+				}, {
+					"label": "value",
+					"type": "number"
+				}
+			]
+		}
+	]
+}
