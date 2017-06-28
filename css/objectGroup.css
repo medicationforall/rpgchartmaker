@@ -19,6 +19,10 @@
 	text-align:right;
 }
 
+.objectGroup li .objectEdit textarea{
+	vertical-align:top;
+}
+
 
 
 .objectGroup .buttons{
