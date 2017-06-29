@@ -51,8 +51,9 @@ vertical-align:top;
 width:167px;
 }
 
-.objectGroup .colorBlock{
+.objectGroup .colorBlock, .rollContainer .colorBlock{
 	width:15px;
 	height:15px;
 	border:1px solid #c0c0c0;
+	display:inline-block;
 }
