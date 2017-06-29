@@ -20,7 +20,6 @@
  * An oject list where each node was created via a user defined template form.
  * The template form allows adding, removing, editing, and re-ordering of form inputs.
  * The List supports adding, and re-ordering of list entries.
- * @todo add support for editing and removing list entries.
  * @see Base.js
  * @see html/objectGroup.html
  */

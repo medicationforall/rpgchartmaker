@@ -26,7 +26,6 @@ function Core(){
 //LIFECYCLES
 /**
  * init prior to load
- *@todo May not be needed
  */
 Core.prototype.init=function(){
 	//console.log('call load for '+ this.constructor.name);

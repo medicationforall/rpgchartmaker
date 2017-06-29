@@ -36,7 +36,7 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   * @todo take base form into consideration.
+   *
    */
   this.createForm=function(dataNode,editNode){
     //console.log('createForm',dataNode,editNode);
@@ -96,7 +96,7 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   *@todo correctly gather type
+   *
    */
   this.applyUpdate=function(object, index, item){
     //console.log('applyUpdate',object, index, item);
