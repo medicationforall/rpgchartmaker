@@ -7,9 +7,9 @@
 }
 
 .rollContainer .content{
-	min-width:266px;
+	min-width:285px;
 	height:213px;
-	min-height: 213px;
+	min-height: 214px;
 	resize: both;
 	overflow: auto;
 }
@@ -57,6 +57,10 @@ border-right:none;
 	padding:5px;
 	color:white;
 	display:none;
+}
+
+.rollContainer .menu a, .list .menu a{
+	color:#fff;
 }
 
 .rollContainer .menu .menuContent, .list .menu .menuContent{

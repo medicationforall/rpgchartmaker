@@ -24,8 +24,19 @@ function HasObjectGroupEditEntry(){
     var template = '<div class="inlineEdit">'+
     '<div class="objectEdit"></div>'+
     '<div class="editControls">'+
-    '<a href="" class="applyEditButton" title="Apply">+</a>'+
-    '<a href="" class="deleteEditButton" title="Delete">-</a>'+
+      '<a href="" class="applyEditButton" title="Apply">'+
+        '<svg fill="#000000" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">'+
+          '<path d="M0 0h24v24H0z" fill="none"/>'+
+          '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>'+
+        '</svg>'+
+      '</a>'+
+
+      '<a href="" class="deleteEditButton" title="Remove">'+
+        '<svg fill="#000000" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">'+
+          '<path d="M0 0h24v24H0z" fill="none"/>'+
+          '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/>'+
+        '</svg>'+
+      '</a>'+
     '</div>'+
     '</div>';
     $(this).css('display','none');

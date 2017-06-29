@@ -31,17 +31,17 @@ function HasOpenMenuButtons(){
   this.openMenu=function(name){
     //toggle menu display
     if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.'+name).hasClass('focus')){
-      $('.hamburger.menu').animateCss('slideOutRight');
+      //$('.hamburger.menu').animateCss('slideOutRight');
 
       //when animation is finished set the class state.
-      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      $('.hamburger.menu').one(animationEnd,function(){
+      //var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      //$('.hamburger.menu').one(animationEnd,function(){
         $('body').removeClass('menuOpen');
-      });
+      //});
 
     }else if($('body').hasClass('menuOpen') ===false){
       $('body').addClass('menuOpen');
-      $('.hamburger.menu').animateCss('slideInRight');
+      $('.hamburger.menu .subMenu').animateCss('slideInRight');
     }
 
     //set menu focus
