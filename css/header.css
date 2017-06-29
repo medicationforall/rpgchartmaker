@@ -17,12 +17,12 @@ margin-top:10px;
 }
 
 .header a, .list a, .rollContainer a{
-    /*background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%);*/
+    background: linear-gradient(to bottom, rgba(238,238,238,0.8) 0%,rgba(204,204,204,0.4) 100%);
     padding: 3px;
     /*border-radius: 2px;*/
     display: inline-block;
     margin: 0px 5px;
-    /*border: 1px solid #AB9D9D;*/
+    border: 1px solid #AB9D9D;
     color: #000;
 	text-decoration:none;
 }
