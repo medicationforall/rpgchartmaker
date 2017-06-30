@@ -33,6 +33,7 @@ Base.prototype.setupBase=function(template){
 	this._setupHandleColor();
 	this._setupAlphabetize();
 	this._setupRollCheckBox();
+	this._setupOverride();
 };
 
 
@@ -102,6 +103,24 @@ Base.prototype._setupRollCheckBox=function(){
 	this.node.find('input[name="roll"]').on('change',$.proxy(function(node,event){
 	$(node).data('roll',this.checked);
 	},null,this.node));
+};
+
+/**
+ *
+ */
+Base.prototype._setupOverride=function(){
+	//get override
+	var menuNode = $('.menuBar').data('coreNode');
+	var overrides = menuNode.overrides;
+
+	if(overrides[this.overrideSelector]!== undefined){
+		//loop over override keys
+		for(var property in overrides[this.overrideSelector]){
+			if(overrides[this.overrideSelector].hasOwnProperty(property)){
+				this.node.css(property,overrides[this.overrideSelector][property]);
+			}
+		}
+	}
 };
 
 

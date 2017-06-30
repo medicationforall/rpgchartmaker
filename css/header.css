@@ -1,6 +1,6 @@
 /*Header*/
 .header{
-
+	transition:background-color 0.5s ease;
 }
 
 .header .hamburger{
@@ -14,6 +14,7 @@ margin-top:10px;
 	color:#fff;
 	background:#444;
 	text-align:center;
+	transition:background-color 0.5s ease, color 0.5s ease;
 }
 
 .header a, .list a, .rollContainer a{

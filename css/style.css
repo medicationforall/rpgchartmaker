@@ -24,6 +24,7 @@ html,body{
 body{
 padding:0px;
 margin:0px;
+transition:background-color 0.5s ease;
 }
 
 svg{
@@ -151,7 +152,7 @@ text-decoration:underline;
 /*Highlight Animation*/
 @keyframes highlight {
   from, 50%, to {
-    background-color:#fff;
+    background-color:transparent;
   }
 
   25% {

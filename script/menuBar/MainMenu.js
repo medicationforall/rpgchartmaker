@@ -43,6 +43,7 @@ function MainMenu(){
 		HasLoadMenu.call(this);
 		HassRollButton.call(this);
     HasListNameInput.call(this);
+		HasSettingsMenu.call(this);
 
 		$.getJSON('config.json',$.proxy(function(data){
 			if(data.enableShare){
@@ -51,6 +52,9 @@ function MainMenu(){
 				HasShare.call(this);
 			}
 		},this));
+
+		//set coreNode
+		$.data(this.node[0],'coreNode',this);
 	};
 
 
@@ -66,6 +70,7 @@ function MainMenu(){
 		if(saveType==='all'){
 			this.gatherRolls(data);
 			this.gatherLists(data);
+			this.gatherOverrides(data);
 		}else if(saveType==='lists'){
 			this.gatherLists(data);
 		} else if(saveType==='rolls'){
@@ -104,7 +109,7 @@ function MainMenu(){
 			}
 			data.rolls.push(obj);
 		});
-	}
+	};
 
 
 	/**
@@ -118,7 +123,20 @@ function MainMenu(){
 			var obj = coreNode.gatherData();
 			data.lists.push(obj);
 		});
-	}
+	};
+
+
+	/**
+	 *
+	 */
+	this.gatherOverrides=function(data){
+		var menuNode = $('.menuBar').data('coreNode');
+		var overrides = menuNode.overrides;
+
+		if($.isEmptyObject(overrides)===false){
+			data.cssOverrides = overrides;
+		}
+	};
 
 
 	/**
@@ -130,6 +148,7 @@ function MainMenu(){
 		var loadType = $('.hamburger select[name="loadList"]').val();
 
 		if(loadType==='all'){
+			this.loadOverrides(data);
 			this.loadRolls(data,animate);
 			this.loadLists(data,animate);
 		} else if(loadType==='lists'){
@@ -181,10 +200,14 @@ function MainMenu(){
 	 */
 	this.loadLists=function(data,animate){
 		//go through each list in the data object
-		for(var i=0,list;(list=data.lists[i]);i++){
-			this.loadList(list,animate);
+		if(data.lists){
+			for(var i=0,list;(list=data.lists[i]);i++){
+				this.loadList(list,animate);
+			}
+		}else{
+			new ListGroup(animate);
 		}
-	}
+	};
 
 
 	/**
@@ -210,7 +233,18 @@ function MainMenu(){
 				this.fillOutList(list);
 			}.bind(listGroup,list));
 		}
-	}
+	};
+
+
+	/**
+	 *
+	 */
+	this.loadOverrides=function(data){
+		if(data.cssOverrides && data.cssOverrides !== null && typeof data.cssOverrides === 'object' ){
+			var menuNode = $('.menuBar').data('coreNode');
+			menuNode.setOverrides(data.cssOverrides);
+		}
+	};
 
 
 	/**

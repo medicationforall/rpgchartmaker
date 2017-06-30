@@ -22,6 +22,7 @@ function SeedRollContainer(animate){
 
   this.seed='';
   this.handleKeyName='seed';
+  this.overrideSelector='.rollContainer';
 
 
   /**
@@ -48,6 +49,7 @@ function SeedRollContainer(animate){
     HasSeed.call(this);
     HasCSVSave.call(this);
     HasRollMenu.call(this);
+    this._setupOverride();
 
     $(this).trigger('loaded');
   };
