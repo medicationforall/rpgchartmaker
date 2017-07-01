@@ -1,13 +1,4 @@
 
-.rollContainer .content{
-	min-width:285px;
-	height:213px;
-	min-height: 214px;
-	resize: both;
-	overflow: auto;
-}
-
-
 .rollContainer table{
     border-spacing: 0;
     border-collapse: collapse;
@@ -32,25 +23,6 @@ vertical-align:top;
 
 .rollContainer table td:last-child{
 border-right:none;
-}
-
-.rollContainer .menu, .list .menu{
-	background: #5151A0;
-	padding:5px;
-	color:white;
-	display:none;
-}
-
-.rollContainer .menu a, .list .menu a{
-	color:#000;
-}
-
-.rollContainer .menu .menuContent, .list .menu .menuContent{
-	padding:5px;
-}
-
-.rollContainer .menu.focus, .list .menu.focus{
-	display:block;
 }
 
 .rollContainer .object{

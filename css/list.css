@@ -1,20 +1,10 @@
-.list{
-min-width:275px;
-min-height: 200px;
-}
-
-
-.list .content{
-padding:5px;
-display: inline-block;
-width:275px;
-height: 200px;
-resize: both;
-overflow:auto;
+.list .listForm{
+	padding:3px;
 }
 
 .list ol{
 	min-height:40px;
 	margin-bottom:0px;
+	padding-bottom:0px;
 	padding-left:30px;
 }

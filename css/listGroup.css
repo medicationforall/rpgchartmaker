@@ -1,5 +1,5 @@
 .listGroup li span{
-	display:inline-block;
+	display:block;
 	cursor:pointer;
 	font-size:14pt;
 }

@@ -26,3 +26,30 @@
 	font-family: arial;
 	color:#fff;
 }
+
+.card .content{
+	min-width:285px;
+	height:213px;
+	min-height: 214px;
+	resize: both;
+	overflow: auto;
+}
+
+.card .menu{
+	background: #5151A0;
+	padding:5px;
+	color:white;
+	display:none;
+}
+
+.card .menu a{
+	color:#000;
+}
+
+.card .menu .menuContent{
+	padding:5px;
+}
+
+.card .menu.focus{
+	display:block;
+}
