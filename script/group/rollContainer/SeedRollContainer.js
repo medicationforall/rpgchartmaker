@@ -22,7 +22,7 @@ function SeedRollContainer(animate){
 
   this.seed='';
   this.handleKeyName='seed';
-  this.overrideSelector='.rollContainer';
+  this.overrideSelector=['.rollContainer','.menu'];
 
 
   /**

@@ -30,7 +30,7 @@ function ObjectGroup(animate){
 
 	this.orderList=undefined;
 	this.form=undefined;
-	this.overrideSelector='.list';
+	this.overrideSelector=['.list','.menu'];
 
 	/**
 	 * constructor

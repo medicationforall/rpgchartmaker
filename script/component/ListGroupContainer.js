@@ -31,7 +31,7 @@ function ListGroupContainer(){
 
 
 	/**
-	 *
+	 * Open Menu on lists and rollconatiners.
 	 */
 	$('.listGroupContainer').on('click','.menuButton',function(event){
 		event.preventDefault();

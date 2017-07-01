@@ -26,7 +26,7 @@ function ListGroup(animate){
 	HasListGroupLoad.call(this);
 
 	this.orderList=undefined;
-	this.overrideSelector='.list';
+	this.overrideSelector=['.list','.menu'];
 
 
 	/**

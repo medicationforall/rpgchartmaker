@@ -91,7 +91,7 @@ Base.prototype._setupHandleColor=function(){
 			var hash = hashCode($(this).val());
 			color = '#'+intToRGB(hash);
 		}
-		node.find('.handle').css('background-color',color)
+		node.find('.handle').css('background-color',color);
 	},null,this._hashCode,this._intToRGB,this.node));
 };
 
@@ -113,11 +113,17 @@ Base.prototype._setupOverride=function(){
 	var menuNode = $('.menuBar').data('coreNode');
 	var overrides = menuNode.overrides;
 
-	if(overrides[this.overrideSelector]!== undefined){
-		//loop over override keys
-		for(var property in overrides[this.overrideSelector]){
-			if(overrides[this.overrideSelector].hasOwnProperty(property)){
-				this.node.css(property,overrides[this.overrideSelector][property]);
+	for(var i=0,selector;(selector=this.overrideSelector[i]);i++){
+		if(overrides[selector]!== undefined){
+			//loop over override keys
+			for(var property in overrides[selector]){
+				if(overrides[selector].hasOwnProperty(property)){
+					if(this.node.hasClass(selector)){
+						this.node.css(property,overrides[selector][property]);
+					}else{
+						this.node.find(selector).css(property,overrides[selector][property]);
+					}
+				}
 			}
 		}
 	}
