@@ -21,6 +21,7 @@ function Base(animate){
 	this.node = undefined;
 	this.handleKeyName='listGroupName';
 	this.animate=true;
+	this.overrideSelector=['.card','.menu'];
 }
 
 
@@ -118,7 +119,7 @@ Base.prototype._setupOverride=function(){
 			//loop over override keys
 			for(var property in overrides[selector]){
 				if(overrides[selector].hasOwnProperty(property)){
-					if(this.node.hasClass(selector)){
+					if(this.node.hasClass(selector.replace(/\./,' ').trim())){
 						this.node.css(property,overrides[selector][property]);
 					}else{
 						this.node.find(selector).css(property,overrides[selector][property]);
