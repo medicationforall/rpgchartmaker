@@ -20,11 +20,14 @@ padding-left:10px;
 background:#5151A0;
 display:none;
 color:#fff;
+}
+
+.menu{
 transition:background-color 0.5s ease, color 0.5s ease;
 }
 
 .hamburger.menu a{
-color:#fff;
+color:inherit;
 display:block;
 margin-bottom:8px;
 font-family:arial;
