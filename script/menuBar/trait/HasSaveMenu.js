@@ -17,6 +17,36 @@
  */
 function HasSaveMenu(){
   this.saveMenu = $('.save.subMenu');
+  this.saveOptions = {};
+
+  this.saveMenu.on('change','.saveOption',$.proxy(function(coreNode, event){
+    var value = $(this)[0].checked;
+    var type = $(this).data('type');
+
+    coreNode.setSaveOption(type,value);
+
+  },null,this));
+
+
+  /**
+   *
+   */
+  this.setSaveOption=function(key,value){
+    console.log('set save option',key,value);
+    this.saveOptions[key] = value;
+  };
+
+
+  /**
+   *
+   */
+  this.getSaveOption=function(key){
+    if(this.saveOptions[key]!==undefined){
+      return this.saveOptions[key];
+    }else{
+      return true;
+    }
+  };
 
 
   /**
@@ -33,7 +63,7 @@ function HasSaveMenu(){
       listNameInput.addClass('error');
     }
   },this));
-  
+
 
   /**
    *

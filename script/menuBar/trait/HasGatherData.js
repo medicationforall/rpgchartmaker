@@ -25,16 +25,16 @@ function HasGatherData(){
     var data = {};
     data.name=this.node.find('input[name=listName]').val();
 
-    var saveType = $('.hamburger select[name="saveList"]').val();
-
-    if(saveType==='all'){
-      this.gatherRolls(data);
-      this.gatherLists(data);
+    if(this.getSaveOption('overrides')){
       this.gatherOverrides(data);
-    }else if(saveType==='lists'){
-      this.gatherLists(data);
-    } else if(saveType==='rolls'){
+    }
+
+    if(this.getSaveOption('rolls')){
       this.gatherRolls(data);
+    }
+
+    if(this.getSaveOption('lists')){
+      this.gatherLists(data);
     }
     return data;
   };
