@@ -1,0 +1,28 @@
+.card{
+  border:1px solid rgba(192,192,192,0.5);
+  display:inline-block;
+  margin:5px;
+  vertical-align:top;
+  background:#fff;
+  transition:background-color 0.5s ease, color 0.5s ease;
+  animation-duration:0.5s;
+}
+
+.card a{
+  text-decoration:none;
+  padding: 0px 2px;
+  margin: 0px 2px;
+}
+
+.card .handle{
+	cursor:move;
+	min-height:21px;
+}
+
+.card .handle .title {
+	transition:color 0.5s ease;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 17px;
+	font-family: arial;
+	color:#fff;
+}

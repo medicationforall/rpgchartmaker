@@ -1,11 +1,3 @@
-.rollContainer {
-	display:inline-block;
-	vertical-align: top;
-	border:1px solid #c0c0c0;
-	background:#fff;
-	transition:background-color 0.5s ease, color 0.5s ease;
-	margin: 5px;
-}
 
 .rollContainer .content{
 	min-width:285px;
@@ -15,18 +7,6 @@
 	overflow: auto;
 }
 
-.rollContainer .handle{
-	cursor:move;
-	min-height: 21px;
-}
-
-.rollContainer .handle .title {
-	transition:color 0.5s ease;
-	text-shadow: 1px 1px 1px #000;
-	font-size: 17px;
-	font-family: arial;
-	color:#fff;
-}
 
 .rollContainer table{
     border-spacing: 0;
@@ -34,13 +14,14 @@
 	width:100%;
 }
 
-.rollContainer table tr:hover{
-	background:#eeeeee;
+.rollContainer table tbody tr:hover{
+	background:rgba(238,238,238,0.5);
 }
 
 .rollContainer table th{
 	text-align: left;
 	padding:3px 6px;
+	cursor:pointer;
 }
 
 .rollContainer table td{
