@@ -46,5 +46,11 @@ function HasSeed(){
   this.setupColorSelector=function(seed){
     //get the data label
     this.node.find('.colorSelector').attr('data-selector','.handle[data-label="'+seed+'"]');
+
+    if(seed !==''){
+      this.node.find('.colorSelector').prop('disabled',false);
+    }else{
+      this.node.find('.colorSelector').prop('disabled',true);
+    }
   };
 }

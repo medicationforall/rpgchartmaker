@@ -99,6 +99,11 @@ Base.prototype._setupHandleColor=function(){
 		node.find('.colorSelector').attr('value',color);
 		node.find('.colorSelector').val(color);
 		node.find('.colorSelector').attr('data-selector','.handle[data-label="'+value+'"]');
+		if(value !==''){
+			node.find('.colorSelector').prop('disabled',false);
+		}else{
+			node.find('.colorSelector').prop('disabled',true);
+		}
 	},null,this._hashCode,this._intToRGB,this.node));
 };
 
