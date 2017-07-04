@@ -27,9 +27,9 @@ function HasLoadData(){
 		var loadType = $('.hamburger select[name="loadList"]').val();
 
 		if(loadType==='all'){
-			this.loadOverrides(data);
 			this.loadRolls(data,animate);
 			this.loadLists(data,animate);
+			this.loadOverrides(data);
 		} else if(loadType==='lists'){
 			this.loadLists(data,animate);
 		} else if(loadType==="rolls"){

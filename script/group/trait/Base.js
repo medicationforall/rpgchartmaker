@@ -84,6 +84,7 @@ Base.prototype._createNode=function(template){
  */
 Base.prototype._setupHandleColor=function(){
 	this.node.find('input[name="'+this.handleKeyName+'"]').on('input',$.proxy(function(hashCode,intToRGB,node,event){
+		var handle = node.find('.handle');
 		var color = '';
 		var value = $(this).val();
 		$(node).data('name',value);
@@ -92,7 +93,12 @@ Base.prototype._setupHandleColor=function(){
 			var hash = hashCode($(this).val());
 			color = '#'+intToRGB(hash);
 		}
-		node.find('.handle').css('background-color',color);
+
+		handle.css('background-color',color);
+		handle.attr('data-label',value);
+		node.find('.colorSelector').attr('value',color);
+		node.find('.colorSelector').val(color);
+		node.find('.colorSelector').attr('data-selector','.handle[data-label="'+value+'"]');
 	},null,this._hashCode,this._intToRGB,this.node));
 };
 

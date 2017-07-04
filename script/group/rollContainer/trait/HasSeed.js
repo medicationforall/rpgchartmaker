@@ -32,10 +32,19 @@ function HasSeed(){
 
     //change the title
     coreNode.node.find('.title').text(seed);
+    coreNode.setupColorSelector(seed);
 
     //change the roll results
     if(params === undefined || params.triggerRoll !== false){
       coreNode.roll();
     }
   },null,this));
+
+  /**
+   *
+   */
+  this.setupColorSelector=function(seed){
+    //get the data label
+    this.node.find('.colorSelector').attr('data-selector','.handle[data-label="'+seed+'"]');
+  };
 }

@@ -23,10 +23,10 @@ function HasSettingsMenu(){
   /**
    * colorSelector change.
    */
-  this.settingsMenu.on('change','.colorSelector',$.proxy(function(coreNode,event){
+  $('body').on('change','.colorSelector',$.proxy(function(coreNode,event){
     var cNode = $(this);
     var color = cNode.val();
-    var selector = cNode.data('selector');
+    var selector = cNode.attr('data-selector');
     var property = cNode.data('property');
 
     coreNode.setOverride(selector,property,color);
@@ -40,7 +40,7 @@ function HasSettingsMenu(){
     event.preventDefault();
 
     //loops through color settings
-    this.settingsMenu.find('.colorSelector').each($.proxy(function(index,item){
+    $('body').find('.colorSelector').each($.proxy(function(index,item){
       //console.log('reset',item, $(item).val(), $(item).attr('value'));
       var cNode = $(item);
       var color = cNode.attr('value');
@@ -84,7 +84,7 @@ function HasSettingsMenu(){
         for(var property in overrides[selector]){
           if(overrides[selector].hasOwnProperty(property)){
             this.setOverride(selector,property,overrides[selector][property]);
-            this.settingsMenu.find('input[data-selector="'+selector+'"][data-property="'+property+'"]').val(overrides[selector][property]);
+            $('body').find('input[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
           }
         }
       }
