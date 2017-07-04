@@ -34,6 +34,28 @@ function HasSettingsMenu(){
 
 
   /**
+   * Reset button.
+   */
+  this.settingsMenu.find('.resetColors').click($.proxy(function(event){
+    event.preventDefault();
+
+    //loops through color settings
+    this.settingsMenu.find('.colorSelector').each($.proxy(function(index,item){
+      //console.log('reset',item, $(item).val(), $(item).attr('value'));
+      var cNode = $(item);
+      var color = cNode.attr('value');
+      var selector = cNode.data('selector');
+      var property = cNode.data('property');
+      cNode.val(color);
+      this.setOverride(selector,property,color);
+    },this));
+
+    //reset overrides
+    this.overrides={};
+  },this));
+
+
+  /**
    *
    */
   this.setOverride=function(selector,property,color){
@@ -50,6 +72,10 @@ function HasSettingsMenu(){
     $(selector).css(property,color);
   };
 
+
+  /**
+   *
+   */
   this.setOverrides=function(overrides){
     //loop over selectors
     for(var selector in overrides){
@@ -64,4 +90,6 @@ function HasSettingsMenu(){
       }
     }
   };
+
+
 }
