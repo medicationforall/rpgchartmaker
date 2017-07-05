@@ -15,11 +15,16 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Share Button functionality.
+ */
 function HasShare(){
+  this.currentHash=undefined;
 
 
   /**
-   *
+   * Click on share button.
    */
   this.node.find('.shareButton').click($.proxy(function(event){
     event.preventDefault();
@@ -35,6 +40,7 @@ function HasShare(){
 
       $.ajax(this.servlet,{'data':data, dataType:'json', method:'POST'}).done(function(data){
         if(data.success){
+          this.currentHash=data.id;
           window.location.hash = data.id;
         }
       }).fail(function(msg){
@@ -46,19 +52,41 @@ function HasShare(){
   },this));
 
 
-  //called once
+  /**
+   *
+   */
+   $(window).on('hashchange',$.proxy(function(event){
+       console.log('trigger hashchange');
+       if(window.location.hash !== this.currentHash){
+         this.loadHash(window.location.hash);
+       }
+   },this));
+
+
+   /**
+    *
+    */
+   this.loadHash=function(hash){
+     if(hash!==''){
+       var data={requestType:"retrieve",id:hash.substring(1)};
+
+       $.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
+         if(response.success){
+           this.clearAll();
+           this.loadData(response.data,false);
+         }
+       },this)).fail(function(msg){
+         console.warn('failed call to chartStore',msg.responseText);
+       });
+     }
+   };
+
+
+  /**
+   * Checks the current pages hash.
+   * called once.
+   */
   var hash = window.location.hash;
-  if(hash!==''){
-    var data={requestType:"retrieve",id:hash.substring(1)};
-
-    $.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
-      if(response.success){
-        this.clearAll();
-        this.loadData(response.data,false);
-      }
-    },this)).fail(function(msg){
-      console.warn('failed call to chartStore',msg.responseText);
-    });
-  }
-
+  this.currentHash= hash;
+  this.loadHash(hash);
 }

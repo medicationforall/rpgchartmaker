@@ -15,7 +15,11 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-function SeedRollContainer(animate){
+
+/**
+ * Displays roll results.
+ */
+function RollContainer(animate){
   Base.call(this, animate);
   HasRoll.call(this);
   HasRollSeed.call(this);
@@ -25,18 +29,18 @@ function SeedRollContainer(animate){
 
 
   /**
-   * constructor
+   * Constructor.
    */
   this._constructor = function(){
     if(animate!==undefined){
       this.animate=animate;
     }
-    this._resolveTemplate(SeedRollContainer,'SeedRollContainer');
+    this._resolveTemplate(RollContainer,'RollContainer');
   };
 
 
   /**
-   *
+   * Sets up the rollContainer.
    */
   this._setup=function(template){
     this._createNode(template);
@@ -55,7 +59,7 @@ function SeedRollContainer(animate){
 
 
   /**
-   *
+   * Creates Random Number Generator associated with this Roll Container.
    */
   this._createRng=function(){
     this.rng = new Rng();
@@ -63,7 +67,7 @@ function SeedRollContainer(animate){
 
 
   /**
-   *
+   * Called when loading a user saved chart.
    */
   this.fillOut=function(data){
     if(data.seed){
@@ -85,4 +89,4 @@ function SeedRollContainer(animate){
   this._constructor();
 }
 
-Object.setPrototypeOf(SeedRollContainer.prototype, Base.prototype);
+Object.setPrototypeOf(RollContainer.prototype, Base.prototype);

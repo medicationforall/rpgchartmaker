@@ -1,35 +1,35 @@
-.dialog.help, .dialog.changes, .dialog.about{
+.dialog .content{
+  width:400px;
+  height:400px;
+  overflow:auto;
+  resize: both;
 }
 
-.dialog.help .content, .dialog.changes .content, .dialog.about .content{
-width:400px;
-height:400px;
-overflow:auto;
-resize: both;
-}
-
- .dialog.about .content{
-height:250px;
-}
-
+/*help dialog**/
 .dialog.help .content ul, .dialog.changes .content ul{
-padding-left:10px;
-padding-right:5px
+  padding-left:10px;
+  padding-right:5px
 }
 
 .dialog.help .content li, .dialog.changes .content ul li{
-margin-bottom:3px;
-padding:2px;
-font-size:13pt;
+  margin-bottom:3px;
+  padding:2px;
+  font-size:13pt;
 }
 
 .dialog.help .content ul li:hover, .dialog.changes .content ul li:hover{
-background:#eee;
+  background:#eee;
+}
+
+
+/*about dialog*/
+.dialog.about .content{
+  height:250px;
 }
 
 .dialog.about .content{
-padding:5px;
-font-size:13pt;
+  padding:5px;
+  font-size:13pt;
 }
 
 .dialog.about .content a{

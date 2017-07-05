@@ -14,6 +14,8 @@
   margin: 0px 2px;
 }
 
+
+/*handle*/
 .card .handle{
 	cursor:move;
 	min-height:21px;
@@ -27,6 +29,12 @@
 	color:#fff;
 }
 
+.card .handle .deleteListButton{
+	float:right;
+}
+
+
+/*content*/
 .card .content{
 	min-width:285px;
 	height:213px;
@@ -35,6 +43,8 @@
 	overflow: auto;
 }
 
+
+/*menu*/
 .card .menu{
 	background: #5151A0;
 	padding:5px;
@@ -52,4 +62,47 @@
 
 .card .menu.focus{
 	display:block;
+}
+
+
+/*list specific*/
+.list .listForm{
+	padding:3px;
+}
+
+.list ol{
+	min-height:40px;
+	margin-bottom:0px;
+	padding-bottom:0px;
+	padding-left:30px;
+}
+
+.list .editControls{
+	display:inline-block;
+}
+
+.list .deleteEditButton{
+text-align:center;
+min-width:9px;
+}
+
+
+/*list group*/
+.listGroup li span{
+	display:block;
+	cursor:pointer;
+	font-size:14pt;
+}
+
+.listGroup li .inlineEdit{
+	display:inline-block;
+	vertical-align:top:
+}
+
+.listGroup li span:hover{
+	background:rgba(238,238,238,0.5);
+}
+
+.listGroup .itemEdit{
+vertical-align:top;
 }

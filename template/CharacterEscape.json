@@ -2,7 +2,7 @@
 	"name": "CharacterEscape",
 	"rolls": [{
 			"seed": "colors",
-			"type": "SeedRollContainer"
+			"type": "RollContainer"
 		}
 	],
 	"lists": [{

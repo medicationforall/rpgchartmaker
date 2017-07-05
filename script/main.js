@@ -30,7 +30,7 @@ $(document).ready(function(){
 
   //resolve the templates
   $.when(
-    SeedRollContainer.prototype._resolveTemplate(SeedRollContainer,'SeedRollContainer'),
+    RollContainer.prototype._resolveTemplate(RollContainer,'RollContainer'),
     ListGroup.prototype._resolveTemplate(ListGroup,'ListGroup'),
     ObjectGroup.prototype._resolveTemplate(ObjectGroup,'ObjectGroup')).done(function(){
 
@@ -38,7 +38,7 @@ $(document).ready(function(){
     var mainMenu = new MainMenu();
 
     //Initialize the Roll Container
-    var rollContainer = new SeedRollContainer(false);
+    var rollContainer = new RollContainer(false);
 
     //initialize list group
     if(window.location.hash === ''){

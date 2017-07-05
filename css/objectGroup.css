@@ -1,3 +1,4 @@
+/*li*/
 .objectGroup li .object{
 	display:block;
 	cursor:pointer;
@@ -22,7 +23,6 @@
 .objectGroup li .objectEdit textarea{
 	vertical-align:top;
 }
-
 
 
 .objectGroup .buttons{
@@ -56,4 +56,31 @@ width:167px;
 	height:15px;
 	border:1px solid #c0c0c0;
 	display:inline-block;
+}
+
+.objectGroup .addInput{
+margin-bottom:10px;
+}
+
+.objectGroup .addInput input, .objectGroup .editInput input{
+width:130px;
+}
+
+.objectGroup .addInput .buttons{
+margin-top:4px;
+text-align:center;
+}
+
+.objectGroup .addInput .buttons a{
+padding:4px;
+color:#fff;
+background: linear-gradient(to bottom,  #00b7ea 0%,#009ec3 100%);
+background: linear-gradient(to bottom,  #258dc8 0%,#258dc8 100%);
+}
+
+.objectGroup .addInputButton:hover{
+text-decoration:underline;
+}
+
+.objectGroup .editInput{
 }

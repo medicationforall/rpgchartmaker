@@ -95,7 +95,6 @@ function ObjectGroup(animate){
 				if(aText < bText){
 					return -1;
 				}
-
 				return 0;
 			});
 

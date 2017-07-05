@@ -37,10 +37,6 @@ svg{
   width: 250px;
 }
 
-.header .hamburger {
-  margin-top: 0px;
-}
-
 a.hamburger {
     float: none;
     margin-right: 10px;
@@ -52,7 +48,7 @@ body.menuOpen .hamburger.menu {
     right: 0;
 }
 
-body .processing{
+/*body .processing{
   position: fixed;
   left: calc(50% - 100px);
   top: calc(50% - 125px);
@@ -71,7 +67,7 @@ body .processing{
 
 body.processing .processing{
   display:block;
-}
+}*/
 
 
 .menu .subMenu{
@@ -97,57 +93,17 @@ body.processing .processing{
 	border:2px solid red;
 }
 
+/*Central container*/
 .listGroupContainer{
 padding: 5px;
 }
 
-.handle .deleteListButton{
-	float:right;
-}
 
-.noteDeleteButton, .deleteEditButton{
-text-align:center;
-min-width:9px;
-}
-
-.noteInput{
+/*.noteInput{
 vertical-align:top;
-}
+}*/
 
-.itemEdit{
-vertical-align:top;
-}
 
-.editControls{
-	display:inline-block;
-}
-
-.addInput{
-margin-bottom:10px;
-}
-
-.addInput input, .editInput input{
-width:130px;
-}
-
-.addInput .buttons{
-margin-top:4px;
-text-align:center;
-}
-
-.addInput .buttons a{
-padding:4px;
-color:#fff;
-background: linear-gradient(to bottom,  #00b7ea 0%,#009ec3 100%);
-background: linear-gradient(to bottom,  #258dc8 0%,#258dc8 100%);
-}
-
-.addInputButton:hover{
-text-decoration:underline;
-}
-
-.editInput{
-}
 
 /*Highlight Animation*/
 @keyframes highlight {

@@ -22,9 +22,9 @@ function HasAddMenu(){
   /**
    * Add list group click
    */
-  this.addMenu.find('.addSeedRollContainerButton').click(function(event){
+  this.addMenu.find('.addRollContainerButton').click(function(event){
     event.preventDefault();
-    var rollContainer = new SeedRollContainer();
+    var rollContainer = new RollContainer();
   });
 
 

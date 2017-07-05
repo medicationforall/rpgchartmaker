@@ -18,7 +18,7 @@
 
 /**
  * Random number generator based on passed in seeds.
- * @see ../lib/seedrandom
+ * @see ../../lib/seedrandom
  */
 function Rng(seed){
   Core.call(this);

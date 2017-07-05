@@ -3,10 +3,18 @@
 	transition:background-color 0.5s ease;
 }
 
-.header .hamburger{
-margin-top:10px;
+
+.header .hamburger {
+  margin-top: 0px;
 }
 
+/*.header .hamburger{
+margin-top:10px;
+}*/
+
+
+
+/*logo*/
 .header h1{
 	margin:0px 0px;
 	padding:20px;
@@ -17,22 +25,30 @@ margin-top:10px;
 	transition:background-color 0.5s ease, color 0.5s ease;
 }
 
+/*header linds*/
 .header a, .card a{
-    background: linear-gradient(to bottom, rgba(238,238,238,0.8) 0%,rgba(204,204,204,0.4) 100%);
-    padding: 3px;
-    /*border-radius: 2px;*/
-    display: inline-block;
-    margin: 0px 5px;
-    border: 1px solid rgba(171,151,151,0.5);
-    color: #000;
+  background: linear-gradient(to bottom, rgba(238,238,238,0.8) 0%,rgba(204,204,204,0.4) 100%);
+  padding: 3px;
+  display: inline-block;
+  margin: 0px 5px;
+  border: 1px solid rgba(171,151,151,0.5);
+  color: #000;
 	text-decoration:none;
 }
 
+.header a.shareButton{
+display:none;
+}
+
+
+/*Javascript warning*/
 .header .javacriptWarning{
 	text-align:center;
 	font-weight:bold;
 }
 
+
+/*Menu Bar*/
 .header .menuBar{
 text-align:center;
 padding:10px 5px;
@@ -42,8 +58,4 @@ transition:background-color 0.5s ease, color 0.5s ease;
 
 .header .menuBar .inlineBlock{
 display:inline-block;
-}
-
-.header a.shareButton{
-display:none;
 }

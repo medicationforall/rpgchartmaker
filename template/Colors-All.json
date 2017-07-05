@@ -2,7 +2,7 @@
 	"name": "Colors-All",
 	"rolls": [{
 			"seed": "seed",
-			"type": "SeedRollContainer"
+			"type": "RollContainer"
 			}
 	],
 	"lists": [{

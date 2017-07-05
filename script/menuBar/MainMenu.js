@@ -17,6 +17,7 @@
  */
 
 /**
+ * Main Menu Functionality.
  * @see index.html
  */
 function MainMenu(){
@@ -33,7 +34,7 @@ function MainMenu(){
 
 
 	/**
-	 *
+	 * Sets up the main menu buttons.
 	 */
 	this._setup=function(){
 		this.node = $('.menuBar');
@@ -61,7 +62,7 @@ function MainMenu(){
 
 
 	/**
-	 *
+	 * Called prior to loading a user defined chart.
 	 */
 	this.clearAll=function(){
 		if($('.hamburger select[name="clearList"]').val()==="all"){

@@ -61,7 +61,7 @@ function HasGatherData(){
 			}
 
 			//resolve type
-			if(coreNode instanceof SeedRollContainer){
+			if(coreNode instanceof RollContainer){
 				obj.seed = coreNode.seed;
 				//alias is not empt
 				obj.type = "RollContainer";

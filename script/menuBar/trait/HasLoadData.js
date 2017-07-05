@@ -54,10 +54,8 @@ function HasLoadData(){
 			for(var i=0, roll;(roll=data.rolls[i]);i++){
 				var rContainer;
 				if(roll.type==="RollContainer"){
-					//console.log('loadRolls instantiate SeedRollContainer');
-					rContainer = new SeedRollContainer(animate);
-				}else if(roll.type==="SeedRollContainer"){
-					rContainer = new SeedRollContainer(animate);
+					//console.log('loadRolls instantiate RollContainer');
+					rContainer = new RollContainer(animate);
 				}
 
 				if(rContainer && rContainer.node){
@@ -69,7 +67,7 @@ function HasLoadData(){
 				}
 			}
 		}else{
-			var rollContainer = new SeedRollContainer(animate);
+			var rollContainer = new RollContainer(animate);
 		}
 	};
 

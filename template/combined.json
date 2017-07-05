@@ -2,7 +2,7 @@
 	"name": "combined",
 	"rolls": [{
 			"seed": "combined",
-			"type": "SeedRollContainer"
+			"type": "RollContainer"
 		}
 	],
 	"lists": [{
