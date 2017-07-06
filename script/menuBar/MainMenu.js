@@ -21,60 +21,61 @@
  * @see index.html
  */
 function MainMenu(){
-	//data
-	this.node=undefined;
+  //data
+  this.node=undefined;
 
 
-	/**
-	 * constructor
-	 */
-	this._constructor = function(){
-		this._setup();
-	};
+  /**
+   * constructor
+   */
+  this._constructor = function(){
+    this._setup();
+  };
 
 
-	/**
-	 * Sets up the main menu buttons.
-	 */
-	this._setup=function(){
-		this.node = $('.menuBar');
-		HasGatherData.call(this);
-		HasLoadData.call(this);
-		HasOpenMenuButtons.call(this);
-		HasAddMenu.call(this);
-		HasSaveMenu.call(this);
-		HasLoadMenu.call(this);
-		HassRollButton.call(this);
+  /**
+   * Sets up the main menu buttons.
+   * @private
+   */
+  this._setup=function(){
+    this.node = $('.menuBar');
+    HasGatherData.call(this);
+    HasLoadData.call(this);
+    HasOpenMenuButtons.call(this);
+    HasAddMenu.call(this);
+    HasSaveMenu.call(this);
+    HasLoadMenu.call(this);
+    HassRollButton.call(this);
     HasListNameInput.call(this);
-		HasSettingsMenu.call(this);
+    HasSettingsMenu.call(this);
 
-		$.getJSON('config.json',$.proxy(function(data){
-			if(data.enableShare){
-				this.node.find('.shareButton').css('display','inline-block');
-				this.servlet=data.servlet;
-				HasShare.call(this);
-			}
-		},this));
+    $.getJSON('config.json',$.proxy(function(data){
+      if(data.enableShare){
+        this.node.find('.shareButton').css('display','inline-block');
+        this.servlet=data.servlet;
+        HasShare.call(this);
+      }
+    },this));
 
-		//set coreNode
-		$.data(this.node[0],'coreNode',this);
-	};
-
-
-	/**
-	 * Called prior to loading a user defined chart.
-	 */
-	this.clearAll=function(){
-		if($('.hamburger select[name="clearList"]').val()==="all"){
-			$('.list, .rollContainer').remove();
-		} else if($('.hamburger select[name="clearList"]').val()==="lists"){
-			$('.list').remove();
-		} else if($('.hamburger select[name="clearList"]').val()==="rolls"){
-			$('.rollContainer').remove();
-		}
-	};
+    //set coreNode
+    $.data(this.node[0],'coreNode',this);
+  };
 
 
-	//main
-	this._constructor();
+  /**
+   * Called prior to loading a user defined chart.
+   */
+  this.clearAll=function(){
+    if($('.hamburger select[name="clearList"]').val()==="all"){
+      $('.list, .rollContainer').remove();
+    } else if($('.hamburger select[name="clearList"]').val()==="lists"){
+      $('.list').remove();
+    } else if($('.hamburger select[name="clearList"]').val()==="rolls"){
+      $('.rollContainer').remove();
+    }
+  };
+
+
+  //main
+  this._constructor();
 }

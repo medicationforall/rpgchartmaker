@@ -32,17 +32,17 @@ function HassRollButton(){
 
 
   /**
-	 * Initiates roll for all Roll Containers in the application.
+   * Initiates roll for all Roll Containers in the application.
    * @private
-	 */
-	this._rollAll=function(){
-		$('.rollContainer').each(function(index,item){
-			//hide open roll conainer menus
-			$(item).find('.menu').removeClass('focus');
+   */
+  this._rollAll=function(){
+    $('.rollContainer').each(function(index,item){
+    //hide open roll conainer menus
+    $(item).find('.menu').removeClass('focus');
 
-			//perform the roll
-			var coreNode = $.data(item,'coreNode');
-      coreNode.roll();
-		});
-	};
+    //perform the roll
+    var coreNode = $.data(item,'coreNode');
+        coreNode.roll();
+    });
+  };
 }

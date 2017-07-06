@@ -61,50 +61,50 @@ function HasGatherData(){
 
 
   /**
-	 * Gather the data for the Roll Containers.
+   * Gather the data for the Roll Containers.
    * @param {Object} data - object to build upon.
    * @private
-	 */
-	this._gatherRolls=function(data){
-		//gather rolls
-		data.rolls=[];
-		$('.listGroupContainer .rollContainer').each(function(index, item){
-			var obj = {};
-			var coreNode = $(item).data("coreNode");
+   */
+  this._gatherRolls=function(data){
+    //gather rolls
+    data.rolls=[];
+    $('.listGroupContainer .rollContainer').each(function(index, item){
+      var obj = {};
+      var coreNode = $(item).data("coreNode");
 
-			//resolve alias
-			if($.isEmptyObject(coreNode.alias)===false){
-				obj.alias = coreNode.alias;
-			}
+      //resolve alias
+      if($.isEmptyObject(coreNode.alias)===false){
+        obj.alias = coreNode.alias;
+      }
 
-			//resolve display
-			if($.isEmptyObject(coreNode.display)===false){
-				obj.display = coreNode.display;
-			}
+      //resolve display
+      if($.isEmptyObject(coreNode.display)===false){
+        obj.display = coreNode.display;
+      }
 
-			//resolve type
-			if(coreNode instanceof RollContainer){
-				obj.seed = coreNode.seed;
-				//alias is not empt
-				obj.type = "RollContainer";
-			}
-			data.rolls.push(obj);
-		});
-	};
+      //resolve type
+      if(coreNode instanceof RollContainer){
+        obj.seed = coreNode.seed;
+        //alias is not empt
+        obj.type = "RollContainer";
+      }
+      data.rolls.push(obj);
+    });
+  };
 
 
   /**
-	 * Gather the data for the Lists.
+   * Gather the data for the Lists.
    * @param {Object} data - object to build upon.
    * @private
-	 */
-	this._gatherLists=function(data){
-		//gather lists
-		data.lists=[];
-		$('.listGroupContainer .list').each(function(index, item){
-			var coreNode = $(item).data('coreNode');
-			var obj = coreNode.gatherData();
-			data.lists.push(obj);
-		});
-	};
+   */
+  this._gatherLists=function(data){
+    //gather lists
+    data.lists=[];
+    $('.listGroupContainer .list').each(function(index, item){
+      var coreNode = $(item).data('coreNode');
+      var obj = coreNode.gatherData();
+      data.lists.push(obj);
+    });
+  };
 }
