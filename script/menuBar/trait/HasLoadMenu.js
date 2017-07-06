@@ -15,6 +15,10 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Load Menu Mixin.
+ */
 function HasLoadMenu(){
   this.loadMenu = $('.load.subMenu');
 
@@ -26,8 +30,6 @@ function HasLoadMenu(){
     event.preventDefault();
 
     if (window.File && window.FileReader && window.FileList && window.Blob) {
-      //do your stuff!
-
       //clear existing lists and rollContainers check
       this.clearAll();
 
@@ -64,7 +66,7 @@ function HasLoadMenu(){
 
 
   /**
-   *
+   * Load Raw JSON button.
    */
   this.loadMenu.find('.loadRawButton').click($.proxy(function(event){
       event.preventDefault();

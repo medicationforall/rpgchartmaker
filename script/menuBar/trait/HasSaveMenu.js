@@ -15,30 +15,39 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Save Menu Mixin.
+  */
 function HasSaveMenu(){
   this.saveMenu = $('.save.subMenu');
   this.saveOptions = {};
 
+
+  /**
+   * Save Option Checkbox change.
+   */
   this.saveMenu.on('change','.saveOption',$.proxy(function(coreNode, event){
     var value = $(this)[0].checked;
     var type = $(this).data('type');
-
-    coreNode.setSaveOption(type,value);
-
+    coreNode._setSaveOption(type,value);
   },null,this));
 
 
   /**
-   *
+   * Set a save option.
+   * @param {string} key - Reserved key lists, Rolls, overrides.
+   * @param {boolean} value - option flag value.
+   * @private
    */
-  this.setSaveOption=function(key,value){
-    console.log('set save option',key,value);
+  this._setSaveOption=function(key,value){
     this.saveOptions[key] = value;
   };
 
 
   /**
-   *
+   *@param {string} key - lists, Rolls, overrides.
+   *@return {boolean} stored option return false if the key does not exist yet.
    */
   this.getSaveOption=function(key){
     if(this.saveOptions[key]!==undefined){
@@ -66,7 +75,7 @@ function HasSaveMenu(){
 
 
   /**
-   *
+   *@todo duplicate code
    */
   this.saveAsFile=function(t,f,m) {
     try {

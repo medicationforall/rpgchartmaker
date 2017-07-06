@@ -19,6 +19,7 @@
 .card .handle{
 	cursor:move;
 	min-height:21px;
+  transition:background-color 0.5s ease, color 0.5s ease;
 }
 
 .card .handle .title {

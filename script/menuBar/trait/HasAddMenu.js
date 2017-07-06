@@ -15,6 +15,10 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Add Menu Mixin.
+ */
 function HasAddMenu(){
   this.addMenu = $('.add.subMenu');
 
@@ -25,6 +29,9 @@ function HasAddMenu(){
   this.addMenu.find('.addRollContainerButton').click(function(event){
     event.preventDefault();
     var rollContainer = new RollContainer();
+
+    //close the open rollcontainer menus
+    $('.card .menu').removeClass('focus');
   });
 
 
@@ -36,7 +43,7 @@ function HasAddMenu(){
     var listGroup = new ListGroup();
 
     //close the open rollcontainer menus
-    $('.rollContainer .menu').removeClass('focus');
+    $('.card .menu').removeClass('focus');
   });
 
 
@@ -48,6 +55,6 @@ function HasAddMenu(){
     var objectGroup = new ObjectGroup();
 
     //close the open rollcontainer menus
-    $('.rollContainer .menu').removeClass('focus');
+    $('.card .menu').removeClass('focus');
   });
 }

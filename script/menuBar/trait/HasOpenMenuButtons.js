@@ -15,7 +15,16 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Open Menu Buttons Mixin.
+ */
 function HasOpenMenuButtons(){
+
+
+  /**
+   * Open Menu Button click.
+   */
   this.node.on('click','.openMenuButton',$.proxy(function(coreNode,event){
     event.preventDefault();
 
@@ -26,19 +35,13 @@ function HasOpenMenuButtons(){
 
 
   /**
-   *
+   * Actions to be performed when opening a menu.
+   * @param {string} name - Name of the menu to be opened.
    */
   this.openMenu=function(name){
     //toggle menu display
     if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.'+name).hasClass('focus')){
-      //$('.hamburger.menu').animateCss('slideOutRight');
-
-      //when animation is finished set the class state.
-      //var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      //$('.hamburger.menu').one(animationEnd,function(){
         $('body').removeClass('menuOpen');
-      //});
-
     }else if($('body').hasClass('menuOpen') ===false){
       $('body').addClass('menuOpen');
       $('.hamburger.menu .subMenu').animateCss('slideInRight');

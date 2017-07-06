@@ -15,28 +15,34 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Roll Button Mixin.
+  */
 function HassRollButton(){
 
 
   /**
-   *
-   */ 
+   * Roll Click.
+   */
   this.node.find('.rollButton').click($.proxy(function(event){
     event.preventDefault();
-    this.rollAll();
+    this._rollAll();
   },this));
-  
-  
+
+
   /**
-	 *
+	 * Initiates roll for all Roll Containers in the application.
+   * @private
 	 */
-	this.rollAll=function(){
+	this._rollAll=function(){
 		$('.rollContainer').each(function(index,item){
 			//hide open roll conainer menus
 			$(item).find('.menu').removeClass('focus');
 
 			//perform the roll
-			var coreNode = $.data(item,'coreNode').roll();
+			var coreNode = $.data(item,'coreNode');
+      coreNode.roll();
 		});
 	};
 }

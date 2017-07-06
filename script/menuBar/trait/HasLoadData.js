@@ -15,49 +15,61 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Load Data Mixin.
+ */
 function HasLoadData(){
 
 
   /**
-	 *
+	 * Loads a data object representing a chart into the application.
+	 * @param {Object} data - Chart data object to be loaded.
+	 * @param {boolean} animate - Flag indicating if newly created Lists,
+	 * Object Lists, and Roll Containers should be animated when instantiated.
 	 */
 	this.loadData=function(data,animate){
-		this.loadChartName(data);
+		this._loadChartName(data);
 
 		var loadType = $('.hamburger select[name="loadList"]').val();
 
 		if(loadType==='all'){
-			this.loadRolls(data,animate);
-			this.loadLists(data,animate);
-			this.loadOverrides(data);
+			this._loadRolls(data,animate);
+			this._loadLists(data,animate);
+			this._loadCSSOverrides(data);
 		} else if(loadType==='lists'){
-			this.loadLists(data,animate);
+			this._loadLists(data,animate);
 		} else if(loadType==="rolls"){
-			this.loadRolls(data,animate);
+			this._loadRolls(data,animate);
 		}
 	};
 
 
   /**
-	 * set chart name
+	 * set chart name.
+	 * @param {Object} data - Chart Data.
+	 * @private
 	 */
-	this.loadChartName=function(data){
+	this._loadChartName=function(data){
 		this.node.find('input[name=listName]').val(data.name).trigger('input');
 	};
 
 
   /**
-	 *
+	 * Loads rolls from a data object.
+	 * @param {Object} data - Chart Data.
+	 * @param {boolean} animate - Flag passed to created RollContainers.
+	 * @private
 	 */
-	this.loadRolls=function(data,animate){
+	this._loadRolls=function(data,animate){
 		if(data.rolls){
 			for(var i=0, roll;(roll=data.rolls[i]);i++){
 				var rContainer;
-				if(roll.type==="RollContainer"){
-					//console.log('loadRolls instantiate RollContainer');
+				if(roll.type==="RollContainer" || roll.type==="SeedRollContainer"){
 					rContainer = new RollContainer(animate);
 				}
 
+				//Fill out when the template is resolved.
 				if(rContainer && rContainer.node){
 					rContainer.fillOut(roll);
 				}else{
@@ -66,16 +78,20 @@ function HasLoadData(){
 					}.bind(rContainer,roll));
 				}
 			}
-		}else{
+		} else {
+			//create a RollContainer if nothing is present to process.
 			var rollContainer = new RollContainer(animate);
 		}
 	};
 
 
   /**
-	 *
+	 * Loads lists from a data object.
+	 * @param {Object} data - Chart Data.
+	 * @param {boolean} animate - Flag passed to created Lists.
+	 * @private
 	 */
-	this.loadLists=function(data,animate){
+	this._loadLists=function(data,animate){
 		//go through each list in the data object
 		if(data.lists){
 			for(var i=0,list;(list=data.lists[i]);i++){
@@ -88,7 +104,9 @@ function HasLoadData(){
 
 
   /**
-	 *
+	 * Loads rolls from a list object.
+	 * @param {Object} list - list Data.
+	 * @param {boolean} animate - Flag passed to created list.
 	 */
 	this.loadList=function(list,animate){
 		//placeholder
@@ -113,10 +131,13 @@ function HasLoadData(){
 	};
 
 
-  /**
-	 *
+	/**
+	 * Loads CSS overrides from a data object.
+	 * @param {Object} data - Chart Data.
+	 * @param {boolean} animate - Flag passed to created Lists.
+	 * @private
 	 */
-	this.loadOverrides=function(data){
+	this._loadCSSOverrides=function(data){
 		if(data.cssOverrides && data.cssOverrides !== null && typeof data.cssOverrides === 'object' ){
 			var menuNode = $('.menuBar').data('coreNode');
 			menuNode.setOverrides(data.cssOverrides);

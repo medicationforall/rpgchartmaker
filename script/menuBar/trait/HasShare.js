@@ -17,7 +17,7 @@
  */
 
 /**
- * Share Button functionality.
+ * Share Button Mixin.
  */
 function HasShare(){
   this.currentHash=undefined;
@@ -28,11 +28,9 @@ function HasShare(){
    */
   this.node.find('.shareButton').click($.proxy(function(event){
     event.preventDefault();
-
-    //verify that chart name isn't empty
-
     var listNameInput =this.node.find('input[name=listName]');
 
+    //verify that chart name isn't empty
     if(listNameInput.val()!==''){
       data ={};
       data.chart = this.gatherData();
@@ -53,21 +51,23 @@ function HasShare(){
 
 
   /**
-   *
+   * Url hash change.
    */
    $(window).on('hashchange',$.proxy(function(event){
        console.log('trigger hashchange');
        if(window.location.hash !== this.currentHash){
-         this.loadHash(window.location.hash);
+         this._loadHash(window.location.hash);
        }
    },this));
 
 
    /**
-    *
+    * Calls a configured servlet to resolve the chart data for a sha1 hash.
+    * @param {string} hash - sha1.
+    * @private
     */
-   this.loadHash=function(hash){
-     if(hash!==''){
+   this._loadHash=function(hash){
+     if(hash.trim()!==''){
        var data={requestType:"retrieve",id:hash.substring(1)};
 
        $.ajax(this.servlet,{'data':data,dataType:'json', method:'POST'}).done($.proxy(function(response){
@@ -88,5 +88,5 @@ function HasShare(){
    */
   var hash = window.location.hash;
   this.currentHash= hash;
-  this.loadHash(hash);
+  this._loadHash(hash);
 }

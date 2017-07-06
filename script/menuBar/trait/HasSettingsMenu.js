@@ -15,10 +15,14 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Settings Menu Mixin.
+  */
 function HasSettingsMenu(){
   this.settingsMenu = $('.settings.subMenu');
-
   this.overrides = {};
+
 
   /**
    * colorSelector change.
@@ -56,25 +60,29 @@ function HasSettingsMenu(){
 
 
   /**
-   *
+   * Set a CSS override.
+   * @example setOverride('body','background','#c0c0c0');
+   * @param {string} selector - CSS selector.
+   * @param {string} property - CSS property.
+   * @param {string} value - CSS value.
    */
-  this.setOverride=function(selector,property,color){
-
+  this.setOverride=function(selector, property, value){
     if(this.overrides[selector]===undefined){
       var data={};
-      data[property]=color;
+      data[property]=value;
       this.overrides[selector]=data;
     }else{
-      this.overrides[selector][property]=color;
+      this.overrides[selector][property]=value;
     }
 
     //set existing objects
-    $(selector).css(property,color);
+    $(selector).css(property,value);
   };
 
 
   /**
-   *
+   * Set a hashmap collection of overrides.
+   * @param {Object} overrides - keyed by selector.
    */
   this.setOverrides=function(overrides){
     //loop over selectors
@@ -90,6 +98,4 @@ function HasSettingsMenu(){
       }
     }
   };
-
-
 }
