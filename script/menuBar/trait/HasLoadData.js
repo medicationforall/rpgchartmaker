@@ -37,7 +37,7 @@ function HasLoadData(){
     if(loadType==='all'){
       this._loadRolls(data,animate);
       this._loadLists(data,animate);
-      this._loadCSSOverrides(data);
+      this.loadCSSOverrides(data);
     } else if(loadType==='lists'){
       this._loadLists(data,animate);
     } else if(loadType==="rolls"){
@@ -138,7 +138,7 @@ function HasLoadData(){
    * @param {boolean} animate - Flag passed to created Lists.
    * @private
    */
-  this._loadCSSOverrides=function(data){
+  this.loadCSSOverrides=function(data){
     if(data.cssOverrides && data.cssOverrides !== null && typeof data.cssOverrides === 'object' ){
       var menuNode = $('.menuBar').data('coreNode');
       menuNode.setOverrides(data.cssOverrides);

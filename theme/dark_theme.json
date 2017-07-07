@@ -1,0 +1,19 @@
+﻿{
+	"name": "dark_theme",
+	"cssOverrides": {
+		".menuBar": {
+			"background": "#6c6c6c",
+			"color": "#ffffff"
+		},
+		"body": {
+			"background": "#444444"
+		},
+		".card": {
+			"background": "#5d5d5d",
+			"color": "#ffffff"
+		},
+		".header h1": {
+			"background": "#000000"
+		}
+	}
+}

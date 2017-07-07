@@ -39,25 +39,57 @@ function HasSettingsMenu(){
 
 
   /**
+   * Load template theme button.
+   */
+  this.settingsMenu.find('.loadThemeButton').click($.proxy(function(menu,event){
+    event.preventDefault();
+    var file = $(this).data('file');
+
+    $.getJSON('theme/'+file,$.proxy(function(data){
+      this.loadCSSOverrides(data);
+    },menu));
+  },null,this));
+
+
+  /**
    * Reset button.
    */
   this.settingsMenu.find('.resetColors').click($.proxy(function(event){
     event.preventDefault();
+    this.resetOverrides();
+  },this));
 
+
+  /**
+   *
+   */
+  this.resetOverrides=function(){
     //loops through color settings
-    $('body').find('.colorSelector').each($.proxy(function(index,item){
-      //console.log('reset',item, $(item).val(), $(item).attr('value'));
-      var cNode = $(item);
-      var color = cNode.attr('value');
-      var selector = cNode.data('selector');
-      var property = cNode.data('property');
-      cNode.val(color);
-      this.setOverride(selector,property,color);
-    },this));
+    $('body').find('.colorSelector').each($.proxy(this.resetOverride,this));
 
     //reset overrides
     this.overrides={};
-  },this));
+  };
+
+
+  /**
+   *
+   */
+  this.resetOverride=function(index,item){
+    //console.log('reset',item, $(item).val(), $(item).attr('value'));
+    var cNode = $(item);
+    var color = cNode.attr('value');
+    var selector = cNode.data('selector');
+    var property = cNode.data('property');
+    cNode.val(color);
+    this.setOverride(selector,property,color);
+
+    delete this.overrides[selector][property];
+
+    if($.isEmptyObject(this.overrides[selector])){
+      delete this.overrides[selector];
+    }
+  };
 
 
   /**
@@ -86,6 +118,42 @@ function HasSettingsMenu(){
    * @param {Object} overrides - keyed by selector.
    */
   this.setOverrides=function(overrides){
+    this.diffOverrides(overrides);
+    this.applyOverrides(overrides);
+  };
+
+
+  /**
+   *
+   */
+  this.diffOverrides=function(overrides){
+    //1. clone the current overrides.
+    var copy = Object.assign({},this.overrides);
+
+    //3. Find the difference between copy and overrides.
+    for(var cSelector in copy){
+      //missing selector
+      if(overrides.hasOwnProperty(cSelector)===false){
+        //reset missing keys
+        $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetOverride,this));
+      }
+      //check missing properties.
+      else{
+        for(var cProperty in copy[cSelector]){
+          if(overrides[cSelector].hasOwnProperty(cProperty)===false){
+            //reset missing properties
+            $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetOverride,this));
+          }
+        }
+      }
+    }
+  };
+
+
+  /**
+   * overwrite overrides with data.
+   */
+  this.applyOverrides=function(overrides){
     //loop over selectors
     for(var selector in overrides){
       if(overrides.hasOwnProperty(selector)){
