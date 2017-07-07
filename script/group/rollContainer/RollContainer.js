@@ -53,7 +53,7 @@ function RollContainer(animate){
     HasSeed.call(this);
     HasCSVSave.call(this);
     HasRollMenu.call(this);
-    this._setupOverride();
+    this._setupCSSOverride();
 
     $(this).trigger('loaded');
   };

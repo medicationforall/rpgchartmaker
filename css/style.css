@@ -22,14 +22,13 @@ html,body{
 }
 
 body{
+fill: currentColor;
 padding:0px;
 margin:0px;
 transition:background-color 0.5s ease;
 }
 
-svg{
-  vertical-align: middle;
-}
+
 
 .hamburger.menu{
   padding:0;
@@ -156,4 +155,9 @@ input.colorSelector{
 	.rollContainer, .rollContainer table{
 		width:100%;
 	}
+}
+
+svg{
+  vertical-align: middle;
+  fill:currentColor;
 }
