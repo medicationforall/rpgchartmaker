@@ -1,0 +1,23 @@
+﻿{
+	"name": "kismet_theme",
+	"cssOverrides": {
+		"body": {
+			"background": "#082220"
+		},
+		".menuBar": {
+			"background": "#0c3330",
+			"color": "#fffcf9"
+		},
+		".card": {
+			"background": "#0c3330",
+			"color": "#ffb75b"
+		},
+		".header h1": {
+			"background": "#bf9461"
+		},
+		".menu": {
+			"background": "#ffcf95",
+			"color": "#082220"
+		}
+	}
+}
