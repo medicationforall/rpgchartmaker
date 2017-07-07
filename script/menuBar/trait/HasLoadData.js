@@ -18,6 +18,7 @@
 
 /**
  * Load Data Mixin.
+ * @mixin
  */
 function HasLoadData(){
 

@@ -18,8 +18,8 @@
 function HasObjectGroupLoad(){
   /**
 	 * Adds a list entry to the list based on the order and data objects passed to this method.
-	 * @param order {JSON Array} The order in which the data object should be called
-	 * @param data {JSON Object} The raw data of the entry
+	 * @param {Array} order - The order in which the data object should be called
+	 * @param {Object} data -  The raw data of the entry
 	 * @private
 	 */
 	this._addJSONEntry=function(order,data){
@@ -57,7 +57,7 @@ function HasObjectGroupLoad(){
 
 	/**
 	 * Load the name, the object template form, and ol list with data.
-	 * @param list {JSON Object}
+	 * @param {Object} list
 	 */
 	this.fillOutList=function(list){
 		//fill out name

@@ -18,6 +18,7 @@
 
 /**
  * Add Menu Mixin.
+ * @mixin
  */
 function HasAddMenu(){
   this.addMenu = $('.add.subMenu');

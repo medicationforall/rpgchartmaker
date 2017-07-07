@@ -18,6 +18,7 @@
 
  /**
   * Roll Button Mixin.
+  * @mixin
   */
 function HassRollButton(){
 

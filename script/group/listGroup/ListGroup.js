@@ -18,6 +18,7 @@
 
 /**
  * Simple list with controls for CRUD operations Create, Read, Update, and Delete.
+ * @class
  * @see Base.js
  * @see html/listGroup.html
  */

@@ -18,6 +18,7 @@
 
  /**
   * Gather Data Mixin.
+  * @mixin
   */
 function HasGatherData(){
 

@@ -18,6 +18,7 @@
 
 /**
  * Load Menu Mixin.
+ * @mixin
  */
 function HasLoadMenu(){
   this.loadMenu = $('.load.subMenu');

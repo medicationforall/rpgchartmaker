@@ -18,6 +18,7 @@
 
 /**
  * List Name Mixin.
+ * @mixin
  */
 function HasListNameInput(){
 

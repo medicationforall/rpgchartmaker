@@ -18,6 +18,7 @@
 
  /**
   * Settings Menu Mixin.
+  * @mixin
   */
 function HasSettingsMenu(){
   this.settingsMenu = $('.settings.subMenu');

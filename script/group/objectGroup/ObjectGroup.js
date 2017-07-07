@@ -20,6 +20,7 @@
  * An oject list where each node was created via a user defined template form.
  * The template form allows adding, removing, editing, and re-ordering of form inputs.
  * The List supports adding, and re-ordering of list entries.
+ * @class
  * @see Base.js
  * @see html/objectGroup.html
  */

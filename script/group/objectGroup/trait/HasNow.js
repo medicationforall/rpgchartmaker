@@ -15,9 +15,14 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Now Mixin.
+ * @mixin
+ */
 function HasNow(){
 
-	
+
   /**
 	 * @return The current system time for the user in a a format appropriate for a datetime input.
 	 * @private
@@ -25,11 +30,11 @@ function HasNow(){
 	this.getNow = function () {
 		var now = new Date($.now());
 		var year;
-		var month
-		var date
-		var hours
-		var minutes
-		var seconds
+		var month;
+		var date;
+		var hours;
+		var minutes;
+		var seconds;
 		var formattedDateTime;
 
 		year = now.getFullYear();

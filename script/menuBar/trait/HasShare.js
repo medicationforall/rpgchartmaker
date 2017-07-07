@@ -18,6 +18,7 @@
 
 /**
  * Share Button Mixin.
+ * @mixin
  */
 function HasShare(){
   this.currentHash=undefined;

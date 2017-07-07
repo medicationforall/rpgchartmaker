@@ -15,8 +15,13 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Roll Seed Mixin. Resolve rolls based on seed.
+ * @mixin
+ */
 function HasRollSeed(){
-  //resolve rolls based on seed.
+
 
   /**
    *

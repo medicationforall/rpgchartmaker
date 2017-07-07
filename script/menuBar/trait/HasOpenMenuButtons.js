@@ -18,6 +18,7 @@
 
 /**
  * Open Menu Buttons Mixin.
+ * @mixin
  */
 function HasOpenMenuButtons(){
 

@@ -15,15 +15,18 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * List Menu Mixin.
+  */
 function HasListMenu(){
 
 
   /**
-   * Register copy button.
+   * Copy button click.
    */
    this.node.find('.copyButton').on('click',$.proxy(function(event){
      event.preventDefault();
-     console.log('clicked copy button',this.gatherData());
 
      this.node.find('.copyInput').select();
      document.execCommand("copy");
@@ -34,16 +37,15 @@ function HasListMenu(){
    * Fill out the copy input.
    */
    this.openMenu=function(){
-     this.setupCopy();
+     this._setupCopy();
    };
 
 
   /**
-   *
+   * Fill out the copy input field.
+   * @private
    */
-   this.setupCopy=function(){
+   this._setupCopy=function(){
      this.node.find('.copyInput').val(JSON.stringify(this.gatherData()));
    };
-
-
 }

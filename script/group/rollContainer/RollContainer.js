@@ -18,6 +18,7 @@
 
 /**
  * Displays roll results.
+ * @class
  */
 function RollContainer(animate){
   Base.call(this, animate);

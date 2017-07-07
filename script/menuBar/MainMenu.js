@@ -18,6 +18,7 @@
 
 /**
  * Main Menu Functionality.
+ * @class
  * @see index.html
  */
 function MainMenu(){
