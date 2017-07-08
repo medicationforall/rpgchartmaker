@@ -1,0 +1,20 @@
+﻿{
+	"name": "cyberpunk_theme",
+	"cssOverrides": {
+		"body": {
+			"background": "#2e2e2e"
+		},
+		".menuBar": {
+			"background": "#000000",
+			"color": "#00ff00"
+		},
+		".header h1": {
+			"background": "#000000",
+			"color": "#00fe00"
+		},
+		".card": {
+			"background": "#000000",
+			"color": "#00ffff"
+		}
+	}
+}
