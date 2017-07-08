@@ -3,7 +3,7 @@
 	"cssOverrides": {
 		".menuBar": {
 			"background": "#6c6c6c",
-			"color": "#ffffff"
+			"color": "#000000"
 		},
 		"body": {
 			"background": "#444444"
