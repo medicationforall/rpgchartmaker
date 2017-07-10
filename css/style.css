@@ -161,3 +161,7 @@ svg{
   vertical-align: middle;
   fill:currentColor;
 }
+
+.inactive svg{
+  opacity:0.4;
+}

@@ -73,6 +73,16 @@ function HasObjectGroupLoad(){
 			this.node.find('input[name="roll"]').prop('checked', list.roll).trigger('change');
 		}
 
+		//fill out unique
+		if(list.unique!==undefined){
+			if(list.unique=='true'){
+				list.unique = true;
+			}else if(list.unique=='false'){
+				list.unique=false;
+			}
+			this.setUnique(list.unique);
+		}
+
 		//fill out order
 		if(list.order && list.order.length>0){
 			for(var i=0;i<list.order.length;i++){

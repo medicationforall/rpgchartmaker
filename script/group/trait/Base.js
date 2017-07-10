@@ -40,6 +40,7 @@ Base.prototype.setupBase=function(template){
   this._setupAlphabetize();
   this._setupRollCheckBox();
   this._setupCSSOverride();
+  HasUniqueControl.call(this);
 };
 
 
@@ -190,8 +191,13 @@ Base.prototype.gatherData=function(){
   //get list name
   obj.name= this.node.find('input[name=listGroupName]').val();
 
-  //get get roll checkbox
+  //get roll checkbox
   obj.roll= this.node.find('input[name="roll"]').prop('checked');
+
+  //get unique
+  if(this.unique !== undefined && (this.unique===true || this.unique===false)){
+    obj.unique= this.unique;
+  }
 
   //initialize list entries
   obj.list=[];
