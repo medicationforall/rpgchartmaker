@@ -90,7 +90,6 @@ function HasRoll(){
       if(this.alias && this.alias[column]){
         return this.alias[column];
       }
-
       return column;
   };
 
@@ -156,6 +155,7 @@ function HasRoll(){
       var arr = this.createRollArray(label, list, qualifier);
       var roll = this.resolveRoll(arr, label);
       var value = this.resolveRollValue(list, arr, roll);
+      this.resolveUnique(label,list,qualifier,arr,roll);
 
       return value;
     }
@@ -179,6 +179,26 @@ function HasRoll(){
       return value;
     } else {
       return '';
+    }
+  };
+
+  /**
+   *
+   */
+  this.resolveUnique=function(label, list, qualifier, arr, roll){
+    var coreNode = $(list).data('coreNode');
+
+    if(coreNode.unique===true){
+      //console.log('resolve unique',coreNode,arr,roll);
+
+      if (roll > -1) {
+        arr.splice(roll, 1);
+      }
+
+      if(arr.length === 0){
+        this.rollArrayLookup[label]=undefined;
+        this.createRollArray(label,list,qualifier);
+      }
     }
   };
 
@@ -221,10 +241,12 @@ function HasRoll(){
 
 
   /**
-   *
+   * no longer used
+   * @see HasRollSeed.js
    */
   this.resolveRoll=function(arr){
     var roll = Math.floor(Math.random() * arr.length);
+    console.log('resolve roll',roll);
     return roll;
   };
 

@@ -58,7 +58,6 @@ function HasRollSeed(){
     } else{
       roll = Math.floor(Math.random() * arr.length);
     }
-
     return roll;
   };
 }

@@ -24,7 +24,7 @@ function HasUniqueControl(){
    */
   this.uniqueControl.click($.proxy(function(coreNode,event){
     event.preventDefault();
-    console.log('clicked unique');
+    //console.log('clicked unique');
 
     if($(this).hasClass('inactive')){
       coreNode.setUnique(true);
