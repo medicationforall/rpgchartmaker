@@ -34,6 +34,19 @@ function HasOpenMenuButtons(){
     coreNode.openMenu(menu);
   },null,this));
 
+/**
+ *
+ */
+  $('.menu').on('click','.closeMenuButton',function(event){
+    event.preventDefault();
+
+    if($('body').hasClass('menuOpen')){
+        $('body').removeClass('menuOpen');
+    }
+
+    $('.hamburger.menu .subMenu').removeClass('focus');
+  });
+
 
   /**
    * Actions to be performed when opening a menu.

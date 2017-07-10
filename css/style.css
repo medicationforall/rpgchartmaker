@@ -45,6 +45,7 @@ body.menuOpen .hamburger.menu {
     display: block;
     position: absolute;
     right: 0;
+    z-index: 1;
 }
 
 /*body .processing{
@@ -72,6 +73,10 @@ body.processing .processing{
 .menu .subMenu{
   display:none;
   padding:5px;
+}
+
+.menu .subMenu .closeMenuButton{
+  float:right;
 }
 
 .menu .subMenu.focus{
