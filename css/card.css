@@ -97,7 +97,7 @@ min-width:9px;
 
 .listGroup li .inlineEdit{
 	display:inline-block;
-	vertical-align:top:
+	vertical-align:top;
 }
 
 .listGroup li span:hover{
