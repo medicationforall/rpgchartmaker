@@ -19,12 +19,12 @@ function HasUniqueControl(){
   this.unique=false;
   this.uniqueControl = this.node.find('.unique');
 
+
   /**
    *
    */
   this.uniqueControl.click($.proxy(function(coreNode,event){
     event.preventDefault();
-    //console.log('clicked unique');
 
     if($(this).hasClass('inactive')){
       coreNode.setUnique(true);
@@ -33,6 +33,10 @@ function HasUniqueControl(){
     }
   },null,this));
 
+
+  /**
+   *
+   */
   this.setUnique=function(value){
     this.unique = value;
 
@@ -42,5 +46,4 @@ function HasUniqueControl(){
       this.uniqueControl.addClass('inactive').removeClass('active');
     }
   };
-
 }

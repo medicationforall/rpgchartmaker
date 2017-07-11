@@ -38,9 +38,9 @@ Base.prototype.setupBase=function(template){
   this.setupSortable();
   this._setupHandleColor();
   this._setupAlphabetize();
-  this._setupRollCheckBox();
   this._setupCSSOverride();
   HasUniqueControl.call(this);
+  HasRollControl.call(this);
 };
 
 
@@ -118,17 +118,6 @@ Base.prototype._setupHandleColor=function(){
 
 
 /**
- * Setup Roll Checkbox and a new list instance.
- * @private
- */
-Base.prototype._setupRollCheckBox=function(){
-  this.node.find('input[name="roll"]').on('change',$.proxy(function(node,event){
-    $(node).data('roll',this.checked);
-  },null,this.node));
-};
-
-
-/**
  * Apply Current CSS Override for a new list instance.
  * @private
  */
@@ -192,7 +181,7 @@ Base.prototype.gatherData=function(){
   obj.name= this.node.find('input[name=listGroupName]').val();
 
   //get roll checkbox
-  obj.roll= this.node.find('input[name="roll"]').prop('checked');
+  obj.roll= this.rollValue;
 
   //get unique
   if(this.unique !== undefined && (this.unique===true || this.unique===false)){

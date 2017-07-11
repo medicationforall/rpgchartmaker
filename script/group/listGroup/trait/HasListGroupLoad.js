@@ -39,7 +39,7 @@ function HasListGroupLoad(){
       }else if(list.roll=='false'){
         list.roll=false;
       }
-      this.node.find('input[name="roll"]').prop('checked', list.roll).trigger('change');
+      this.setRollValue(list.roll);
     }
 
     //fill out unique

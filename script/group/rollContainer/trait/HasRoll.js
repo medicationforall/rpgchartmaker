@@ -68,10 +68,9 @@ function HasRoll(){
     }
 
     $('.list').each($.proxy(function(index,item){
-      //var input = $(item).find('input[name="listGroupName"]');
-      //var label = input.val();
       var label = $(item).data('name');
-      var roll = $(item).data('roll');
+      var coreNode = $(item).data('coreNode');
+      var roll = coreNode.rollValue;
 
       //make sure it's not skipped
       if(this.resolveDisplay(label)){
@@ -149,8 +148,10 @@ function HasRoll(){
    * Potentially a recursive call, depending on how the user structured their data.
    */
   this.rollList=function(list,forceRoll,qualifier){
+    var coreNode = $(list).data('coreNode');
+
     //make sure it's not skipped
-    if(forceRoll || $(list).data('roll')){
+    if(forceRoll || coreNode.rollValue){//$(list).data('roll')){
       var label = $(list).data('name');
       var arr = this.createRollArray(label, list, qualifier);
       var roll = this.resolveRoll(arr, label);
