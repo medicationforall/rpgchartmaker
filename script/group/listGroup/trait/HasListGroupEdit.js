@@ -47,7 +47,15 @@ function HasListGroupEdit(){
     '</div>';
     $(this).css('display','none');
     $(this).parent().addClass('edit');
-    $(this).after(template);
+    //$(this).after(template);
+    var edit = $(template).insertAfter(this);
+
+    //set focus
+    var input = edit.find('.itemEdit').focus();
+
+    //Select the input value content.
+    var FldLength = input.val().length;
+    input[0].setSelectionRange(0, FldLength);
   });
 
 

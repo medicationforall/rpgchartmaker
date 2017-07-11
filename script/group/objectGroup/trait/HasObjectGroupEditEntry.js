@@ -91,6 +91,13 @@ function HasObjectGroupEditEntry(){
       node.find('.value').val(value);
       node.find('.value').attr('type',type);
     });
+
+    //set focus
+    var input = editNode.find('.value').first().focus();
+
+    //Select the input value content.
+    var FldLength = input.val().length;
+    input[0].setSelectionRange(0, FldLength);
   };
 
 

@@ -50,6 +50,13 @@ function HasObjectGroupEditInput(){
     var edit = $(template.trim()).insertAfter(node);
     edit.find('select').val(type);
     node.hide();
+
+    //set focus
+    var input = edit.find('input[name="editInputLabel"]').focus();
+
+    //Select the input value content.
+    var FldLength = input.val().length;
+    input[0].setSelectionRange(0, FldLength);
   });
 
 
