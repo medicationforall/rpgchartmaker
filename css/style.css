@@ -149,7 +149,15 @@ input.colorSelector{
 
 
 @media print {
-	.header, .listForm, .list .handle .deleteListButton{
+  html, body {
+      overflow-x: visible;
+  }
+
+  body.menuOpen .hamburger.menu, body .card .menu.focus{
+    display:none;
+  }
+
+	.header, .listForm, .card .handle .deleteListButton, .card .handle .menuButton{
 		display:none;
 	}
 
