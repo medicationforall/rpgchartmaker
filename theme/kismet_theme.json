@@ -10,14 +10,16 @@
 		},
 		".card": {
 			"background": "#0c3330",
-			"color": "#ffb75b"
+			"color": "#ffb75b",
+			"font-family": "Arial"
 		},
 		".header h1": {
 			"background": "#bf9461"
 		},
 		".menu": {
 			"background": "#ffcf95",
-			"color": "#082220"
+			"color": "#082220",
+			"font-family": "Arial"
 		}
 	}
 }
