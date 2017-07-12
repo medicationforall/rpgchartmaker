@@ -86,6 +86,32 @@ function RollContainer(animate){
   };
 
 
+  /**
+   *
+   */
+  this.gatherData=function(){
+    var obj = {};
+    //var coreNode = $(item).data("coreNode");
+    obj.type = "RollContainer";
+
+    //resolve alias
+    if($.isEmptyObject(this.alias)===false){
+      obj.alias = this.alias;
+    }
+
+    //resolve display
+    if($.isEmptyObject(this.display)===false){
+      obj.display = this.display;
+    }
+
+    //resolve alias
+    if(this.seed && this.seed !==''){
+      obj.seed = this.seed;
+    }
+    return obj;
+  };
+
+
   //main
   this._constructor();
 }

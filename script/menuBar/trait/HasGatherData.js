@@ -70,25 +70,8 @@ function HasGatherData(){
     //gather rolls
     data.rolls=[];
     $('.listGroupContainer .rollContainer').each(function(index, item){
-      var obj = {};
-      var coreNode = $(item).data("coreNode");
-
-      //resolve alias
-      if($.isEmptyObject(coreNode.alias)===false){
-        obj.alias = coreNode.alias;
-      }
-
-      //resolve display
-      if($.isEmptyObject(coreNode.display)===false){
-        obj.display = coreNode.display;
-      }
-
-      //resolve type
-      if(coreNode instanceof RollContainer){
-        obj.seed = coreNode.seed;
-        //alias is not empt
-        obj.type = "RollContainer";
-      }
+      var coreNode = $(item).data('coreNode');
+      var obj = coreNode.gatherData();
       data.rolls.push(obj);
     });
   };

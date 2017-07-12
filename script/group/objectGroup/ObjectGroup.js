@@ -57,6 +57,7 @@ function ObjectGroup(animate){
 		HasObjectGroupEditEntry.call(this);
 
 		HasListMenu.call(this);
+		this.setupAlphabetize();
 
 		$(this).trigger('loaded');
 	};
@@ -76,13 +77,10 @@ function ObjectGroup(animate){
 
 
 	/**
-	 * Sets the click hanlder for clicking on the alphabetize button.
-	 * Also defines what the sort logic is.
-	 * @private
+	 * Defines what the sort logic is for an object list.
 	 */
-	this._setupAlphabetize=function(){
-		this.node.find('.alphabetizeButton').click($.proxy(function(event){
-			event.preventDefault();
+	this.setupAlphabetize=function(){
+		this.alphabetize=function(order){
 			var list = this.node.find('ol li');
 
 			list.sort(function(a,b){
@@ -90,17 +88,25 @@ function ObjectGroup(animate){
 				bText = $(b).find('span.value').first().text();
 
 				if(aText > bText){
-					return 1;
+					if(order==='asc'){
+						return 1;
+					}else if('desc'){
+						return -1;
+					}
 				}
 
 				if(aText < bText){
-					return -1;
+					if(order==='asc'){
+						return -1;
+					}else if('desc'){
+						return 1;
+					}
 				}
 				return 0;
 			});
 
 			list.detach().appendTo(this.node.find('ol'));
-		},this));
+		};
 	};
 
 

@@ -50,6 +50,7 @@ function ListGroup(animate){
 		HasListGroupAdd.call(this);
 		HasListGroupEdit.call(this);
 		HasListMenu.call(this);
+		this.setupAlphabetize();
 
 		$(this).trigger('loaded');
 	};
@@ -61,40 +62,43 @@ function ListGroup(animate){
 	 */
 	this.setupSortable=function(){
 		this.orderList = this.node.find('ol');
-
 		this.orderList.sortable({connectWith: ".list ol"});
 	};
 
 
 	/**
-	 * Sets the click hanlder for clicking on the alphabetize button.
-	 * Also defines what the sort logic is.
-	 *@private
+	 * Defines what the sort logic is for an list.
 	 */
-	this._setupAlphabetize=function(){
-		this.node.find('.alphabetizeButton').click($.proxy(function(event){
-			event.preventDefault();
-
+	this.setupAlphabetize=function(){
+		this.alphabetize=function(order){
 			var list = this.orderList.find('li');
 
 			list.sort(function(a,b){
-				aText = $(a).find('.nameText').text();
-				bText = $(b).find('.nameText').text();
+			aText = $(a).find('.nameText').text();
+			bText = $(b).find('.nameText').text();
 
-				if(aText > bText){
+			if(aText > bText){
+				if(order==='asc'){
 					return 1;
-				}
-
-				if(aText < bText){
+				}else if('desc'){
 					return -1;
+				}
+			}
+
+			if(aText < bText){
+					if(order==='asc'){
+						return -1;
+					}else if('desc'){
+						return 1;
+					}
 				}
 				return 0;
 			});
 
+			//set the list
 			list.detach().appendTo(this.orderList);
-		},this));
+		};
 	};
-
 
 	//main
 	this._constructor();

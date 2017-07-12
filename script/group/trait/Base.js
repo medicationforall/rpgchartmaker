@@ -37,8 +37,8 @@ Base.prototype.setupBase=function(template){
   this._createNode(template);
   this.setupSortable();
   this._setupHandleColor();
-  this._setupAlphabetize();
   this._setupCSSOverride();
+  HasAlphabetizeControl.call(this);
   HasUniqueControl.call(this);
   HasRollControl.call(this);
 };

@@ -135,7 +135,7 @@ function HasRoll(){
     var label = $(item).data('name');
 
     if(this.resolveDisplay(label)){
-      rollValue = this.rollList(item);
+      rollValue = this.rollList({"index":index,"item":item});
 
       if(rollValue!==undefined){
         this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
@@ -147,17 +147,20 @@ function HasRoll(){
   /**
    * Potentially a recursive call, depending on how the user structured their data.
    */
-  this.rollList=function(list,forceRoll,qualifier){
-    var coreNode = $(list).data('coreNode');
+  this.rollList=function(p){
+    if(p.index===undefined || p.item===undefined){
+      throw 'rollList is missing required parameters';
+    }
+
+    var coreNode = $(p.item).data('coreNode');
 
     //make sure it's not skipped
-    if(forceRoll || coreNode.rollValue){//$(list).data('roll')){
-      var label = $(list).data('name');
-      var arr = this.createRollArray(label, list, qualifier);
-      var roll = this.resolveRoll(arr, label);
-      var value = this.resolveRollValue(list, arr, roll);
-      this.resolveUnique(label,list,qualifier,arr,roll);
-
+    if(p.forceRoll || coreNode.rollValue){
+      p.label = $(p.item).data('name');
+      p.arr = this.createRollArray(p);
+      p.roll = this.resolveRoll(p.arr, p.label);
+      var value = this.resolveRollValue(p.item, p.arr, p.roll);
+      this.resolveUnique(p);
       return value;
     }
   };
@@ -186,19 +189,21 @@ function HasRoll(){
   /**
    *
    */
-  this.resolveUnique=function(label, list, qualifier, arr, roll){
-    var coreNode = $(list).data('coreNode');
+  this.resolveUnique=function(p){
+    if(p.item===undefined || p.roll===undefined || p.arr===undefined || p.index===undefined || p.label===undefined){
+      throw 'resolveUnique is missing required parameters';
+    }
+
+    var coreNode = $(p.item).data('coreNode');
 
     if(coreNode.unique===true){
-      //console.log('resolve unique',coreNode,arr,roll);
-
-      if (roll > -1) {
-        arr.splice(roll, 1);
+      if (p.roll > -1) {
+        p.arr.splice(p.roll, 1);
       }
 
-      if(arr.length === 0){
-        this.rollArrayLookup[label]=undefined;
-        this.createRollArray(label,list,qualifier);
+      if(p.arr.length === 0){
+        this.rollArrayLookup[p.label+p.index]=undefined;
+        this.createRollArray(p);
       }
     }
   };
@@ -207,29 +212,34 @@ function HasRoll(){
   /**
    *
    */
-  this.createRollArray=function(label,list,qualifier){
-    if(this.rollArrayLookup[label]===undefined){
-      //console.log('create array for ',label);
+  this.createRollArray=function(p){
+    if(p.index===undefined || p.label===undefined || p.item===undefined){
+      throw 'createRollArray is missing required parameters';
+    }
+    var namespace = p.label+p.index;
+
+    //lookup array is empty
+    if(this.rollArrayLookup[namespace]===undefined){
       var arr = [];
 
-      if(qualifier && qualifier!==''){
-        var sub  = qualifier.split(',');
+      if(p.qualifier && p.qualifier!==''){
+        var sub  = p.qualifier.split(',');
 
         for(var i=0;i<sub.length;i++){
-          var node = $(list).find('ol li:nth-child('+sub[i].trim()+')');
+          var node = $(p.item).find('ol li:nth-child('+sub[i].trim()+')');
           arr.push(node.html());
         }
       }else{
         //place list item contents into an array
-        arr = $(list).find('ol li').not('.edit').map(function(i, el) {
+        arr = $(p.item).find('ol li').not('.edit').map(function(i, el) {
           return $(el).html();
         }).get();
       }
 
-      this.rollArrayLookup[label] = arr;
+      this.rollArrayLookup[namespace] = arr;
     }
 
-    return this.rollArrayLookup[label];
+    return this.rollArrayLookup[namespace];
   };
 
 
@@ -297,8 +307,8 @@ function HasRoll(){
     text = text.replace(re,$.proxy(function(match,listName,qualifier){
       var returner = match;
       if(listName && listName!==''){
-        var list = $('.list input[name="listGroupName"]').filter(function(){return this.value==listName;}).closest('.list');
-        return this.rollList(list,true,qualifier);
+        var item = $('.list input[name="listGroupName"]').filter(function(){return this.value==listName;}).closest('.list');
+        return this.rollList({"item":item,"forceRoll":true,"qualifier":qualifier});
       }
       return returner;
     },this));
