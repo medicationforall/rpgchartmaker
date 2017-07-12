@@ -31,6 +31,7 @@ function HasRoll(){
     this.rollTable = this.node.find('table');
     this.clearTitle();
     this.resetState();
+    this.createIndex();
     this.createTableHeader();
     this.createTableRows();
     this.clearRollArrayLookup();
@@ -55,6 +56,15 @@ function HasRoll(){
     //reset state
     this.rollTable.find('th').remove();
     this.rollTable.find('tbody tr').remove();
+  };
+
+  /**
+   *
+   */
+  this.createIndex=function(){
+    $('.list').each($.proxy(function(index,item){
+      $(item).attr('data-index',index);
+    },this));
   };
 
 
@@ -159,7 +169,7 @@ function HasRoll(){
       p.label = $(p.item).data('name');
       p.arr = this.createRollArray(p);
       p.roll = this.resolveRoll(p.arr, p.label);
-      var value = this.resolveRollValue(p.item, p.arr, p.roll);
+      var value = this.resolveRollValue(p.index,p.item, p.arr, p.roll);
       this.resolveUnique(p);
       return value;
     }
@@ -169,7 +179,7 @@ function HasRoll(){
   /**
    *
    */
-  this.resolveRollValue=function(list, arr, roll){
+  this.resolveRollValue=function(index,list, arr, roll){
     if(arr.length>0){
       var value = arr[roll];
 
@@ -307,8 +317,14 @@ function HasRoll(){
     text = text.replace(re,$.proxy(function(match,listName,qualifier){
       var returner = match;
       if(listName && listName!==''){
-        var item = $('.list input[name="listGroupName"]').filter(function(){return this.value==listName;}).closest('.list');
-        return this.rollList({"item":item,"forceRoll":true,"qualifier":qualifier});
+        var item = $('.list[data-name="'+listName+'"]');
+        var index = $(item).data('index');
+        //find the index
+        if(index===undefined){
+          console.warn="index is undefined";
+          index=0;
+        }
+        return this.rollList({"index":index,"item":item,"forceRoll":true,"qualifier":qualifier});
       }
       return returner;
     },this));

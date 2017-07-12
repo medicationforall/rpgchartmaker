@@ -31,6 +31,7 @@ function HasRollSeed(){
     this.resetRng();
     this.clearTitle();
     this.resetState();
+    this.createIndex();
     this.createTableHeader();
     this.createTableRows();
     this.clearRollArrayLookup();

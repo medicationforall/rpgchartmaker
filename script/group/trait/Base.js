@@ -96,7 +96,7 @@ Base.prototype._setupHandleColor=function(){
     var handle = node.find('.handle');
     var color = '';
     var value = $(this).val();
-    $(node).data('name',value);
+    $(node).attr('data-name',value);
 
     if(value!==''){
       var hash = hashCode($(this).val());
