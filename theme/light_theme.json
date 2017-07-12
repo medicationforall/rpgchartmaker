@@ -1,1 +1,25 @@
-﻿{"name":"light_theme","cssOverrides":{".header h1":{"background":"#ffffff","color":"#3c3c3c"},".menuBar":{"background":"#f0f0f0"},"body":{"background":"#e1e1e1"},".menu":{"background":"#808080","color":"#f9f9f9"}}}
+﻿{
+	"name": "light_theme",
+	"cssOverrides": {
+		".header h1": {
+			"background": "#ffffff",
+			"color": "#3c3c3c",
+			"font-family": "Arial"
+		},
+		".menuBar": {
+			"background": "#f0f0f0",
+			"font-family": "Arial"
+		},
+		"body": {
+			"background": "#e1e1e1"
+		},
+		".card": {
+			"font-family": "Arial"
+		},
+		".menu": {
+			"background": "#808080",
+			"color": "#f9f9f9",
+			"font-family": "Arial"
+		}
+	}
+}

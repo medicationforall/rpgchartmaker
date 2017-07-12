@@ -6,15 +6,21 @@
 		},
 		".menuBar": {
 			"background": "#000000",
-			"color": "#00ff00"
+			"color": "#00ff00",
+			"font-family": "monospace"
 		},
 		".header h1": {
 			"background": "#000000",
-			"color": "#00fe00"
+			"color": "#00fe00",
+			"font-family": "monospace"
 		},
 		".card": {
 			"background": "#000000",
-			"color": "#00ffff"
+			"color": "#00ffff",
+			"font-family": "courier"
+		},
+		".menu": {
+			"font-family": "monospace"
 		}
 	}
 }

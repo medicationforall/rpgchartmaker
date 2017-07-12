@@ -1,0 +1,25 @@
+{
+	"name": "cthulhu_theme",
+	"cssOverrides": {
+  		".header h1": {
+			"background": "#003300",
+      "color": "#005200"
+		},
+		".menuBar": {
+			"background": "#005200",
+			"color": "#b5e5b5"
+		},
+		"body": {
+			"background": "#000000"
+		},
+		".card": {
+			"background": "#003300",
+			"color": "#88ad88",
+			"font-family": "Lobster"
+		},
+    ".menu": {
+			"background": "#772810",
+			"color": "#e7ccc4"
+		}
+	}
+}

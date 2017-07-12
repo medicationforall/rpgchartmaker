@@ -28,7 +28,7 @@ function HasSettingsMenu(){
   /**
    * colorSelector change.
    */
-  $('body').on('change','.colorSelector',$.proxy(function(coreNode,event){
+  $('body').on('change','.colorSelector,.fontFamilySelector',$.proxy(function(coreNode,event){
     var cNode = $(this);
     var color = cNode.val();
     var selector = cNode.attr('data-selector');
@@ -66,6 +66,7 @@ function HasSettingsMenu(){
   this.resetOverrides=function(){
     //loops through color settings
     $('body').find('.colorSelector').each($.proxy(this.resetOverride,this));
+    $('body').find('.fontFamilySelector').each($.proxy(this.resetSelectOverride,this));
 
     //reset overrides
     this.overrides={};
@@ -83,6 +84,26 @@ function HasSettingsMenu(){
     var property = cNode.data('property');
     cNode.val(color);
     this.setOverride(selector,property,color);
+
+    delete this.overrides[selector][property];
+
+    if($.isEmptyObject(this.overrides[selector])){
+      delete this.overrides[selector];
+    }
+  };
+
+
+  /**
+   *
+   */
+  this.resetSelectOverride=function(index,item){
+    //console.log('reset',item, $(item).val(), $(item).attr('value'));
+    var cNode = $(item);
+    var value = cNode.find('option[selected]').text();
+    var selector = cNode.data('selector');
+    var property = cNode.data('property');
+    cNode.val(value);
+    this.setOverride(selector,property,value);
 
     delete this.overrides[selector][property];
 
@@ -136,6 +157,7 @@ function HasSettingsMenu(){
       if(overrides.hasOwnProperty(cSelector)===false){
         //reset missing keys
         $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetOverride,this));
+        $('body').find('.fontFamilySelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetSelectOverride,this));
       }
       //check missing properties.
       else{
@@ -143,6 +165,7 @@ function HasSettingsMenu(){
           if(overrides[cSelector].hasOwnProperty(cProperty)===false){
             //reset missing properties
             $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetOverride,this));
+            $('body').find('.fontFamilySelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetSelectOverride,this));
           }
         }
       }
@@ -162,6 +185,7 @@ function HasSettingsMenu(){
           if(overrides[selector].hasOwnProperty(property)){
             this.setOverride(selector,property,overrides[selector][property]);
             $('body').find('input[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
+            $('body').find('select[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
           }
         }
       }
