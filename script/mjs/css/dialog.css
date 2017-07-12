@@ -9,6 +9,7 @@ background:#fff;
 border-radius:3px;
 box-shadow:5px 5px 5px rgba(0,0,0,0.3);
 font-family:arial;
+z-index:1;
 }
 
 .dialog .content{
