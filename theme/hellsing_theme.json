@@ -1,10 +1,6 @@
-{
+﻿{
 	"name": "hellsing_theme",
 	"cssOverrides": {
-  		".header h1": {
-			"background": "#330000",
-      "color": "#520000"
-		},
 		".menuBar": {
 			"background": "#520000",
 			"color": "#e5b5b5"
@@ -17,7 +13,12 @@
 			"color": "#ad8888",
 			"font-family": "Lobster"
 		},
-    ".menu": {
+		".header h1": {
+			"background": "#330000",
+			"color": "#700000",
+			"font-family": "Cinzel Decorative"
+		},
+		".menu": {
 			"background": "#777777",
 			"color": "#e7e7e7"
 		}
