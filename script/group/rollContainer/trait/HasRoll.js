@@ -107,7 +107,7 @@ function HasRoll(){
    *
    */
   this.resolveDisplay=function(column){
-      if(this.display && this.display[column]===false){
+      if(this.display && this.display[column]===false || this.display[column]==='false' ){
         return false;
       }
       return true;

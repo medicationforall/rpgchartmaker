@@ -73,7 +73,6 @@ function HasRollMenu(){
    *
    */
   this.node.find('.menu').on('input','.alias',$.proxy(function(coreNode,event){
-    //console.log('alias change',$(this).val());
     var column = $(this).data('name');
     coreNode.setAlias(column,$(this).val());
   },null,this));
@@ -97,7 +96,6 @@ function HasRollMenu(){
    *
    */
   this.node.find('.menu').on('change','.display',$.proxy(function(coreNode,event){
-    //console.log('alias change',this.checked);
     var column = $(this).data('name');
     coreNode.setDisplay(column,this.checked);
   },null,this));
