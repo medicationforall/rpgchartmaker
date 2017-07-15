@@ -78,7 +78,7 @@ function HasRoll(){
     }
 
     $('.list').each($.proxy(function(index,item){
-      var label = $(item).data('name');
+      var label = $(item).attr('data-name');
       var coreNode = $(item).data('coreNode');
       var roll = coreNode.rollValue;
 
@@ -110,7 +110,6 @@ function HasRoll(){
       if(this.display && this.display[column]===false){
         return false;
       }
-
       return true;
   };
 
@@ -142,7 +141,7 @@ function HasRoll(){
    */
   this.getRollValue=function(index, item){
     //resolve list name
-    var label = $(item).data('name');
+    var label = $(item).attr('data-name');
 
     if(this.resolveDisplay(label)){
       rollValue = this.rollList({"index":index,"item":item});
@@ -166,7 +165,7 @@ function HasRoll(){
 
     //make sure it's not skipped
     if(p.forceRoll || coreNode.rollValue){
-      p.label = $(p.item).data('name');
+      p.label = $(p.item).attr('data-name');
       p.arr = this.createRollArray(p);
       p.roll = this.resolveRoll(p.arr, p.label);
       var value = this.resolveRollValue(p.index,p.item, p.arr, p.roll);
@@ -195,6 +194,7 @@ function HasRoll(){
       return '';
     }
   };
+
 
   /**
    *

@@ -45,7 +45,7 @@ function HasRollMenu(){
 
       lists.each($.proxy(function(coreNode ,cMenu, index, item){
         //console.log(arguments);
-        var label = $(item).data('name');
+        var label = $(item).attr('data-name');
 
         coreNode.addMenuOption(label,cMenu);
       },null, this, cMenu));
