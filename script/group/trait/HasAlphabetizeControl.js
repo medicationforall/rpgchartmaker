@@ -15,6 +15,11 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Alphabetize control.
+  * @mixin
+  */
 function HasAlphabetizeControl(){
 
   /**
@@ -37,8 +42,10 @@ function HasAlphabetizeControl(){
     }
   },null,this));
 
+
   /**
-   * Defines what the sort logic is.
+   * Defines what the sort logic is. Intending to be overridden
+   * @param {string} order - asc, desc
    */
   this.alphabetize=function(order){
     console.warn('alphabetize not set',this);

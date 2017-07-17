@@ -47,8 +47,9 @@ function HasSaveMenu(){
 
 
   /**
-   *@param {string} key - lists, Rolls, overrides.
-   *@return {boolean} stored option return false if the key does not exist yet.
+   * Get the save Option by lookup key.
+   * @param {string} key - lists, Rolls, overrides.
+   * @return {boolean} stored option return false if the key does not exist yet.
    */
   this.getSaveOption=function(key){
     if(this.saveOptions[key]!==undefined){
@@ -76,7 +77,8 @@ function HasSaveMenu(){
 
 
   /**
-   *@todo duplicate code
+   * Prompt the browser to save a file.
+   * @todo duplicate code
    */
   this.saveAsFile=function(t,f,m) {
     try {

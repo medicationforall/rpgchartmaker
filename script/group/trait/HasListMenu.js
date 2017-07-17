@@ -18,6 +18,7 @@
 
  /**
   * List Menu Mixin.
+  * @mixin
   */
 function HasListMenu(){
 

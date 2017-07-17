@@ -24,12 +24,11 @@ function HasRollMenu(){
   this.display={};
   this.alias={};
 
+
   /**
    *
    */
   this.openMenu=function(){
-    //console.log('open menu');
-
     var lists = $('.listGroupContainer .list');
     var cMenu = this.node.find('.menu .columns');
 
@@ -41,10 +40,8 @@ function HasRollMenu(){
 
     //if we have lists
     if(lists.length > 0){
-      //console.log('display edit controls');
 
       lists.each($.proxy(function(coreNode ,cMenu, index, item){
-        //console.log(arguments);
         var label = $(item).attr('data-name');
 
         coreNode.addMenuOption(label,cMenu);

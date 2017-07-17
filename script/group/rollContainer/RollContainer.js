@@ -42,6 +42,7 @@ function RollContainer(animate){
 
   /**
    * Sets up the rollContainer.
+   * @param {string} template
    */
   this._setup=function(template){
     this._createNode(template);
@@ -69,6 +70,7 @@ function RollContainer(animate){
 
   /**
    * Called when loading a user saved chart.
+   * @param {Object} data
    */
   this.fillOut=function(data){
     if(data.seed){
@@ -87,7 +89,7 @@ function RollContainer(animate){
 
 
   /**
-   *
+   * Collect the configuration data for the RollContainer.
    */
   this.gatherData=function(){
     var obj = {};

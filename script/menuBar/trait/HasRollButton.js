@@ -34,6 +34,8 @@ function HassRollButton(){
 
   /**
    * Initiates roll for all Roll Containers in the application.
+   * @param {string} index
+   * @param {Object} item
    * @private
    */
   this._rollAll=function(){

@@ -24,7 +24,9 @@ function HasRollSeed(){
 
 
   /**
-   *
+   * Called when a roll event is initiated.
+   * @override
+   * @todo not intuitive that this is the method that is called during a roll.
    */
   this.roll=function(){
     this.rollTable = this.node.find('table');
@@ -41,7 +43,7 @@ function HasRollSeed(){
 
 
   /**
-   *
+   * Reset the random number generator for a roll event.
    */
   this.resetRng=function(){
     this.rng.clearSeed();
@@ -49,7 +51,11 @@ function HasRollSeed(){
 
 
   /**
-   *
+   * Resolve a roll from either a seed or at random.
+   * @param {Array} arr - array to be rolled against.
+   * @param {string} name - namespace for the seed lookup key.
+   * @override
+   * @todo not intuitive that this method is called.
    */
   this.resolveRoll=function(arr,name){
     var roll;

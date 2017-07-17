@@ -24,7 +24,7 @@ function HasSeed(){
 
 
   /**
-   *
+   * User Input on the seed textbox.
    */
   this.node.find('input[name="seed"]').on('input',$.proxy(function(coreNode,event,params){
     //remove error state
@@ -44,8 +44,10 @@ function HasSeed(){
     }
   },null,this));
 
+
   /**
-   *
+   * Setup the the color selector located on the RollContainer menu.
+   * @todo duplicate code?
    */
   this.setupColorSelector=function(seed){
     //get the data label

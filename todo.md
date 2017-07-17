@@ -1,1 +1,1 @@
-should chart name be a hard requirement for saving?
+* Clean up css overrides select vs input tags.

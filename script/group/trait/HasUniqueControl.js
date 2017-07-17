@@ -15,13 +15,18 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Unique control.
+  * @mixin
+  */
 function HasUniqueControl(){
   this.unique=false;
   this.uniqueControl = this.node.find('.unique');
 
 
   /**
-   *
+   * Unique key click.
    */
   this.uniqueControl.click($.proxy(function(coreNode,event){
     event.preventDefault();
@@ -35,12 +40,13 @@ function HasUniqueControl(){
 
 
   /**
-   *
+   * Set unique
+   * @param {boolean} value
    */
   this.setUnique=function(value){
     this.unique = value;
 
-    if(this.unique===true){
+    if(this.unique===true || this.unique==='true'){
       this.uniqueControl.addClass('active').removeClass('inactive');
     } else{
       this.uniqueControl.addClass('inactive').removeClass('active');

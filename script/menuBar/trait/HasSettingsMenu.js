@@ -61,10 +61,9 @@ function HasSettingsMenu(){
 
 
   /**
-   *
+   * Loops through CSS overrides settings, and reset to back default value.
    */
   this.resetOverrides=function(){
-    //loops through color settings
     $('body').find('.colorSelector').each($.proxy(this.resetOverride,this));
     $('body').find('.fontFamilySelector').each($.proxy(this.resetSelectOverride,this));
 
@@ -74,7 +73,9 @@ function HasSettingsMenu(){
 
 
   /**
-   *
+   * Reset override for an input tag.
+   * @param {string} index
+   * @param {Object} item
    */
   this.resetOverride=function(index,item){
     //console.log('reset',item, $(item).val(), $(item).attr('value'));
@@ -94,7 +95,9 @@ function HasSettingsMenu(){
 
 
   /**
-   *
+   * Reset override for an select tag.
+   * @param {int} index
+   * @param {Object} item
    */
   this.resetSelectOverride=function(index,item){
     //console.log('reset',item, $(item).val(), $(item).attr('value'));
@@ -145,7 +148,8 @@ function HasSettingsMenu(){
 
 
   /**
-   *
+   * Find the difference between already applied overrides and overrides to be applied.
+   * @param {Object} overrides
    */
   this.diffOverrides=function(overrides){
     //1. clone the current overrides.
@@ -175,6 +179,7 @@ function HasSettingsMenu(){
 
   /**
    * overwrite overrides with data.
+   * @param {Object} overrides
    */
   this.applyOverrides=function(overrides){
     //loop over selectors

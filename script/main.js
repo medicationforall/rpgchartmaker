@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file ObjectGroup,
+ *   RPG Chart Maker source file main,
  *   Copyright (C) 2016  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -15,6 +15,10 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Extension to jquery to apply a css animation class and remove it when the animation is finished.
+ */
 $.fn.extend({
     animateCss: function (animationName) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -24,6 +28,10 @@ $.fn.extend({
     }
 });
 
+
+/**
+ * Main Method.
+ */
 $(document).ready(function(){
   $('.javacriptWarning').remove();
   ListGroupContainer.call(this);

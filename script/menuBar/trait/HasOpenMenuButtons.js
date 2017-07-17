@@ -24,7 +24,7 @@ function HasOpenMenuButtons(){
 
 
   /**
-   * Open Menu Button click.
+   * Open menu button click.
    */
   this.node.on('click','.openMenuButton',$.proxy(function(coreNode,event){
     event.preventDefault();
@@ -34,9 +34,10 @@ function HasOpenMenuButtons(){
     coreNode.openMenu(menu);
   },null,this));
 
-/**
- *
- */
+
+  /**
+   * Close menu button click.
+   */
   $('.menu').on('click','.closeMenuButton',function(event){
     event.preventDefault();
 
