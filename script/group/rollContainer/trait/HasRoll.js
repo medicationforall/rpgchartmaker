@@ -25,7 +25,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Triggers a roll event for a RollContainer.
    */
   this.roll=function(){
     this.rollTable = this.node.find('table');
@@ -41,7 +41,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Sets the default title text.
    */
   this.clearTitle=function(){
     //change the rollContainers titles color
@@ -50,7 +50,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Clear the html table.
    */
   this.resetState=function(){
     //reset state
@@ -58,8 +58,9 @@ function HasRoll(){
     this.rollTable.find('tbody tr').remove();
   };
 
+
   /**
-   *
+   * Generates the namespace indexes for the lists.
    */
   this.createIndex=function(){
     $('.list').each($.proxy(function(index,item){
@@ -69,7 +70,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Create the table header columns.
    */
   this.createTableHeader=function(){
     //fill out headers
@@ -93,7 +94,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * Resolve column alias if one exists.
+   * @param {string} column - key lookup name.
+   * @return {string} Alias string.
    */
   this.resolveAlias=function(column){
       if(this.alias && this.alias[column]){
@@ -104,7 +107,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * Resolve if the column should be displayed.
+   * @param {string} column - key lookup name.
+   * @return {boolean} display flag value.
    */
   this.resolveDisplay=function(column){
       if(this.display && this.display[column]===false || this.display[column]==='false' ){
@@ -115,7 +120,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Fill out the table roll of the RollContainer.
    */
   this.createTableRows=function(){
     //fill out rows
@@ -137,7 +142,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * Get a roll value from derived based on list.
+   * @param {int} index - List index.
+   * @param {Object} item - The reference List.
    */
   this.getRollValue=function(index, item){
     //resolve list name
@@ -155,6 +162,7 @@ function HasRoll(){
 
   /**
    * Potentially a recursive call, depending on how the user structured their data.
+   * @param {Object} p - Object parameter list.
    */
   this.rollList=function(p){
     if(p.index===undefined || p.item===undefined){
@@ -176,9 +184,14 @@ function HasRoll(){
 
 
   /**
-   *
+   * Gets the roll string value from roll array, and animates the selection.
+   * @param {int} index - List index.
+   * @param {Object} list - Reference List.
+   * @param {Array} arr - Roll lookup Array.
+   * @param {int} roll - Roll index to be resolved.
+   * @return {string} The roll value.
    */
-  this.resolveRollValue=function(index,list, arr, roll){
+  this.resolveRollValue=function(index, list, arr, roll){
     if(arr.length>0){
       var value = arr[roll];
 
@@ -197,7 +210,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * If the roll array is unique pops the value off the array.
+   * When the array is empty rebuilds the arrays contents.
+   * @param {Object} p - Object parameter list.
    */
   this.resolveUnique=function(p){
     if(p.item===undefined || p.roll===undefined || p.arr===undefined || p.index===undefined || p.label===undefined){
@@ -220,7 +235,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * Creates the Roll array derived from the reference list and caches the results.
+   * @param {Object} p - Object parameter list.
+   * @return {Array} The Array to roll against.
    */
   this.createRollArray=function(p){
     if(p.index===undefined || p.label===undefined || p.item===undefined){
@@ -254,7 +271,7 @@ function HasRoll(){
 
 
   /**
-   *
+   * Empties the cached roll array lookup.
    */
   this.clearRollArrayLookup=function(){
     this.rollArrayLookup={};
@@ -273,8 +290,11 @@ function HasRoll(){
 
 
   /**
-   * d40444 Demonkin d5 d6+1 d6/2 d4*10 d6-1
+   * Looks for dice notation in a roll value.
+   * Removes the notation an replaces it with a resolved value.
+   * @example d40444 Demonkin d5 d6+1 d6/2 d4*10 d6-1
    * should have 6 matches d40444, d5, d6+1, d6/2, d4*10, and d6-1
+   * @return {string}
    */
   this.findDice=function(text){
     var re = /\bd(\d+)([*+-/%]?)(\d+)?\b/gi;
@@ -308,8 +328,10 @@ function HasRoll(){
 
 
   /**
-   * d6 [Region](1,5) Orks - [Type]
+   * Looks for list notation in a roll value.
+   * @example d6 [Region](1,5) Orks - [Type]
    * Hits on Type, and Region subset 1, and 5.
+   * @return {string}
    */
   this.findList=function(text){
     var re = /\[(.*?)\]\(?([\d,]*)\)?/gi;

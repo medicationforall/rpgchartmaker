@@ -26,7 +26,7 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Open the RollContainer submenu.
    */
   this.openMenu=function(){
     var lists = $('.listGroupContainer .list');
@@ -51,7 +51,9 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Add the alias and display checkbox to the RollContainer menu.
+   * @param {string} name - lookup name of the column.
+   * @param {Object} node - The menu instance to attach the controls to.
    */
   this.addMenuOption=function(name,node){
     var checked='';
@@ -67,7 +69,7 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Alias field input.
    */
   this.node.find('.menu').on('input','.alias',$.proxy(function(coreNode,event){
     var column = $(this).data('name');
@@ -76,11 +78,14 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Set an alias base on the lookupName.
+   * @param {string} column - lookup name used as the key.
+   * @param {string} alias - Whats displayed as the column name in the RollContainer instance.
    */
   this.setAlias=function(column,alias){
     this.alias[column]=alias;
 
+    //value of the alias is equal to the lookupName
     if(this.alias[column]===column){
       delete this.alias[column];
     }
@@ -90,7 +95,7 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * User click on the display checkbox.
    */
   this.node.find('.menu').on('change','.display',$.proxy(function(coreNode,event){
     var column = $(this).data('name');
@@ -99,7 +104,9 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Set the display flag for the lookupName.
+   * @param {string} column - lookup name used as the key.
+   * @param {boolean} display - Determines if the column is displayed for the RollContainer instance.
    */
   this.setDisplay=function(column,display){
     this.display[column] = display;

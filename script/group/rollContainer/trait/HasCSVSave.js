@@ -23,7 +23,8 @@
 function HasCSVSave(){
 
   /**
-   *
+   * Collects the CSV Data string
+   * @return {string} formatted in a way suitable for CSV export.
    */
   this.gatherCSVData=function(){
     var data ='';
@@ -37,7 +38,8 @@ function HasCSVSave(){
 
 
   /**
-   *
+   * Collect the CSV Header String.
+   * @return {string} Header String.
    */
   this.gatherCSVHeader=function(){
     var headerData='';
@@ -61,7 +63,8 @@ function HasCSVSave(){
 
 
   /**
-   *
+   * Collect CSV row data.
+   * @return {string} Rows String.
    */
   this.gatherCSVRows=function(){
     var tableData='';
@@ -92,7 +95,8 @@ function HasCSVSave(){
 
 
   /**
-   *
+   * Saves the given data into a file.
+   * @todo duplicate code.
    */
   this.saveAsFile=function(t,f,m) {
     try {
@@ -105,7 +109,7 @@ function HasCSVSave(){
 
 
   /**
-   * Click csv export save button.
+   * csv export save button click.
    */
   this.node.find('.exportCSVButton').click($.proxy(function(event){
     event.preventDefault();
@@ -118,7 +122,8 @@ function HasCSVSave(){
 
 
   /**
-   * resolve file name
+   * Resolve file name.
+   * Uses the entered chart name otherwise defaults to roll.csv.
    */
   this.gatherCSVFileName=function(){
     var fileName = 'roll';
@@ -127,7 +132,6 @@ function HasCSVSave(){
     if(this.seed && this.seed !== ''){
       fileName = this.seed;
     }
-
     return fileName+'.csv';
   };
 }
