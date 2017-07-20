@@ -24,7 +24,7 @@ function HasListGroupAdd(){
 
 
   /**
-   * add name button click functionality
+   * Add List item click.
    */
   this.node.on('click','.addNameButton',$.proxy(function(event){
     event.preventDefault();
@@ -40,19 +40,19 @@ function HasListGroupAdd(){
   },this));
 
 
-/**
- *
- */
+  /**
+   * Adds the given value to the list.
+   * @param {string} value - text to add to the list.
+   */
   this.AddToList=function(value){
     var template = '<li>'+
     '<span class="nameText">'+value+'</span></li>';
-
     this.node.find('ol').append(template);
   };
 
 
   /**
-   * name input enter key press
+   * Name input enter key press.
    */
   this.node.on('keypress','.nameInput',$.proxy(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);

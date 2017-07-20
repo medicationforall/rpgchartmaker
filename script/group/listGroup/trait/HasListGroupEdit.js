@@ -24,7 +24,7 @@ function HasListGroupEdit(){
 
 
   /**
-   * note edit functionality
+   * Edit list item label click.
    */
   this.node.on('click','.nameText',function(event){
     var template = '<div class="inlineEdit">'+
@@ -60,7 +60,7 @@ function HasListGroupEdit(){
 
 
   /**
-   * note apply click
+   * Apply list item edit click.
    */
   this.node.on('click','.applyEditButton',function(event){
     event.preventDefault();
@@ -75,7 +75,7 @@ function HasListGroupEdit(){
 
 
   /**
-   * name input enter key press
+   * Name input enter key press.
    */
   this.node.on('keypress','.itemEdit',function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -86,7 +86,7 @@ function HasListGroupEdit(){
 
 
   /**
-   * note delete click
+   * List item delete click.
    */
   this.node.on('click','.deleteEditButton',function(event){
     event.preventDefault();

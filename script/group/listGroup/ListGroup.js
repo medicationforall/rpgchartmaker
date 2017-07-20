@@ -42,6 +42,7 @@ function ListGroup(animate){
 
 	/**
 	 * Sets up the html node, click handlers, sort handlers, and other controls.
+	 * @param {string} template
 	 * @private
 	 */
 	this._setup=function(template){

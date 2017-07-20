@@ -25,7 +25,7 @@ function HasListGroupLoad(){
 
   /**
    * Load list name, and ol list with data.
-   * @param list {JSON}
+   * @param {Object} list - JSON List Data.
    */
   this.fillOutList=function(list){
 
