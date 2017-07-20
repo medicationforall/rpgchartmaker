@@ -15,7 +15,7 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 /**
  * Object Group Add Entry Mixin.
  * @mixin
@@ -24,7 +24,7 @@ function HasObjectGroupAddEntry(){
 
 
   /**
-   * add entry click
+   * Add entry click.
    */
   this.node.find('.addObjectButton').click($.proxy(function(event){
     event.preventDefault();
@@ -44,7 +44,8 @@ function HasObjectGroupAddEntry(){
 
   /**
 	 * Adds an object entry to the list based on the input fromt he passed in form object.
-	 * @param form jquery objectForm node
+	 * @param {Object} form - jquery objectForm node.
+   * @todo method is too long split it up.
 	 * @private
 	 */
 	this._addEntry=function(form){

@@ -25,7 +25,7 @@ function HasObjectGroupEditInput(){
 
 
   /**
-   * This is relatively ok
+   * Initiate object input edit click.
    */
   this.form.on('click','.objectInput .label',function(event){
     event.preventDefault();
@@ -61,6 +61,7 @@ function HasObjectGroupEditInput(){
 
 
   /**
+   * Apply an object input edit click.
    * This is extremely finnicky should be made something less state machine dependent.
    */
   this.form.on('click','.applyEditButton',function(event){
@@ -99,7 +100,7 @@ function HasObjectGroupEditInput(){
 
 
   /**
-   * name input enter key press
+   * Name input enter key press.
    */
   this.form.on('keypress','input[name="editInputLabel"]',function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -110,7 +111,7 @@ function HasObjectGroupEditInput(){
 
 
   /**
-   * works fine
+   * Delete an object input click.
    */
   this.form.on('click','.deleteEditButton',function(event){
     event.preventDefault();

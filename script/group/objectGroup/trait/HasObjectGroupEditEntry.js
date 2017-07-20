@@ -23,7 +23,7 @@
 function HasObjectGroupEditEntry(){
 
   /**
-   * note edit functionality
+   *  Initiate object entry edit click.
    */
   this.node.on('click','.object',$.proxy(function(coreNode,event){
     var template = '<div class="inlineEdit">'+
@@ -52,11 +52,11 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   *
+   * Generate the edit form.
+   * @param {Object} dataNode - Reference source of the form data for the entry.
+   * @param {Object} editNode - Reference node for the edit form.
    */
   this.createForm=function(dataNode,editNode){
-    //console.log('createForm',dataNode,editNode);
-
     $(dataNode).find('div').each(function(index,item){
       //gather data
       var type = $(item).find('.value').data('type');
@@ -102,7 +102,7 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   * note apply click
+   * Apply an object entry edit click.
    */
   this.node.on('click','.applyEditButton',$.proxy(function(coreNode,event){
     event.preventDefault();
@@ -119,10 +119,12 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   *
+   * Apply an object entry edit.
+   * @param {Object} object - ObjectGroup Reference.
+   * @param {int} index - forloop index.
+   * @param {Object} item - dom node reference for the edit from input.
    */
   this.applyUpdate=function(object, index, item){
-    //console.log('applyUpdate',object, index, item);
     var title = $(item).find('.title').text();
     var type = $(item).find('.title').data('type');
     var value = '';
@@ -150,7 +152,7 @@ function HasObjectGroupEditEntry(){
 
 
   /**
-   * note delete click
+   * Delete an object input click.
    */
   this.node.on('click','.deleteEditButton',function(event){
     event.preventDefault();

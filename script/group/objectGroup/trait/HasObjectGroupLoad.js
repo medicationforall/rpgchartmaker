@@ -15,6 +15,11 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Load Mixin.
+ * @mixin
+ */
 function HasObjectGroupLoad(){
   /**
 	 * Adds a list entry to the list based on the order and data objects passed to this method.

@@ -21,8 +21,6 @@
  * @mixin
  */
 function HasNow(){
-
-
   /**
 	 * @return The current system time for the user in a a format appropriate for a datetime input.
 	 * @private

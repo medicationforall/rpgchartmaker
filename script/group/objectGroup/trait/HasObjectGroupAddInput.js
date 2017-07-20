@@ -24,7 +24,7 @@ function HasObjectGroupAddInput(){
 
 
   /**
-   * Click add input
+   * Click add input.
    */
   this.node.find('.addInputButton').click($.proxy(function(event){
     event.preventDefault();
@@ -52,8 +52,8 @@ function HasObjectGroupAddInput(){
 
   /**
    * Adds an input to the object template form.
-   * @param label {string}
-   * @param type {string} valid types are text, number, checkbox, color, datetime-local, and textarea
+   * @param {string} label
+   * @param {string}  type - Valid types are text, number, checkbox, color, datetime-local, and textarea.
    * @private
    */
   this._addInput=function(label,type){
@@ -76,7 +76,7 @@ function HasObjectGroupAddInput(){
 
 
   /**
-   * clear the red border on input
+   * Clear the red border on input.
    */
   this.node.find('input[name="addInputLabel"]').on('input',function(){
     $(this).removeClass('error');
@@ -84,7 +84,7 @@ function HasObjectGroupAddInput(){
 
 
   /**
-   * label input enter key press - triggers add input button
+   * label input enter key press - triggers add input button.
    */
   this.node.on('keypress','input[name="addInputLabel"]',$.proxy(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
