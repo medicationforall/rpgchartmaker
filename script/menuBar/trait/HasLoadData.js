@@ -132,6 +132,19 @@ function HasLoadData(){
   };
 
 
+  this.loadRawList=function(text,animate){
+    listGroup = new ListGroup(animate);
+
+    if(listGroup.node){
+      listGroup.fillOutRawList(text);
+    }else{
+      $(listGroup).on('loaded',function(text){
+        this.fillOutRawList(text);
+      }.bind(listGroup,text));
+    }
+  };
+
+
   /**
    * Loads CSS overrides from a data object.
    * @param {Object} data - Chart Data.

@@ -58,4 +58,14 @@ function HasAddMenu(){
     //close the open rollcontainer menus
     $('.card .menu').removeClass('focus');
   });
+
+
+  /**
+   * Load Raw JSON button.
+   */
+  this.addMenu.find('.loadRawListButton').click($.proxy(function(event){
+      event.preventDefault();
+      var data = this.addMenu.find('.loadRawListTextArea').val();
+      this.loadRawList(data);
+  },this));
 }

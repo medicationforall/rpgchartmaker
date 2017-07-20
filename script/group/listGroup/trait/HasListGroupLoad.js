@@ -57,4 +57,64 @@ function HasListGroupLoad(){
       this.AddToList(item);
     }
   };
+
+
+  /**
+   *
+   */
+  this.fillOutRawList=function(text){
+    //fill out List
+    var lines = text.split(/\r?\n/);
+
+    // determine if a line number is included.
+    var hasListNumber = this.revolseRawNumberFormat(lines);
+
+    // Loop through the lines.
+    for(var i=0,line;(line=lines[i]);i++){
+      console.log('need to parse the text',line);
+      var value = line.trim();
+      var occurrances = 1;
+
+      if(value && value !== ''){
+
+        //parse out the number format
+        if(hasListNumber){
+
+          //resove range
+          var match = line.match(/^(\d+)[.]?-?(\d*)[.]?\s/);
+          if(match && match[1] && match[2] && match[1] !=='' && match[2] !=='' ){
+            var start = parseInt(match[1]);
+            var end = parseInt(match[2]);
+
+            if(start < end && end - start > 0){
+              occurrances = end - start;
+              occurrances++;
+            }
+          }
+
+          line = line.replace(/^(\d+)[.]?-?(\d*)[.]?\s/,'');
+        }
+
+        for(var j=0;j<occurrances;j++){
+          this.AddToList(line);
+        }
+      }
+    }
+  };
+
+
+  /**
+   *
+   */
+  this.revolseRawNumberFormat=function(lines){
+    var hasNumbers = true;
+
+    for(var i=0,line;(line=lines[i]);i++){
+      if(line.match(/^(\d+)[.]?-?(\d*)[.]?\s/)===null){
+        hasNumbers = false;
+        break;
+      }
+    }
+    return hasNumbers;
+  };
 }
