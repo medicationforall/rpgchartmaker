@@ -21,6 +21,8 @@
  * @mixin
  */
 function HasListGroupAdd(){
+  this.inputMode='input';
+
 
 
   /**
@@ -28,16 +30,50 @@ function HasListGroupAdd(){
    */
   this.node.on('click','.addNameButton',$.proxy(function(event){
     event.preventDefault();
+    if(this.inputMode==='input'){
+      this.addFromInput();
+    } else if(this.inputMode==='textarea'){
+      this.addFromTextArea();
+    }
+  },this));
+
+
+  /**
+   *
+   */
+  this.addFromInput=function(){
     var nameInput = this.node.find('.nameInput');
 
     if(nameInput.val()!==''){
-    this.AddToList(nameInput.val().trim());
+      this.AddToList(nameInput.val().trim());
 
-    //reset note input
-    nameInput.val('');
-    nameInput.focus();
+      //reset note input
+      nameInput.val('');
+      nameInput.focus();
     }
-  },this));
+  };
+
+
+  /**
+   *
+   */
+  this.addFromTextArea=function(){
+    var nameTextarea = this.node.find('.nameTextarea');
+    var nameInput = this.node.find('.nameInput');
+
+    if(nameTextarea.val()!==''){
+      this.fillOutRawList(nameTextarea.val().trim());
+
+      nameTextarea.css('display','');
+      nameInput.css('display','');
+      this.inputMode='input';
+
+      //reset note input
+      nameTextarea.val('');
+      nameInput.val('');
+      nameInput.focus();
+    }
+  };
 
 
   /**
@@ -56,8 +92,44 @@ function HasListGroupAdd(){
    */
   this.node.on('keypress','.nameInput',$.proxy(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
-    if(keycode == '13') {
+    console.log(keycode,event.shiftKey);
+    if(keycode == '13' && event.shiftKey) {
+      this.switchInputToTextarea();
+    } else if(keycode == '13') {
       this.node.find('.addNameButton').trigger('click');
     }
   },this));
+
+  /**
+   *
+   */
+   this.node.find('.nameInput').on('paste', $.proxy(function(coreNode,e) {
+    var pasteData = e.originalEvent.clipboardData.getData('text');
+    console.log(pasteData);
+    var match = /\r|\n/.exec(pasteData);
+    if(match){
+      coreNode.switchInputToTextarea(true);
+    }
+  },null,this));
+
+
+
+  /**
+   *
+   */
+  this.switchInputToTextarea=function(paste){
+    var value = '';
+    var textarea = this.node.find('.nameTextarea').css('display','inline');
+    var input = this.node.find('.nameInput').css('display','none');
+    this.inputMode='textarea';
+
+    if(paste === undefined){
+      value = input.val()+'\n';
+    }//else{
+    //  value = text;
+    //}
+
+    textarea.val(value);
+    textarea.focus();
+  };
 }

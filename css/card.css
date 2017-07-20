@@ -107,3 +107,8 @@ min-width:9px;
 .listGroup .itemEdit{
 vertical-align:top;
 }
+
+.listGroup .nameTextarea{
+  display:none;
+  vertical-align:top;
+}

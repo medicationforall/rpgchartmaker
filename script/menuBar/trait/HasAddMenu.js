@@ -63,9 +63,9 @@ function HasAddMenu(){
   /**
    * Load Raw JSON button.
    */
-  this.addMenu.find('.loadRawListButton').click($.proxy(function(event){
+  /*this.addMenu.find('.loadRawListButton').click($.proxy(function(event){
       event.preventDefault();
       var data = this.addMenu.find('.loadRawListTextArea').val();
       this.loadRawList(data);
-  },this));
+  },this));*/
 }
