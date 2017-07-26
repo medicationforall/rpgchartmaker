@@ -36,6 +36,7 @@ text-decoration:none;
 
 .hamburger.menu a:hover{
 text-decoration:underline;
+text-decoration-skip: ink;
 }
 
 .hamburger.menu h3{

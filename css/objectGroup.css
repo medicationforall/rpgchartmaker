@@ -2,11 +2,17 @@
 .objectGroup li .object{
 	display:block;
 	cursor:pointer;
+	text-decoration:inherit;
+}
+
+.objectGroup li .object div{
+	text-decoration:inherit;
 }
 
 .objectGroup li .object span{
 	display:inline-block;
 	font-size:14pt;
+	text-decoration:inherit;
 }
 
 .objectGroup li .object:hover{

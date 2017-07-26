@@ -1,25 +1,28 @@
 {
 	"name": "cthulhu_theme",
 	"cssOverrides": {
-  		".header h1": {
-			"background": "#003300",
-      "color": "#005200"
-		},
-		".menuBar": {
-			"background": "#005200",
-			"color": "#b5e5b5"
-		},
-		"body": {
-			"background": "#000000"
-		},
-		".card": {
-			"background": "#003300",
-			"color": "#88ad88",
-			"font-family": "Lobster"
-		},
-    ".menu": {
-			"background": "#772810",
-			"color": "#e7ccc4"
+			".header h1": {
+				"background": "#003300",
+				"color": "#005200",
+				"font-size": "2.5em"
+			},
+			".menuBar": {
+				"background": "#005200",
+				"color": "#b5e5b5",
+				"font-size": "18px"
+			},
+			"body": {
+				"background": "#000000"
+			},
+			".card": {
+				"background": "#003300",
+				"color": "#88ad88",
+				"font-family": "Lobster",
+				"font-size": "23px"
+			},
+			".menu": {
+				"background": "#772810",
+				"color": "#e7ccc4"
+			}
 		}
-	}
 }

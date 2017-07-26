@@ -113,7 +113,7 @@ transition:background-color 0.5s ease;
 .hamburger.menu{
   padding:0;
   height:100%;
-  width: 250px;
+  min-width: 250px;
 }
 
 a.hamburger {
@@ -177,6 +177,10 @@ body.processing .processing{
   display:inline;
 }
 
+.hamburger.menu .fontFamilySelector{
+  width:80px;
+}
+
 .error{
 	transition:border-color 0.5s ease;
 	border:2px solid red;
@@ -211,7 +215,7 @@ vertical-align:top;
   animation-name: highlight;
 }
 
-input{
+input, select{
   background-color:rgba(255,255,255,0.75);
 }
 
@@ -220,6 +224,10 @@ input.colorSelector{
   height: 19px;
   padding: 0px;
   border: 0px solid #000;
+}
+
+input.fontSize{
+  width:50px;
 }
 
 @media screen and (max-width:425px){

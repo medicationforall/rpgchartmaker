@@ -92,7 +92,6 @@ min-width:9px;
 .listGroup li span{
 	display:block;
 	cursor:pointer;
-	font-size:14pt;
 }
 
 .listGroup li .object span{

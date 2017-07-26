@@ -28,7 +28,7 @@ function HasSettingsMenu(){
   /**
    * colorSelector change.
    */
-  $('body').on('change','.colorSelector,.fontFamilySelector',$.proxy(function(coreNode,event){
+  $('body').on('input','.colorSelector,.fontFamilySelector',$.proxy(function(coreNode,event){
     var cNode = $(this);
     var color = cNode.val();
     var selector = cNode.attr('data-selector');
