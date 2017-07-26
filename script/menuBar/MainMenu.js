@@ -48,7 +48,7 @@ function MainMenu(){
     HasLoadMenu.call(this);
     HassRollButton.call(this);
     HasListNameInput.call(this);
-    HasSettingsMenu.call(this);
+    HasCustomizeMenu.call(this);
 
     $.getJSON('config.json',$.proxy(function(data){
       if(data.enableShare){

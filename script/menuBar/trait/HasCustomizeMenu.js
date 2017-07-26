@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file HasSettingsMenu,
+ *   RPG Chart Maker source file HasCustomizeMenu,
  *   Copyright (C) 2017  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -20,28 +20,28 @@
   * Settings Menu Mixin.
   * @mixin
   */
-function HasSettingsMenu(){
-  this.settingsMenu = $('.settings.subMenu');
+function HasCustomizeMenu(){
+  this.customizeMenu = $('.customize.subMenu');
   this.overrides = {};
 
 
   /**
    * colorSelector change.
    */
-  $('body').on('input','.colorSelector,.fontFamilySelector',$.proxy(function(coreNode,event){
+  $('body').on('input','.cssOverride',$.proxy(function(coreNode,event){
     var cNode = $(this);
-    var color = cNode.val();
+    var value = cNode.val();
     var selector = cNode.attr('data-selector');
     var property = cNode.data('property');
 
-    coreNode.setOverride(selector,property,color);
+    coreNode.setOverride(selector,property,value);
   },null,this));
 
 
   /**
    * Load template theme button.
    */
-  this.settingsMenu.find('.loadThemeButton').click($.proxy(function(menu,event){
+  this.customizeMenu.find('.loadThemeButton').click($.proxy(function(menu,event){
     event.preventDefault();
     var file = $(this).data('file');
 
@@ -54,7 +54,7 @@ function HasSettingsMenu(){
   /**
    * Reset button.
    */
-  this.settingsMenu.find('.resetColors').click($.proxy(function(event){
+  this.customizeMenu.find('.resetColors').click($.proxy(function(event){
     event.preventDefault();
     this.resetOverrides();
   },this));
@@ -64,8 +64,7 @@ function HasSettingsMenu(){
    * Loops through CSS overrides settings, and reset to back default value.
    */
   this.resetOverrides=function(){
-    $('body').find('.colorSelector').each($.proxy(this.resetOverride,this));
-    $('body').find('.fontFamilySelector').each($.proxy(this.resetSelectOverride,this));
+    $('body').find('.cssOverride').each($.proxy(this.resetOverride,this));
 
     //reset overrides
     this.overrides={};
@@ -78,18 +77,21 @@ function HasSettingsMenu(){
    * @param {Object} item
    */
   this.resetOverride=function(index,item){
-    //console.log('reset',item, $(item).val(), $(item).attr('value'));
-    var cNode = $(item);
-    var color = cNode.attr('value');
-    var selector = cNode.data('selector');
-    var property = cNode.data('property');
-    cNode.val(color);
-    this.setOverride(selector,property,color);
+    if(item.tagName==='INPUT'){
+      var cNode = $(item);
+      var color = cNode.attr('value');
+      var selector = cNode.data('selector');
+      var property = cNode.data('property');
+      cNode.val(color);
+      this.setOverride(selector,property,color);
 
-    delete this.overrides[selector][property];
+      delete this.overrides[selector][property];
 
-    if($.isEmptyObject(this.overrides[selector])){
-      delete this.overrides[selector];
+      if($.isEmptyObject(this.overrides[selector])){
+        delete this.overrides[selector];
+      }
+    } else if(item.tagName==='SELECT'){
+      this.resetSelectOverride(index,item);
     }
   };
 
@@ -100,7 +102,6 @@ function HasSettingsMenu(){
    * @param {Object} item
    */
   this.resetSelectOverride=function(index,item){
-    //console.log('reset',item, $(item).val(), $(item).attr('value'));
     var cNode = $(item);
     var value = cNode.find('option[selected]').text();
     var selector = cNode.data('selector');
@@ -160,16 +161,14 @@ function HasSettingsMenu(){
       //missing selector
       if(overrides.hasOwnProperty(cSelector)===false){
         //reset missing keys
-        $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetOverride,this));
-        $('body').find('.fontFamilySelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetSelectOverride,this));
+        $('body').find('.cssOverride[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"]').each($.proxy(this.resetOverride,this));
       }
       //check missing properties.
       else{
         for(var cProperty in copy[cSelector]){
           if(overrides[cSelector].hasOwnProperty(cProperty)===false){
             //reset missing properties
-            $('body').find('.colorSelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetOverride,this));
-            $('body').find('.fontFamilySelector[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetSelectOverride,this));
+            $('body').find('.cssOverride[data-selector="'+cSelector.replace(/\"/g,'\\"')+'"][data-property="'+cProperty+'"]').each($.proxy(this.resetOverride,this));
           }
         }
       }
@@ -189,8 +188,7 @@ function HasSettingsMenu(){
         for(var property in overrides[selector]){
           if(overrides[selector].hasOwnProperty(property)){
             this.setOverride(selector,property,overrides[selector][property]);
-            $('body').find('input[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
-            $('body').find('select[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
+            $('body').find('.cssOverride[data-selector="'+selector.replace(/\"/g,'\\"')+'"][data-property="'+property+'"]').val(overrides[selector][property]);
           }
         }
       }

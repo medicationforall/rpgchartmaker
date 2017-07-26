@@ -61,7 +61,7 @@
 	<script src="script/menuBar/trait/HasAddMenu.js"></script>
 	<script src="script/menuBar/trait/HasSaveMenu.js"></script>
 	<script src="script/menuBar/trait/HasLoadMenu.js"></script>
-	<script src="script/menuBar/trait/HasSettingsMenu.js"></script>
+	<script src="script/menuBar/trait/HasCustomizeMenu.js"></script>
 	<script src="script/menuBar/trait/HasRollButton.js"></script>
 	<script src="script/menuBar/trait/HasListNameInput.js"></script>
 	<script src="script/menuBar/trait/HasShare.js"></script>
@@ -223,7 +223,7 @@
 		</div>
 
     <!-- Settings Menu -->
-    <div class="settings subMenu">
+    <div class="customize subMenu">
 			<a href="" class="closeMenuButton">&gt;&gt;</a>
       <h3>Customize</h3>
 			<table>
@@ -249,9 +249,9 @@
 				<tbody>
 					<tr>
 						<td>Logo</td>
-						<td><input type="color" value="#444444" data-selector=".header h1" data-property="background" class="colorSelector" /></td>
-						<td><input type="color" value="#FFFFFF" data-selector=".header h1" data-property="color" class="colorSelector" /></td>
-						<td><select class="fontFamilySelector" data-selector=".header h1" data-property="font-family">
+						<td><input type="color" value="#444444" data-selector=".header h1" data-property="background" class="cssOverride colorSelector" /></td>
+						<td><input type="color" value="#FFFFFF" data-selector=".header h1" data-property="color" class="cssOverride colorSelector" /></td>
+						<td><select class="cssOverride fontFamilySelector" data-selector=".header h1" data-property="font-family">
 							<option>Arial</option>
               <option>Baumans</option>
 							<option selected>Berkshire Swash</option>
@@ -269,13 +269,13 @@
               <option>Spirax</option>
 							<option>system-ui</option>
 						</select></td>
-						<td><input type="text" value="2em" data-selector=".header h1" data-property="font-size" class="fontSize colorSelector" /></td>
+						<td><input type="text" value="2em" data-selector=".header h1" data-property="font-size" class="cssOverride fontSize" /></td>
 					</tr>
 					<tr>
 						<td>Nav</td>
-						<td><input type="color" value="#FFFFFF" data-selector=".menuBar" data-property="background" class="colorSelector" /></td>
-						<td><input type="color" value="#000000" data-selector=".menuBar" data-property="color" class="colorSelector" /></td>
-						<td><select class="fontFamilySelector" data-selector=".menuBar" data-property="font-family">
+						<td><input type="color" value="#FFFFFF" data-selector=".menuBar" data-property="background" class="cssOverride colorSelector" /></td>
+						<td><input type="color" value="#000000" data-selector=".menuBar" data-property="color" class="cssOverride colorSelector" /></td>
+						<td><select class="cssOverride fontFamilySelector" data-selector=".menuBar" data-property="font-family">
 							<option>Arial</option>
               <option>Baumans</option>
 							<option>Berkshire Swash</option>
@@ -293,18 +293,18 @@
               <option>Spirax</option>
 							<option>system-ui</option>
 						</select></td>
-						<td><input type="text" value="16px" data-selector=".menuBar" data-property="font-size" class="fontSize colorSelector" /></td>
+						<td><input type="text" value="16px" data-selector=".menuBar" data-property="font-size" class="fontSize cssOverride" /></td>
 					</tr>
 					<tr>
 						<td>Content</td>
-						<td><input type="color" value="#FFFFFF" data-selector="body" data-property="background" class="colorSelector" /></td>
+						<td><input type="color" value="#FFFFFF" data-selector="body" data-property="background" class="cssOverride colorSelector" /></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>List</td>
-						<td><input type="color" value="#FFFFFF" data-selector=".card" data-property="background" class="colorSelector" /></td>
-						<td><input type="color" value="#000000" data-selector=".card" data-property="color" class="colorSelector" /></td>
-						<td><select class="fontFamilySelector" data-selector=".card" data-property="font-family">
+						<td><input type="color" value="#FFFFFF" data-selector=".card" data-property="background" class="cssOverride colorSelector" /></td>
+						<td><input type="color" value="#000000" data-selector=".card" data-property="color" class="cssOverride colorSelector" /></td>
+						<td><select class="cssOverride fontFamilySelector" data-selector=".card" data-property="font-family">
 							<option>Arial</option>
               <option>Baumans</option>
 							<option>Berkshire Swash</option>
@@ -322,13 +322,13 @@
               <option>Spirax</option>
 							<option>system-ui</option>
 						</select></td>
-						<td><input type="text" value="16px" data-selector=".card" data-property="font-size" class="fontSize colorSelector" /></td>
+						<td><input type="text" value="16px" data-selector=".card" data-property="font-size" class="fontSize cssOverride" /></td>
 					</tr>
 					<tr>
 						<td>Menu</td>
-						<td><input type="color" value="#5151A0" data-selector=".menu" data-property="background" class="colorSelector" /></td>
-						<td><input type="color" value="#FFFFFF" data-selector=".menu" data-property="color" class="colorSelector" /></td>
-						<td><select class="fontFamilySelector" data-selector=".menu" data-property="font-family">
+						<td><input type="color" value="#5151A0" data-selector=".menu" data-property="background" class="cssOverride colorSelector" /></td>
+						<td><input type="color" value="#FFFFFF" data-selector=".menu" data-property="color" class="cssOverride colorSelector" /></td>
+						<td><select class="cssOverride fontFamilySelector" data-selector=".menu" data-property="font-family">
 							<option>Arial</option>
               <option>Baumans</option>
 							<option>Berkshire Swash</option>
@@ -346,7 +346,7 @@
               <option>Spirax</option>
 							<option>system-ui</option>
 						</select></td>
-						<td><input type="text" value="16px" data-selector=".menu" data-property="font-size" class="fontSize colorSelector" /></td>
+						<td><input type="text" value="16px" data-selector=".menu" data-property="font-size" class="fontSize cssOverride" /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -383,7 +383,7 @@
 			<a href="" class="openMenuButton" data-menu="save" title="Save Menu">Save</a>
 			<a href="" class="openMenuButton" data-menu="load" title="Load Menu">Load</a>
 			<a href="" class="shareButton" title="Create url link to this chart">Share</a>
-      <a href="" class="openMenuButton" data-menu="settings" title="Customize Menu">
+      <a href="" class="openMenuButton" data-menu="customize" title="Customize Menu">
 				<svg data-reactroot="" class="Icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" style="height: 20px; width: 28px;">
 				  <path d="M0 0h512v512H0z" opacity="0">
 				  </path>
