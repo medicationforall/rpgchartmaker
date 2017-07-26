@@ -95,6 +95,11 @@ min-width:9px;
 	font-size:14pt;
 }
 
+.listGroup li .object span{
+  display:inline;
+  cursor: auto;
+}
+
 .listGroup li .inlineEdit{
 	display:inline-block;
 	vertical-align:top;
@@ -111,4 +116,8 @@ vertical-align:top;
 .listGroup .nameTextarea{
   display:none;
   vertical-align:top;
+}
+
+.card .uniqueSelected{
+  text-decoration:line-through;
 }

@@ -50,6 +50,7 @@ function HasUniqueControl(){
       this.uniqueControl.addClass('active').removeClass('inactive');
     } else{
       this.uniqueControl.addClass('inactive').removeClass('active');
+      this.node.find('ol li.uniqueSelected').removeClass('uniqueSelected');
     }
   };
 }

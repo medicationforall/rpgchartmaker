@@ -31,6 +31,7 @@ function HasRoll(){
     this.rollTable = this.node.find('table');
     this.clearTitle();
     this.resetState();
+    this.resetLists();
     this.createIndex();
     this.createTableHeader();
     this.createTableRows();
@@ -56,6 +57,12 @@ function HasRoll(){
     //reset state
     this.rollTable.find('th').remove();
     this.rollTable.find('tbody tr').remove();
+  };
+
+  this.resetLists=function(){
+    $('.list').each($.proxy(function(index,item){
+      $(item).find('ol li.uniqueSelected').removeClass('uniqueSelected');
+    },this));
   };
 
 
@@ -169,14 +176,14 @@ function HasRoll(){
       throw 'rollList is missing required parameters';
     }
 
-    var coreNode = $(p.item).data('coreNode');
+    p.coreNode = $(p.item).data('coreNode');
 
     //make sure it's not skipped
-    if(p.forceRoll || coreNode.rollValue){
+    if(p.forceRoll || p.coreNode.rollValue){
       p.label = $(p.item).attr('data-name');
       p.arr = this.createRollArray(p);
       p.roll = this.resolveRoll(p.arr, p.label);
-      var value = this.resolveRollValue(p.index,p.item, p.arr, p.roll);
+      var value = this.resolveRollValue(p);
       this.resolveUnique(p);
       return value;
     }
@@ -185,23 +192,28 @@ function HasRoll(){
 
   /**
    * Gets the roll string value from roll array, and animates the selection.
-   * @param {int} index - List index.
-   * @param {Object} list - Reference List.
-   * @param {Array} arr - Roll lookup Array.
-   * @param {int} roll - Roll index to be resolved.
+   * @param {Object} p - Object parameter list.
    * @return {string} The roll value.
    */
-  this.resolveRollValue=function(index, list, arr, roll){
-    if(arr.length>0){
-      var value = arr[roll];
+  this.resolveRollValue=function(p){
+    if(p.index===undefined || p.item===undefined || p.arr===undefined || p.roll===undefined || p.coreNode===undefined){
+      throw 'resolveRollValue is missing required parameters';
+    }
+
+    if(p.arr.length>0){
+      var value = p.arr[p.roll];
+      var node = $(p.item).find('ol li:not(.uniqueSelected)')[p.roll];
 
       //lookup for dice
       value = this.findList(value);
       value = this.findDice(value);
 
       //animate the roll selection
-      $(list).find('ol li:nth-child('+(roll+1)+')').animateCss('highlight');
+      $(node).animateCss('highlight');
 
+      if(p.coreNode.unique===true){
+        $(node).addClass('uniqueSelected');
+      }
       return value;
     } else {
       return '';
@@ -219,9 +231,9 @@ function HasRoll(){
       throw 'resolveUnique is missing required parameters';
     }
 
-    var coreNode = $(p.item).data('coreNode');
+    //var coreNode = $(p.item).data('coreNode');
 
-    if(coreNode.unique===true){
+    if(p.coreNode.unique===true){
       if (p.roll > -1) {
         p.arr.splice(p.roll, 1);
       }
@@ -261,6 +273,9 @@ function HasRoll(){
         arr = $(p.item).find('ol li').not('.edit').map(function(i, el) {
           return $(el).html();
         }).get();
+
+        //reset strikethrough
+        //$(p.item).find('ol li').removeClass('uniqueSelected');
       }
 
       this.rollArrayLookup[namespace] = arr;
