@@ -117,7 +117,9 @@ function HasLoadData(){
       listGroup = new ListGroup(animate);
     }else if(list && list.type == 'ObjectGroup'){
       listGroup = new ObjectGroup(animate);
-    }else if(list){
+    }else if(list && list.type == 'GridGroup'){
+      listGroup = new GridGroup(animate);
+    } else if(list){
       //for older lists import
       listGroup = new ListGroup(animate);
     }

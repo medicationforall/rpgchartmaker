@@ -68,4 +68,79 @@ function HasRollSeed(){
     }
     return roll;
   };
+
+
+  /**
+   *
+   */
+  this.resolveRollGrid=function(arr,name){
+    console.log('resolveRollGrid');
+    var roll;
+
+    if(this.seed && this.seed !== ''){
+      roll = this.rng.getRandom(this.seed+"-"+name, 0, arr.length -1);
+    } else{
+      roll = Math.floor(Math.random() * arr.length);
+    }
+    return roll;
+  };
+
+  this.resolveRollGridDirection=function(coreNode,arr,name){
+    console.log('resolveRollGridDirection');
+    var roll;
+    var columns = coreNode.columns;
+    var direction = ['up','down','left','right'];
+    var selectedIndex;
+
+    //get the direction
+    if(this.seed && this.seed !== ''){
+      roll = this.rng.getRandom(this.seed+"-"+name, 0, direction.length -1);
+    } else{
+      roll = Math.floor(Math.random() * direction.length);
+    }
+
+    //resolve the index of the selected node
+    var list = coreNode.node.find('li');
+
+    for(var i=0,li;(li=list[i]);i++){
+      if($(li).hasClass('selectedGridItem')){
+        selectedIndex = i;
+        break;
+      }
+    }
+
+    //translate direction roll to node in array
+    if(selectedIndex!==undefined){
+      console.log('selected grid item index is', selectedIndex,'direction is',direction[roll]);
+
+      if(direction[roll]==='left'){
+        if(selectedIndex+1 !== arr.length && (selectedIndex+1)%columns !==0){
+          roll=selectedIndex+1;
+        } else{
+          roll = selectedIndex;
+        }
+      }else if(direction[roll]==='right'){
+        if(selectedIndex-1 > 0 && (selectedIndex-1)%columns !== columns-1){
+          roll=selectedIndex-1;
+        } else{
+          roll = selectedIndex;
+        }
+      }else if(direction[roll]==='up'){
+        if(selectedIndex-columns > -1){
+          roll=selectedIndex-columns;
+        } else{
+          roll = selectedIndex;
+        }
+      }else if(direction[roll]==='down'){
+        if(selectedIndex+columns < arr.length){
+          roll=selectedIndex+columns;
+        } else{
+          roll = selectedIndex;
+        }
+      }
+    }else{
+      console.warn('selected grid item index did not resolve');
+    }
+    return roll;
+  };
 }

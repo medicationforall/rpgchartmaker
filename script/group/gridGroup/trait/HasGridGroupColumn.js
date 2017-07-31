@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file HasAddMenu,
+ *   RPG Chart Maker source file HasGridGroupColumn,
  *   Copyright (C) 2017  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -15,25 +15,27 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+function HasGridGroupColumn(){
+  this.columns=3;
+  this.columnsWidth=95;
 
-/**
- * Add Menu Mixin.
- * @mixin
- */
-function HasAddMenu(){
-  this.addMenu = $('.add.subMenu');
+  /**
+   * Grid columns change
+   */
+  this.node.on('input','input[name="gridColumns"]',$.proxy(function(coreNode,event){
+    console.log('change gridColumns');
+    var value = parseInt($(this).val());
+    coreNode.setColumns(value);
+  },null,this));
 
 
   /**
-   * Add list group click
+   * Set The columns
    */
-  this.addMenu.find('.addCardButton').click(function(event){
-    event.preventDefault();
-    var type = $(this).data('class');
-    var card = new window[type]();
-    //var listGroup = new ListGroup();
-
-    //close the open rollcontainer menus
-    $('.card .menu').removeClass('focus');
-  });
+  this.setColumns=function(value){
+    console.log('setColumns',value);
+    this.columns=value;
+    this.node.find('.content').css('min-width',(this.columns*this.columnsWidth)+'px');
+    this.node.find('ol').css('width',(this.columns*this.columnsWidth)+'px');
+  };
 }

@@ -40,7 +40,8 @@ $(document).ready(function(){
   $.when(
     RollContainer.prototype._resolveTemplate(RollContainer,'RollContainer'),
     ListGroup.prototype._resolveTemplate(ListGroup,'ListGroup'),
-    ObjectGroup.prototype._resolveTemplate(ObjectGroup,'ObjectGroup')).done(function(){
+    ObjectGroup.prototype._resolveTemplate(ObjectGroup,'ObjectGroup'),
+    GridGroup.prototype._resolveTemplate(GridGroup,'GridGroup')).done(function(){
 
     //Initialize mainMenu
     var mainMenu = new MainMenu();
@@ -51,6 +52,8 @@ $(document).ready(function(){
     //initialize list group
     if(window.location.hash === ''){
       var listGroup = new ListGroup(false);
+      //new ObjectGroup(false);
+      //new GridGroup(false);
     }
   });
 });

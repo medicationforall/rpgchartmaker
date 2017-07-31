@@ -1,5 +1,5 @@
 /**
- *   RPG Chart Maker source file HasAddMenu,
+ *   RPG Chart Maker source file HasGridGroupLoad,
  *   Copyright (C) 2017  James M Adams
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -15,25 +15,26 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-/**
- * Add Menu Mixin.
- * @mixin
- */
-function HasAddMenu(){
-  this.addMenu = $('.add.subMenu');
-
-
+function HasGridGroupLoad(){
   /**
-   * Add list group click
+   * Load list name, and ol list with data.
+   * @param {Object} list - JSON List Data.
    */
-  this.addMenu.find('.addCardButton').click(function(event){
-    event.preventDefault();
-    var type = $(this).data('class');
-    var card = new window[type]();
-    //var listGroup = new ListGroup();
+  this.fillOutList=function(list){
+    console.log('Grid Group Fill Out List');
 
-    //close the open rollcontainer menus
-    $('.card .menu').removeClass('focus');
-  });
+    this.fillOutName(list);
+    this.fillOutRoll(list);
+    this.fillOutUnique(list);
+
+    //fill out columns
+    if(list.columns !== undefined){
+      this.node.find('input[name=gridColumns]').val(list.columns).trigger('input');
+    }
+
+    //fill out List
+    for(var j=0,item;(item=list.list[j]);j++){
+      this.AddToList(item);
+    }
+  };
 }

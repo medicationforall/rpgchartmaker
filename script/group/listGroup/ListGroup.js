@@ -101,6 +101,25 @@ function ListGroup(animate){
 		};
 	};
 
+
+	/**
+	 *
+	 */
+	this.gatherListData=function(obj){
+		//initialize list entries
+	  obj.list=[];
+
+		//fill out type
+    obj.type='ListGroup';
+
+    //fill out list
+    this.node.find('ol li span.nameText').each(function(index, item){
+      obj.list.push($(item).text());
+    });
+
+		return obj;
+	};
+
 	//main
 	this._constructor();
 }

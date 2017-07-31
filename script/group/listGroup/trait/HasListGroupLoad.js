@@ -29,28 +29,9 @@ function HasListGroupLoad(){
    */
   this.fillOutList=function(list){
 
-    //fill out name
-    this.node.find('input[name=listGroupName]').val(list.name).trigger('input');
-
-    //fill out roll
-    if(list.roll!==undefined){
-      if(list.roll=='true'){
-        list.roll = true;
-      }else if(list.roll=='false'){
-        list.roll=false;
-      }
-      this.setRollValue(list.roll);
-    }
-
-    //fill out unique
-    if(list.unique!==undefined){
-      if(list.unique=='true'){
-        list.unique = true;
-      }else if(list.unique=='false'){
-        list.unique=false;
-      }
-      this.setUnique(list.unique);
-    }
+    this.fillOutName(list);
+    this.fillOutRoll(list);
+    this.fillOutUnique(list);
 
     //fill out List
     for(var j=0,item;(item=list.list[j]);j++){
@@ -60,7 +41,7 @@ function HasListGroupLoad(){
 
 
   /**
-   *
+   * Multiline text loader.
    */
   this.fillOutRawList=function(text){
     //fill out List

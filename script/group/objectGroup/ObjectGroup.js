@@ -111,6 +111,34 @@ function ObjectGroup(animate){
 	};
 
 
+	/**
+	 *
+	 */
+	this.gatherListData=function(obj){
+		//initialize list entries
+	  obj.list=[];
+
+		//fill out type
+		obj.type='ObjectGroup';
+
+		//fill out order
+		obj.order=[];
+
+		this.node.find('.objectForm .objectInput').each(function(index, item){
+			var data ={};
+			data.label = $(item).data('label');
+			data.type = $(item).data('type');
+			obj.order.push(data);
+		});
+
+		//fill out list
+		this.node.find('ol li .object').each(function(index, item){
+			obj.list.push($(item).data('json'));
+		});
+
+		return obj;
+	};
+
 	//main
 	this._constructor();
 }

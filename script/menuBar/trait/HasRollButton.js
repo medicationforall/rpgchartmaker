@@ -40,7 +40,7 @@ function HassRollButton(){
    */
   this._rollAll=function(){
     $('.rollContainer').each(function(index,item){
-    //hide open roll conainer menus
+    //hide open roll container menus
     $(item).find('.menu').removeClass('focus');
 
     //perform the roll

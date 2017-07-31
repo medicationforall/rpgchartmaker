@@ -158,7 +158,12 @@ function HasRoll(){
     var label = $(item).attr('data-name');
 
     if(this.resolveDisplay(label)){
-      rollValue = this.rollList({"index":index,"item":item});
+      var rollValue;
+      if($(item).hasClass("gridGroup")){
+        rollValue = this.rollGrid({"index":index,"item":item});
+      }else{
+        rollValue = this.rollList({"index":index,"item":item});
+      }
 
       if(rollValue!==undefined){
         this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
@@ -170,6 +175,7 @@ function HasRoll(){
   /**
    * Potentially a recursive call, depending on how the user structured their data.
    * @param {Object} p - Object parameter list.
+   * @return {string}
    */
   this.rollList=function(p){
     if(p.index===undefined || p.item===undefined){
@@ -191,11 +197,41 @@ function HasRoll(){
 
 
   /**
+   *
+   */
+  this.rollGrid=function(p){
+    if(p.index===undefined || p.item===undefined){
+      throw 'rollGrid is missing required parameters';
+    }
+
+    p.coreNode = $(p.item).data('coreNode');
+
+    //make sure it's not skipped
+    if(p.forceRoll || p.coreNode.rollValue){
+      p.label = $(p.item).attr('data-name');
+      p.arr = this.createRollArray(p);
+
+      if(p.coreNode.node.find('li.selectedGridItem').length===0){
+        p.roll = this.resolveRollGrid(p.arr, p.label);
+      }else{
+        p.roll = this.resolveRollGridDirection(p.coreNode,p.arr, p.label);
+      }
+
+      var value = this.resolveRollValue(p,function(node){
+        p.coreNode.node.find('li').removeClass('selectedGridItem');
+        $(node).addClass('selectedGridItem');
+      });
+      return value;
+    }
+  };
+
+
+  /**
    * Gets the roll string value from roll array, and animates the selection.
    * @param {Object} p - Object parameter list.
    * @return {string} The roll value.
    */
-  this.resolveRollValue=function(p){
+  this.resolveRollValue=function(p,callback){
     if(p.index===undefined || p.item===undefined || p.arr===undefined || p.roll===undefined || p.coreNode===undefined){
       throw 'resolveRollValue is missing required parameters';
     }
@@ -208,8 +244,13 @@ function HasRoll(){
       value = this.findList(value);
       value = this.findDice(value);
 
-      //animate the roll selection
-      $(node).animateCss('highlight');
+      if(callback){
+        callback.call(this,node);
+      }else{
+        //animate the roll selection
+        $(node).animateCss('highlight');
+      }
+
 
       if(p.coreNode.unique===true){
         $(node).addClass('uniqueSelected');

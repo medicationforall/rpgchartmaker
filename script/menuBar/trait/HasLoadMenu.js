@@ -74,7 +74,7 @@ function HasLoadMenu(){
       var data = this.loadMenu.find('.loadRawTextArea').val();
       data = JSON.parse(data);
 
-      if(data.type && (data.type == 'ListGroup' || data.type == 'ObjectGroup')){
+      if(data.type && (data.type == 'ListGroup' || data.type == 'ObjectGroup' || data.type == 'GridGroup')){
         this.loadList(data);
       }
   },this));

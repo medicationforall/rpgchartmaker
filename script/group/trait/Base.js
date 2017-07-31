@@ -26,6 +26,7 @@ function Base(animate){
   this.handleKeyName='listGroupName';
   this.animate=true;
   this.overrideSelector=['.card','.menu'];
+  HasFillOut.call(this);
 }
 
 
@@ -188,35 +189,12 @@ Base.prototype.gatherData=function(){
     obj.unique= this.unique;
   }
 
-  //initialize list entries
-  obj.list=[];
+  this.gatherListData(obj);
 
-  if(this.node.hasClass('listGroup')){
-    //fill out type
-    obj.type='ListGroup';
+  return obj;
+};
 
-    //fill out list
-    this.node.find('ol li span.nameText').each(function(index, item){
-      obj.list.push($(item).text());
-    });
-  }else if(this.node.hasClass('objectGroup')){
-    //fill out type
-    obj.type='ObjectGroup';
-
-    //fill out order
-    obj.order=[];
-
-    this.node.find('.objectForm .objectInput').each(function(index, item){
-      var data ={};
-      data.label = $(item).data('label');
-      data.type = $(item).data('type');
-      obj.order.push(data);
-    });
-
-    //fill out list
-    this.node.find('ol li .object').each(function(index, item){
-      obj.list.push($(item).data('json'));
-    });
-  }
+Base.prototype.gatherListData=function(obj){
+  console.warn('gatherListData not overriden');
   return obj;
 };
