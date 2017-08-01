@@ -23,6 +23,7 @@
 function HasRollMenu(){
   this.display={};
   this.alias={};
+  this.rollCountOverride=undefined;
 
 
   /**
@@ -75,6 +76,26 @@ function HasRollMenu(){
     var column = $(this).data('name');
     coreNode.setAlias(column,$(this).val());
   },null,this));
+
+
+  /**
+   *
+   */
+  this.node.find('.menu').on('input','input[name="rollCountOverride"]',$.proxy(function(coreNode,event){
+    coreNode.setRollCountOverride($(this).val());
+  },null,this));
+
+
+  /**
+   *
+   */
+  this.setRollCountOverride=function(count){
+    if(count==='' || count==='0' || count===0){
+      this.rollCountOverride = undefined;
+    }else{
+      this.rollCountOverride = parseInt(count);
+    }
+  };
 
 
   /**

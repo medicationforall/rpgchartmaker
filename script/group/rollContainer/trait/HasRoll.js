@@ -135,6 +135,11 @@ function HasRoll(){
     var count = $('input[name="rollCount"]').val();
     var lists =$('.list');
 
+    //rollCountOverride
+    if(this.rollCountOverride && this.rollCountOverride>0){
+      count = this.rollCountOverride;
+    }
+
     for(var i=0;i<count;i++){
       this.rollTable.find('tbody').append('<tr data-rollSet="'+i+'"></tr>');
 

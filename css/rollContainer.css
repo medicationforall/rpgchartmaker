@@ -29,3 +29,7 @@ border-right:none;
 	display:inline-block;
 	vertical-align:top;
 }
+
+.rollContainer .menu input[name="rollCountOverride"]{
+  width:65px;
+}

@@ -73,17 +73,26 @@ function RollContainer(animate){
    * @param {Object} data
    */
   this.fillOut=function(data){
+    //seed
     if(data.seed){
       this.seed = data.seed;
       this.node.find('input[name="seed"]').val(this.seed).trigger('input',{"triggerRoll":false});
     }
 
+    //alias
     if(data.alias){
       this.alias = data.alias;
     }
 
+    //display
     if(data.display){
       this.display = data.display;
+    }
+
+    //rollCountOverride
+    if(data.rollCountOverride){
+      this.rollCountOverride = data.rollCountOverride;
+      this.node.find('input[name="rollCountOverride"]').val(this.rollCountOverride).trigger('input',{"triggerRoll":false});
     }
   };
 
@@ -106,10 +115,16 @@ function RollContainer(animate){
       obj.display = this.display;
     }
 
-    //resolve alias
+    //resolve seed
     if(this.seed && this.seed !==''){
       obj.seed = this.seed;
     }
+
+    //resolve rollCountOverride
+    if(this.rollCountOverride && this.rollCountOverride > 0){
+      obj.rollCountOverride = this.rollCountOverride;
+    }
+
     return obj;
   };
 
