@@ -1,0 +1,180 @@
+﻿{
+	"name": "Lasers and Feelings",
+	"rolls": [{
+			"type": "RollContainer",
+			"display": {
+				"No.": false,
+				"Character": false,
+				"Ship": false
+			},
+			"rollCountOverride": 1
+		}, {
+			"type": "RollContainer",
+			"display": {
+				"A Threat ...": false,
+				"Wants To ...": false,
+				"The ...": false,
+				"Which Will ...": false,
+				"Character": false,
+				"No.": false
+			},
+			"rollCountOverride": 1
+		}, {
+			"type": "RollContainer",
+			"display": {
+				"A Threat ...": false,
+				"Wants To ...": false,
+				"The ...": false,
+				"Which Will ...": false,
+				"Ship": false
+			}
+		}
+	],
+	"lists": [{
+			"name": "A Threat ...",
+			"roll": true,
+			"unique": false,
+			"list": ["Zorgon The Conquerer", "The Hive Armada", "Rogue Captain", "Space Pirates", "Cyber Zombies", "Alien Brain Worms"],
+			"type": "ListGroup"
+		}, {
+			"name": "Wants To ...",
+			"roll": true,
+			"unique": false,
+			"list": ["Destroy / Corrupt", "Steal / Capture", "Bond With", "Protect / Empower", "Build / Synthesize", "Pacify / Occupy"],
+			"type": "ListGroup"
+		}, {
+			"name": "The ...",
+			"roll": true,
+			"unique": false,
+			"list": ["The Space Pirate King / Queen", "Void Crystals", "Star Dreadnaught", "Quantum Tunnel", "Ancient Space Ruin", "Alien Artifact"],
+			"type": "ListGroup"
+		}, {
+			"name": "Which Will ...",
+			"roll": true,
+			"unique": false,
+			"list": ["Destroy a solar system", "Reverse Time", "Enslave a planet", "Start a war / invasion", "Rip a hole in reality", "Fix Everything"],
+			"type": "ListGroup"
+		}, {
+			"name": "Ship",
+			"roll": true,
+			"unique": false,
+			"list": [{
+					"Name": "Raptor",
+					"Strengh 1": "[Ship Strength]",
+					"Strength 2": "[Ship Strength]",
+					"Weakness": "[Ship Weakness]"
+				}
+			],
+			"type": "ObjectGroup",
+			"order": [{
+					"label": "Name",
+					"type": "text"
+				}, {
+					"label": "Strengh 1",
+					"type": "text"
+				}, {
+					"label": "Strength 2",
+					"type": "text"
+				}, {
+					"label": "Weakness",
+					"type": "text"
+				}
+			]
+		}, {
+			"name": "Ship Strength",
+			"roll": false,
+			"unique": false,
+			"list": ["Fast", "Nimble", "Well-Armed", "Power Shields", "Superior Sensors", "Cloaking Device", "Fighercraft"],
+			"type": "ListGroup"
+		}, {
+			"name": "Ship Weakness",
+			"roll": false,
+			"unique": false,
+			"list": ["Fuel Hog (always needs energy crystals)", "Only One Medical Pod (and Captain Darcy is in it)", "Horrible Circuit Breakers (in battle, consoles tend to explode on the bridge)", "Grim Reputation (Captain Darcy did some bad stuff in the past)"],
+			"type": "ListGroup"
+		}, {
+			"name": "Character",
+			"roll": true,
+			"unique": false,
+			"list": [{
+					"Gender": "Female",
+					"Name": "[Female First] [Last]",
+					"Style": "[Style]",
+					"Role": "[Role]",
+					"Number": "[Number]",
+					"Goal": "[Goal]"
+				}, {
+					"Gender": "Male",
+					"Name": "[Male First] [Last]",
+					"Style": "[Style]",
+					"Role": "[Role]",
+					"Number": "[Number]",
+					"Goal": "[Goal]"
+				}
+			],
+			"type": "ObjectGroup",
+			"order": [{
+					"label": "Gender",
+					"type": "text"
+				}, {
+					"label": "Name",
+					"type": "text"
+				}, {
+					"label": "Style",
+					"type": "text"
+				}, {
+					"label": "Role",
+					"type": "text"
+				}, {
+					"label": "Number",
+					"type": "text"
+				}, {
+					"label": "Goal",
+					"type": "text"
+				}
+			]
+		}, {
+			"name": "Male First",
+			"roll": false,
+			"unique": false,
+			"list": ["Aarom", "Aedan", "Aedyn", "Aibel", "Aice", "Alecx", "Alezand", "Alezander", "Alixer", "Allan", "Anderz", "Andry", "Aris", "Arman", "Artuhr", "Asher", "Benja", "Benjam", "Bentlae", "Bentlix", "Bouwen", "Brack", "Bradger", "Breckett", "Briyce", "Brodrik", "Broggs", "Bruwno", "Camden", "Canrad", "Carbin", "Charle", "Christover", "Claye", "Codex", "Colrin", "Damari", "Damiyen", "Darilan", "Daviad", "Davian", "Dax", "Derock", "Doriyan", "Draex", "Drax", "Edvin", "Emberson", "Emerys", "Emerys", "Emorson", "Erock", "Frankin", "Fransix", "Gabryel", "Gaerry", "Gaerry", "Gayge", "Geral", "Geremy", "Gideron", "Graeham", "Graesen", "Graezzon", "Ilex", "Jaecob", "Jame", "Jaro", "Jasih", "Jaycobe", "John", "Kamron", "Kohren", "Kyre", "Kyris", "Laenard", "Landan", "Lennox", "Lero", "Lushian", "Maeck", "Maerlon", "Malahki", "Malcalm", "Mayzon", "Morgn", "Nathanael", "Orin", "Oron", "Phenix", "Randis", "Rober", "Rube", "Ryder", "Solmon", "Thoms", "Tobs", "Trephor", "Wallon", "Xandr", "Zand", "Zax", "Zimeon"],
+			"type": "ListGroup"
+		}, {
+			"name": "Female First",
+			"roll": false,
+			"unique": false,
+			"list": ["Abbigael", "Abril", "Adley", "Adlyn", "Aeliyah", "Aellana", "Aellice", "Aemmalee", "Aera", "Aerora", "Alaysia", "Allany", "Amaera", "Amelix", "Anahi", "Anastase", "Angique", "Arelle", "Aryana", "Avaeana", "Ayana", "Aymee", "Balee", "Barba", "Brae", "Braealyn", "Breaenna", "Camryn", "Carline", "Cassana", "Catalea", "Cayetlin", "Charleagh", "Claissa", "Dafnea", "Danice", "Danyka", "Daphnea", "Deabora", "Dnise", "Elenoh", "Ellayina", "Emelyse", "Emiliye", "Erinne", "Erixa", "Evanline", "Evleyen", "Fyna", "Galea", "Gyanna", "Haeleigh", "Haerlo", "Haerlo", "Helna", "Iyleen", "Jan", "Jennix", "Jexica", "Jynna", "Kaela", "Kaeleen", "Kalyah", "Kamryn", "Karise", "Katlina", "Keaya", "Kelyn", "Kimly", "Kirsen", "Leshi", "Lilya", "Lilya", "Lylah", "Maelana", "Maesin", "Mareana", "Marina", "Marixah", "Meado", "Milaya", "Myha", "Nadira", "Nathly", "Natlea", "Nayli", "Rachle", "Rane", "Rayven", "Reegan", "Reesha", "Reighley", "Reiyna", "Ryleegh", "Sereya", "Sirah", "Sofia", "Soniya", "Taelor", "Taelor", "Taryne", "Temrance", "Tira", "Vaessa", "Valria", "Wyla", "Wylow", "Ylivea", "Yrenea"],
+			"type": "ListGroup"
+		}, {
+			"name": "Last",
+			"roll": false,
+			"unique": false,
+			"list": ["A'Koshi", "Ampbez", "Antini", "Artight", "Artis", "Bailee", "Bakell", "Baking", "Barnes", "Breeder", "Brogonz", "Broguez", "Brusson", "C'Fora", "Cati", "Cephei", "Cerberi", "Chutte", "Clopark", "Cooker", "Coopow", "Cotte", "Coxand", "Dering", "Dezal", "Feng-Du", "Flemoor", "Flezal", "Girbach", "Gou-Mang", "Grillou", "Gryante", "Hally", "Hardson", "Helly", "Herschelii", "Howard", "Howils", "Jamorg", "Jenker", "Jenking", "Joti", "Kera", "Kery", "Kiani", "Kinson", "Kui Xiu", "Lera", "Lien", "Linson", "Longonz", "Lyrae", "Magga", "Manett", "Marte", "Meni", "Mithy", "Mreeni", "Murphy", "Nehalennia", "Nessa", "Noctae", "Pegasi", "Pera", "Perry", "Phani", "Pheson", "Poward", "Punarvasu", "Rezal", "Ricia", "Riffin", "Rison", "Robell", "Rodra", "Rodry", "Scofield", "Shatabhisha", "Shravishtha", "Solarii", "Tery", "Thellee", "Thoran", "Trianguli", "Veillon", "Voga", "Wakeman", "Watson", "Wisanch", "Wison", "Wooders", "Woodiaz", "Yuungan", "Zorp"],
+			"type": "ListGroup"
+		}, {
+			"name": "Style",
+			"roll": false,
+			"unique": false,
+			"list": ["Alien", "Android", "Dangerous", "Hot-Shot", "Intrepid", "Savvy", "Sexy"],
+			"type": "ListGroup"
+		}, {
+			"name": "Role",
+			"roll": false,
+			"unique": false,
+			"list": ["Doctor", "Envoy", "Engineer", "Explorer", "Pilot", "Scientist", "Soldier"],
+			"type": "ListGroup"
+		}, {
+			"name": "Number",
+			"roll": false,
+			"unique": false,
+			"list": ["2 - Feelings", "3 - Feelings", "4 - Lasers", "5 - Lasers"],
+			"type": "ListGroup"
+		}, {
+			"name": "Goal",
+			"roll": false,
+			"unique": false,
+			"list": ["Become Captain", "Meet Sexy Aliens", "Shoot Bad Guys", "Find New Worlds", "Solve Weird Space Mysteries", "Prove Yourself", "Keep Being Awesome"],
+			"type": "ListGroup"
+		}
+	]
+}
