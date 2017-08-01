@@ -33,3 +33,7 @@ border-right:none;
 .rollContainer .menu input[name="rollCountOverride"]{
   width:65px;
 }
+
+.rollContainer .menu .columns{
+  margin-bottom:5px;
+}

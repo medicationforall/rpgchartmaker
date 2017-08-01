@@ -25,6 +25,8 @@ function HasRollMenu(){
   this.alias={};
   this.rollCountOverride=undefined;
 
+  this.menuNode = this.node.find('.menu');
+
 
   /**
    * Open the RollContainer submenu.
@@ -72,7 +74,7 @@ function HasRollMenu(){
   /**
    * Alias field input.
    */
-  this.node.find('.menu').on('input','.alias',$.proxy(function(coreNode,event){
+  this.menuNode.on('input','.alias',$.proxy(function(coreNode,event){
     var column = $(this).data('name');
     coreNode.setAlias(column,$(this).val());
   },null,this));
@@ -81,7 +83,7 @@ function HasRollMenu(){
   /**
    *
    */
-  this.node.find('.menu').on('input','input[name="rollCountOverride"]',$.proxy(function(coreNode,event){
+  this.menuNode.on('input','input[name="rollCountOverride"]',$.proxy(function(coreNode,event){
     coreNode.setRollCountOverride($(this).val());
   },null,this));
 
@@ -110,18 +112,22 @@ function HasRollMenu(){
     if(this.alias[column]===column){
       delete this.alias[column];
     }
-
-    this.roll();
   };
 
 
   /**
    * User click on the display checkbox.
    */
-  this.node.find('.menu').on('change','.display',$.proxy(function(coreNode,event){
+  this.menuNode.on('change','.display',$.proxy(function(coreNode,event){
     var column = $(this).data('name');
     coreNode.setDisplay(column,this.checked);
   },null,this));
+
+
+  this.menuNode.on('click','.rollSingleTable',$.proxy(function(event){
+    event.preventDefault();
+    this.roll();
+  },this));
 
 
   /**
@@ -135,7 +141,5 @@ function HasRollMenu(){
     if(this.display[column]===true){
       delete this.display[column];
     }
-
-    this.roll();
   };
 }
