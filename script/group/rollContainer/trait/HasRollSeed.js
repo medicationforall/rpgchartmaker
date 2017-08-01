@@ -89,7 +89,7 @@ function HasRollSeed(){
     console.log('resolveRollGridDirection');
     var roll;
     var columns = coreNode.columns;
-    var direction = ['up','down','left','right'];
+    var direction = ['up','down','left','right','stay'];
     var selectedIndex;
 
     //get the direction
@@ -137,6 +137,8 @@ function HasRollSeed(){
         } else{
           roll = selectedIndex;
         }
+      } else if(direction[roll]==='stay'){
+        roll = selectedIndex;
       }
     }else{
       console.warn('selected grid item index did not resolve');

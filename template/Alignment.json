@@ -1,0 +1,12 @@
+﻿{
+	"name": "Alignment",
+	"lists": [{
+			"name": "Alignment",
+			"roll": true,
+			"unique": false,
+			"list": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
+			"type": "GridGroup",
+			"columns": 3
+		}
+	]
+}
