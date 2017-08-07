@@ -52,7 +52,6 @@ function HasListGroupLoad(){
 
     // Loop through the lines.
     for(var i=0,line;(line=lines[i]);i++){
-      console.log('need to parse the text',line);
       var value = line.trim();
       var occurrances = 1;
 

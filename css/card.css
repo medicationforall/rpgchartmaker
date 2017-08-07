@@ -112,7 +112,7 @@ min-width:9px;
 vertical-align:top;
 }
 
-.listGroup .nameTextarea{
+.listGroup .nameTextarea, .gridGroup .nameTextarea{
   display:none;
   vertical-align:top;
 }
@@ -148,4 +148,8 @@ vertical-align:top;
 
 .gridGroup ol li.selectedGridItem{
   background-color:#00B7EA;
+}
+
+.gridGroup ol li input{
+  width:87px;
 }

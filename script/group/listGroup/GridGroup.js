@@ -25,7 +25,7 @@
  */
 function GridGroup(animate){
   Base.call(this, animate);
-  HasGridGroupLoad.call(this);
+  HasListGroupLoad.call(this);
 
   /**
    * constructor
@@ -47,8 +47,8 @@ function GridGroup(animate){
     this.setupBase(template);
 
     HasGridGroupColumn.call(this);
-    HasGridGroupAdd.call(this);
-    //HasListGroupEdit.call(this);
+    HasListGroupAdd.call(this);
+    HasListGroupEdit.call(this);
     HasListMenu.call(this);
     //this.setupAlphabetize();
 
