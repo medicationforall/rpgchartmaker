@@ -16,6 +16,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Core Class framework.
+ */
 //'use strict';
 function Core(){
 	this.parent=null;
@@ -23,88 +26,16 @@ function Core(){
 }
 
 
-//LIFECYCLES
-/**
- * init prior to load
- */
-Core.prototype.init=function(){
-	//console.log('call load for '+ this.constructor.name);
-	return this.each('init');
-};
-
-
-/**
- * Load lifecycle.
- *@see CoreTemplate
- */
-Core.prototype.load=function(){
-	//console.log('call load for '+ this.constructor.name);
-	return this.each('load');
-};
-
-
-/**
- * Places the nodes content into the html page.
- */
-Core.prototype.setup=function(){
-	this.each('setup');
-};
-
-
-/**
- * Register user interation events after all setup lifecycle.
- */
-Core.prototype.register=function(){
-	this.each('register');
-};
-
-
-/**
- *
- */
-Core.prototype.update=function(params){
-	//console.log('call update for '+ this.constructor.name);
-	return this.each('update',params);
-};
-
-
-/**
- *
- */
-Core.prototype.create=function(params){
-	//console.log('call update for '+ this.constructor.name);
-	return this.each('create',params);
-};
-
-
-/**
- *
- */
-Core.prototype.preload=function(params){
-	//console.log('call preload for '+ this.constructor.name+' children',this.children);
-	return this.each('preload',params);
-};
-
-
-/**
- *
- */
-Core.prototype.destroy=function(params){
-	//console.log('call preload for '+ this.constructor.name+' children',this.children);
-	return this.each('destroy',params);
-};
-
-
 //METHODS
 /**
  * Runs the given method against all of the children of this node.
- *@param methodName String
- *@return An arraylist of the deferreds returned by the child method calls.
+ * @param {string} methodName String
+ * @param {Object} params
+ * @return {Array} An arraylist of the deferreds returned by the child method calls.
  */
 Core.prototype.each=function(methodName,params){
 	var list = [];
 	for(var i=0,child;(child=this.children[i]);i++){
-		//console.log('core call '+methodName+ ' for',child);
 		list = list.concat(child[methodName](params));
 		if(params && params.killUpdate){
 			break;
@@ -116,7 +47,8 @@ Core.prototype.each=function(methodName,params){
 
 /**
  * Adds a child node to this object, and sets the childs parent to this node.
- *@return Core Object The child node that was just added this node.
+ * @param {Object} child
+ * @return {Object} Core Object The child node that was just added this node.
  */
 Core.prototype.add=function(child){
 	child.setParent(this);
@@ -127,6 +59,7 @@ Core.prototype.add=function(child){
 
 /**
  * Remove a child of this object.
+ * @param {Object} rChild
  */
 Core.prototype.remove=function(rChild){
 	var newChildren = [];
@@ -142,6 +75,8 @@ Core.prototype.remove=function(rChild){
 
 /**
  * Adds the child to this object list as children by placing it at the beginning of the children array.
+ * @param {Object} child
+ * @return {Object}
  */
 Core.prototype.prepend=function(child){
 	child.setParent(this);
@@ -151,7 +86,8 @@ Core.prototype.prepend=function(child){
 
 
 /**
- *@return the parent of the node.
+ * @param {Object} classObject
+ * @return {Object} the parent of the node.
  */
 Core.prototype.getParent=function(classObject){
 	if(classObject!==undefined && this.parent!==null){
@@ -168,6 +104,7 @@ Core.prototype.getParent=function(classObject){
 
 /**
  * Sets the parent of the node.
+ * @param {Object} parent
  */
 Core.prototype.setParent=function(parent){
 	this.parent=parent;
@@ -175,7 +112,7 @@ Core.prototype.setParent=function(parent){
 
 
 /**
- *@return the children of the node
+ *@return {Array} the children of the node
  */
 Core.prototype.getChildren=function(){
 	return this.children;
@@ -184,7 +121,8 @@ Core.prototype.getChildren=function(){
 
 //SEARCH
 /**
- *@return the core object closest to this node. Traverses up the tree never down.
+ * @param {Object} classObject
+ * @return {Object} the core object closest to this node. Traverses up the tree never down.
  */
 Core.prototype.closest=function(classObject){
 	var hit;
@@ -208,7 +146,9 @@ Core.prototype.closest=function(classObject){
 
 
 /**
- *
+ * @param {string} key
+ * @param {Object} value
+ * @return {Object}
  */
 Core.prototype.closestByKey=function(key,value){
   var hit;
@@ -228,13 +168,12 @@ Core.prototype.closestByKey=function(key,value){
 	}else{
 		return undefined;
 	}
-
 };
 
 
 /**
- *
- *@return the child of this node that matches the given classObject.
+ * @param {Object} classObject
+ * @return {Object} the child of this node that matches the given classObject.
  */
 Core.prototype.find=function(classObject){
 	var hit;
@@ -251,7 +190,9 @@ Core.prototype.find=function(classObject){
 
 
 /**
- *
+ * @param {string} key
+ * @param {Object} value
+ * @return {Object}
  */
 Core.prototype.findByKey=function(key,value){
 	var hit;

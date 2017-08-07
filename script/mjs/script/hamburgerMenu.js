@@ -34,22 +34,10 @@ $(document).ready(function(){
 		$('.hamburger.menu .subMenu.general').addClass('focus');
 	});
 
-	//about click
-	$('.hamburger.menu .aboutButton').click(function(event){
+	//open infodialog button.
+	$('.openInfoDialog').click(function(event){
 		event.preventDefault();
-		var aboutDialog = new InfoDialog('about');
+		var url = $(this).data('url');
+		var changeDialog = new InfoDialog(url);
 	});
-
-	//help click
-	$('.helpButton').click(function(event){
-		event.preventDefault();
-		var helpDialog = new InfoDialog('help');
-	});
-
-	//change list click
-	$('.hamburger.menu .changesButton').click(function(event){
-		event.preventDefault();
-		var changeDialog = new InfoDialog('changes');
-	});
-
 });

@@ -18,6 +18,7 @@
 
 /**
  * Random number generator based on passed in seeds.
+ * @param {string} seed - used to make the rng pseudo-random.
  * @see ../../lib/seedrandom
  */
 function Rng(seed){
@@ -37,7 +38,7 @@ function Rng(seed){
 
 
 /**
- *
+ * Clears cached seeds.
  */
 Rng.prototype.clearSeed=function(){
   this.seeds={};
@@ -46,6 +47,9 @@ Rng.prototype.clearSeed=function(){
 
 /**
  * Returns a new random number from the seed.
+ * @param {string} seed
+ * @param {int} min
+ * @param {int} max
  */
 Rng.prototype.getRandom=function(seed, min, max){
   if(this.seeds[seed] ===undefined){
@@ -55,14 +59,14 @@ Rng.prototype.getRandom=function(seed, min, max){
 };
 
 
-/*
+/**
  * Initializes a seed. If it already exists throws an error.
+ * @param {string} seed
  */
 Rng.prototype.createSeed=function(seed){
   if(this.seeds[seed] !==undefined){
     throw 'Seed Already exists.';
   }
-
   this.seeds[seed]=new Math.seedrandom(seed);
 };
 

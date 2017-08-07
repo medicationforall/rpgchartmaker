@@ -18,6 +18,7 @@
 
 /**
  * Extension to jquery to apply a css animation class and remove it when the animation is finished.
+ * @param {string} animationName - css class name to the added to the domnode.
  */
 $.fn.extend({
     animateCss: function (animationName) {
@@ -52,8 +53,6 @@ $(document).ready(function(){
     //initialize list group
     if(window.location.hash === ''){
       var listGroup = new ListGroup(false);
-      //new ObjectGroup(false);
-      //new GridGroup(false);
     }
   });
 });

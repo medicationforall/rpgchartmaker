@@ -16,6 +16,10 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Dialog.
+ * @param {string} url reference url to the content to be displayed.
+ */
 function InfoDialog(url){
 
 	//data
