@@ -24,93 +24,93 @@
  * @param {boolean} animate - flag for animating the object when initialized.
  */
 function ListGroup(animate){
-	Base.call(this, animate);
-	HasListGroupLoad.call(this);
+  Base.call(this, animate);
+  HasListGroupLoad.call(this);
 
-	this.orderList=undefined;
-
-
-	/**
-	 * constructor
-	 */
-	this._constructor = function(){
-		if(animate!==undefined){
-			this.animate=animate;
-		}
-		this._resolveTemplate(ListGroup,'ListGroup');
-	};
+  this.orderList=undefined;
 
 
-	/**
-	 * Sets up the html node, click handlers, sort handlers, and other controls.
-	 * @param {string} template
-	 * @private
-	 */
-	this._setup=function(template){
-		this.setupBase(template);
-
-		HasListGroupAdd.call(this);
-		HasListGroupEdit.call(this);
-		HasListMenu.call(this);
-		this.setupAlphabetize();
-
-		$(this).trigger('loaded');
-	};
+  /**
+   * constructor
+   */
+  this._constructor = function(){
+    if(animate!==undefined){
+      this.animate=animate;
+    }
+    this._resolveTemplate(ListGroup,'ListGroup');
+  };
 
 
-	/**
-	 * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
-	 * @private
-	 */
-	this.setupSortable=function(){
-		this.orderList = this.node.find('ol');
-		this.orderList.sortable({connectWith: ".list ol"});
-	};
+  /**
+   * Sets up the html node, click handlers, sort handlers, and other controls.
+   * @param {string} template
+   * @private
+   */
+  this._setup=function(template){
+    this.setupBase(template);
+
+    HasListGroupAdd.call(this);
+    HasListGroupEdit.call(this);
+    HasListMenu.call(this);
+    this.setupAlphabetize();
+
+    $(this).trigger('loaded');
+  };
 
 
-	/**
-	 * Defines what the sort logic is for an list.
-	 */
-	this.setupAlphabetize=function(){
-		this.alphabetize=function(order){
-			var list = this.orderList.find('li');
-
-			list.sort(function(a,b){
-			aText = $(a).find('.nameText').text();
-			bText = $(b).find('.nameText').text();
-
-			if(aText > bText){
-				if(order==='asc'){
-					return 1;
-				}else if('desc'){
-					return -1;
-				}
-			}
-
-			if(aText < bText){
-					if(order==='asc'){
-						return -1;
-					}else if('desc'){
-						return 1;
-					}
-				}
-				return 0;
-			});
-
-			//set the list
-			list.detach().appendTo(this.orderList);
-		};
-	};
+  /**
+   * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
+   * @private
+   */
+  this.setupSortable=function(){
+    this.orderList = this.node.find('ol');
+    this.orderList.sortable({connectWith: ".list ol"});
+  };
 
 
-	/**
-	 *
-	 */
-	this.gatherListData=function(obj){
-		//initialize list entries
-	  obj.list=[];
+  /**
+   * Defines what the sort logic is for an list.
+   */
+  this.setupAlphabetize=function(){
+    this.alphabetize=function(order){
+      var list = this.orderList.find('li');
 
-		//fill out type
+      list.sort(function(a,b){
+        aText = $(a).find('.nameText').text();
+        bText = $(b).find('.nameText').text();
+
+        if(aText > bText){
+          if(order==='asc'){
+            return 1;
+          }else if('desc'){
+            return -1;
+          }
+        }
+
+        if(aText < bText){
+          if(order==='asc'){
+            return -1;
+          }else if('desc'){
+            return 1;
+          }
+        }
+        return 0;
+      });
+
+      //set the list
+      list.detach().appendTo(this.orderList);
+    };
+  };
+
+
+  /**
+   *
+   */
+  this.gatherListData=function(obj){
+    //initialize list entries
+    obj.list=[];
+
+    //fill out type
     obj.type='ListGroup';
 
     //fill out list
@@ -118,11 +118,11 @@ function ListGroup(animate){
       obj.list.push($(item).text());
     });
 
-		return obj;
-	};
+    return obj;
+  };
 
-	//main
-	this._constructor();
+  //main
+  this._constructor();
 }
 
 Object.setPrototypeOf(ListGroup.prototype, Base.prototype);

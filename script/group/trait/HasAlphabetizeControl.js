@@ -23,8 +23,8 @@
 function HasAlphabetizeControl(){
 
   /**
-	 * Sets the click hanlder for clicking on the alphabetize button.
-	 */
+   * Sets the click hanlder for clicking on the alphabetize button.
+   */
   this.node.find('.alphabetizeButton').click($.proxy(function(coreNode,event){
     event.preventDefault();
 

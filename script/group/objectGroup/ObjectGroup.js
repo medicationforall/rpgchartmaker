@@ -26,122 +26,122 @@
  * @param {boolean} animate - flag for animating the object when initialized.
  */
 function ObjectGroup(animate){
-	Base.call(this,animate);
-	HasNow.call(this);
-	HasObjectGroupLoad.call(this);
+  Base.call(this,animate);
+  HasNow.call(this);
+  HasObjectGroupLoad.call(this);
 
-	this.orderList=undefined;
-	this.form=undefined;
+  this.orderList=undefined;
+  this.form=undefined;
 
-	/**
-	 * constructor
-	 */
-	this._constructor = function(){
-		if(animate!==undefined){
-			this.animate=animate;
-		}
-		this._resolveTemplate(ObjectGroup,'ObjectGroup');
-	};
-
-
-	/**
-	 * Sets up the html node, click handlers, sort handlers, and other controls.
-	 * @param {string} template
-	 * @private
-	 */
-	this._setup=function(template){
-		this.setupBase(template);
-
-		HasObjectGroupAddInput.call(this);
-		HasObjectGroupAddEntry.call(this);
-
-		HasObjectGroupEditInput.call(this);
-		HasObjectGroupEditEntry.call(this);
-
-		HasListMenu.call(this);
-		this.setupAlphabetize();
-
-		$(this).trigger('loaded');
-	};
+  /**
+   * constructor
+   */
+  this._constructor = function(){
+    if(animate!==undefined){
+      this.animate=animate;
+    }
+    this._resolveTemplate(ObjectGroup,'ObjectGroup');
+  };
 
 
-	/**
-	 * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
-	 * @private
-	 */
-	this.setupSortable=function(){
-		this.orderList = this.node.find('ol');
-		this.form = this.node.find('.objectForm');
+  /**
+   * Sets up the html node, click handlers, sort handlers, and other controls.
+   * @param {string} template
+   * @private
+   */
+  this._setup=function(template){
+    this.setupBase(template);
 
-		this.orderList.sortable({connectWith: ".list ol"});
-		this.form.sortable();
-	};
+    HasObjectGroupAddInput.call(this);
+    HasObjectGroupAddEntry.call(this);
 
+    HasObjectGroupEditInput.call(this);
+    HasObjectGroupEditEntry.call(this);
 
-	/**
-	 * Defines what the sort logic is for an object list.
-	 */
-	this.setupAlphabetize=function(){
-		this.alphabetize=function(order){
-			var list = this.node.find('ol li');
+    HasListMenu.call(this);
+    this.setupAlphabetize();
 
-			list.sort(function(a,b){
-				aText = $(a).find('span.value').first().text();
-				bText = $(b).find('span.value').first().text();
-
-				if(aText > bText){
-					if(order==='asc'){
-						return 1;
-					}else if('desc'){
-						return -1;
-					}
-				}
-
-				if(aText < bText){
-					if(order==='asc'){
-						return -1;
-					}else if('desc'){
-						return 1;
-					}
-				}
-				return 0;
-			});
-
-			list.detach().appendTo(this.node.find('ol'));
-		};
-	};
+    $(this).trigger('loaded');
+  };
 
 
-	/**
-	 *
-	 */
-	this.gatherListData=function(obj){
-		//initialize list entries
-	  obj.list=[];
+  /**
+   * Sets the internal ol tag tag to sortable also allows dragging list entries between lists.
+   * @private
+   */
+  this.setupSortable=function(){
+    this.orderList = this.node.find('ol');
+    this.form = this.node.find('.objectForm');
 
-		//fill out type
-		obj.type='ObjectGroup';
+    this.orderList.sortable({connectWith: ".list ol"});
+    this.form.sortable();
+  };
 
-		//fill out order
-		obj.order=[];
 
-		this.node.find('.objectForm .objectInput').each(function(index, item){
-			var data ={};
-			data.label = $(item).data('label');
-			data.type = $(item).data('type');
-			obj.order.push(data);
-		});
+  /**
+   * Defines what the sort logic is for an object list.
+   */
+  this.setupAlphabetize=function(){
+    this.alphabetize=function(order){
+      var list = this.node.find('ol li');
 
-		//fill out list
-		this.node.find('ol li .object').each(function(index, item){
-			obj.list.push($(item).data('json'));
-		});
+      list.sort(function(a,b){
+        aText = $(a).find('span.value').first().text();
+        bText = $(b).find('span.value').first().text();
 
-		return obj;
-	};
+        if(aText > bText){
+          if(order==='asc'){
+            return 1;
+          }else if('desc'){
+            return -1;
+          }
+        }
 
-	//main
-	this._constructor();
+        if(aText < bText){
+          if(order==='asc'){
+            return -1;
+          }else if('desc'){
+            return 1;
+          }
+        }
+        return 0;
+      });
+
+      list.detach().appendTo(this.node.find('ol'));
+    };
+  };
+
+
+  /**
+   *
+   */
+  this.gatherListData=function(obj){
+    //initialize list entries
+    obj.list=[];
+
+    //fill out type
+    obj.type='ObjectGroup';
+
+    //fill out order
+    obj.order=[];
+
+    this.node.find('.objectForm .objectInput').each(function(index, item){
+      var data ={};
+      data.label = $(item).data('label');
+      data.type = $(item).data('type');
+      obj.order.push(data);
+    });
+
+    //fill out list
+    this.node.find('ol li .object').each(function(index, item){
+      obj.list.push($(item).data('json'));
+    });
+
+    return obj;
+  };
+
+  //main
+  this._constructor();
 }
 
 Object.setPrototypeOf(ObjectGroup.prototype, Base.prototype);

@@ -73,7 +73,7 @@ function GridGroup(animate){
     obj.list=[];
 
     //fill out type
-		obj.type='GridGroup';
+    obj.type='GridGroup';
 
     //fill out columns
     obj.columns = this.columns;

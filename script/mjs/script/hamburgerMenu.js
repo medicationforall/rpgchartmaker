@@ -18,26 +18,26 @@
 
 $(document).ready(function(){
 
-	//menu click
-	$('.header .hamburger').click(function(event){
-		event.preventDefault();
+  //menu click
+  $('.header .hamburger').click(function(event){
+    event.preventDefault();
 
-		//toggle menu display
-		if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.general').hasClass('focus')){
-			$('body').removeClass('menuOpen');
-		}else{
-			$('body').addClass('menuOpen');
-		}
+    //toggle menu display
+    if($('body').hasClass('menuOpen') && $('.hamburger.menu .subMenu.general').hasClass('focus')){
+      $('body').removeClass('menuOpen');
+    }else{
+      $('body').addClass('menuOpen');
+    }
 
-		//set menu focus
-		$('.hamburger.menu .subMenu').removeClass('focus');
-		$('.hamburger.menu .subMenu.general').addClass('focus');
-	});
+    //set menu focus
+    $('.hamburger.menu .subMenu').removeClass('focus');
+    $('.hamburger.menu .subMenu.general').addClass('focus');
+  });
 
-	//open infodialog button.
-	$('.openInfoDialog').click(function(event){
-		event.preventDefault();
-		var url = $(this).data('url');
-		var changeDialog = new InfoDialog(url);
-	});
+  //open infodialog button.
+  $('.openInfoDialog').click(function(event){
+    event.preventDefault();
+    var url = $(this).data('url');
+    var changeDialog = new InfoDialog(url);
+  });
 });
