@@ -18,6 +18,7 @@
 
 /**
  * Base inheritance class for ListGroup, ObjectGroup, and RollContainer.
+ * @param {boolean} animate - flag for animating the object when initialized.
  * @class
  */
 function Base(animate){

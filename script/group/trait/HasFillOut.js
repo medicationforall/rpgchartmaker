@@ -18,7 +18,8 @@
 function HasFillOut(){
 
   /**
-   *
+   * Fill out name from param data.
+   * @param {Object} list - list data params.
    */
   this.fillOutName=function(list){
     //fill out name
@@ -27,7 +28,8 @@ function HasFillOut(){
 
 
   /**
-   *
+   * Fill out roll from param data.
+   * @param {Object} list - list data params.
    */
   this.fillOutRoll=function(list){
     //fill out roll
@@ -43,7 +45,8 @@ function HasFillOut(){
 
 
   /**
-   *
+   * Fill out unique from param data.
+   * @param {Object} list - list data params.
    */
   this.fillOutUnique=function(list){
     //fill out unique

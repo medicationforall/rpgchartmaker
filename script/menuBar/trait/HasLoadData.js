@@ -134,6 +134,10 @@ function HasLoadData(){
   };
 
 
+  /**
+   * @param {string} text - raw text to load.
+   * @param {boolean} animate - Flag passed to created Lists.
+   */
   this.loadRawList=function(text,animate){
     listGroup = new ListGroup(animate);
 

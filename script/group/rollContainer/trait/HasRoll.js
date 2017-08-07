@@ -131,7 +131,6 @@ function HasRoll(){
    */
   this.createTableRows=function(){
     //fill out rows
-    //console.log('createTableRows');
     var count = $('input[name="rollCount"]').val();
     var lists =$('.list');
 
@@ -202,7 +201,9 @@ function HasRoll(){
 
 
   /**
-   *
+   * Roll a Grid Group.
+   * @param {Object} p - Object parameter list.
+   * @return {string}
    */
   this.rollGrid=function(p){
     if(p.index===undefined || p.item===undefined){
@@ -319,9 +320,6 @@ function HasRoll(){
         arr = $(p.item).find('ol li').not('.edit').map(function(i, el) {
           return $(el).html();
         }).get();
-
-        //reset strikethrough
-        //$(p.item).find('ol li').removeClass('uniqueSelected');
       }
 
       this.rollArrayLookup[namespace] = arr;
@@ -341,6 +339,7 @@ function HasRoll(){
 
   /**
    * no longer used
+   * @param {Array} arr - array to be rolled against.
    * @see HasRollSeed.js
    */
   this.resolveRoll=function(arr){
@@ -353,6 +352,7 @@ function HasRoll(){
   /**
    * Looks for dice notation in a roll value.
    * Removes the notation an replaces it with a resolved value.
+   * @param {string} text
    * @example d40444 Demonkin d5 d6+1 d6/2 d4*10 d6-1
    * should have 6 matches d40444, d5, d6+1, d6/2, d4*10, and d6-1
    * @return {string}
@@ -390,6 +390,7 @@ function HasRoll(){
 
   /**
    * Looks for list notation in a roll value.
+   * @param {string} text
    * @example d6 [Region](1,5) Orks - [Type]
    * Hits on Type, and Region subset 1, and 5.
    * @return {string}

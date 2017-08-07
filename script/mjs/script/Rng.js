@@ -18,6 +18,7 @@
 
 /**
  * Random number generator based on passed in seeds.
+ * @class
  * @param {string} seed - used to make the rng pseudo-random.
  * @see ../../lib/seedrandom
  */

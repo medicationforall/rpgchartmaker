@@ -81,7 +81,7 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Roll Count override for a RollContainer input change.
    */
   this.menuNode.on('input','input[name="rollCountOverride"]',$.proxy(function(coreNode,event){
     coreNode.setRollCountOverride($(this).val());
@@ -89,7 +89,8 @@ function HasRollMenu(){
 
 
   /**
-   *
+   * Set the roll Count override.
+   * @param {int} count
    */
   this.setRollCountOverride=function(count){
     if(count==='' || count==='0' || count===0){
@@ -124,6 +125,9 @@ function HasRollMenu(){
   },null,this));
 
 
+  /**
+   * Roll Container roll button.
+   */
   this.menuNode.on('click','.rollSingleTable',$.proxy(function(event){
     event.preventDefault();
     this.roll();

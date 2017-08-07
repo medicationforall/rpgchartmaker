@@ -18,6 +18,7 @@
 
 /**
  * Core Class framework.
+ * @class
  */
 //'use strict';
 function Core(){

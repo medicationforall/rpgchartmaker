@@ -47,6 +47,7 @@ function HasSeed(){
 
   /**
    * Setup the the color selector located on the RollContainer menu.
+   * @param {string} seed
    * @todo duplicate code?
    */
   this.setupColorSelector=function(seed){

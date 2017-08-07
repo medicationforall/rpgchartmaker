@@ -71,10 +71,11 @@ function HasRollSeed(){
 
 
   /**
-   *
+   * Resolve the initial cell to roll against for the Grif Group.
+   * @param {Array} arr - array to be rolled against.
+   * @param {string} name - namespace for the seed lookup key.
    */
   this.resolveRollGrid=function(arr,name){
-    console.log('resolveRollGrid');
     var roll;
 
     if(this.seed && this.seed !== ''){
@@ -85,8 +86,14 @@ function HasRollSeed(){
     return roll;
   };
 
+
+  /**
+   * Get the direction of the roll for a Grid Group.
+   * @param {Object} coreNode
+   * @param {Array} arr - array to be rolled against.
+   * @param {string} name - namespace for the seed lookup key.
+   */
   this.resolveRollGridDirection=function(coreNode,arr,name){
-    console.log('resolveRollGridDirection');
     var roll;
     var columns = coreNode.columns;
     var direction = ['up','down','left','right','stay'];
@@ -111,7 +118,6 @@ function HasRollSeed(){
 
     //translate direction roll to node in array
     if(selectedIndex!==undefined){
-      console.log('selected grid item index is', selectedIndex,'direction is',direction[roll]);
 
       if(direction[roll]==='left'){
         if(selectedIndex+1 !== arr.length && (selectedIndex+1)%columns !==0){

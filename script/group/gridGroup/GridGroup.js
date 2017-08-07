@@ -15,6 +15,14 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Grid List.
+ * @class
+ * @see Base.js
+ * @see html/GridGroup.html
+ * @param {boolean} animate - flag for animating the object when initialized.
+ */
 function GridGroup(animate){
   Base.call(this, animate);
   HasGridGroupLoad.call(this);

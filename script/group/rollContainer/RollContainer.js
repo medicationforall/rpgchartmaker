@@ -19,6 +19,9 @@
 /**
  * Displays roll results.
  * @class
+ * @see Base.js
+ * @see html/RollContainer.html
+ * @param {boolean} animate - flag for animating the object when initialized.
  */
 function RollContainer(animate){
   Base.call(this, animate);

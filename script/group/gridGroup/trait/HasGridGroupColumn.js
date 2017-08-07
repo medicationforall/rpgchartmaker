@@ -15,9 +15,15 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Grid Group Column input mixin.
+  * @mixin
+  */
 function HasGridGroupColumn(){
   this.columns=3;
   this.columnsWidth=95;
+
 
   /**
    * Grid columns change

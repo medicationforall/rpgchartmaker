@@ -24,7 +24,6 @@ function HasListGroupAdd(){
   this.inputMode='input';
 
 
-
   /**
    * Add List item click.
    */
@@ -39,7 +38,7 @@ function HasListGroupAdd(){
 
 
   /**
-   *
+   * Add a list entry from the name input.
    */
   this.addFromInput=function(){
     var nameInput = this.node.find('.nameInput');
@@ -55,7 +54,7 @@ function HasListGroupAdd(){
 
 
   /**
-   *
+   * Add list entries from the textarea.
    */
   this.addFromTextArea=function(){
     var nameTextarea = this.node.find('.nameTextarea');
@@ -100,8 +99,9 @@ function HasListGroupAdd(){
     }
   },this));
 
+
   /**
-   *
+   * Past into a nameInput.
    */
    this.node.find('.nameInput').on('paste', $.proxy(function(coreNode,e) {
     var pasteData = e.originalEvent.clipboardData.getData('text');
@@ -115,7 +115,7 @@ function HasListGroupAdd(){
 
 
   /**
-   *
+   * Swap out a nameInput for a textarea.
    */
   this.switchInputToTextarea=function(paste){
     var value = '';

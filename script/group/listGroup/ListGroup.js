@@ -20,7 +20,8 @@
  * Simple list with controls for CRUD operations Create, Read, Update, and Delete.
  * @class
  * @see Base.js
- * @see html/listGroup.html
+ * @see html/ListGroup.html
+ * @param {boolean} animate - flag for animating the object when initialized.
  */
 function ListGroup(animate){
 	Base.call(this, animate);

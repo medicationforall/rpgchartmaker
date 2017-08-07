@@ -78,6 +78,9 @@ function HasSaveMenu(){
 
   /**
    * Prompt the browser to save a file.
+   * @param {string} t - data of the file.
+   * @param {string} f - file name.
+   * @param {string} m - meta file type.
    * @todo duplicate code
    */
   this.saveAsFile=function(t,f,m) {

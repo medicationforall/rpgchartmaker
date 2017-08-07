@@ -18,6 +18,7 @@
 
 /**
  * Dialog.
+ * @class
  * @param {string} url reference url to the content to be displayed.
  */
 function InfoDialog(url){

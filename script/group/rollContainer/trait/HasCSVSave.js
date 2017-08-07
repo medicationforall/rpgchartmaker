@@ -23,7 +23,7 @@
 function HasCSVSave(){
 
   /**
-   * Collects the CSV Data string
+   * Collects the CSV Data string.
    * @return {string} formatted in a way suitable for CSV export.
    */
   this.gatherCSVData=function(){
@@ -96,6 +96,9 @@ function HasCSVSave(){
 
   /**
    * Saves the given data into a file.
+   * @param {string} t - data of the file.
+   * @param {string} f - file name.
+   * @param {string} m - meta file type.
    * @todo duplicate code.
    */
   this.saveAsFile=function(t,f,m) {

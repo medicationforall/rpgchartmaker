@@ -15,7 +15,14 @@
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /**
+  * Grid Group Load Mixin.
+  * @mixin
+  */
 function HasGridGroupLoad(){
+
+
   /**
    * Load list name, and ol list with data.
    * @param {Object} list - JSON List Data.

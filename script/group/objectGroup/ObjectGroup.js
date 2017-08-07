@@ -22,7 +22,8 @@
  * The List supports adding, and re-ordering of list entries.
  * @class
  * @see Base.js
- * @see html/objectGroup.html
+ * @see html/ObjectGroup.html
+ * @param {boolean} animate - flag for animating the object when initialized.
  */
 function ObjectGroup(animate){
 	Base.call(this,animate);
