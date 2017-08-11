@@ -31,7 +31,7 @@
 			</ul>
 
 			<ul>
-				<b>List/Object List Controls</b>
+				<b>List/Grid/Object List Controls</b>
 				<li>The die
 					<svg data-reactroot="" class="Icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" style="height: 16px; width: 16px;">
 						<path d="M0 0h512v512H0z" opacity="0"></path>
@@ -57,7 +57,7 @@
 				<li><b>Adding Items</b></li>
 				<li>Pressing the green <i>Add</i> button adds an <i>item</i> list.</li>
 				<li><b>Editing Items</b></li>
-				<li>Click on an <i>item</i> to edit it.</li>
+				<li>Click on an <i>items</i> text to edit it.</li>
 				<li>While an <i>item</i> is in edit mode it will not be counted in rolls.</li>
 				<li>
 					The
@@ -83,14 +83,14 @@
 			</ul>
 
 			<ul>
-				<b>List/Object List Menu</b>
+				<b>List/Grid/Object List Menu</b>
 				<li>Click the Copy button to copy the json representation of the list.
 					<br /> Useful for loading onto other chart instances.
 				</li>
 			</ul>
 
 			<ul>
-				<b>List Control</b>
+				<b>List/Grid Control</b>
 				<li><b>Adding Items</b></li>
 				<li>Pressing the enter key on the <i>List Entry</i> input adds it to the list.</li>
 				<li><b>Adding Multiple Items</b></li>
@@ -110,6 +110,12 @@ Will result in 1 dwarf <i>item</i>, 2 separate human <i>items</i>, and 1 elf <i>
 				</li>
 				<li><b>Editing Items</b></li>
 				<li>Pressing the Enter key while editing a <i>list item</i> applies the edit to it.</li>
+			</ul>
+
+			<ul>
+				<b>Grid Control</b>
+				<li>Clicking on a <i>grid cell</i> marks the cell as the initial starting point.<br />
+					When rolling a roll set the initial cell will be selected first and all following rolls will be in relation to that cell.</li>
 			</ul>
 
 			<ul>
@@ -163,6 +169,8 @@ Will result in 1 dwarf <i>item</i>, 2 separate human <i>items</i>, and 1 elf <i>
         <li><i>Seed</i> standardizes roll output making results repeatable.</li>
         <li><i>CSV</i> exports the roll table as a comma separated values text file.</li>
         <li>The <i>Columns</i> section allows you to modify alias and display per column.</li>
+				<li>The Roll button in the menu will fill out the <i>roll table</i> independent of any other <i>roll tables</i> on the page.</li>
+				<li>The roll input in the menu will override the global roll count input.</li>
       </ul>
 
 			<ul>

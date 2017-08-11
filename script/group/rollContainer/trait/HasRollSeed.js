@@ -71,14 +71,19 @@ function HasRollSeed(){
 
 
   /**
-   * Resolve the initial cell to roll against for the Grif Group.
+   * Resolve the initial cell to roll against for the Grid Group.
    * @param {Array} arr - array to be rolled against.
    * @param {string} name - namespace for the seed lookup key.
    */
-  this.resolveRollGrid=function(arr,name){
+  this.resolveRollGrid=function(coreNode,arr,name){
     var roll;
 
-    if(this.seed && this.seed !== ''){
+    var userSelected = coreNode.node.find('li.userSelectedGridItem');
+    var userIndex = arr.indexOf(userSelected.html());
+
+    if(userIndex !== -1){
+      roll = userIndex;
+    } else if(this.seed && this.seed !== ''){
       roll = this.rng.getRandom(this.seed+"-"+name, 0, arr.length -1);
     } else{
       roll = Math.floor(Math.random() * arr.length);

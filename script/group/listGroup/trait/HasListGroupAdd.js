@@ -91,7 +91,7 @@ function HasListGroupAdd(){
    */
   this.node.on('keypress','.nameInput',$.proxy(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
-    console.log(keycode,event.shiftKey);
+
     if(keycode == '13' && event.shiftKey) {
       this.switchInputToTextarea();
     } else if(keycode == '13') {

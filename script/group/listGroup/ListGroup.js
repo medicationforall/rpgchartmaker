@@ -49,6 +49,7 @@ function ListGroup(animate){
   this._setup=function(template){
     this.setupBase(template);
 
+    HasUniqueControl.call(this);
     HasListGroupAdd.call(this);
     HasListGroupEdit.call(this);
     HasListMenu.call(this);

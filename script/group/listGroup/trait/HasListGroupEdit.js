@@ -27,6 +27,7 @@ function HasListGroupEdit(){
    * Edit list item label click.
    */
   this.node.on('click','.nameText',function(event){
+    event.stopPropagation();
     var template = '<div class="inlineEdit">'+
     '<input class="itemEdit" type="text" value="'+$(this).text()+'" />'+
     '<div class="editControls">'+
@@ -64,6 +65,7 @@ function HasListGroupEdit(){
    */
   this.node.on('click','.applyEditButton',function(event){
     event.preventDefault();
+    event.stopPropagation();
     var inlineEdit = $(this).closest('.inlineEdit');
     var nameText = $(inlineEdit).prev('.nameText');
     var itemEdit = inlineEdit.find('.itemEdit');
@@ -90,7 +92,7 @@ function HasListGroupEdit(){
    */
   this.node.on('click','.deleteEditButton',function(event){
     event.preventDefault();
-
+    event.stopPropagation();
     var inlineEdit = $(this).closest('.inlineEdit');
     var nameText = $(inlineEdit).prev('.nameText');
 

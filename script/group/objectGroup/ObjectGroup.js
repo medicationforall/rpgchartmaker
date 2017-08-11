@@ -51,7 +51,8 @@ function ObjectGroup(animate){
    */
   this._setup=function(template){
     this.setupBase(template);
-
+    
+    HasUniqueControl.call(this);
     HasObjectGroupAddInput.call(this);
     HasObjectGroupAddEntry.call(this);
 

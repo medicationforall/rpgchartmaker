@@ -39,7 +39,7 @@ text-align:center;
 margin-top:4px;
 }
 
-.objectGroup .buttons .addObjectButton, .listGroup .listForm .addNameButton{
+.objectGroup .buttons .addObjectButton, .listGroup .listForm .addNameButton, .gridGroup .listForm .addNameButton {
 background:linear-gradient(to bottom, #cdeb8e 0%,#a5c956 100%);
 }
 

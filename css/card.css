@@ -150,6 +150,10 @@ vertical-align:top;
   background-color:#00B7EA;
 }
 
+.gridGroup ol li.userSelectedGridItem{
+  outline: 1px solid #000;
+}
+
 .gridGroup ol li input{
   width:87px;
 }

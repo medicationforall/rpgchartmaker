@@ -48,6 +48,7 @@ function GridGroup(animate){
 
     HasGridGroupColumn.call(this);
     HasListGroupAdd.call(this);
+    HasGridGroupSelect.call(this);
     HasListGroupEdit.call(this);
     HasListMenu.call(this);
     //this.setupAlphabetize();
@@ -77,6 +78,11 @@ function GridGroup(animate){
 
     //fill out columns
     obj.columns = this.columns;
+
+    //fill out selected grid item
+    if(this.selectedCell){
+      obj.selectedCell = this.selectedCell;
+    }
 
     //fill out list
     this.node.find('ol li').each(function(index, item){

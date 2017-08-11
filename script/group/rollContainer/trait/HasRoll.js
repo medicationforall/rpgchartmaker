@@ -62,6 +62,7 @@ function HasRoll(){
   this.resetLists=function(){
     $('.list').each($.proxy(function(index,item){
       $(item).find('ol li.uniqueSelected').removeClass('uniqueSelected');
+      $(item).find('ol li.selectedGridItem').removeClass('selectedGridItem');
     },this));
   };
 
@@ -133,22 +134,29 @@ function HasRoll(){
     //fill out rows
     var count = $('input[name="rollCount"]').val();
     var lists =$('.list');
+    //in memory table
+    var mTable =  $('<tbody />');
+    var displayRollNumber = this.resolveDisplay('No.');
 
     //rollCountOverride
     if(this.rollCountOverride && this.rollCountOverride>0){
       count = this.rollCountOverride;
     }
 
+    //generate the roll data.
     for(var i=0;i<count;i++){
-      this.rollTable.find('tbody').append('<tr data-rollSet="'+i+'"></tr>');
+      mTable.append('<tr data-rollSet="'+i+'"></tr>');
 
-      if(this.resolveDisplay('No.')){
+      if(displayRollNumber){
         //add roll Index
-        this.rollTable.find('tbody tr:last-child').append('<td>'+(i+1)+'</td>');
+        mTable.find('tr:last-child').append('<td>'+(i+1)+'</td>');
       }
 
-      lists.each($.proxy(this.getRollValue,this));
+      lists.each($.proxy(this.getRollValue,this,mTable));
     }
+
+    //replace tbody with in memory table.
+    this.rollTable.find('tbody').replaceWith(mTable);
   };
 
 
@@ -156,8 +164,9 @@ function HasRoll(){
    * Get a roll value from derived based on list.
    * @param {int} index - List index.
    * @param {Object} item - The reference List.
+   * @param {Object} mTable - In memory table
    */
-  this.getRollValue=function(index, item){
+  this.getRollValue=function(mTable,index, item){
     //resolve list name
     var label = $(item).attr('data-name');
 
@@ -169,8 +178,10 @@ function HasRoll(){
         rollValue = this.rollList({"index":index,"item":item});
       }
 
+      //place the roll value into the table
       if(rollValue!==undefined){
-        this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
+        //this.rollTable.find('tbody tr:last-child').append('<td>'+rollValue+'</td>');
+        mTable.find('tr:last-child').append('<td>'+rollValue+'</td>');
       }
     }
   };
@@ -218,7 +229,7 @@ function HasRoll(){
       p.arr = this.createRollArray(p);
 
       if(p.coreNode.node.find('li.selectedGridItem').length===0){
-        p.roll = this.resolveRollGrid(p.arr, p.label);
+        p.roll = this.resolveRollGrid(p.coreNode,p.arr, p.label);
       }else{
         p.roll = this.resolveRollGridDirection(p.coreNode,p.arr, p.label);
       }

@@ -41,7 +41,6 @@ Base.prototype.setupBase=function(template){
   this._setupHandleColor();
   this._setupCSSOverride();
   HasAlphabetizeControl.call(this);
-  HasUniqueControl.call(this);
   HasRollControl.call(this);
 };
 

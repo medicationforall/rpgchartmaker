@@ -31,11 +31,35 @@ function HasListGroupLoad(){
 
     this.fillOutName(list);
     this.fillOutRoll(list);
-    this.fillOutUnique(list);
+
+    if(this instanceof ListGroup){
+      this.fillOutUnique(list);
+    }
 
     //fill out List
     for(var j=0,item;(item=list.list[j]);j++){
       this.AddToList(item);
+    }
+
+    if(this instanceof GridGroup){
+      this.fillOutGridGroup(list);
+    }
+  };
+
+
+  /**
+   * Specific fill out controls grids
+   */
+  this.fillOutGridGroup=function(list){
+
+    //fill out columns
+    if(list.columns !== undefined){
+      this.node.find('input[name=gridColumns]').val(list.columns).trigger('input');
+    }
+
+    //fill out selected cell
+    if(list.selectedCell !== undefined){
+      this.node.find('ol li:nth-child('+(list.selectedCell+1)+')').trigger('click');
     }
   };
 
