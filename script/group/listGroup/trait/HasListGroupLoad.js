@@ -57,6 +57,9 @@ function HasListGroupLoad(){
       this.node.find('input[name=gridColumns]').val(list.columns).trigger('input');
     }
 
+    //fill out wrap
+    this.fillOutWrap(list);
+
     //fill out selected cell
     if(list.selectedCell !== undefined){
       this.node.find('ol li:nth-child('+(list.selectedCell+1)+')').trigger('click');

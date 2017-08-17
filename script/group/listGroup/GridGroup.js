@@ -46,6 +46,7 @@ function GridGroup(animate){
   this._setup=function(template){
     this.setupBase(template);
 
+    HasWrapControl.call(this);
     HasGridGroupColumn.call(this);
     HasListGroupAdd.call(this);
     HasGridGroupSelect.call(this);
@@ -79,8 +80,11 @@ function GridGroup(animate){
     //fill out columns
     obj.columns = this.columns;
 
+    //fill out wrap
+    obj.wrap = this.wrapValue;
+
     //fill out selected grid item
-    if(this.selectedCell){
+    if(this.selectedCell !== undefined){
       obj.selectedCell = this.selectedCell;
     }
 

@@ -1,0 +1,1 @@
+﻿{"name":"Alignment","rolls":[{"type":"RollContainer","seed":"test"}],"lists":[{"name":"Alignment","roll":true,"list":["Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil"],"type":"GridGroup","columns":3,"wrap":true,"selectedCell":0}]}

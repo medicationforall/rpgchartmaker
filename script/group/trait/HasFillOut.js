@@ -59,4 +59,21 @@ function HasFillOut(){
       this.setUnique(list.unique);
     }
   };
+
+
+  /**
+   * Fill out wrap from param data.
+   * @param {Object} list - list data params.
+   */
+  this.fillOutWrap=function(list){
+    //fill out roll
+    if(list.wrap!==undefined){
+      if(list.wrap=='true'){
+        list.wrap = true;
+      }else if(list.wrap=='false'){
+        list.wrap=false;
+      }
+      this.setWrapValue(list.wrap);
+    }
+  };
 }

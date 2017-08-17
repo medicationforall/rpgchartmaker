@@ -107,12 +107,14 @@ function HasRollSeed(){
     //get the direction
     if(this.seed && this.seed !== ''){
       roll = this.rng.getRandom(this.seed+"-"+name, 0, direction.length -1);
+      //console.log(direction[roll]);
     } else{
       roll = Math.floor(Math.random() * direction.length);
     }
 
     //resolve the index of the selected node
     var list = coreNode.node.find('li');
+    var wrap = coreNode.wrapValue;
 
     for(var i=0,li;(li=list[i]);i++){
       if($(li).hasClass('selectedGridItem')){
@@ -128,25 +130,67 @@ function HasRollSeed(){
         if(selectedIndex+1 !== arr.length && (selectedIndex+1)%columns !==0){
           roll=selectedIndex+1;
         } else{
-          roll = selectedIndex;
+          if(wrap){
+            if(selectedIndex+1 === arr.length)/*account for uneven row end*/{
+              var diff = arr.length % columns;
+              var idealcolumn = columns;
+
+              if(diff){
+                idealcolumn = columns - diff;
+              }
+
+              roll = selectedIndex+1-idealcolumn;
+            }else{
+              roll = selectedIndex+1-columns;
+            }
+          }else{
+            roll = selectedIndex;
+          }
         }
       }else if(direction[roll]==='right'){
         if(selectedIndex-1 > 0 && (selectedIndex-1)%columns !== columns-1){
           roll=selectedIndex-1;
         } else{
-          roll = selectedIndex;
+          if(wrap){
+            if(selectedIndex-1+columns >= arr.length)/*account for uneven row end*/{
+              roll = selectedIndex-1+(arr.length%columns);
+            }else{
+              roll = selectedIndex-1+columns;
+            }
+          }else{
+            roll = selectedIndex;
+          }
         }
       }else if(direction[roll]==='up'){
         if(selectedIndex-columns > -1){
           roll=selectedIndex-columns;
         } else{
-          roll = selectedIndex;
+          if(wrap){
+            var diff = arr.length % columns;
+            var idealLength = arr.length;
+
+            if(diff){
+              idealLength = arr.length + columns - diff;
+            }
+
+            roll = selectedIndex - columns + idealLength;
+
+            if(roll >= arr.length){
+              roll-=columns;
+            }
+          }else{
+            roll = selectedIndex;
+          }
         }
       }else if(direction[roll]==='down'){
         if(selectedIndex+columns < arr.length){
           roll=selectedIndex+columns;
-        } else{
-          roll = selectedIndex;
+        }else{
+          if(wrap){
+              roll = selectedIndex%columns;
+            }else{
+            roll = selectedIndex;
+          }
         }
       } else if(direction[roll]==='stay'){
         roll = selectedIndex;
