@@ -132,11 +132,11 @@ function HasRollSeed(){
         } else{
           if(wrap){
             if(selectedIndex+1 === arr.length)/*account for uneven row end*/{
-              var diff = arr.length % columns;
+              var diffC = arr.length % columns;
               var idealcolumn = columns;
 
-              if(diff){
-                idealcolumn = columns - diff;
+              if(diffC){
+                idealcolumn = columns - diffC;
               }
 
               roll = selectedIndex+1-idealcolumn;

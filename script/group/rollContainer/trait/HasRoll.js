@@ -62,7 +62,11 @@ function HasRoll(){
   this.resetLists=function(){
     $('.list').each($.proxy(function(index,item){
       $(item).find('ol li.uniqueSelected').removeClass('uniqueSelected');
-      $(item).find('ol li.selectedGridItem').removeClass('selectedGridItem');
+
+      //if we have a user selected start point, clear the selected grid item.
+      if($(item).find('ol li.userSelectedGridItem')){
+        $(item).find('ol li.selectedGridItem').removeClass('selectedGridItem');
+      }
     },this));
   };
 
