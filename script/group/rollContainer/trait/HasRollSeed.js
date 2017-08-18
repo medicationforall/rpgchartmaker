@@ -111,7 +111,7 @@ function HasRollSeed(){
       roll = Math.floor(Math.random() * direction.length);
     }
 
-    console.log(direction[roll]);
+    //console.log(direction[roll]);
 
     //resolve the index of the selected node
     var list = coreNode.node.find('li');
