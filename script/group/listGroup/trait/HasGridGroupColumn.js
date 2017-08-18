@@ -29,7 +29,6 @@ function HasGridGroupColumn(){
    * Grid columns change
    */
   this.node.on('input','input[name="gridColumns"]',$.proxy(function(coreNode,event){
-    console.log('change gridColumns');
     var value = parseInt($(this).val());
     coreNode.setColumns(value);
   },null,this));
@@ -39,7 +38,6 @@ function HasGridGroupColumn(){
    * Set The columns
    */
   this.setColumns=function(value){
-    console.log('setColumns',value);
     this.columns=value;
     this.node.find('.content').css('min-width',(this.columns*this.columnsWidth)+'px');
     this.node.find('ol').css('width',(this.columns*this.columnsWidth)+'px');
