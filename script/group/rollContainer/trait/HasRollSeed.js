@@ -107,10 +107,11 @@ function HasRollSeed(){
     //get the direction
     if(this.seed && this.seed !== ''){
       roll = this.rng.getRandom(this.seed+"-"+name, 0, direction.length -1);
-      //console.log(direction[roll]);
     } else{
       roll = Math.floor(Math.random() * direction.length);
     }
+
+    console.log(direction[roll]);
 
     //resolve the index of the selected node
     var list = coreNode.node.find('li');
@@ -126,7 +127,7 @@ function HasRollSeed(){
     //translate direction roll to node in array
     if(selectedIndex!==undefined){
 
-      if(direction[roll]==='left'){
+      if(direction[roll]==='right'){
         if(selectedIndex+1 !== arr.length && (selectedIndex+1)%columns !==0){
           roll=selectedIndex+1;
         } else{
@@ -136,7 +137,7 @@ function HasRollSeed(){
               var idealcolumn = columns;
 
               if(diffC){
-                idealcolumn = columns - diffC;
+                idealcolumn = diffC;
               }
 
               roll = selectedIndex+1-idealcolumn;
@@ -147,8 +148,8 @@ function HasRollSeed(){
             roll = selectedIndex;
           }
         }
-      }else if(direction[roll]==='right'){
-        if(selectedIndex-1 > 0 && (selectedIndex-1)%columns !== columns-1){
+      }else if(direction[roll]==='left'){
+        if(selectedIndex-1 > -1 && (selectedIndex-1)%columns !== columns-1){
           roll=selectedIndex-1;
         } else{
           if(wrap){
