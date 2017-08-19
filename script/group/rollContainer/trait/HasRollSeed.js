@@ -105,6 +105,8 @@ function HasRollSeed(){
     var direction = coreNode.directions;
     var selectedIndex;
 
+    //console.log('resolve roll grid direction');
+
     //get the direction
     if(this.seed && this.seed !== ''){
       roll = this.rng.getRandom(this.seed+"-"+name, 0, direction.length -1);

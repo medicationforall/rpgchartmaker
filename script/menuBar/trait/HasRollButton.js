@@ -39,13 +39,27 @@ function HassRollButton(){
    * @private
    */
   this._rollAll=function(){
-    $('.rollContainer').each(function(index,item){
-    //hide open roll container menus
-    $(item).find('.menu').removeClass('focus');
+    var rollContainers =$('.rollContainer');
 
-    //perform the roll
-    var coreNode = $.data(item,'coreNode');
+    if(rollContainers.length>0){
+      rollContainers.each(function(index,item){
+        //hide open roll container menus
+        $(item).find('.menu').removeClass('focus');
+
+        //perform the roll
+        var coreNode = $.data(item,'coreNode');
         coreNode.roll();
-    });
+      });
+    }else{
+      $('.gridGroup').each(function(index,item){
+        //hide open roll container menus
+        $(item).find('.menu').removeClass('focus');
+
+        //perform the roll
+        var coreNode = $.data(item,'coreNode');
+        //coreNode.roll();
+        console.warn('grid group roll isn\'t implemented yet. Requires a Roll Table.');
+      });
+    }
   };
 }

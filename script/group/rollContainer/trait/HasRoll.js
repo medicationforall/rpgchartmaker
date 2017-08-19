@@ -64,9 +64,9 @@ function HasRoll(){
       $(item).find('ol li.uniqueSelected').removeClass('uniqueSelected');
 
       //if we have a user selected start point, clear the selected grid item.
-      //if($(item).find('ol li.userSelectedGridItem')){
+      if($(item).find('ol li.userSelectedGridItem').length>0){
         $(item).find('ol li.selectedGridItem').removeClass('selectedGridItem');
-      //}
+      }
     },this));
   };
 
