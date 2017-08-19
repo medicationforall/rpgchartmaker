@@ -47,6 +47,7 @@ function GridGroup(animate){
     this.setupBase(template);
 
     HasWrapControl.call(this);
+    HasDirectionControl.call(this);
     HasGridGroupColumn.call(this);
     HasListGroupAdd.call(this);
     HasGridGroupSelect.call(this);
@@ -83,15 +84,18 @@ function GridGroup(animate){
     //fill out wrap
     obj.wrap = this.wrapValue;
 
-    //fill out selected grid item
-    if(this.selectedCell !== undefined){
-      obj.selectedCell = this.selectedCell;
-    }
+    //fill out directions
+    obj.directions = this.directions;
 
     //fill out list
     this.node.find('ol li').each(function(index, item){
       obj.list.push($(item).text());
     });
+
+    //fill out selected grid item
+    if(this.selectedCell !== undefined){
+      obj.selectedCell = this.selectedCell;
+    }
 
     return obj;
   };

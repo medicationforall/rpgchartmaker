@@ -64,6 +64,11 @@ function HasListGroupLoad(){
     if(list.selectedCell !== undefined){
       this.node.find('ol li:nth-child('+(list.selectedCell+1)+')').trigger('click');
     }
+
+    //fill out directions
+    if(list.directions && list.directions.length > 0){
+      this.setDirections(list.directions);
+    }
   };
 
 

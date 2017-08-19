@@ -38,7 +38,7 @@ function HasListMenu(){
    * Fill out the copy input.
    */
    this.openMenu=function(){
-     this._setupCopy();
+     this.setupCopy();
    };
 
 
@@ -46,7 +46,7 @@ function HasListMenu(){
    * Fill out the copy input field.
    * @private
    */
-   this._setupCopy=function(){
+   this.setupCopy=function(){
      this.node.find('.copyInput').val(JSON.stringify(this.gatherData()));
    };
 }

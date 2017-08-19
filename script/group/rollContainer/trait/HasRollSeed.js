@@ -101,7 +101,8 @@ function HasRollSeed(){
   this.resolveRollGridDirection=function(coreNode,arr,name){
     var roll;
     var columns = coreNode.columns;
-    var direction = ['up','down','left','right','stay'];
+    //var direction = ['up','down','left','right','stay'];
+    var direction = coreNode.directions;
     var selectedIndex;
 
     //get the direction
@@ -110,8 +111,6 @@ function HasRollSeed(){
     } else{
       roll = Math.floor(Math.random() * direction.length);
     }
-
-    //console.log(direction[roll]);
 
     //resolve the index of the selected node
     var list = coreNode.node.find('li');
@@ -124,10 +123,34 @@ function HasRollSeed(){
       }
     }
 
+    roll = this.movedirections(selectedIndex,roll,direction,list,wrap,coreNode,arr,columns);
+
+    return roll;
+  };
+
+
+  /**
+   *
+   */
+  this.movedirections=function(selectedIndex,roll,direction,list,wrap,coreNode,arr,columns){
+    var directionParts = direction[roll].split(' ');
+    var localRoll = roll;
+    for(var i=0,rawDirection;(rawDirection=directionParts[i]);i++){
+      localRoll = this.moveDirection(selectedIndex,localRoll,rawDirection,list,wrap,coreNode,arr,columns);
+      selectedIndex = localRoll;
+    }
+
+    return localRoll;
+  };
+
+
+  /**
+   *
+   */
+  this.moveDirection=function(selectedIndex,roll,direction,list,wrap,coreNode,arr,columns){
     //translate direction roll to node in array
     if(selectedIndex!==undefined){
-
-      if(direction[roll]==='right'){
+      if(direction==='right'){
         if(selectedIndex+1 !== arr.length && (selectedIndex+1)%columns !==0){
           roll=selectedIndex+1;
         } else{
@@ -148,7 +171,7 @@ function HasRollSeed(){
             roll = selectedIndex;
           }
         }
-      }else if(direction[roll]==='left'){
+      }else if(direction==='left'){
         if(selectedIndex-1 > -1 && (selectedIndex-1)%columns !== columns-1){
           roll=selectedIndex-1;
         } else{
@@ -162,7 +185,7 @@ function HasRollSeed(){
             roll = selectedIndex;
           }
         }
-      }else if(direction[roll]==='up'){
+      }else if(direction==='up'){
         if(selectedIndex-columns > -1){
           roll=selectedIndex-columns;
         } else{
@@ -183,7 +206,7 @@ function HasRollSeed(){
             roll = selectedIndex;
           }
         }
-      }else if(direction[roll]==='down'){
+      }else if(direction==='down'){
         if(selectedIndex+columns < arr.length){
           roll=selectedIndex+columns;
         }else{
@@ -193,12 +216,15 @@ function HasRollSeed(){
             roll = selectedIndex;
           }
         }
-      } else if(direction[roll]==='stay'){
+      } else if(direction==='stay'){
         roll = selectedIndex;
+      } else{
+        console.warn('direction is not recognized',direction);
       }
     }else{
       console.warn('selected grid item index did not resolve');
     }
+
     return roll;
   };
 }
